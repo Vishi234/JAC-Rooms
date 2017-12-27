@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/User/_layout2.cshtml";
+}
+
+<div class="userDashboard">
+    <div class="container">
+        <div class="userDashHeader">
+            <h1>My Dashboard</h1>
+        </div>
+        <div class="userDashMenu">
+            <h2>Manage Booking</h2>
+            <div class="userDashBody">
+                <div class="col-xs-12 col-lg-4 col-md-6">
+                    <div class="optionList">
+                        <i class="fa fa-edit"></i>
+                        <h3>Modify Booking</h3>
+                        <hr />
+                        <ul>
+                            <li><a href="javascript:void(0)">Cancel Booking <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Reshedule <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Cancellation Charges <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Reschedule Charges <i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-4 col-md-6">
+                    <div class="optionList">
+                        <i class="fa fa-ticket"></i>
+                        <h3>Ticket/Voucher</h3>
+                        <hr />
+                        <ul>
+                            <li><a href="javascript:void(0)">SMS/Email Ticket <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Print Voucher <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Voucher <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Print Invoice/Reciept <i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-4 col-md-6">
+                    <div class="optionList">
+                        <i class="fa fa-sticky-note"></i>
+                        <h3>Booking Details</h3>
+                        <hr />
+                        <ul>
+                            <li><a href="javascript:void(0)">Claim Refund<i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Make Payment<i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="javascript:void(0)">Refund Status<i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="userDashBody w-800 m-top-20 m-right-20 h-220 col-xs-12 col-lg-9 col-md-9">
+                <div class="notFound">
+                    <p>No Recent Booking Found </p>
+                </div>
+            </div>
+            <div class="userDashBody m-top-20 pull-right col-xs-12 col-lg-3 col-md-3">
+                <div class="dashPro">
+                    <div class="logingImg">
+                        <img src="~/Content/images/user.png" />
+                    </div>
+                    <h3>@Session["UserID"]</h3>
+                    <hr />
+                    <ul>
+                        <li>vishalsingh9407@gmail.com</li>
+                        <li>+91 9650402952</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,93 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+</head>
+<body class="login_body">
+    <div class="login_header">
+        <div class="container">
+            <div class="login_top">
+                <div class="top_nav">
+                    <span class="myButton">Are you hotelier<img src="~/Content/images/sort-down.svg" /></span>
+                    <div class="hotelier_drop bounceInLeft" id="hot_drop">
+                        <div class="triangle-with-shadow">
+                        </div>
+                        <div class="drop_body">
+                            <a href="javascript:void(0)" class="btn_active">Login </a>
+                            <p>Don't have an account?</p>
+                            <hr />
+                            <a href="javascript:void(0)">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <script src="~/scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".myButton").toggle(function () {
+                $(this).addClass("top_active");
+                $('.hotelier_drop').css("display", 'block');
+                $('#hot_drop').removeClass("bounceOutRight");
+                $('#hot_drop').addClass("bounceInRight");//bounceOutRight
+
+            }, function () {
+                $('#hot_drop').removeClass("bounceInRight");
+
+                $('#hot_drop').addClass("bounceOutRight");
+                $(this).removeClass("top_active");
+            });
+
+            $(".nextLogin").toggle(function () {
+                $('.emailBase').removeClass("zoomIn");//bounceOutLeft
+                $('.emailBase').addClass("zoomOut");//bounceOutLeft
+                $('.passwordBase').removeClass("bounceOutRight");
+                $('.passwordBase').addClass("bounceInRight");
+                $('.passwordBase').css("display", 'block');
+
+            }, function () {
+                $('.emailBase').removeClass("zoomIn");//bounceOutLeft
+                $('.emailBase').addClass("zoomOut");//bounceOutLeft
+                $('.passwordBase').removeClass("bounceOutRight");
+                $('.passwordBase').addClass("bounceInRight");
+                // $('.passwordBase').css("display", 'none');
+            });
+            //fa-arrow-left
+            $(".fa-arrow-left").toggle(function () {
+                $('.emailBase').removeClass("zoomOut");//bounceOutLeft
+                $('.passwordBase').removeClass("bounceInRight");
+                $('.emailBase').addClass("zoomIn");//bounceOutLeft
+
+                $('.passwordBase').addClass("bounceOutRight");
+                //   $('.passwordBase').css("display", 'none');
+
+            }, function () {
+                $('.emailBase').removeClass("zoomOut");//bounceOutLeft
+                $('.emailBase').addClass("zoomIn");//bounceOutLeft
+                $('.passwordBase').removeClass("bounceInRight");
+                $('.passwordBase').addClass("bounceOutRight");
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>

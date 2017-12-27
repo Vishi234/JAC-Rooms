@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/User/_layout.cshtml";
+}
+
+<form action="@Url.Action("LoggingIN","User")" method="post">
+    <div class="register_base">
+        <div class="container">
+            <div class="row">
+                <div class="register_form loginForm emailBase slideInDown">
+                    <h2>Welcome to JAC <span>Rooms</span></h2>
+                    <p>Please Login to continue</p>
+                    <div class="loginInside">
+                        <div class="logingImg">
+                            <img src="~/Content/images/user.png" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Email Id">Your Email ID<span class="mandate">*</span></label>
+                            <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Registered Email ID">
+                        </div>
+
+                        <div class="form-group">
+                            <a href="javascript:void(0)" class="nextLogin btn-primary">Continue</a>
+                        </div>
+                        <div class="quickLinks">
+                            <p><a href="javascript:void(0)">Don't have an account?</a></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="register_form loginForm passwordBase">
+                    <i class="fa fa-arrow-left pull-left"></i>
+                    <h2>Welcome to JAC <span>Rooms</span></h2>
+                    <p>Please Sign In to continue</p>
+                    <div class="loginInside">
+                        <div class="logingImg">
+                            <img src="~/Content/images/user.png" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Email Id">Password<span class="mandate">*</span></label>
+                            <input type="text" class="form-control" id="Password" name="Password" placeholder="Enter your Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn-primary" value="Login" />
+                        </div>
+                        <div class="quickLinks">
+                            <p><a href="javascript:void(0)">Forgot Password?</a></p>
+                            <p><a href="javascript:void(0)">Login as a different user</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

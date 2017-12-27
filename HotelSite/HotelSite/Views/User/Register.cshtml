@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/User/_layout.cshtml";
+}
+<script src="~/scripts/jquery-3.2.1.min.js"></script>
+<script>
+    function CheckLogin(evt) {
+        debugger;
+        let Email = $('#Email').val();
+        let errorStyle = {
+            border: "2px solid red"
+        };
+        let successStyle = {
+            border: "none"
+        };
+        if (Email == null || Email == "") {
+            $('#Email').css(errorStyle)
+            evt.preventDefault();
+            return false;
+        }
+        else {
+            $('#Email').css(successStyle);
+        }
+        let Mobile = $('#Mobile').val();
+        if (Mobile == null || Mobile == "") {
+            $("#Mobile").css(errorStyle);
+            evt.preventDefault();
+            return false;
+        }
+        else {
+            $('#Mobile').css(successStyle);
+        }
+        let Password = $('#Password').val();
+        if (Password == null || Password == "") {
+            $("#Password").css(errorStyle);
+            evt.preventDefault();
+            return false;
+        }
+        else {
+            $('#Password').css(successStyle);
+        }
+
+        let FirstName = $('#FirstName').val();
+        if (FirstName == null || FirstName == "") {
+            $("#FirstName").css(errorStyle);
+            evt.preventDefault();
+            return false;
+        }
+        else {
+            $('#FirstName').css(successStyle);
+        }
+        let LastName = $('#LastName').val();
+        if (LastName == null || LastName == "") {
+            $("#LastName").css(errorStyle);
+            evt.preventDefault();
+            return false;
+        }
+        else {
+            $('#LastName').css(successStyle);
+        }
+    }
+
+</script>
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new { onsubmit = "CheckLogin(event)" }))
+{
+    <div class="register_base">
+        <div class="container">
+            <div class="row">
+                <div class="register_form slideInDown">
+                    <h2>Welcome to JAC <span>Rooms</span></h2>
+                    <p>Please Sign Up to continue</p>
+                    <div class="loginInside">
+                        <div class="form-group">
+                            <label for="Email Id">Email Id<span class="mandate">*</span></label>
+                            <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter your Email Id">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email Id">Mobile No<span class="mandate">*</span></label>
+                            <input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="Enter your Mobile Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email Id">Create Password<span class="mandate">*</span></label>
+                            <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter your Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email Id">First Name<span class="mandate">*</span></label>
+                            <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="Enter your First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email Id">Last Name<span class="mandate">*</span></label>
+                            <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Enter your Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Continue" class="btn-primary" />
+                        </div>
+                        <div class="form-group">
+                            <p>By proceeding, you agree with our <a href="javascript:void(0)">Terms of Service</a> & <a href="javascript:void(0)">Privacy Policy</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
