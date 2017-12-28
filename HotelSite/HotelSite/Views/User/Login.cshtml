@@ -4,6 +4,7 @@
     Layout = "~/Views/User/_layout.cshtml";
 }
 
+
 <form action="@Url.Action("LoggingIN","User")" method="post">
     <div class="register_base">
         <div class="container">
@@ -24,7 +25,7 @@
                             <a href="javascript:void(0)" class="nextLogin btn-primary">Continue</a>
                         </div>
                         <div class="quickLinks">
-                            <p><a href="javascript:void(0)">Don't have an account?</a></p>
+                            <p>@Html.ActionLink("Don't have an account?", "Register")</p>
                         </div>
                     </div>
 
@@ -45,13 +46,49 @@
                             <input type="submit" class="btn-primary" value="Login" />
                         </div>
                         <div class="quickLinks">
-                            <p><a href="javascript:void(0)">Forgot Password?</a></p>
-                            <p><a href="javascript:void(0)">Login as a different user</a></p>
+                            <p> <a href="javascript:void(0)" onclick="showModal('forgotPassword', 'zoomIn', 'zoomOut');">Forgot password?</a></p>
+                            <p>@Html.ActionLink("Login as a different user", "Login")</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </form>
+<div class="modal-bg">
+    <div class="modal-inner forgotPassword">
+        <div class="modal-hdr">
+            <h2>Forgot Password <i onclick="hideModal('forgotPassword', 'zoomOut', 'zoomIn');" class="fa fa-times-rectangle pull-right"></i></h2>
+            <p>Enter the email address associated with Jacrooms.com and click Submit</p>
+        </div>
+        <div class="modal-bdy">
+            <input type="text" class="form-control" placeholder="Enter your registered email id" />
+            <button type="button" class="btn-primary">Submit</button>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        $("#emailId").focus();
+    });
+    function showModal(modalName, effectClass, removeClass) {
+        $(".modal-bg").css('display', 'block');
+        $(".modal-bg").removeClass(removeClass);
+        $("." + modalName).removeClass(removeClass);
+        $("." + modalName).addClass(effectClass);
+
+    }
+    function hideModal(modalName, effectClass, removeClass) {
+        $("." + modalName).removeClass(removeClass);
+        $("." + modalName).addClass(effectClass);
+        $(".modal-bg").addClass(effectClass);
+        setTimeout(function () { $(".modal-bg").css('display', 'none'); }, 1000);
+        
+    }
+</script>
 

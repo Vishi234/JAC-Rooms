@@ -15,6 +15,7 @@
         };
         if (Email == null || Email == "") {
             $('#Email').css(errorStyle)
+            $('#Email').focus();
             evt.preventDefault();
             return false;
         }
@@ -24,6 +25,7 @@
         let Mobile = $('#Mobile').val();
         if (Mobile == null || Mobile == "") {
             $("#Mobile").css(errorStyle);
+            $("#Mobile").focus();
             evt.preventDefault();
             return false;
         }
@@ -33,6 +35,7 @@
         let Password = $('#Password').val();
         if (Password == null || Password == "") {
             $("#Password").css(errorStyle);
+            $("#Password").focus();
             evt.preventDefault();
             return false;
         }
@@ -43,6 +46,7 @@
         let FirstName = $('#FirstName').val();
         if (FirstName == null || FirstName == "") {
             $("#FirstName").css(errorStyle);
+            $("#FirstName").focus();
             evt.preventDefault();
             return false;
         }
@@ -52,6 +56,7 @@
         let LastName = $('#LastName').val();
         if (LastName == null || LastName == "") {
             $("#LastName").css(errorStyle);
+            $("#LastName").focus();
             evt.preventDefault();
             return false;
         }
