@@ -14,13 +14,13 @@
             border: "none"
         };
         if (Email == null || Email == "") {
-            $('#Email').css(errorStyle)
-            $('#Email').focus();
+            $('#Email').addClass("validation")
+           //$('#Email').focus();
             evt.preventDefault();
             return false;
         }
         else {
-            $('#Email').css(successStyle);
+            $('#Email').removeClass("validation");
         }
         let Mobile = $('#Mobile').val();
         if (Mobile == null || Mobile == "") {
@@ -106,6 +106,5 @@
             </div>
         </div>
     </div>
-
 }
 
