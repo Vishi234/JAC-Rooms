@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace HotelSite.Controllers
 {
-    public class HomeController : Controller
+    public class AgentController : Controller
     {
-        // GET: Home
+        // GET: Agent
         public ActionResult Index()
         {
             return View();
