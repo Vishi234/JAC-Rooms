@@ -1,4 +1,5 @@
-﻿using HotelSite.Models.Login;
+﻿using HotelSite.Models.Common;
+using HotelSite.Models.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,15 @@ namespace HotelSite.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return View();
+            }
         }
         [ActionName("Register")]
         [HttpPost]
