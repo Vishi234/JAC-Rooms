@@ -2,9 +2,95 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>agent_layout</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/agent_style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+    <link href="~/Content/bootstrap-3.2.0.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/bootstrap-select.min.css" />
 </head>
 <body>
-    <div> 
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="top-header">
+                    <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2">
+
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-lg-8 col-md-8">
+                        <div class="seachBox">
+                            <select class="selectpicker" data-show-subtext="true" data-live-search="true">
+                                <option data-subtext="Rep California">Tom Foolery</option>
+                                <option data-subtext="Sen California">Bill Gordon</option>
+                                <option data-subtext="Sen Massacusetts">Elizabeth Warren</option>
+                                <option data-subtext="Rep Alabama">Mario Flores</option>
+                                <option data-subtext="Rep Alaska">Don Young</option>
+                                <option data-subtext="Rep California" disabled="disabled">Marvin Martinez</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2"></div>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="header-bottom">
+        <div class="container">
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Booking
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Inventory
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Property
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Offer & Secret Deal
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Reports
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Rating & Reviews
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:Void(0)">
+                            Add Ons
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+    <script src="~/scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/jquery-ui.min.js"></script>
+    <script src="~/scripts/jquery-1.11.2.min.js"></script>
+    <script src="~/scripts/bootstrap3.3.2.min.js"></script>
+    <script src="~/scripts/bootstrap-select.min.js"></script>
+
 </body>
 </html>

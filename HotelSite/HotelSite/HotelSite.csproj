@@ -151,6 +151,9 @@
     <Content Include="bin\System.Web.Webpages.Deployment.dll" />
     <Content Include="bin\System.Web.Webpages.dll" />
     <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="Content\agent_style.css" />
+    <Content Include="Content\bootstrap-3.2.0.min.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -177,8 +180,13 @@
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\bootstrap-select.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\bootstrap3.3.2.min.js" />
+    <Content Include="scripts\jquery-1.11.2.min.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
+    <Content Include="scripts\jquery-ui.min.js" />
+    <Content Include="scripts\jquery.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -214,6 +222,7 @@
     <Content Include="Views\User\_layout2.cshtml" />
     <Content Include="Views\User\Dashboard.cshtml" />
     <Content Include="Views\Agent\agent_layout.cshtml" />
+    <Content Include="Views\Agent\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
