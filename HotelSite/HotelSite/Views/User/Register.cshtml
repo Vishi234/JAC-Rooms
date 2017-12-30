@@ -14,16 +14,18 @@
             border: "none"
         };
         if (Email == null || Email == "") {
-            $('#Email').css(errorStyle)
+            $('#Email').addClass("validation")
+           //$('#Email').focus();
             evt.preventDefault();
             return false;
         }
         else {
-            $('#Email').css(successStyle);
+            $('#Email').removeClass("validation");
         }
         let Mobile = $('#Mobile').val();
         if (Mobile == null || Mobile == "") {
             $("#Mobile").css(errorStyle);
+            $("#Mobile").focus();
             evt.preventDefault();
             return false;
         }
@@ -33,6 +35,7 @@
         let Password = $('#Password').val();
         if (Password == null || Password == "") {
             $("#Password").css(errorStyle);
+            $("#Password").focus();
             evt.preventDefault();
             return false;
         }
@@ -43,6 +46,7 @@
         let FirstName = $('#FirstName').val();
         if (FirstName == null || FirstName == "") {
             $("#FirstName").css(errorStyle);
+            $("#FirstName").focus();
             evt.preventDefault();
             return false;
         }
@@ -52,6 +56,7 @@
         let LastName = $('#LastName').val();
         if (LastName == null || LastName == "") {
             $("#LastName").css(errorStyle);
+            $("#LastName").focus();
             evt.preventDefault();
             return false;
         }
@@ -91,7 +96,7 @@
                             <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Enter your Last Name">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Continue" class="btn-primary" />
+                            <input type="submit" value="Continue" class="button btn-primary" />
                         </div>
                         <div class="form-group">
                             <p>By proceeding, you agree with our <a href="javascript:void(0)">Terms of Service</a> & <a href="javascript:void(0)">Privacy Policy</a></p>
@@ -101,6 +106,5 @@
             </div>
         </div>
     </div>
-
 }
 
