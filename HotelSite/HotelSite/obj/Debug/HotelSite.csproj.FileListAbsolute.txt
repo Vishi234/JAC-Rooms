@@ -96,7 +96,6 @@ C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\Hotel
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\HotelSite.dll.config
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\HotelSite.dll
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\HotelSite.pdb
-C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\obj\Debug\HotelSite.csprojResolveAssemblyReference.cache
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\obj\Debug\HotelSite.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\obj\Debug\HotelSite.dll
@@ -167,3 +166,10 @@ C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\WebGrease.dll
 C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\Antlr3.Runtime.pdb
 C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\Newtonsoft.Json.xml
 C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\System.Web.Optimization.xml
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\Antlr3.Runtime.dll
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\Newtonsoft.Json.dll
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\System.Web.Optimization.dll
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\WebGrease.dll
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\Antlr3.Runtime.pdb
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\Newtonsoft.Json.xml
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\bin\System.Web.Optimization.xml

@@ -6,10 +6,12 @@ using System.Linq;
 using System.Web;
 using Microsoft.ApplicationBlocks.Data;
 using System.IO;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace HotelSite.Models.Common
 {
-    
+
     public class Common
     {
         public Common()
@@ -25,17 +27,21 @@ namespace HotelSite.Models.Common
     {
         public static void WriteException(Exception ex)
         {
-            string filePath = @"C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\Exception.txt";
+            string filePath = System.Configuration.ConfigurationManager.AppSettings["ErrorFile"].ToString();
             if (File.Exists(filePath))
             {
                 WriteIntoTxt(filePath, ex);
             }
             else
             {
-                File.Create(filePath);
-                //DirectoryInfo directoryInfo = Directory.CreateDirectory(filePath);
-                //directoryInfo.CreateSubdirectory("Exception.txt");
-                WriteIntoTxt(filePath, ex);
+                FileSecurity fSecurity = new FileSecurity();
+                string a = System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToString();
+                fSecurity.AddAccessRule(new FileSystemAccessRule(a, FileSystemRights.ReadData, AccessControlType.Allow));
+                using (FileStream fs = File.Create(filePath, 1024, FileOptions.WriteThrough, fSecurity))
+                {
+
+                    WriteIntoTxt(filePath, ex);
+                }
             }
         }
         public static void WriteIntoTxt(string filePath, Exception ex)
