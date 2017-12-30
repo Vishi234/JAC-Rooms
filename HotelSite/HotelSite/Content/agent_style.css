@@ -395,6 +395,8 @@ a {
     border: 1px solid #eee;
     margin-top: -4px;
     padding: 20px;
+    display: inline-block;
+    width: 100%;
 }
 
 .panelTitle {
@@ -403,14 +405,18 @@ a {
     border-bottom: 1px solid #ccc;
     padding: 10px;
 }
-.panelTitle span:nth-child(1)
-{
-    font-size: 18px;
-    font-weight: 500;
-}
-.panelTitle span:nth-child(2)
-{
-   color:red;
-   font-size:12px;
-   font-weight:500;
-}
+
+    .panelTitle span:nth-child(1) {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .panelTitle span:nth-child(2) {
+        color: red;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .tab-panel .form-group
+    {
+        display:-webkit-box;
+    }

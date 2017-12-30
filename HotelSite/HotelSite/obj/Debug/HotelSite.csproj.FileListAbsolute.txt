@@ -167,3 +167,4 @@ C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\WebGrease.dll
 C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\Antlr3.Runtime.pdb
 C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\Newtonsoft.Json.xml
 C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\System.Web.Optimization.xml
+C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
