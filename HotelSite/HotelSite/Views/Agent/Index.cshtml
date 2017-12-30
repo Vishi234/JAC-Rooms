@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Agent/agent_layout.cshtml";
+}
+
+<div class="agent_body">
+    <div class="container-fluid">
+        <div class="agent_module_base">
+            <div class="property_module">
+                <div class="top">
+                    <h2 class="pull-left">Property</h2>
+                    <div class="status pull-right">
+                        <i class="fa fa-dot-circle-o"></i> Pending
+                    </div>
+                </div>
+                <div class="top2">
+                    <h3>Hotel Hindustan</h3>
+                </div>
+                <div class="tab-header">
+                    <ul>
+                        <li><a href="javascript:void(0)" class="tab-active">Basic Info</a></li>
+                        <li><a href="javascript:void(0)">Contact</a></li>
+                        <li><a href="javascript:void(0)">Amenities</a></li>
+                        <li><a href="javascript:void(0)">Policy</a></li>
+                        <li><a href="javascript:void(0)">Bank Details</a></li>
+                        <li><a href="javascript:void(0)">Rooms</a></li>
+                        <li><a href="javascript:void(0)">Map</a></li>
+                        <li><a href="javascript:void(0)">Photos</a></li>
+                        <li><a href="javascript:void(0)">Taxes</a></li>
+                        <li><a href="javascript:void(0)">Setting</a></li>
+                        <li><a href="javascript:void(0)">Cancel Rules</a></li>
+                        <li><a href="javascript:void(0)">Channel Manager</a></li>
+                        <li><a href="javascript:void(0)">Detailed Contacts</a></li>
+                        <li><a href="javascript:void(0)">Documents</a></li>
+                        <li><a href="javascript:void(0)">GST Details</a></li>
+                        <li><a href="javascript:void(0)">GST Taxes</a></li>
+                    </ul>
+                </div>
+                <div class="tab-panel">
+                    <div class="panel-first">
+                        <div class="panelTitle">
+                            <span class="pull-left">Basic Info</span>
+                            <span class="pull-right">Mandatory field marked as (*)</span>
+                        </div>
+                        <form class="form-horizontal" action="/action_page.php">
+                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Hotel Name*</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Hotel Type*</label>
+                                    <div class="col-sm-10">
+                                        <select class="selectpicker">
+                                            <option>Resort</option>
+                                            <option>Hotel</option>
+                                            <option>Motel</option>
+                                            <option>BnB</option>
+                                            <option>Homestay</option>
+                                            <option>Tent</option>
+                                            <option>Service Appartment</option>
+                                            <option>Bungalow</option>
+                                            <option>Loadge</option>
+                                            <option>Guest House</option>
+                                            <option>Hostel</option>
+                                            <option>Cattage</option>
+                                            <option>Houseboat</option>
+                                            <option>Villa</option>
+                                            <option>Palace</option>
+                                            <option>Beach Hut</option>
+                                            <option>Luxury Yacht</option>
+                                            <option>Farm Stay</option>
+                                            <option>Herritage</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Email:</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
