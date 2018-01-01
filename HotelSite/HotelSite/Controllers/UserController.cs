@@ -46,12 +46,6 @@ namespace HotelSite.Controllers
         [HttpPost]
         public ActionResult LoggingIN(Signin signin)
         {
-            //foreach(var frm in formCollection.AllKeys)
-            //{
-
-
-            //}
-
             Register register = new Register();
             if (register.SignIn(signin))
             {

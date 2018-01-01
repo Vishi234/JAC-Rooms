@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.Web;
 using System.Linq;
+using HotelSite.Models.Common;
 
 namespace HotelSite.Models.Login
 {
@@ -47,7 +48,7 @@ namespace HotelSite.Models.Login
             }
             catch (Exception ex)
             {
-                throw;
+                ExceptionHandling.WriteException(ex);
             }
             finally
             {
@@ -65,8 +66,17 @@ namespace HotelSite.Models.Login
                 DataSet ds = SqlHelper.ExecuteDataset(sqlconn, "sp_Login", lstsqlparam.ToArray());
                 if (ds.Tables.Count > 0)
                 {
-                    HttpContext.Current.Session["UserID"] = ds.Tables[0].Columns["UserID"];
-                    return true;
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        HttpContext.Current.Session["UserID"] = ds.Tables[0].Rows[0]["UserID"].ToString();  
+                        HttpContext.Current.Session["Name"] = ds.Tables[0].Rows[0]["FirstName"].ToString() + ds.Tables[0].Rows[0]["LastName"].ToString();
+                        HttpContext.Current.Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
+                        HttpContext.Current.Session["Mobile"] = ds.Tables[0].Rows[0]["Mobile"].ToString();
+
+                        return true;
+                    }
+                    return false;
+
                 }
                 else
                 {
@@ -75,7 +85,8 @@ namespace HotelSite.Models.Login
             }
             catch (Exception ex)
             {
-                throw;
+                ExceptionHandling.WriteException(ex);
+                return false;
             }
         }
     }

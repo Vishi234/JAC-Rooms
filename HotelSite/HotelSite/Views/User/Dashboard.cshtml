@@ -61,11 +61,11 @@
                     <div class="logingImg">
                         <img src="~/Content/images/user.png" />
                     </div>
-                    <h3>@Session["UserID"]</h3>
+                    <h3>@Session["Name"].ToString()</h3>
                     <hr />
                     <ul>
-                        <li>vishalsingh9407@gmail.com</li>
-                        <li>+91 9650402952</li>
+                        <li>@Session["Email"].ToString()</li>
+                        <li>@Session["Mobile"].ToString()</li>
                     </ul>
                 </div>
             </div>
