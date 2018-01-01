@@ -92,5 +92,17 @@
     <script src="~/scripts/bootstrap3.3.2.min.js"></script>
     <script src="~/scripts/bootstrap-select.min.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function toggleIcon(e) {
+                $(e.target)
+                    .prev('.panel-heading')
+                    .find(".more-less")
+                    .toggleClass('glyphicon-plus glyphicon-minus');
+            }
+            $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+            $('.panel-group').on('shown.bs.collapse', toggleIcon);
+        })
+    </script>
 </body>
 </html>
