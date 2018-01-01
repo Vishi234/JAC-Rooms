@@ -404,6 +404,7 @@ a {
     width: 100%;
     border-bottom: 1px solid #ccc;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
     .panelTitle span:nth-child(1) {
@@ -416,7 +417,70 @@ a {
         font-size: 12px;
         font-weight: 500;
     }
-    .tab-panel .form-group
-    {
-        display:-webkit-box;
+
+.tab-panel .form-group {
+    display: -webkit-box;
+}
+
+.nav > li > a {
+    padding:7px!important;
+}
+
+    .nav > li > a:hover {
+        background: #f8f8f8 !important;
+        color: #808080 !important;
+    }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background: #f8f8f8 !important;
+    color: #808080 !important;
+    font-weight: 500 !important;
+}
+
+.panel-first {
+    display: inline-block;
+    width: 100%;
+}
+
+.tab-content {
+    padding-top: 20px;
+    background: #F8F8F8;
+    border: 1px solid #ddd;
+    margin-top: -1px;
+}
+
+.panelBody {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+}
+
+    .panelBody .bootstrap-select {
+        width: 100% !important;
+        min-width: 407px !important;
+    }
+
+    .panelBody .control-label {
+        text-align: left;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    .panelBody .form-control {
+        height: 38px;
+        font-size: 12px;
+        max-width: 407px;
+    }
+
+    .panelBody .bootstrap-select .btn-default {
+        font-size: 12px;
+    }
+
+    .panelBody textarea {
+        height: auto !important;
+    }
+
+    .panelBody .btn-primary {
+        margin: 0 auto;
+        display: block;
     }
