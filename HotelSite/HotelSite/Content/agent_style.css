@@ -489,6 +489,25 @@ a {
 * Does not work properly if "in" is added after "collapse".
 * Get free snippets on bootpen.com
 *******************************/
+        .dual-list .list-group {
+            margin-top: 8px;
+        }
+
+        .list-left li, .list-right li {
+            cursor: pointer;
+        }
+
+        .list-arrows {
+            padding-top: 100px;
+        }
+
+            .list-arrows button {
+                margin-bottom: 20px;
+            }
+.panel-body
+{
+    width:100%!important;
+}
 .panel-group {
     width: 90%;
     margin: 15px auto;
@@ -524,5 +543,5 @@ a {
 }
 
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-    border-top-color: #EEEEEE;
+    border-top-color: #fff!important;
 }

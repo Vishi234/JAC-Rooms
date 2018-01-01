@@ -19,20 +19,10 @@
                 <ul class="tab-header nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#basicInfo">Basic Info*</a></li>
                     <li><a data-toggle="tab" href="#contact">Contact*</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Amenities</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Policy</a></li>
-                    <li><a href="javascript:void(0)">Bank Details</a></li>
                     <li><a data-toggle="tab" href="#rooms">Rooms*</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Map*</a></li>
                     <li><a data-toggle="tab" href="#menu3">Photos*</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Taxes</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Setting</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Cancel Rules</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Channel Manager</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Detailed Contacts</a></li>
                     <li><a data-toggle="tab" href="#menu3">Documents</a></li>
-                    <li><a data-toggle="tab" href="#menu3">GST Details</a></li>
-                    <li><a data-toggle="tab" href="#menu3">GST Taxes</a></li>
+                   
                 </ul>
 
                 <div class="tab-content">
@@ -1296,8 +1286,211 @@
                                     </h4>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    <div class="panel-body panelBody">
+                                        <form class="form-horizontal" action="/action_page.php">
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Room Info</span>
+                                                <span class="pull-right">Mandatory field marked as (*)</span>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Description*</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea cols="5" rows="4" class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Total Rooms*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room View</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="">select room</option>
+                                                            <option value="">None</option>
+                                                            <option value="sv">Sea View</option>
+                                                            <option value="vv">Valley View</option>
+                                                            <option value="hv">Hill View</option>
+                                                            <option value="pv">Pool View</option>
+                                                            <option value="gv">Garden View</option>
+                                                            <option value="rv">River View</option>
+                                                            <option value="lv">Lake View</option>
+                                                            <option value="plcv">Palace View</option>
+                                                            <option value="bv">Bay View</option>
+                                                            <option value="jv">Jungle View</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room Type</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="">Select Room Type</option>
+                                                            <option value="deluxe">Deluxe</option>
+                                                            <option value="standard">Standard</option>
+                                                            <option value="luxury">Luxury</option>
+                                                            <option value="master">Master</option>
+                                                            <option value="common">Common</option>
+                                                            <option value="tent">Tent</option>
+                                                            <option value="other">other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Display Name*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Bed Type</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="" selected="selected">Select Bed Type</option>
+                                                            <option value="twin">Twin</option>
+                                                            <option value="king">King</option>
+                                                            <option value="queen">Queen</option>
+                                                            <option value="double">Double</option>
+                                                            <option value="single">Single</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Extra Bed Type</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="0">No Extra Bed</option>
+                                                            <option value="1">Matress</option>
+                                                            <option value="2">Cot</option>
+                                                            <option value="3">Sofa cum bed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Room Occupancy</span>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Adult(Base)*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Adult(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Infant(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Child(Base)*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Child(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Guest(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Amenities</span>
+                                            </div>
+                                            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room Amenities*</label>
+                                                    <div class="col-sm-9">
+                                                        <div class="dual-list list-left col-md-5">
+                                                            <div class="well text-right">
+                                                                <div class="row">
+                                                                    <div class="col-md-10">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon glyphicon glyphicon-search"></span>
+                                                                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="btn-group">
+                                                                            <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">bootstrap-duallist <a href="https://github.com/bbilginn/bootstrap-duallist" target="_blank">github</a></li>
+                                                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                                                    <li class="list-group-item">Morbi leo risus</li>
+                                                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                                                    <li class="list-group-item">Vestibulum at eros</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-arrows col-md-1 text-center">
+                                                            <button class="btn btn-default btn-sm move-left">
+                                                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                                            </button>
+                                                            <button class="btn btn-default btn-sm move-right">
+                                                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="dual-list list-right col-md-5">
+                                                            <div class="well">
+                                                                <div class="row">
+                                                                    <div class="col-md-2">
+                                                                        <div class="btn-group">
+                                                                            <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10">
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                                                            <span class="input-group-addon glyphicon glyphicon-search"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">Cras justo odio</li>
+                                                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                                                    <li class="list-group-item">Morbi leo risus</li>
+                                                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                                                    <li class="list-group-item">Vestibulum at eros</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                            <button id="saveContact" class="btn btn-primary">Save & Continue</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
