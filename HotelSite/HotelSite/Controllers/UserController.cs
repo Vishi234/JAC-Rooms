@@ -53,7 +53,7 @@ namespace HotelSite.Controllers
             //}
 
             Register register = new Register();
-            if(register.SignIn(signin))
+            if (register.SignIn(signin))
             {
                 return View("Dashboard");
             }

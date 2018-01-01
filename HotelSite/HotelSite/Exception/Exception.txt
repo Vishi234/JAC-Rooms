@@ -1,0 +1,8 @@
+===============================start==============================================
+Inner Exception's
+MessageException of type 'System.Exception' was thrown.
+StackTrace   at HotelSite.Controllers.UserController.Register() in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\Controllers\UserController.cs:line 20
+TargetSiteSystem.Web.Mvc.ActionResult Register()
+DateTime : 	01-01-18 12:47:06
+================================end============================================= 
+

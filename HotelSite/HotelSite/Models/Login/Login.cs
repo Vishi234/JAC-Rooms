@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Web;
+using System.Linq;
 
 namespace HotelSite.Models.Login
 {
@@ -62,7 +63,7 @@ namespace HotelSite.Models.Login
                 lstsqlparam.Add(new SqlParameter("@EmailID", signin.EmailID));
                 lstsqlparam.Add(new SqlParameter("@Password", signin.Password));
                 DataSet ds = SqlHelper.ExecuteDataset(sqlconn, "sp_Login", lstsqlparam.ToArray());
-                if (ds.Tables[0].Rows.Count > 0)
+                if (ds.Tables.Count > 0)
                 {
                     HttpContext.Current.Session["UserID"] = ds.Tables[0].Columns["UserID"];
                     return true;

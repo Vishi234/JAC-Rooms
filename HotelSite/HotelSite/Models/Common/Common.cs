@@ -8,6 +8,8 @@ using Microsoft.ApplicationBlocks.Data;
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Net.Mail;
+using System.Net;
 
 namespace HotelSite.Models.Common
 {
@@ -18,6 +20,24 @@ namespace HotelSite.Models.Common
         {
 
         }
+
+        #region Sendmail
+        public static void SendEmail(string mailBodyHtml, string mailSubject)
+        {
+            string mailBodyhtml =
+                "<p>some text here</p>";
+            var msg = new MailMessage("from@gmail.com", "to1@gmail.com", mailSubject, mailBodyhtml);
+            msg.To.Add("to2@gmail.com");
+            msg.IsBodyHtml = true;
+            var smtpClient = new SmtpClient("smtp.gmail.com", 587); //if your from email address is "from@hotmail.com" then host should be "smtp.hotmail.com"**
+            smtpClient.UseDefaultCredentials = true;
+            smtpClient.Credentials = new NetworkCredential("from@gmail.com", "password");
+            smtpClient.EnableSsl = false;
+            smtpClient.Send(msg);
+            Console.WriteLine("Email Sended Successfully");
+        }
+        #endregion
+
     }
     #region Exception Handling
     /// <summary>
@@ -34,17 +54,11 @@ namespace HotelSite.Models.Common
             }
             else
             {
-                FileSecurity fSecurity = new FileSecurity();
-                string a = System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToString();
-                fSecurity.AddAccessRule(new FileSystemAccessRule(a, FileSystemRights.ReadData, AccessControlType.Allow));
-                using (FileStream fs = File.Create(filePath, 1024, FileOptions.WriteThrough, fSecurity))
-                {
-
-                    WriteIntoTxt(filePath, ex);
-                }
+                FileStream fs = File.Create(filePath);
+                WriteIntoTxt(filePath, ex);
             }
         }
-        public static void WriteIntoTxt(string filePath, Exception ex)
+        private static void WriteIntoTxt(string filePath, Exception ex)
         {
             using (StreamWriter sw = new StreamWriter(filePath, true))
             {
@@ -54,7 +68,7 @@ namespace HotelSite.Models.Common
                 sw.WriteLine("StackTrace" + ex.StackTrace);
                 sw.WriteLine("TargetSite" + ex.TargetSite);
                 sw.WriteLine("DateTime : \t" + DateTime.Now);
-                sw.WriteLine("================================end=============================================");
+                sw.WriteLine("================================end============================================= \n");
             }
         }
     }
