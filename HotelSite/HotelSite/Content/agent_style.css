@@ -457,7 +457,7 @@ a {
     }
 
     .panelBody .control-label {
-        text-align: left!important;
+        text-align: left !important;
         font-size: 12px;
         font-weight: 400;
         color: #000;
@@ -517,11 +517,20 @@ a {
     margin: 15px auto;
 }
 
-    .panel-group .panel {
-        border-radius: 0;
-        box-shadow: none;
-        border-color: #EEEEEE;
-    }
+
+.photo_sec .panel-default>.panel-heading
+{
+    color: #333;
+    background-color: #fff;
+    border-color: #fff;
+    border: none;
+    border-bottom: 1px solid;
+}
+.panel-group .panel {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #EEEEEE;
+}
 
 .panel-default > .panel-heading {
     padding: 0;
