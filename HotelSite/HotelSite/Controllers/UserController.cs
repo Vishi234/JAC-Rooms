@@ -61,5 +61,11 @@ namespace HotelSite.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public JsonResult ForgotPassword()
+        {
+            return Json("asd", JsonRequestBehavior.AllowGet);
+        }
     }
 }

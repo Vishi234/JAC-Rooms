@@ -24,17 +24,14 @@ namespace HotelSite.Models.Common
         #region Sendmail
         public static void SendEmail(string mailBodyHtml, string mailSubject)
         {
-            string mailBodyhtml =
-                "<p>some text here</p>";
-            var msg = new MailMessage("from@gmail.com", "to1@gmail.com", mailSubject, mailBodyhtml);
-            msg.To.Add("to2@gmail.com");
+            var msg = new MailMessage(ConfigurationManager.AppSettings["FromMail"], ConfigurationManager.AppSettings["ToMail"], mailSubject, mailBodyHtml);
+            msg.To.Add("vishalsingh9407@gmail.com");
             msg.IsBodyHtml = true;
             var smtpClient = new SmtpClient("smtp.gmail.com", 587); //if your from email address is "from@hotmail.com" then host should be "smtp.hotmail.com"**
             smtpClient.UseDefaultCredentials = true;
-            smtpClient.Credentials = new NetworkCredential("from@gmail.com", "password");
+            smtpClient.Credentials = new NetworkCredential("", "");
             smtpClient.EnableSsl = false;
             smtpClient.Send(msg);
-            Console.WriteLine("Email Sended Successfully");
         }
         #endregion
 
