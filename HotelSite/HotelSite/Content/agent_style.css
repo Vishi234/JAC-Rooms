@@ -21,6 +21,7 @@ body {
     overflow: auto;
     overflow-x: hidden;
     background: #F0F3F4 !important;
+    font-size: 75%;
 }
 
 ol, ul {
@@ -159,12 +160,12 @@ a {
     }
 
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-    min-width: 420px;
-    width: auto !important;
+    min-width: 0px;
+    width: 100%;
     border: 1px solid #ccc;
     padding: 8px;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 0px;
+    font-size: 10px;
     background: #fff;
 }
 
@@ -266,10 +267,10 @@ a {
 
 .dropdown-menu > li > a {
     padding: 2px 20px;
+    font-size: 12px !important;
 }
 
 .dropdown-menu {
-    max-height: 200px !important;
     overflow: auto !important;
 }
 
@@ -302,12 +303,11 @@ a {
         .navigation li a {
             color: #fff;
             display: inline-block;
-            padding: 10px;
-            font-size: 14px;
+            padding: 11px;
+            font-size: 12px;
             text-align: center;
             transition: all 0.4s ease-in-out;
             border-bottom: 2px solid #3A3F51;
-            font-weight: 500;
         }
 
             .navigation li a i {
@@ -326,18 +326,13 @@ a {
                 transition: all 0.4s ease-in-out;
             }
 
-.agent_module_base {
-    background: #fff;
-    margin-top: 20px;
-    height: auto;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    padding: 10px 20px;
-}
+
 
 .top {
     display: inline-block;
     width: 100%;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 
 .status {
@@ -348,7 +343,8 @@ a {
 }
 
 .top h2 {
-    font-size: 24px;
+    font-size: 16px;
+    color: #EA2330;
 }
 
 .top2 {
@@ -408,7 +404,7 @@ a {
 }
 
     .panelTitle span:nth-child(1) {
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 500;
     }
 
@@ -424,6 +420,7 @@ a {
 
 .nav > li > a {
     padding: 7px !important;
+    font-size: 12px;
 }
 
     .nav > li > a:hover {
@@ -432,9 +429,10 @@ a {
     }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    background: #f8f8f8 !important;
-    color: #808080 !important;
+    background: #fff !important;
+    color: #000 !important;
     font-weight: 500 !important;
+    font-size: 12px;
 }
 
 .panel-first {
@@ -444,61 +442,95 @@ a {
 
 .tab-content {
     padding-top: 20px;
-    background: #F8F8F8;
+    background: #fff;
     border: 1px solid #ddd;
     margin-top: -1px;
 }
 
 .panelBody {
     display: block;
-    width: 90%;
-    margin: 10px auto;
 }
 
     .panelBody .bootstrap-select {
         width: 100% !important;
-        min-width: 407px !important;
+        min-width: 0px !important;
     }
 
     .panelBody .control-label {
-        text-align: left;
+        text-align: left !important;
+        font-size: 12px;
         font-weight: 400;
-        font-size: 14px;
+        color: #000;
     }
 
     .panelBody .form-control {
-        height: 38px;
-        font-size: 12px;
-        max-width: 407px;
+        border-radius: 0px;
+        font-size: 10px;
     }
 
     .panelBody .bootstrap-select .btn-default {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .panelBody textarea {
         height: auto !important;
+        overflow-x: hidden;
     }
 
     .panelBody .btn-primary {
-        margin: 0 auto;
+        margin: 10px auto;
         display: block;
+        border-radius: 0px;
+        font-size: 12px;
     }
+
+.agent_module_base {
+    margin-bottom: 20px;
+}
 
 /*******************************
 * Does not work properly if "in" is added after "collapse".
 * Get free snippets on bootpen.com
 *******************************/
+.dual-list .list-group {
+    margin-top: 8px;
+}
+
+.list-left li, .list-right li {
+    cursor: pointer;
+}
+
+.list-arrows {
+    padding-top: 100px;
+}
+
+    .list-arrows button {
+        margin-bottom: 20px;
+    }
+
+.panel-body {
+    width: 100% !important;
+}
+
 .panel-group {
     width: 90%;
     margin: 15px auto;
 }
 
-    .panel-group .panel {
-        border-radius: 0;
-        box-shadow: none;
-        border-color: #EEEEEE;
-    }
+
+.photo_sec .panel-default>.panel-heading
+{
+    color: #333;
+    background-color: #fff;
+    border-color: #fff;
+    border: none;
+    border-bottom: 1px solid;
+}
+.panel-group .panel {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #EEEEEE;
+}
 
 .panel-default > .panel-heading {
     padding: 0;
@@ -524,5 +556,5 @@ a {
 }
 
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-    border-top-color: #EEEEEE;
+    border-top-color: #fff !important;
 }

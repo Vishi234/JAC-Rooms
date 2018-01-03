@@ -9,30 +9,14 @@
             <div class="property_module">
                 <div class="top">
                     <h2 class="pull-left">Property</h2>
-                    <div class="status pull-right">
-                        <i class="fa fa-dot-circle-o"></i> Pending
-                    </div>
-                </div>
-                <div class="top2">
-                    <h3>Hotel Hindustan</h3>
                 </div>
                 <ul class="tab-header nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#basicInfo">Basic Info*</a></li>
                     <li><a data-toggle="tab" href="#contact">Contact*</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Amenities</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Policy</a></li>
-                    <li><a href="javascript:void(0)">Bank Details</a></li>
                     <li><a data-toggle="tab" href="#rooms">Rooms*</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Map*</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Photos*</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Taxes</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Setting</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Cancel Rules</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Channel Manager</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Detailed Contacts</a></li>
-                    <li><a data-toggle="tab" href="#menu3">Documents</a></li>
-                    <li><a data-toggle="tab" href="#menu3">GST Details</a></li>
-                    <li><a data-toggle="tab" href="#menu3">GST Taxes</a></li>
+                    <li><a data-toggle="tab" href="#photos">Photos*</a></li>
+                    <li><a data-toggle="tab" href="#documents">Documents</a></li>
+                   
                 </ul>
 
                 <div class="tab-content">
@@ -41,21 +25,97 @@
                             <div class="panelBody">
 
                                 <form class="form-horizontal" action="/action_page.php">
-                                    <div class="panelTitle">
+                                    @*<div class="panelTitle">
                                         <span class="pull-left">Basic Info</span>
                                         <span class="pull-right">Mandatory field marked as (*)</span>
-                                    </div>
-                                    <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                    </div>*@
+                                    <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Name*</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
                                             </div>
                                         </div>
+                                        
+
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Hotel Type*</label>
+                                            <label class="control-label col-sm-3" for="email">Chain Name</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker">
+                                                    <option selected="selected">Select chain name</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">No. of Floors</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter no of floors">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">CheckoutTime*</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter checkout time">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Currency</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker">
+                                                    <option value="INR" selected="selected">Indian rupee</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Display Name*</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="email" placeholder="Enter display name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Star Rating*</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker">
+                                                    <option value="1" selected="selected">*</option>
+                                                    <option value="2">* *</option>
+                                                    <option value="3">* * *</option>
+                                                    <option value="4">* * * *</option>
+                                                    <option value="5">* * * * *</option>
+                                                    <option value="0">No star</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Built Year</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="email" placeholder="Enter year">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">No. of Rooms*</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="email" placeholder="Enter no. of rooms">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Checkin Time*</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="email" placeholder="Enter checkin time">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Hotel Type</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker">
+                                                    <option selected="selected">Select hotel type</option>
                                                     <option>Resort</option>
                                                     <option>Hotel</option>
                                                     <option>Motel</option>
@@ -79,402 +139,20 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Chain Name*</label>
+                                            <label class="control-label col-sm-3" for="email">No. of Restaurant</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker"></select>
+                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter no. of restaurants">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">No. of Restaurant*</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">No. of Floors*</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">VCC Currency*</label>
+                                            <label class="control-label col-sm-3" for="email">VCC Currency</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker">
-                                                    <option value="" selected="selected"></option>
-                                                    <option value="AFN">Afghan afghani</option>
-                                                    <option value="ALL">Albanian lek</option>
-                                                    <option value="DZD">Algerian dinar</option>
-                                                    <option value="AOA">Angolan kwanza</option>
-                                                    <option value="ARS">Argentine peso</option>
-                                                    <option value="AMD">Armenian dram</option>
-                                                    <option value="AWG">Aruban florin</option>
-                                                    <option value="AUD">Australian dollar</option>
-                                                    <option value="AZN">Azerbaijani manat</option>
-                                                    <option value="BSD">Bahamian dollar</option>
-                                                    <option value="BHD">Bahraini dinar</option>
-                                                    <option value="BDT">Bangladeshi taka</option>
-                                                    <option value="BBD">Barbadian dollar</option>
-                                                    <option value="BYR">Belarusian ruble</option>
-                                                    <option value="BZD">Belize dollar</option>
-                                                    <option value="BMD">Bermudian dollar</option>
-                                                    <option value="BTN">Bhutanese ngultrum</option>
-                                                    <option value="BOB">Bolivian boliviano</option>
-                                                    <option value="BAM">Bosnia and Herzegovina convertible mark</option>
-                                                    <option value="BWP">Botswana pula</option>
-                                                    <option value="BRL">Brazilian real</option>
-                                                    <option value="BND">Brunei dollar</option>
-                                                    <option value="BGN">Bulgarian lev</option>
-                                                    <option value="BIF">Burundi franc</option>
-                                                    <option value="XPF">CFP franc</option>
-                                                    <option value="KHR">Cambodian riel</option>
-                                                    <option value="CAD">Canadian dollar</option>
-                                                    <option value="CVE">Cape Verdean escudo</option>
-                                                    <option value="KYD">Cayman Islands dollar</option>
-                                                    <option value="XAF">Central African CFA franc</option>
-                                                    <option value="CLP">Chilean peso</option>
-                                                    <option value="CNY">Chinese Yuan Renminbi</option>
-                                                    <option value="COP">Colombian peso</option>
-                                                    <option value="KMF">Comorian franc</option>
-                                                    <option value="CDF">Congolese franc</option>
-                                                    <option value="none">Cook Islands dollar</option>
-                                                    <option value="CRC">Costa Rican colon</option>
-                                                    <option value="HRK">Croatian kuna</option>
-                                                    <option value="CUP">Cuban peso</option>
-                                                    <option value="CZK">Czech koruna</option>
-                                                    <option value="DKK">Danish krone</option>
-                                                    <option value="DJF">Djiboutian franc</option>
-                                                    <option value="DOP">Dominican peso</option>
-                                                    <option value="XCD">East Caribbean dollar</option>
-                                                    <option value="EGP">Egyptian pound</option>
-                                                    <option value="ERN">Eritrean nakfa</option>
-                                                    <option value="ETB">Ethiopian birr</option>
-                                                    <option value="EUR">European euro</option>
-                                                    <option value="FKP">Falkland Islands pound</option>
-                                                    <option value="none">Faroese krona</option>
-                                                    <option value="FJD">Fijian dollar</option>
-                                                    <option value="GMD">Gambian dalasi</option>
-                                                    <option value="GEL">Georgian lari</option>
-                                                    <option value="GHS">Ghanaian cedi</option>
-                                                    <option value="GIP">Gibraltar pound</option>
-                                                    <option value="GTQ">Guatemalan quetzal</option>
-                                                    <option value="GGP">Guernsey Pound</option>
-                                                    <option value="GNF">Guinean franc</option>
-                                                    <option value="GYD">Guyanese dollar</option>
-                                                    <option value="HTG">Haitian gourde</option>
-                                                    <option value="HNL">Honduran lempira</option>
-                                                    <option value="HKD">Hong Kong dollar</option>
-                                                    <option value="HUF">Hungarian forint</option>
-                                                    <option value="ISK">Icelandic krona</option>
-                                                    <option value="INR">Indian rupee</option>
-                                                    <option value="IDR">Indonesian rupiah</option>
-                                                    <option value="IRR">Iranian rial</option>
-                                                    <option value="IQD">Iraqi dinar</option>
-                                                    <option value="ILS">Israeli new sheqel</option>
-                                                    <option value="JMD">Jamaican dollar</option>
-                                                    <option value="JPY">Japanese yen</option>
-                                                    <option value="JEP">Jersey pound</option>
-                                                    <option value="JOD">Jordanian dinar</option>
-                                                    <option value="KZT">Kazakhstani tenge</option>
-                                                    <option value="KES">Kenyan shilling</option>
-                                                    <option value="KWD">Kuwaiti dinar</option>
-                                                    <option value="KGS">Kyrgyzstani som</option>
-                                                    <option value="LAK">Lao kip</option>
-                                                    <option value="LBP">Lebanese pound</option>
-                                                    <option value="LSL">Lesotho loti</option>
-                                                    <option value="LRD">Liberian dollar</option>
-                                                    <option value="LYD">Libyan dinar</option>
-                                                    <option value="MOP">Macanese pataca</option>
-                                                    <option value="MKD">Macedonian denar</option>
-                                                    <option value="MGA">Malagasy ariary</option>
-                                                    <option value="MWK">Malawian kwacha</option>
-                                                    <option value="MYR">Malaysian ringgit</option>
-                                                    <option value="MVR">Maldivian rufiyaa</option>
-                                                    <option value="IMP">Manx pound</option>
-                                                    <option value="MRO">Mauritanian ouguiya</option>
-                                                    <option value="MUR">Mauritian rupee</option>
-                                                    <option value="MXN">Mexican peso</option>
-                                                    <option value="MDL">Moldovan leu</option>
-                                                    <option value="MNT">Mongolian tugrik</option>
-                                                    <option value="MAD">Moroccan dirham</option>
-                                                    <option value="MZN">Mozambican metical</option>
-                                                    <option value="MMK">Myanmar kyat</option>
-                                                    <option value="NAD">Namibian dollar</option>
-                                                    <option value="NPR">Nepalese rupee</option>
-                                                    <option value="ANG">Netherlands Antillean guilder</option>
-                                                    <option value="TWD">New Taiwan dollar</option>
-                                                    <option value="NZD">New Zealand dollar</option>
-                                                    <option value="NIO">Nicaraguan cordoba</option>
-                                                    <option value="NGN">Nigerian naira</option>
-                                                    <option value="KPW">North Korean won</option>
-                                                    <option value="NOK">Norwegian krone</option>
-                                                    <option value="OMR">Omani rial</option>
-                                                    <option value="PKR">Pakistani rupee</option>
-                                                    <option value="PGK">Papua New Guinean kina</option>
-                                                    <option value="PYG">Paraguayan guarani</option>
-                                                    <option value="PEN">Peruvian nuevo sol</option>
-                                                    <option value="PHP">Philippine peso</option>
-                                                    <option value="PLN">Polish zloty</option>
-                                                    <option value="GBP">Pound sterling</option>
-                                                    <option value="QAR">Qatari riyal</option>
-                                                    <option value="RON">Romanian leu</option>
-                                                    <option value="RUB">Russian ruble</option>
-                                                    <option value="RWF">Rwandan franc</option>
-                                                    <option value="XDR">SDR (Special Drawing Right)</option>
-                                                    <option value="SHP">Saint Helena pound</option>
-                                                    <option value="WST">Samoan tala</option>
-                                                    <option value="STD">Sao Tome and Principe dobra</option>
-                                                    <option value="SAR">Saudi riyal</option>
-                                                    <option value="RSD">Serbian dinar</option>
-                                                    <option value="SCR">Seychellois rupee</option>
-                                                    <option value="SLL">Sierra Leonean leone</option>
-                                                    <option value="SGD">Singapore dollar</option>
-                                                    <option value="SBD">Solomon Islands dollar</option>
-                                                    <option value="SOS">Somali shilling</option>
-                                                    <option value="ZAR">South African rand</option>
-                                                    <option value="KRW">South Korean won</option>
-                                                    <option value="SSP">South Sudanese pound</option>
-                                                    <option value="LKR">Sri Lankan rupee</option>
-                                                    <option value="SDG">Sudanese pound</option>
-                                                    <option value="SRD">Surinamese dollar</option>
-                                                    <option value="SZL">Swazi lilangeni</option>
-                                                    <option value="SEK">Swedish krona</option>
-                                                    <option value="CHF">Swiss franc</option>
-                                                    <option value="SYP">Syrian pound</option>
-                                                    <option value="TJS">Tajikistani somoni</option>
-                                                    <option value="TZS">Tanzanian shilling</option>
-                                                    <option value="THB">Thai baht</option>
-                                                    <option value="TOP">Tongan paanga</option>
-                                                    <option value="TTD">Trinidad and Tobago dollar</option>
-                                                    <option value="TND">Tunisian dinar</option>
-                                                    <option value="TRY">Turkish lira</option>
-                                                    <option value="TMT">Turkmenistani manat</option>
-                                                    <option value="AED">UAE dirham</option>
-                                                    <option value="UGX">Ugandan shilling</option>
-                                                    <option value="UAH">Ukrainian hryvnia</option>
-                                                    <option value="USD">United States dollar</option>
-                                                    <option value="UYU">Uruguayan peso</option>
-                                                    <option value="UZS">Uzbekistani som</option>
-                                                    <option value="VUV">Vanuatu vatu</option>
-                                                    <option value="VEF">Venezuelan bolivar</option>
-                                                    <option value="VND">Vietnamese dong</option>
-                                                    <option value="XOF">West African CFA franc</option>
-                                                    <option value="YER">Yemeni rial</option>
-                                                    <option value="ZMW">Zambian kwacha</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">CheckoutTime*</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Display Name*</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter email">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Star Rating*</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker">
-                                                    <option value="1" selected="selected">*</option>
-                                                    <option value="2">* *</option>
-                                                    <option value="3">* * *</option>
-                                                    <option value="4">* * * *</option>
-                                                    <option value="5">* * * * *</option>
-                                                    <option value="0">No star</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Built Year</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter email">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">No. of Rooms*</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter email">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Currency</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker">
-                                                    <option value=""></option>
-                                                    <option value="AFN">Afghan afghani</option>
-                                                    <option value="ALL">Albanian lek</option>
-                                                    <option value="DZD">Algerian dinar</option>
-                                                    <option value="AOA">Angolan kwanza</option>
-                                                    <option value="ARS">Argentine peso</option>
-                                                    <option value="AMD">Armenian dram</option>
-                                                    <option value="AWG">Aruban florin</option>
-                                                    <option value="AUD">Australian dollar</option>
-                                                    <option value="AZN">Azerbaijani manat</option>
-                                                    <option value="BSD">Bahamian dollar</option>
-                                                    <option value="BHD">Bahraini dinar</option>
-                                                    <option value="BDT">Bangladeshi taka</option>
-                                                    <option value="BBD">Barbadian dollar</option>
-                                                    <option value="BYR">Belarusian ruble</option>
-                                                    <option value="BZD">Belize dollar</option>
-                                                    <option value="BMD">Bermudian dollar</option>
-                                                    <option value="BTN">Bhutanese ngultrum</option>
-                                                    <option value="BOB">Bolivian boliviano</option>
-                                                    <option value="BAM">Bosnia and Herzegovina convertible mark</option>
-                                                    <option value="BWP">Botswana pula</option>
-                                                    <option value="BRL">Brazilian real</option>
-                                                    <option value="BND">Brunei dollar</option>
-                                                    <option value="BGN">Bulgarian lev</option>
-                                                    <option value="BIF">Burundi franc</option>
-                                                    <option value="XPF">CFP franc</option>
-                                                    <option value="KHR">Cambodian riel</option>
-                                                    <option value="CAD">Canadian dollar</option>
-                                                    <option value="CVE">Cape Verdean escudo</option>
-                                                    <option value="KYD">Cayman Islands dollar</option>
-                                                    <option value="XAF">Central African CFA franc</option>
-                                                    <option value="CLP">Chilean peso</option>
-                                                    <option value="CNY">Chinese Yuan Renminbi</option>
-                                                    <option value="COP">Colombian peso</option>
-                                                    <option value="KMF">Comorian franc</option>
-                                                    <option value="CDF">Congolese franc</option>
-                                                    <option value="none">Cook Islands dollar</option>
-                                                    <option value="CRC">Costa Rican colon</option>
-                                                    <option value="HRK">Croatian kuna</option>
-                                                    <option value="CUP">Cuban peso</option>
-                                                    <option value="CZK">Czech koruna</option>
-                                                    <option value="DKK">Danish krone</option>
-                                                    <option value="DJF">Djiboutian franc</option>
-                                                    <option value="DOP">Dominican peso</option>
-                                                    <option value="XCD">East Caribbean dollar</option>
-                                                    <option value="EGP">Egyptian pound</option>
-                                                    <option value="ERN">Eritrean nakfa</option>
-                                                    <option value="ETB">Ethiopian birr</option>
-                                                    <option value="EUR">European euro</option>
-                                                    <option value="FKP">Falkland Islands pound</option>
-                                                    <option value="none">Faroese krona</option>
-                                                    <option value="FJD">Fijian dollar</option>
-                                                    <option value="GMD">Gambian dalasi</option>
-                                                    <option value="GEL">Georgian lari</option>
-                                                    <option value="GHS">Ghanaian cedi</option>
-                                                    <option value="GIP">Gibraltar pound</option>
-                                                    <option value="GTQ">Guatemalan quetzal</option>
-                                                    <option value="GGP">Guernsey Pound</option>
-                                                    <option value="GNF">Guinean franc</option>
-                                                    <option value="GYD">Guyanese dollar</option>
-                                                    <option value="HTG">Haitian gourde</option>
-                                                    <option value="HNL">Honduran lempira</option>
-                                                    <option value="HKD">Hong Kong dollar</option>
-                                                    <option value="HUF">Hungarian forint</option>
-                                                    <option value="ISK">Icelandic krona</option>
+                                                    
                                                     <option value="INR" selected="selected">Indian rupee</option>
-                                                    <option value="IDR">Indonesian rupiah</option>
-                                                    <option value="IRR">Iranian rial</option>
-                                                    <option value="IQD">Iraqi dinar</option>
-                                                    <option value="ILS">Israeli new sheqel</option>
-                                                    <option value="JMD">Jamaican dollar</option>
-                                                    <option value="JPY">Japanese yen</option>
-                                                    <option value="JEP">Jersey pound</option>
-                                                    <option value="JOD">Jordanian dinar</option>
-                                                    <option value="KZT">Kazakhstani tenge</option>
-                                                    <option value="KES">Kenyan shilling</option>
-                                                    <option value="KWD">Kuwaiti dinar</option>
-                                                    <option value="KGS">Kyrgyzstani som</option>
-                                                    <option value="LAK">Lao kip</option>
-                                                    <option value="LBP">Lebanese pound</option>
-                                                    <option value="LSL">Lesotho loti</option>
-                                                    <option value="LRD">Liberian dollar</option>
-                                                    <option value="LYD">Libyan dinar</option>
-                                                    <option value="MOP">Macanese pataca</option>
-                                                    <option value="MKD">Macedonian denar</option>
-                                                    <option value="MGA">Malagasy ariary</option>
-                                                    <option value="MWK">Malawian kwacha</option>
-                                                    <option value="MYR">Malaysian ringgit</option>
-                                                    <option value="MVR">Maldivian rufiyaa</option>
-                                                    <option value="IMP">Manx pound</option>
-                                                    <option value="MRO">Mauritanian ouguiya</option>
-                                                    <option value="MUR">Mauritian rupee</option>
-                                                    <option value="MXN">Mexican peso</option>
-                                                    <option value="MDL">Moldovan leu</option>
-                                                    <option value="MNT">Mongolian tugrik</option>
-                                                    <option value="MAD">Moroccan dirham</option>
-                                                    <option value="MZN">Mozambican metical</option>
-                                                    <option value="MMK">Myanmar kyat</option>
-                                                    <option value="NAD">Namibian dollar</option>
-                                                    <option value="NPR">Nepalese rupee</option>
-                                                    <option value="ANG">Netherlands Antillean guilder</option>
-                                                    <option value="TWD">New Taiwan dollar</option>
-                                                    <option value="NZD">New Zealand dollar</option>
-                                                    <option value="NIO">Nicaraguan cordoba</option>
-                                                    <option value="NGN">Nigerian naira</option>
-                                                    <option value="KPW">North Korean won</option>
-                                                    <option value="NOK">Norwegian krone</option>
-                                                    <option value="OMR">Omani rial</option>
-                                                    <option value="PKR">Pakistani rupee</option>
-                                                    <option value="PGK">Papua New Guinean kina</option>
-                                                    <option value="PYG">Paraguayan guarani</option>
-                                                    <option value="PEN">Peruvian nuevo sol</option>
-                                                    <option value="PHP">Philippine peso</option>
-                                                    <option value="PLN">Polish zloty</option>
-                                                    <option value="GBP">Pound sterling</option>
-                                                    <option value="QAR">Qatari riyal</option>
-                                                    <option value="RON">Romanian leu</option>
-                                                    <option value="RUB">Russian ruble</option>
-                                                    <option value="RWF">Rwandan franc</option>
-                                                    <option value="XDR">SDR (Special Drawing Right)</option>
-                                                    <option value="SHP">Saint Helena pound</option>
-                                                    <option value="WST">Samoan tala</option>
-                                                    <option value="STD">Sao Tome and Principe dobra</option>
-                                                    <option value="SAR">Saudi riyal</option>
-                                                    <option value="RSD">Serbian dinar</option>
-                                                    <option value="SCR">Seychellois rupee</option>
-                                                    <option value="SLL">Sierra Leonean leone</option>
-                                                    <option value="SGD">Singapore dollar</option>
-                                                    <option value="SBD">Solomon Islands dollar</option>
-                                                    <option value="SOS">Somali shilling</option>
-                                                    <option value="ZAR">South African rand</option>
-                                                    <option value="KRW">South Korean won</option>
-                                                    <option value="SSP">South Sudanese pound</option>
-                                                    <option value="LKR">Sri Lankan rupee</option>
-                                                    <option value="SDG">Sudanese pound</option>
-                                                    <option value="SRD">Surinamese dollar</option>
-                                                    <option value="SZL">Swazi lilangeni</option>
-                                                    <option value="SEK">Swedish krona</option>
-                                                    <option value="CHF">Swiss franc</option>
-                                                    <option value="SYP">Syrian pound</option>
-                                                    <option value="TJS">Tajikistani somoni</option>
-                                                    <option value="TZS">Tanzanian shilling</option>
-                                                    <option value="THB">Thai baht</option>
-                                                    <option value="TOP">Tongan paanga</option>
-                                                    <option value="TTD">Trinidad and Tobago dollar</option>
-                                                    <option value="TND">Tunisian dinar</option>
-                                                    <option value="TRY">Turkish lira</option>
-                                                    <option value="TMT">Turkmenistani manat</option>
-                                                    <option value="AED">UAE dirham</option>
-                                                    <option value="UGX">Ugandan shilling</option>
-                                                    <option value="UAH">Ukrainian hryvnia</option>
-                                                    <option value="USD">United States dollar</option>
-                                                    <option value="UYU">Uruguayan peso</option>
-                                                    <option value="UZS">Uzbekistani som</option>
-                                                    <option value="VUV">Vanuatu vatu</option>
-                                                    <option value="VEF">Venezuelan bolivar</option>
-                                                    <option value="VND">Vietnamese dong</option>
-                                                    <option value="XOF">West African CFA franc</option>
-                                                    <option value="YER">Yemeni rial</option>
-                                                    <option value="ZMW">Zambian kwacha</option>
+
                                                 </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Checkin Time*</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter email">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -930,7 +608,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Locality</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                <input type="text" class="form-control" id="email" placeholder="Enter locality">
                                             </div>
                                         </div>
 
@@ -938,264 +616,15 @@
                                     <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Country</label>
+                                            <label class="control-label col-sm-3" for="email">Country*</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker">
-                                                    <option value="">Select country</option>
-                                                    <option value="AFGHANISTAN">AFGHANISTAN</option>
-                                                    <option value="ALAND ISLANDS">ALAND ISLANDS</option>
-                                                    <option value="Albania">Albania</option>
-                                                    <option value="Algeria">Algeria</option>
-                                                    <option value="AMERICAN SAMOA">AMERICAN SAMOA</option>
-                                                    <option value="Andorra">Andorra</option>
-                                                    <option value="Angola">Angola</option>
-                                                    <option value="Anguilla">Anguilla</option>
-                                                    <option value="ANTARCTICA">ANTARCTICA</option>
-                                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                                    <option value="Argentina">Argentina</option>
-                                                    <option value="Armenia">Armenia</option>
-                                                    <option value="Aruba">Aruba</option>
-                                                    <option value="Australia">Australia</option>
-                                                    <option value="Austria">Austria</option>
-                                                    <option value="Azerbaijan">Azerbaijan</option>
-                                                    <option value="The Bahamas">The Bahamas</option>
-                                                    <option value="Bahrain">Bahrain</option>
-                                                    <option value="Bangladesh">Bangladesh</option>
-                                                    <option value="Barbados">Barbados</option>
-                                                    <option value="Belarus">Belarus</option>
-                                                    <option value="Belgium">Belgium</option>
-                                                    <option value="Belize">Belize</option>
-                                                    <option value="Benin">Benin</option>
-                                                    <option value="Bermuda">Bermuda</option>
-                                                    <option value="Bhutan">Bhutan</option>
-                                                    <option value="Bolivia">Bolivia</option>
-                                                    <option value="BONAIRE, SINT EUSTATIUS AND SABA">BONAIRE, SINT EUSTATIUS AND SABA</option>
-                                                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                                    <option value="Botswana">Botswana</option>
-                                                    <option value="BOUVET ISLAND">BOUVET ISLAND</option>
-                                                    <option value="Brazil">Brazil</option>
-                                                    <option value="BRITISH INDIAN OCEAN TERRITORY">BRITISH INDIAN OCEAN TERRITORY</option>
-                                                    <option value="Brunei">Brunei</option>
-                                                    <option value="Bulgaria">Bulgaria</option>
-                                                    <option value="Burkina Faso">Burkina Faso</option>
-                                                    <option value="Burundi">Burundi</option>
-                                                    <option value="Cambodia">Cambodia</option>
-                                                    <option value="Cameroon">Cameroon</option>
-                                                    <option value="Canada">Canada</option>
-                                                    <option value="Cape Verde">Cape Verde</option>
-                                                    <option value="Cayman Islands">Cayman Islands</option>
-                                                    <option value="CENTRAL AFRICAN REPUBLIC">CENTRAL AFRICAN REPUBLIC</option>
-                                                    <option value="CHAD">CHAD</option>
-                                                    <option value="Chile">Chile</option>
-                                                    <option value="China">China</option>
-                                                    <option value="CHRISTMAS ISLAND">CHRISTMAS ISLAND</option>
-                                                    <option value="COCOS (KEELING) ISLANDS">COCOS (KEELING) ISLANDS</option>
-                                                    <option value="Colombia">Colombia</option>
-                                                    <option value="COMOROS">COMOROS</option>
-                                                    <option value="CONGO">CONGO</option>
-                                                    <option value="CONGO, THE DEMOCRATIC REPUBLIC OF THE">CONGO, THE DEMOCRATIC REPUBLIC OF THE</option>
-                                                    <option value="Cook Islands">Cook Islands</option>
-                                                    <option value="Costa Rica">Costa Rica</option>
-                                                    <option value="COTE D'IVOIRE">COTE D'IVOIRE</option>
-                                                    <option value="Croatia">Croatia</option>
-                                                    <option value="Cuba">Cuba</option>
-                                                    <option value="CURACAO">CURACAO</option>
-                                                    <option value="Cyprus">Cyprus</option>
-                                                    <option value="Czech Republic">Czech Republic</option>
-                                                    <option value="Denmark">Denmark</option>
-                                                    <option value="Djibouti">Djibouti</option>
-                                                    <option value="DOMINICA">DOMINICA</option>
-                                                    <option value="Dominican Republic">Dominican Republic</option>
-                                                    <option value="Ecuador">Ecuador</option>
-                                                    <option value="Egypt">Egypt</option>
-                                                    <option value="El Salvador">El Salvador</option>
-                                                    <option value="Equatorial Guinea">Equatorial Guinea</option>
-                                                    <option value="ERITREA">ERITREA</option>
-                                                    <option value="Estonia">Estonia</option>
-                                                    <option value="Ethiopia">Ethiopia</option>
-                                                    <option value="FALKLAND ISLANDS (MALVINAS)">FALKLAND ISLANDS (MALVINAS)</option>
-                                                    <option value="FAROE ISLANDS">FAROE ISLANDS</option>
-                                                    <option value="Fiji">Fiji</option>
-                                                    <option value="Finland">Finland</option>
-                                                    <option value="France">France</option>
-                                                    <option value="FRENCH GUIANA">FRENCH GUIANA</option>
-                                                    <option value="FRENCH POLYNESIA">FRENCH POLYNESIA</option>
-                                                    <option value="FRENCH SOUTHERN TERRITORIES">FRENCH SOUTHERN TERRITORIES</option>
-                                                    <option value="Gabon">Gabon</option>
-                                                    <option value="The Gambia">The Gambia</option>
-                                                    <option value="Georgia">Georgia</option>
-                                                    <option value="Germany">Germany</option>
-                                                    <option value="Ghana">Ghana</option>
-                                                    <option value="Gibraltar">Gibraltar</option>
-                                                    <option value="Greece">Greece</option>
-                                                    <option value="GREENLAND">GREENLAND</option>
-                                                    <option value="Grenada">Grenada</option>
-                                                    <option value="GUADELOUPE">GUADELOUPE</option>
-                                                    <option value="GUAM">GUAM</option>
-                                                    <option value="Guatemala">Guatemala</option>
-                                                    <option value="GUERNSEY">GUERNSEY</option>
-                                                    <option value="GUINEA">GUINEA</option>
-                                                    <option value="GUINEA-BISSAU">GUINEA-BISSAU</option>
-                                                    <option value="GUYANA">GUYANA</option>
-                                                    <option value="HAITI">HAITI</option>
-                                                    <option value="HEARD ISLAND AND MCDONALD ISLANDS">HEARD ISLAND AND MCDONALD ISLANDS</option>
-                                                    <option value="HOLY SEE (VATICAN CITY STATE)">HOLY SEE (VATICAN CITY STATE)</option>
-                                                    <option value="Honduras">Honduras</option>
-                                                    <option value="HONG KONG">HONG KONG</option>
-                                                    <option value="Hungary">Hungary</option>
-                                                    <option value="Iceland">Iceland</option>
-                                                    <option value="India" selected="selected">India</option>
-                                                    <option value="Indonesia">Indonesia</option>
-                                                    <option value="IRAN, ISLAMIC REPUBLIC OF">IRAN, ISLAMIC REPUBLIC OF</option>
-                                                    <option value="IRAQ">IRAQ</option>
-                                                    <option value="Ireland">Ireland</option>
-                                                    <option value="ISLE OF MAN">ISLE OF MAN</option>
-                                                    <option value="Israel">Israel</option>
-                                                    <option value="Italy">Italy</option>
-                                                    <option value="Jamaica">Jamaica</option>
-                                                    <option value="Japan">Japan</option>
-                                                    <option value="JERSEY">JERSEY</option>
-                                                    <option value="Jordan">Jordan</option>
-                                                    <option value="Kazakhstan">Kazakhstan</option>
-                                                    <option value="Kenya">Kenya</option>
-                                                    <option value="KIRIBATI">KIRIBATI</option>
-                                                    <option value="KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF">KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</option>
-                                                    <option value="South Korea">South Korea</option>
-                                                    <option value="Kuwait">Kuwait</option>
-                                                    <option value="KYRGYZSTAN">KYRGYZSTAN</option>
-                                                    <option value="Laos">Laos</option>
-                                                    <option value="Latvia">Latvia</option>
-                                                    <option value="Lebanon">Lebanon</option>
-                                                    <option value="LESOTHO">LESOTHO</option>
-                                                    <option value="LIBERIA">LIBERIA</option>
-                                                    <option value="Libya">Libya</option>
-                                                    <option value="LIECHTENSTEIN">LIECHTENSTEIN</option>
-                                                    <option value="Lithuania">Lithuania</option>
-                                                    <option value="Luxembourg">Luxembourg</option>
-                                                    <option value="MACAO">MACAO</option>
-                                                    <option value="MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF">MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF</option>
-                                                    <option value="Madagascar">Madagascar</option>
-                                                    <option value="Malawi">Malawi</option>
-                                                    <option value="Malaysia">Malaysia</option>
-                                                    <option value="Maldives">Maldives</option>
-                                                    <option value="MALI">MALI</option>
-                                                    <option value="Malta">Malta</option>
-                                                    <option value="MARSHALL ISLANDS">MARSHALL ISLANDS</option>
-                                                    <option value="MARTINIQUE">MARTINIQUE</option>
-                                                    <option value="MAURITANIA">MAURITANIA</option>
-                                                    <option value="Mauritius">Mauritius</option>
-                                                    <option value="MAYOTTE">MAYOTTE</option>
-                                                    <option value="Mexico">Mexico</option>
-                                                    <option value="MICRONESIA, FEDERATED STATES OF">MICRONESIA, FEDERATED STATES OF</option>
-                                                    <option value="Moldova">Moldova</option>
-                                                    <option value="MONACO">MONACO</option>
-                                                    <option value="Mongolia">Mongolia</option>
-                                                    <option value="MONTENEGRO">MONTENEGRO</option>
-                                                    <option value="MONTSERRAT">MONTSERRAT</option>
-                                                    <option value="Morocco">Morocco</option>
-                                                    <option value="Mozambique">Mozambique</option>
-                                                    <option value="Myanmar">Myanmar</option>
-                                                    <option value="Namibia">Namibia</option>
-                                                    <option value="NAURU">NAURU</option>
-                                                    <option value="Nepal">Nepal</option>
-                                                    <option value="Netherlands">Netherlands</option>
-                                                    <option value="NEW CALEDONIA">NEW CALEDONIA</option>
-                                                    <option value="New Zealand">New Zealand</option>
-                                                    <option value="Nicaragua">Nicaragua</option>
-                                                    <option value="NIGER">NIGER</option>
-                                                    <option value="Nigeria">Nigeria</option>
-                                                    <option value="NIUE">NIUE</option>
-                                                    <option value="NORFOLK ISLAND">NORFOLK ISLAND</option>
-                                                    <option value="NORTHERN MARIANA ISLANDS">NORTHERN MARIANA ISLANDS</option>
-                                                    <option value="Norway">Norway</option>
-                                                    <option value="Oman">Oman</option>
-                                                    <option value="Pakistan">Pakistan</option>
-                                                    <option value="Palau">Palau</option>
-                                                    <option value="PALESTINIAN TERRITORY, OCCUPIED">PALESTINIAN TERRITORY, OCCUPIED</option>
-                                                    <option value="Panama">Panama</option>
-                                                    <option value="Papua New Guinea">Papua New Guinea</option>
-                                                    <option value="Paraguay">Paraguay</option>
-                                                    <option value="Peru">Peru</option>
-                                                    <option value="Philippines">Philippines</option>
-                                                    <option value="PITCAIRN">PITCAIRN</option>
-                                                    <option value="Poland">Poland</option>
-                                                    <option value="Portugal">Portugal</option>
-                                                    <option value="PUERTO RICO">PUERTO RICO</option>
-                                                    <option value="Qatar">Qatar</option>
-                                                    <option value="REUNION">REUNION</option>
-                                                    <option value="Romania">Romania</option>
-                                                    <option value="Russia">Russia</option>
-                                                    <option value="RWANDA">RWANDA</option>
-                                                    <option value="SAINT BARTHELEMY">SAINT BARTHELEMY</option>
-                                                    <option value="SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA">SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA</option>
-                                                    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-                                                    <option value="St. Lucia">St. Lucia</option>
-                                                    <option value="SAINT MARTIN (FRENCH PART)">SAINT MARTIN (FRENCH PART)</option>
-                                                    <option value="SAINT PIERRE AND MIQUELON">SAINT PIERRE AND MIQUELON</option>
-                                                    <option value="SAINT VINCENT AND THE GRENADINES">SAINT VINCENT AND THE GRENADINES</option>
-                                                    <option value="Samoa">Samoa</option>
-                                                    <option value="San Marino">San Marino</option>
-                                                    <option value="SAO TOME AND PRINCIPE">SAO TOME AND PRINCIPE</option>
-                                                    <option value="Saudi Arabia">Saudi Arabia</option>
-                                                    <option value="Senegal">Senegal</option>
-                                                    <option value="Serbia">Serbia</option>
-                                                    <option value="SEYCHELLES">SEYCHELLES</option>
-                                                    <option value="SIERRA LEONE">SIERRA LEONE</option>
-                                                    <option value="Singapore">Singapore</option>
-                                                    <option value="SINT MAARTEN (DUTCH PART)">SINT MAARTEN (DUTCH PART)</option>
-                                                    <option value="Slovakia">Slovakia</option>
-                                                    <option value="Slovenia">Slovenia</option>
-                                                    <option value="SOLOMON ISLANDS">SOLOMON ISLANDS</option>
-                                                    <option value="SOMALIA">SOMALIA</option>
-                                                    <option value="South Africa">South Africa</option>
-                                                    <option value="SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS">SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</option>
-                                                    <option value="Spain">Spain</option>
-                                                    <option value="Sri Lanka">Sri Lanka</option>
-                                                    <option value="SUDAN">SUDAN</option>
-                                                    <option value="Suriname">Suriname</option>
-                                                    <option value="SVALBARD AND JAN MAYEN">SVALBARD AND JAN MAYEN</option>
-                                                    <option value="Swaziland">Swaziland</option>
-                                                    <option value="Sweden">Sweden</option>
-                                                    <option value="Switzerland">Switzerland</option>
-                                                    <option value="Syria">Syria</option>
-                                                    <option value="TAIWAN, PROVINCE OF CHINA">TAIWAN, PROVINCE OF CHINA</option>
-                                                    <option value="TAJIKISTAN">TAJIKISTAN</option>
-                                                    <option value="Tanzania">Tanzania</option>
-                                                    <option value="Thailand">Thailand</option>
-                                                    <option value="TIMOR-LESTE">TIMOR-LESTE</option>
-                                                    <option value="Togo">Togo</option>
-                                                    <option value="TOKELAU">TOKELAU</option>
-                                                    <option value="TONGA">TONGA</option>
-                                                    <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                                                    <option value="Tunisia">Tunisia</option>
-                                                    <option value="Turkey">Turkey</option>
-                                                    <option value="TURKMENISTAN">TURKMENISTAN</option>
-                                                    <option value="TURKS AND CAICOS ISLANDS">TURKS AND CAICOS ISLANDS</option>
-                                                    <option value="TUVALU">TUVALU</option>
-                                                    <option value="Uganda">Uganda</option>
-                                                    <option value="Ukraine">Ukraine</option>
-                                                    <option value="United Arab Emirates">United Arab Emirates</option>
-                                                    <option value="United Kingdom">United Kingdom</option>
-                                                    <option value="United States">United States</option>
-                                                    <option value="UNITED STATES MINOR OUTLYING ISLANDS">UNITED STATES MINOR OUTLYING ISLANDS</option>
-                                                    <option value="Uruguay">Uruguay</option>
-                                                    <option value="Uzbekistan">Uzbekistan</option>
-                                                    <option value="VANUATU">VANUATU</option>
-                                                    <option value="Venezuela">Venezuela</option>
-                                                    <option value="Vietnam">Vietnam</option>
-                                                    <option value="VIRGIN ISLANDS, BRITISH">VIRGIN ISLANDS, BRITISH</option>
-                                                    <option value="VIRGIN ISLANDS, U.S.">VIRGIN ISLANDS, U.S.</option>
-                                                    <option value="WALLIS AND FUTUNA">WALLIS AND FUTUNA</option>
-                                                    <option value="WESTERN SAHARA">WESTERN SAHARA</option>
-                                                    <option value="Yemen">Yemen</option>
-                                                    <option value="Zambia">Zambia</option>
-                                                    <option value="Zimbabwe">Zimbabwe</option>
-                                                    <option value="Reunion">Reunion</option>
+                                                    <option value="IN" selected="selected">India</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">State</label>
+                                            <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker">
                                                     <option value="">Select state</option>
@@ -1203,7 +632,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">City</label>
+                                            <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker">
                                                     <option value="">Select city</option>
@@ -1211,15 +640,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Zip Code</label>
+                                            <label class="control-label col-sm-3" for="email">Zip Code*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                <input type="text" class="form-control" id="email" placeholder="Enter zipcode">
                                             </div>
                                         </div>
 
                                     </div>
 
-                                    <button id="submitHote" class="btn btn-primary">Submit</button>
+                                    <button id="submitHote" class="btn btn-primary">Save & Continue</button>
                                 </form>
                             </div>
 
@@ -1238,18 +667,18 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Phone*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
+                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter phone no.">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Email*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
+                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel email">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Email List*</label>
+                                            <label class="control-label col-sm-3" for="email">Email List</label>
                                             <div class="col-sm-9">
                                                 <textarea cols="5" rows="8" class="form-control" placeholder="Separate email with commas(,)"></textarea>
                                             </div>
@@ -1260,17 +689,17 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Mobile*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter email">
+                                                <input type="text" class="form-control" id="email" placeholder="Enter hotel mobile no.">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Phone List*</label>
+                                            <label class="control-label col-sm-3" for="email">Phone List</label>
                                             <div class="col-sm-9">
                                                 <textarea cols="5" rows="5" class="form-control" placeholder="Separate phone with commas(,)"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Website List*</label>
+                                            <label class="control-label col-sm-3" for="email">Website List</label>
                                             <div class="col-sm-9">
                                                 <textarea cols="5" rows="5" class="form-control" placeholder="Separate website with commas(,)"></textarea>
                                             </div>
@@ -1296,8 +725,211 @@
                                     </h4>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    <div class="panel-body panelBody">
+                                        <form class="form-horizontal" action="/action_page.php">
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Room Info</span>
+                                                <span class="pull-right">Mandatory field marked as (*)</span>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Description</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea cols="5" rows="4" class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Total Rooms*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter total rooms">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room View</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="">Select view</option>
+                                                            <option value="">None</option>
+                                                            <option value="sv">Sea View</option>
+                                                            <option value="vv">Valley View</option>
+                                                            <option value="hv">Hill View</option>
+                                                            <option value="pv">Pool View</option>
+                                                            <option value="gv">Garden View</option>
+                                                            <option value="rv">River View</option>
+                                                            <option value="lv">Lake View</option>
+                                                            <option value="plcv">Palace View</option>
+                                                            <option value="bv">Bay View</option>
+                                                            <option value="jv">Jungle View</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room Type*</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="">Select Room Type</option>
+                                                            <option value="deluxe">Deluxe</option>
+                                                            <option value="standard">Standard</option>
+                                                            <option value="luxury">Luxury</option>
+                                                            <option value="master">Master</option>
+                                                            <option value="common">Common</option>
+                                                            <option value="tent">Tent</option>
+                                                            <option value="other">other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Display Name*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter display name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Bed Type</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="" selected="selected">Select bed type</option>
+                                                            <option value="twin">Twin</option>
+                                                            <option value="king">King</option>
+                                                            <option value="queen">Queen</option>
+                                                            <option value="double">Double</option>
+                                                            <option value="single">Single</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Extra Bed Type</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="0">No Extra Bed</option>
+                                                            <option value="1">Matress</option>
+                                                            <option value="2">Cot</option>
+                                                            <option value="3">Sofa cum bed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Room Occupancy</span>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Adult(Base)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter adult base">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Adult(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter max adult">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Infant(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter max infant">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Child(Base)*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter child base">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Child(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter maz child">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Guest(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter max guest">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Amenities</span>
+                                            </div>
+                                            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room Amenities</label>
+                                                    <div class="col-sm-9">
+                                                        <div class="dual-list list-left col-md-5">
+                                                            <div class="well text-right">
+                                                                <div class="row">
+                                                                    <div class="col-md-10">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon glyphicon glyphicon-search"></span>
+                                                                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="btn-group">
+                                                                            <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">bootstrap-duallist <a href="https://github.com/bbilginn/bootstrap-duallist" target="_blank">github</a></li>
+                                                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                                                    <li class="list-group-item">Morbi leo risus</li>
+                                                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                                                    <li class="list-group-item">Vestibulum at eros</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-arrows col-md-1 text-center">
+                                                            <button class="btn btn-default btn-sm move-left">
+                                                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                                            </button>
+                                                            <button class="btn btn-default btn-sm move-right">
+                                                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="dual-list list-right col-md-5">
+                                                            <div class="well">
+                                                                <div class="row">
+                                                                    <div class="col-md-2">
+                                                                        <div class="btn-group">
+                                                                            <a class="btn btn-default selector" title="select all"><i class="glyphicon glyphicon-unchecked"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-10">
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                                                            <span class="input-group-addon glyphicon glyphicon-search"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">Cras justo odio</li>
+                                                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                                                    <li class="list-group-item">Morbi leo risus</li>
+                                                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                                                    <li class="list-group-item">Vestibulum at eros</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                            <button id="saveContact" class="btn btn-primary">Save & Continue</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -1320,9 +952,24 @@
                         </div><!-- panel-group -->
 
                     </div>
-                    <div id="menu3" class="tab-pane fade">
-                        <h3>Menu 3</h3>
-                        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <div id="photos" class="tab-pane fade">
+                        <div class="panel-group photo_sec" id="photoAccordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="firstOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#photoAccordion" href="#hotelPic1" aria-expanded="true" expanded="true" aria-controls="hotelPic1">
+                                            <i class="more-less glyphicon glyphicon-plus"></i>
+                                            Hotel
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="hotelPic1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="firstOne">
+                                    <div class="panel-body panelBody">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
