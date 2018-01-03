@@ -66,16 +66,33 @@
         </div>
         <div class="modal-bdy">
             <input type="text" class="form-control" placeholder="Enter your registered email id" />
-            <button type="button" class="btn-primary">Submit</button>
+            <input type="button" class="btn-primary" id="btnFogotPassword" onclick="LoadData()" value="Submit" />
         </div>
 
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function ()
-    {
+    $(document).ready(function () {
         $("#emailId").focus();
     });
+
+    function LoadData()
+    {
+        alert("ad");
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ForgotPassword")',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function () {
+                 alert("Data has been added successfully.");
+                //LoadData();
+            },
+            error: function () {
+                alert("Error while inserting data");
+            }
+        });
+    }
     function showModal(modalName, effectClass, removeClass) {
         $(".modal-bg").css('display', 'block');
         $(".modal-bg").removeClass(removeClass);
@@ -88,7 +105,7 @@
         $("." + modalName).addClass(effectClass);
         $(".modal-bg").addClass(effectClass);
         setTimeout(function () { $(".modal-bg").css('display', 'none'); }, 1000);
-        
+
     }
 </script>
 
