@@ -1,0 +1,77 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/agent_style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+    <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.toast.css" rel="stylesheet" />
+</head>
+<body class="login_body">
+    <div class="login_header">
+        <div class="container">
+            <div class="login_top">
+                <div class="top_nav">
+                    <span>Already have an account? <a href="javascript:Void(0)" class="btn btn-danger">Login now</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <script src="~/scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/jquery-1.4.2.min.js"></script>
+    <script src="~/scripts/jquery-1.8.5.min.js"></script>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/jquery.toast.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.nextLogin').click(function () {
+                $.toast({
+                    heading: 'Success',
+                    text: 'Email has been sent successfully click on the link to activate account.',
+                    showHideTransition: 'slide',
+                    icon: 'success'
+                })
+            })
+            //$(".nextLogin").toggle(function () {
+
+            //    $('.emailBase').removeClass("zoomIn");//bounceOutLeft
+            //    $('.emailBase').addClass("zoomOut");//bounceOutLeft
+            //    $('.passwordBase').removeClass("bounceOutRight");
+            //    $('.passwordBase').addClass("bounceInRight");
+            //    $('.passwordBase').css("display", 'block');
+
+            //}, function () {
+            //    $('.emailBase').removeClass("zoomIn");//bounceOutLeft
+            //    $('.emailBase').addClass("zoomOut");//bounceOutLeft
+            //    $('.passwordBase').removeClass("bounceOutRight");
+            //    $('.passwordBase').addClass("bounceInRight");
+            //    // $('.passwordBase').css("display", 'none');
+            //});
+            //fa-arrow-left
+            $(".fa-arrow-left").toggle(function () {
+                $('.emailBase').removeClass("zoomOut");//bounceOutLeft
+                $('.passwordBase').removeClass("bounceInRight");
+                $('.emailBase').addClass("zoomIn");//bounceOutLeft
+
+                $('.passwordBase').addClass("bounceOutRight");
+                //   $('.passwordBase').css("display", 'none');
+
+            }, function () {
+                $('.emailBase').removeClass("zoomOut");//bounceOutLeft
+                $('.emailBase').addClass("zoomIn");//bounceOutLeft
+                $('.passwordBase').removeClass("bounceInRight");
+                $('.passwordBase').addClass("bounceOutRight");
+
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>
