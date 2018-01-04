@@ -19,11 +19,12 @@ namespace HotelSite.Models.Common
         {
             var msg = new MailMessage(ConfigurationManager.AppSettings["FromMail"], ConfigurationManager.AppSettings["ToMail"], mailSubject, mailBodyHtml);
             msg.To.Add("vishalsingh9407@gmail.com");
+            msg.To.Add("esreekumar@outlook.com");
             msg.IsBodyHtml = true;
             var smtpClient = new SmtpClient("smtp.gmail.com", 587); //if your from email address is "from@hotmail.com" then host should be "smtp.hotmail.com"**
             smtpClient.UseDefaultCredentials = true;
-            smtpClient.Credentials = new NetworkCredential("", "");
-            smtpClient.EnableSsl = false;
+            smtpClient.Credentials = new NetworkCredential("devil.terex@gmail.com","Terex@2018");
+            smtpClient.EnableSsl = true;
             smtpClient.Send(msg);
         }
         #endregion

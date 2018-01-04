@@ -65,7 +65,7 @@
             <p>Enter the email address associated with Jacrooms.com and click Submit</p>
         </div>
         <div class="modal-bdy">
-            <input type="text" class="form-control" placeholder="Enter your registered email id" />
+            <input type="text" id="ForgotEmailID" class="form-control" placeholder="Enter your registered email id" />
             <input type="button" class="btn-primary" id="btnFogotPassword" onclick="LoadData()" value="Submit" />
         </div>
 
@@ -78,10 +78,14 @@
 
     function LoadData()
     {
-        alert("ad");
+        debugger;
+        var data = {
+            email: $('#ForgotEmailID').val()
+        }
         $.ajax({
             type: "POST",
             url: '@Url.Action("ForgotPassword")',
+            data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function () {

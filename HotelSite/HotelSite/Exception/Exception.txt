@@ -52,3 +52,16 @@ TargetSiteVoid .ctor(System.Data.ProviderBase.DbConnectionPoolIdentity, System.D
 DateTime : 	01-01-18 18:02:53
 ================================end============================================= 
 
+===============================start==============================================
+Inner Exception's
+MessageThe SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. k62sm7695539pga.42 - gsmtp
+StackTrace   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at HotelSite.Models.Common.Common.SendEmail(String mailBodyHtml, String mailSubject) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\Models\Common\Common.cs:line 28
+   at HotelSite.Controllers.UserController.Register() in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\New folder\JAC-Rooms\HotelSite\HotelSite\Controllers\UserController.cs:line 20
+TargetSiteVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)
+DateTime : 	04-01-18 22:19:29
+================================end============================================= 
+

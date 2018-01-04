@@ -17,6 +17,8 @@ namespace HotelSite.Controllers
         {
             try
             {
+                Common.SendEmail("<div><b>Test</b></div>", "Test Emila");
+                
                 return View();
             }
             catch (Exception ex)
@@ -63,7 +65,7 @@ namespace HotelSite.Controllers
         }
 
         [HttpPost]
-        public JsonResult ForgotPassword()
+        public JsonResult ForgotPassword(string email)
         {
             return Json("asd", JsonRequestBehavior.AllowGet);
         }
