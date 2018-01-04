@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "register";
+    Layout = "~/Views/Agent/layout_outside.cshtml";
+}
+
+
+<div class="register_base">
+    <div class="container">
+        <div class="row">
+            <div class="register_form loginForm slideInDown">
+                <div class="ttl">
+                    Its Free. Sign up now! 
+                </div>
+                <div class="loginInside">
+                    <div class="form-group">
+                        <label for="Email Id">Full Name<span class="mandate">*</span></label>
+                        <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">Hotel Type<span class="mandate">*</span></label>
+                        <select class="form-control">
+                            <option value="Hotel" selected="selected">Hotel</option>
+                            <option value="Chain">Hotel Chain</option>
+                            <option value="Channel">Channel Manager</option>
+                        </select>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">Email<span class="mandate">*</span></label>
+                        <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Email ID">
+                        <p>Note : This will be your login id</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">Create Password<span class="mandate">*</span></label>
+                        <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Create Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">Confirm Password<span class="mandate">*</span></label>
+                        <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Confirm Password">
+                    </div>
+                    <div class="form-group">
+                        <a href="javascript:void(0)" class="nextLogin btn btn-danger">Continue</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="register_form loginForm passwordBase">
+                <i class="fa fa-arrow-left pull-left"></i>
+                <h2>Welcome to JAC <span>Rooms</span></h2>
+                <p>Please Sign In to continue</p>
+                <div class="loginInside">
+                    <div class="logingImg">
+                        <img src="~/Content/images/user.png" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">Password<span class="mandate">*</span></label>
+                        <input type="text" class="form-control" id="Password" name="Password" placeholder="Enter your Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn-primary" value="Login" />
+                    </div>
+                    <div class="quickLinks">
+                        <p> <a href="javascript:void(0)" onclick="showModal('forgotPassword', 'zoomIn', 'zoomOut');">Forgot password?</a></p>
+                        <p>@Html.ActionLink("Login as a different user", "Login")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
