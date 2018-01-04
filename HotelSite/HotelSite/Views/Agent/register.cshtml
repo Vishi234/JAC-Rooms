@@ -8,9 +8,9 @@
 <div class="register_base">
     <div class="container">
         <div class="row">
-            <div class="register_form loginForm slideInDown">
+            <div class="register_form loginForm agent_register slideInDown">
                 <div class="ttl">
-                    Its Free. Sign up now! 
+                    Its Free. Sign up now!
                 </div>
                 <div class="loginInside">
                     <div class="form-group">
@@ -19,12 +19,12 @@
                     </div>
                     <div class="form-group">
                         <label for="Email Id">Hotel Type<span class="mandate">*</span></label>
-                        <select class="form-control">
+                        <select>
                             <option value="Hotel" selected="selected">Hotel</option>
                             <option value="Chain">Hotel Chain</option>
                             <option value="Channel">Channel Manager</option>
                         </select>
-                        
+
                     </div>
                     <div class="form-group">
                         <label for="Email Id">Email<span class="mandate">*</span></label>
@@ -40,29 +40,257 @@
                         <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Confirm Password">
                     </div>
                     <div class="form-group">
-                        <a href="javascript:void(0)" class="nextLogin btn btn-danger">Continue</a>
+                        <a href="javascript:void(0)" class="nextLogin btn btn-danger">Save & Continue</a>
                     </div>
                 </div>
 
             </div>
-            <div class="register_form loginForm passwordBase">
-                <i class="fa fa-arrow-left pull-left"></i>
-                <h2>Welcome to JAC <span>Rooms</span></h2>
-                <p>Please Sign In to continue</p>
+            <div class="register_form loginForm addProperty">
+                <div class="register_title">
+                    <i class="fa fa-arrow-left addProPre pull-left"></i>
+                    <span>Add Property</span>
+
+                </div>
                 <div class="loginInside">
-                    <div class="logingImg">
-                        <img src="~/Content/images/user.png" />
+                    <div class="form-group">
+                        <label for="Email Id">Hotelname<span class="mandate">*</span></label>
+                        <input type="text" class="form-control" id="Password" name="Password" placeholder="Hotelname">
                     </div>
                     <div class="form-group">
-                        <label for="Email Id">Password<span class="mandate">*</span></label>
-                        <input type="text" class="form-control" id="Password" name="Password" placeholder="Enter your Password">
+                        <label for="Email Id">HotelType<span class="mandate">*</span></label>
+                        <select id="id_hoteltype" name="hoteltype">
+                            <option value="rst">Resort</option>
+                            <option value="htl" selected="selected">Hotel</option>
+                            <option value="mtl">Motel</option>
+                            <option value="bnbhs">BnB</option>
+                            <option value="hmst">Homestay</option>
+                            <option value="camp">Tent</option>
+                            <option value="srap">Service Apartment</option>
+                            <option value="bngl">Bungalow</option>
+                            <option value="ldg">Lodge</option>
+                            <option value="gst">Guest House</option>
+                            <option value="hstl">Hostel</option>
+                            <option value="ctg">Cottage</option>
+                            <option value="hb">Houseboat</option>
+                            <option value="vla">Villa</option>
+                            <option value="plc">Palace</option>
+                            <option value="bhut">Beach Hut</option>
+                            <option value="cott">Cottage</option>
+                            <option value="japinn">Ryokan (Japanese Inn)</option>
+                            <option value="yat">Luxury Yacht</option>
+                            <option value="farm">Farm Stay</option>
+                            <option value="trh">Tree house</option>
+                            <option value="htg">Heritage</option>
+                            <option value="oth">Others</option>
+                            <option value="atc">Ayurvedic Treatment Centre</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn-primary" value="Login" />
+                        <label for="Email Id">No. Of Rooms<span class="mandate">*</span></label>
+                        <input type="text" class="form-control" id="Password" name="Password" placeholder="No. Of Rooms">
                     </div>
-                    <div class="quickLinks">
-                        <p> <a href="javascript:void(0)" onclick="showModal('forgotPassword', 'zoomIn', 'zoomOut');">Forgot password?</a></p>
-                        <p>@Html.ActionLink("Login as a different user", "Login")</p>
+                    <div class="form-group">
+                        <label for="Email Id">State<span class="mandate">*</span></label>
+                        <select id="id_state" name="state">
+
+                            <option value="">
+                                Select state
+                            </option>
+
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Assam">Assam</option>
+
+                            <option value="Chandigarh">Chandigarh</option>
+
+                            <option value="Dadra and Nagar Haveli">
+                                Dadra and Nagar Haveli
+                            </option>
+
+                            <option value="Delhi">
+                                Delhi
+                            </option>
+
+                            <option value="Gujarat">
+                                Gujarat
+                            </option>
+
+                            <option value="Haryana">
+                                Haryana
+                            </option>
+
+                            <option value="Himachal Pradesh">
+                                Himachal Pradesh
+                            </option>
+
+                            <option value="Jammu and Kashmir">
+                                Jammu and Kashmir
+                            </option>
+
+                            <option value="Kerala">
+                                Kerala
+                            </option>
+
+                            <option value="Lakshadweep">
+                                Lakshadweep
+                            </option>
+
+                            <option value="Maharashtra">
+                                Maharashtra
+                            </option>
+
+                            <option value="Manipur">
+                                Manipur
+                            </option>
+
+                            <option value="Meghalaya">
+                                Meghalaya
+                            </option>
+
+                            <option value="Karnataka">
+                                Karnataka
+                            </option>
+
+                            <option value="Nagaland">
+                                Nagaland
+                            </option>
+
+                            <option value="Odisha">
+                                Odisha
+                            </option>
+
+                            <option value="Pondicherry">
+                                Pondicherry
+                            </option>
+
+                            <option value="Punjab">
+                                Punjab
+                            </option>
+
+                            <option value="Rajasthan">
+                                Rajasthan
+                            </option>
+
+                            <option value="Tamil Nadu">
+                                Tamil Nadu
+                            </option>
+
+                            <option value="Tripura">
+                                Tripura
+                            </option>
+
+                            <option value="West Bengal">
+                                West Bengal
+                            </option>
+
+                            <option value="Sikkim">
+                                Sikkim
+                            </option>
+
+                            <option value="Arunachal Pradesh">
+                                Arunachal Pradesh
+                            </option>
+
+                            <option value="Mizoram">
+                                Mizoram
+                            </option>
+
+                            <option value="Daman and Diu">
+                                Daman and Diu
+                            </option>
+
+                            <option value="Goa">
+                                Goa
+                            </option>
+
+                            <option value="Bihar">
+                                Bihar
+                            </option>
+
+                            <option value="Madhya Pradesh">
+                                Madhya Pradesh
+                            </option>
+
+                            <option value="Uttar Pradesh">
+                                Uttar Pradesh
+                            </option>
+
+                            <option value="Chhattisgarh">
+                                Chhattisgarh
+                            </option>
+
+                            <option value="Jharkhand">
+                                Jharkhand
+                            </option>
+
+                            <option value="Uttarakhand">
+                                Uttarakhand
+                            </option>
+
+                            <option value="unknown">
+                                unknown
+                            </option>
+
+                            <option value="Daman &amp; Dui">
+                                Daman &amp; Dui
+                            </option>
+
+                            <option value="Test State">
+                                Test State
+                            </option>
+
+                            <option value="Telangana">
+                                Telangana
+                            </option>
+
+                            <option value="India">
+                                India
+                            </option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">City<span class="mandate">*</span></label>
+                        <select id="id_hoteltype" name="hoteltype">
+                            <option selected>Select city</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="addProbtn btn btn-danger" value="Save & Continue" />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="register_form loginForm hotelInfo">
+                <div class="register_title">
+                    <i class="fa fa-arrow-left hoteInfoPre pull-left"></i>
+                    <span>Hotel Info</span>
+
+                </div>
+                <div class="loginInside">
+                    <div class="form-group">
+                        <label for="Email Id">HotelPhone<span class="mandate">*</span></label>
+                        <span class="phoneCode">+91</span><input type="text" class="phone form-control" id="Password" name="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">HotelMobile<span class="mandate">*</span></label>
+                        <span class="phoneCode">+91</span><input type="text" class="phone form-control" id="Password" name="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">EmailList<span class="mandate">*</span></label>
+                        <textarea rows="2" cols="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">CheckinTime<span class="mandate">*</span></label>
+                       <input type="text" class="form-control" id="Password" name="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email Id">CHeckoutTime<span class="mandate">*</span></label>
+                        <input type="text" class="form-control" id="Password" name="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger" value="Finish" />
                     </div>
                 </div>
             </div>

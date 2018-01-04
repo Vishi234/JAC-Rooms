@@ -13,7 +13,7 @@ namespace HotelSite.Controllers
         {
             return View();
         }
-        public ActionResult Register()
+        public ActionResult register()
         {
             return View();
         }

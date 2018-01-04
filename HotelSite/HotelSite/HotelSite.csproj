@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HotelSite</RootNamespace>
     <AssemblyName>HotelSite</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -176,6 +176,7 @@
     <Content Include="Content\images\user.svg" />
     <Content Include="Content\images\website.svg" />
     <Content Include="Content\jquery.toast.css" />
+    <Content Include="Content\nice-select.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Exception\Exception.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -190,7 +191,9 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
     <Content Include="scripts\jquery-ui.min.js" />
+    <Content Include="scripts\jquery.js" />
     <Content Include="scripts\jquery.min.js" />
+    <Content Include="scripts\jquery.nice-select.js" />
     <Content Include="scripts\jquery.toast.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
