@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.ApplicationBlocks.Data;
 using System.IO;
-using System.Security.AccessControl;
-using System.Security.Principal;
 using System.Net.Mail;
 using System.Net;
 
