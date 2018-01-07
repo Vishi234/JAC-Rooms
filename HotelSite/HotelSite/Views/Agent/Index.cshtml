@@ -29,11 +29,11 @@
                                         <span class="pull-left">Basic Info</span>
                                         <span class="pull-right">Mandatory field marked as (*)</span>
                                     </div>*@
-                                    <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+                                    <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Name*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-." id="hotelName" placeholder="Enter hotel name">
+                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
                                             </div>
                                         </div>
                                         
@@ -68,8 +68,46 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Hotel Type</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker">
+                                                    <option selected="selected">Select hotel type</option>
+                                                    <option>Resort</option>
+                                                    <option>Hotel</option>
+                                                    <option>Motel</option>
+                                                    <option>BnB</option>
+                                                    <option>Homestay</option>
+                                                    <option>Tent</option>
+                                                    <option>Service Appartment</option>
+                                                    <option>Bungalow</option>
+                                                    <option>Loadge</option>
+                                                    <option>Guest House</option>
+                                                    <option>Hostel</option>
+                                                    <option>Cattage</option>
+                                                    <option>Houseboat</option>
+                                                    <option>Villa</option>
+                                                    <option>Palace</option>
+                                                    <option>Beach Hut</option>
+                                                    <option>Luxury Yacht</option>
+                                                    <option>Farm Stay</option>
+                                                    <option>Herritage</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">VCC Currency</label>
+                                            <div class="col-sm-9">
+                                                <select class="selectpicker">
+
+                                                    <option value="INR" selected="selected">Indian rupee</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+                                    <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Display Name*</label>
                                             <div class="col-sm-9">
@@ -108,51 +146,10 @@
                                                 <input type="text" class="form-control" id="email" placeholder="Enter checkin time">
                                             </div>
                                         </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Hotel Type</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker">
-                                                    <option selected="selected">Select hotel type</option>
-                                                    <option>Resort</option>
-                                                    <option>Hotel</option>
-                                                    <option>Motel</option>
-                                                    <option>BnB</option>
-                                                    <option>Homestay</option>
-                                                    <option>Tent</option>
-                                                    <option>Service Appartment</option>
-                                                    <option>Bungalow</option>
-                                                    <option>Loadge</option>
-                                                    <option>Guest House</option>
-                                                    <option>Hostel</option>
-                                                    <option>Cattage</option>
-                                                    <option>Houseboat</option>
-                                                    <option>Villa</option>
-                                                    <option>Palace</option>
-                                                    <option>Beach Hut</option>
-                                                    <option>Luxury Yacht</option>
-                                                    <option>Farm Stay</option>
-                                                    <option>Herritage</option>
-                                                    <option>Other</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">No. of Restaurant</label>
+                                            <label class="control-label col-sm-3" for="email">Restaurants(No.)</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="hotelName" placeholder="Enter no. of restaurants">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">VCC Currency</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker">
-                                                    
-                                                    <option value="INR" selected="selected">Indian rupee</option>
-
-                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -594,6 +591,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                  
                                     <div class="panelTitle">
                                         <span class="pull-left">Property Address</span>
                                     </div>
@@ -648,7 +646,7 @@
 
                                     </div>
 
-                                    <button id="submitHote" class="btn btn-primary">Save & Continue</button>
+                                    <button id="submitHote" class="btn btn-danger">Save & Continue</button>
                                 </form>
                             </div>
 
@@ -707,7 +705,7 @@
                                     </div>
 
 
-                                    <button id="saveContact" class="btn btn-primary">Save & Continue</button>
+                                    <button id="saveContact" class="btn btn-danger">Save & Continue</button>
                                 </form>
                             </div>
 
@@ -928,7 +926,7 @@
                                                 </div>
                                               
                                             </div>
-                                            <button id="saveContact" class="btn btn-primary">Save & Continue</button>
+                                            <button id="saveContact" class="btn btn-danger">Save & Continue</button>
                                         </form>
                                     </div>
                                 </div>
@@ -953,22 +951,30 @@
 
                     </div>
                     <div id="photos" class="tab-pane fade">
-                        <div class="panel-group photo_sec" id="photoAccordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="firstOne">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#photoAccordion" href="#hotelPic1" aria-expanded="true" expanded="true" aria-controls="hotelPic1">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Hotel
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="hotelPic1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="firstOne">
-                                    <div class="panel-body panelBody">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
+                        
+                        <div id="buttons"></div>
+                        <div id="gallery">
+
+                            <img src="https://picsum.photos/600/450?image=776" data-tags="Blog" alt="Alt 1" />
+
+                            <img src="https://picsum.photos/600/450?image=777" data-tags="Health & Beauty" alt="Alt 2" />
+
+                            <img src="https://picsum.photos/600/450?image=755" data-tags="Business" alt="Alt 3" />
+
+                            <img src="https://picsum.photos/600/450?image=778" data-tags="Blog,Health & Beauty" alt="Alt 4" />
+                            <img src="https://picsum.photos/600/450?image=764" data-tags="Business" alt="Alt 5" />
+
+                            <img src="https://picsum.photos/600/450?image=526" data-tags="Blog,Shop" alt="Alt 6" />
+
+                            <img src="https://picsum.photos/600/450?image=668" data-tags="Blog,Megazine" alt="Alt 7" />
+                            <img src="https://picsum.photos/600/450?image=660" data-tags="Blog" alt="Alt 8" />
+
+                            <img src="https://picsum.photos/600/450?image=659" data-tags="Blog,Portfolio" alt="Alt 9" />
+                            <img src="https://picsum.photos/600/450?image=513" data-tags="Business" alt="Alt 10" />
+                            <img src="https://picsum.photos/600/450?image=535" data-tags="Shop" alt="Alt 11" />
+                            <img src="https://picsum.photos/600/450?image=531" data-tags="Shop,Blog" alt="Alt 12" />
+
+
                         </div>
                     </div>
                 </div>

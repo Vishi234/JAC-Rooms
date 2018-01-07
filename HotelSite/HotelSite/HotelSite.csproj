@@ -186,6 +186,7 @@
     <Content Include="scripts\bootstrap-select.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\bootstrap3.3.2.min.js" />
+    <Content Include="scripts\filter-tags.js" />
     <Content Include="scripts\jquery-1.11.2.min.js" />
     <Content Include="scripts\jquery-1.8.5.min.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />

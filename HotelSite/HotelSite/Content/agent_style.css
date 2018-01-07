@@ -405,7 +405,7 @@ a {
 
     .panelTitle span:nth-child(1) {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 600;
     }
 
     .panelTitle span:nth-child(2) {
@@ -419,7 +419,6 @@ a {
 }
 
 .nav > li > a {
-    
     color: #18bc9c !important;
     font-size: 14px !important;
 }
@@ -450,23 +449,35 @@ a {
 
 .panelBody {
     display: block;
+    padding: 20px;
 }
+
+    .panelBody .nice-select {
+        margin-bottom: 0px !important;
+    }
 
     .panelBody .bootstrap-select {
         width: 100% !important;
         min-width: 0px !important;
     }
 
+    .panelBody .btn-danger {
+        display: block !important;
+        margin: 0 auto !important;
+    }
+
     .panelBody .control-label {
         text-align: left !important;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 400;
         color: #000;
+        padding-top: 11px !important;
     }
 
     .panelBody .form-control {
         border-radius: 0px;
         font-size: 10px;
+        padding-left: 18px !important;
     }
 
     .panelBody .bootstrap-select .btn-default {
@@ -489,6 +500,20 @@ a {
     margin-bottom: 20px;
 }
 
+.photoButton {
+    background-color: #d7d7d7;
+    margin: 5px 2px;
+    border: none;
+    padding: 3px 10px 4px 10px;
+    border-radius: 4px;
+    color: #333;
+}
+
+    .photoButton:hover, .photoButton.active {
+        background-color: #4228aa;
+        color: #fff;
+        cursor: pointer;
+    }
 /*******************************
 * Does not work properly if "in" is added after "collapse".
 * Get free snippets on bootpen.com
@@ -562,13 +587,13 @@ a {
 
 .btn-danger {
     color: #fff;
-    background-color: #f3495a;
-    border-color: #f3495a;
-    border-radius: 2px;
+    background-color: #f3495a !important;
+    border-color: #f3495a !important;
+    border-radius: 2px !important;
     font-size: 12px;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
-    font-weight: 500;
-    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.4) !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
 }
 
 .login_body {
@@ -780,8 +805,11 @@ a {
     margin: 0 auto;
     width: 35%;
     background: #fff;
+    border: 1px solid #eee;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
     margin-top: 20px;
-    box-shadow: 0 1px 5px 0 rgba(45,62,80,.12);
+    box-shadow: 0px 0px 31px rgba(0,0,0,0.1);
     border-radius: 4px;
     margin-bottom: 20px;
 }
@@ -813,34 +841,34 @@ a {
 }
 
 .form-control {
-    padding: .5625rem .625rem;
-    border-radius: .1875rem;
-    border: 1px solid #cbd6e2;
+    padding: .5625rem .625rem !important;
+    border-radius: 4px !important;
+    border: 2px solid #eee !important;
     font-size: 16px;
     font-size: 1rem;
     transition: all .15s ease-out;
-    background-color: #f5f8fa;
+    background-color: #fff;
     color: #33475b;
     display: block;
-    height: 2.5rem;
+    height: 40px !important;
     line-height: 1.375rem;
     text-align: left;
     vertical-align: middle;
     width: 100%;
-    font-size: 14px;
+    font-size: 14px !important;
+    box-shadow: none !important;
     font-weight: 400;
 }
 
     .form-control:focus {
-        border-color: rgba(0,208,228,.5);
-        box-shadow: 0 0 4px 1px rgba(0,208,228,.3), 0 0 0 1px #00d0e4;
-        outline: 0;
-        background-color: #f5f8fa;
+        border: 2px solid #333 !important;
+        box-shadow: none !important;
+        outline: 0 !important;
     }
 
     .form-control::-webkit-input-placeholder {
-        font-weight: 300;
-        color: #7c98b6;
+        font-weight: 300 !important;
+        color: #7c98b6 !important;
     }
 
 
@@ -1142,6 +1170,7 @@ a {
 .nice-select {
     width: 100% !important;
     margin-bottom: 15px !important;
+    border: 2px solid #eee !important;
 }
 
     .nice-select .list {
@@ -1149,6 +1178,10 @@ a {
         max-height: 400px !important;
         height: auto !important;
         overflow: auto !important;
+    }
+
+    .nice-select.open {
+        border: 2px solid #333 !important;
     }
 
 .bounceOutRight {

@@ -98,10 +98,11 @@
     <script src="~/scripts/jquery.toast.js"></script>
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
-
+    <script src="~/scripts/filter-tags.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
+            $('select').niceSelect();
             function toggleIcon(e) {
                 $(e.target)
                     .prev('.panel-heading')
