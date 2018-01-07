@@ -90,4 +90,46 @@ namespace HotelSite.Models.Login
             }
         }
     }
+    public class Agent
+    {
+        string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
+        public string CreateAgent(string Email, string Password, string HotelType, string FullName)
+        {
+            Guid guid = Guid.Empty;
+            try
+            {
+                List<SqlParameter> lstsqlparam = new List<SqlParameter>();
+                lstsqlparam.Add(new SqlParameter("@AgentFullName", FullName));
+                lstsqlparam.Add(new SqlParameter("@AgentType", HotelType));
+                lstsqlparam.Add(new SqlParameter("@AgentEmail", Email));
+                lstsqlparam.Add(new SqlParameter("@Password", Password));
+                guid = (Guid)SqlHelper.ExecuteScalar(sqlconn, "sp_AgentLogin", lstsqlparam.ToArray());
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            finally
+            {
+
+            }
+            return guid.ToString();
+        }
+
+        public int CheckAgent(Guid guid)
+        {
+            int result = 0;
+            try
+            {
+                string query = "select 1 from tbl_AgentLogin where LinkId like '%" + guid + "%'";
+                result = (int)SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query);
+            }
+            catch (Exception ex)
+            {
+                result = 0;
+                ExceptionHandling.WriteException(ex);
+            }
+            return result;
+        }
+    }
 }
