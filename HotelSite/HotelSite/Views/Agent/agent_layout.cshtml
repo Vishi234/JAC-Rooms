@@ -10,6 +10,7 @@
     <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
     <link href="~/Content/jquery.toast.css" rel="stylesheet" />
     <link href="~/Content/nice-select.css" rel="stylesheet" />
+    <script src="~/scripts/common.js"></script>
 </head>
 <body>
     <div class="header-top">
@@ -21,13 +22,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-8 col-lg-8 col-md-8">
                         <div class="seachBox">
-                            <select class="selectpicker" data-show-subtext="true" data-live-search="true">
+                            <select>
                                 <option data-subtext="Rep California">Tom Foolery</option>
-                                <option data-subtext="Sen California">Bill Gordon</option>
-                                <option data-subtext="Sen Massacusetts">Elizabeth Warren</option>
-                                <option data-subtext="Rep Alabama">Mario Flores</option>
-                                <option data-subtext="Rep Alaska">Don Young</option>
-                                <option data-subtext="Rep California" disabled="disabled">Marvin Martinez</option>
                             </select>
                         </div>
                     </div>
@@ -41,7 +37,7 @@
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="javascript:Void(0)">
+                        <a href="/Agent/Index/">
                             Dashboard
                         </a>
                     </li>
@@ -56,7 +52,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:Void(0)">
+                        <a href="/Agent/property/">
                             Property
                         </a>
                     </li>
@@ -102,6 +98,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
             $('select').niceSelect();
             function toggleIcon(e) {
                 $(e.target)
@@ -152,7 +149,12 @@
                 });
 
             });
-        })
+        });
+        var selector = $(".navigation li a");
+        $(selector).on('click', function () {
+            $(selector).removeClass('navActive');
+            $(this).addClass('navActive');
+        });
     </script>
 </body>
 </html>
