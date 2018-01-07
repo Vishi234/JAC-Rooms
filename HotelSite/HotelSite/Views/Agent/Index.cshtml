@@ -1,7 +1,16 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Agent/agent_layout.cshtml";
+    Layout = "~/Views/Agent/_AgentLayout.cshtml";
 }
 
-
+<div class="agent_body">
+    <div class="container">
+        <div class="agent_module_base">
+            <div class="Lagend_hotel_add bounceInRight">
+                <span><i class="fa fa-hotel"></i></span><span>You have no hotel listed till now ! <lagend>Add one to start business</lagend></span>
+                <a href="/Agent/property/" class="btn btn-warning">Add Hotel</a>
+            </div>
+        </div>
+    </div>
+</div>
 

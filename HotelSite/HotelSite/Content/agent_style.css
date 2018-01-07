@@ -291,6 +291,9 @@ a {
 
 .seachBox {
     text-align: center;
+    /* display: inline-block; */
+    width: 50%;
+    margin: 0 auto;
 }
 
 .navigation {
@@ -336,6 +339,42 @@ a {
     transition: all 0.4s ease-in-out;
 }
 
+.Lagend_hotel_add {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #eee;
+    width: 50%;
+    display: block;
+    margin: 10px auto;
+    border-radius: 4px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+    z-index: 9999;
+    background: #fff;
+}
+
+    .Lagend_hotel_add span:nth-child(1) {
+        display: block;
+        font-size: 30px;
+        border-radius: 54px;
+        margin: 0 auto;
+        width: 70px;
+        height: 70px;
+        padding: 19px;
+        background: #EB2226;
+        color: #fff;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    }
+
+    .Lagend_hotel_add span:nth-child(2) {
+        display: block;
+        font-size: 18px;
+        font-weight: 300;
+        margin-top: 10px;
+    }
+
+        .Lagend_hotel_add span:nth-child(2) lagend {
+            color: #EA2330;
+        }
 
 .top {
     display: inline-block;
@@ -983,7 +1022,11 @@ a {
         text-align: center;
         font-size: 14px;
     }
-
+    
+.passwordBase {
+    display: none;
+    margin-left: -822px;
+}
 .loginInside {
     width: 85%;
     display: block;

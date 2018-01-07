@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/User/_LayoutOutside.cshtml";
+    ViewBag.Title = "login";
+    Layout = "~/Views/Agent/_LayoutOutside.cshtml";
 }
-
 
 <form action="@Url.Action("LoggingIN","User")" method="post">
     <div class="register_base">
@@ -25,7 +24,7 @@
                             <a href="javascript:void(0)" class="nextLogin btn-primary">Continue</a>
                         </div>
                         <div class="quickLinks">
-                            <p>@Html.ActionLink("Don't have an account?", "Register")</p>
+                            <p>@Html.ActionLink("Don't have an account?", "register")</p>
                         </div>
                     </div>
 
@@ -47,7 +46,7 @@
                         </div>
                         <div class="quickLinks">
                             <p> <a href="javascript:void(0)" onclick="showModal('forgotPassword', 'zoomIn', 'zoomOut');">Forgot password?</a></p>
-                            <p>@Html.ActionLink("Login as a different user", "Login")</p>
+                            <p>@Html.ActionLink("Login as a different user", "login")</p>
                         </div>
                     </div>
                 </div>
@@ -97,6 +96,5 @@
             }
         });
     }
-    
-</script>
 
+</script>
