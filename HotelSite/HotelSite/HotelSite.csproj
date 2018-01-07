@@ -176,6 +176,7 @@
     <Content Include="Content\images\user.svg" />
     <Content Include="Content\images\website.svg" />
     <Content Include="Content\jquery.toast.css" />
+    <Content Include="Content\jquery.toast.min.css" />
     <Content Include="Content\nice-select.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Exception\Exception.txt" />
@@ -197,6 +198,7 @@
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\jquery.nice-select.js" />
     <Content Include="scripts\jquery.toast.js" />
+    <Content Include="scripts\jquery.toast.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -205,6 +207,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AgentController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,6 +243,8 @@
     <Content Include="Views\Agent\_LayoutOutside.cshtml" />
     <Content Include="Views\User\_LayoutOutside.cshtml" />
     <Content Include="Views\User\_LayoutInside.cshtml" />
+    <Content Include="Views\_CommonLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
