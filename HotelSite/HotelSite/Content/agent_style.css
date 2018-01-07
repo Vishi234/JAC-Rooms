@@ -502,10 +502,10 @@ a {
 
 .photoButton {
     background-color: #d7d7d7;
-    margin: 5px 2px;
+    margin: 10px 2px;
     border: none;
-    padding: 3px 10px 4px 10px;
-    border-radius: 4px;
+    padding: 8px 15px;
+    border-radius: 2px;
     color: #333;
 }
 
@@ -514,6 +514,47 @@ a {
         color: #fff;
         cursor: pointer;
     }
+
+#gallery .thumbnail {
+    display: inline-block !important;
+    box-shadow: 0px 0px 11px rgba(0,0,0,0.1);
+}
+
+    #gallery .thumbnail > img, .thumbnail > img {
+        opacity: 0.8;
+        transition: all 0.4s ease-in-out;
+    }
+
+        #gallery .thumbnail > img:hover {
+            opacity: 1;
+            transition: all 0.4s ease-in-out;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+    #gallery .thumbnail span {
+        font-size: 12px;
+        font-weight: 600;
+        color: #337ab7;
+    }
+
+        #gallery .thumbnail span:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+.photo-gallery {
+    padding: 20px;
+}
+
+    .photo-gallery .btn-danger {
+        margin-bottom: 20px;
+    }
+
+        .photo-gallery .btn-danger i {
+            margin-right: 5px;
+        }
 /*******************************
 * Does not work properly if "in" is added after "collapse".
 * Get free snippets on bootpen.com

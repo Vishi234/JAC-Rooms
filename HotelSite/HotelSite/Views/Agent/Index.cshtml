@@ -16,7 +16,7 @@
                     <li><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
                     <li><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
                     <li><a data-toggle="tab" href="#documents">Step 5:<br />Documents</a></li>
-                   
+
                 </ul>
 
                 <div class="tab-content">
@@ -26,9 +26,9 @@
 
                                 <form class="form-horizontal" action="/action_page.php">
                                     @*<div class="panelTitle">
-                                        <span class="pull-left">Basic Info</span>
-                                        <span class="pull-right">Mandatory field marked as (*)</span>
-                                    </div>*@
+                                            <span class="pull-left">Basic Info</span>
+                                            <span class="pull-right">Mandatory field marked as (*)</span>
+                                        </div>*@
                                     <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Name*</label>
@@ -36,7 +36,7 @@
                                                 <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name">
                                             </div>
                                         </div>
-                                        
+
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Chain Name</label>
@@ -46,14 +46,14 @@
                                                 </select>
                                             </div>
                                         </div>
-                                       
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Floors</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="hotelName" placeholder="Enter no of floors">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">CheckoutTime*</label>
                                             <div class="col-sm-9">
@@ -139,7 +139,7 @@
                                                 <input type="text" class="form-control" id="email" placeholder="Enter no. of rooms">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Checkin Time*</label>
                                             <div class="col-sm-9">
@@ -591,7 +591,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                  
+
                                     <div class="panelTitle">
                                         <span class="pull-left">Property Address</span>
                                     </div>
@@ -924,7 +924,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                              
+
                                             </div>
                                             <button id="saveContact" class="btn btn-danger">Save & Continue</button>
                                         </form>
@@ -951,37 +951,73 @@
 
                     </div>
                     <div id="photos" class="tab-pane fade">
-                        
-                        <div id="buttons"></div>
-                        <div id="gallery">
-
-                            <img src="https://picsum.photos/600/450?image=776" data-tags="Blog" alt="Alt 1" />
-
-                            <img src="https://picsum.photos/600/450?image=777" data-tags="Health & Beauty" alt="Alt 2" />
-
-                            <img src="https://picsum.photos/600/450?image=755" data-tags="Business" alt="Alt 3" />
-
-                            <img src="https://picsum.photos/600/450?image=778" data-tags="Blog,Health & Beauty" alt="Alt 4" />
-                            <img src="https://picsum.photos/600/450?image=764" data-tags="Business" alt="Alt 5" />
-
-                            <img src="https://picsum.photos/600/450?image=526" data-tags="Blog,Shop" alt="Alt 6" />
-
-                            <img src="https://picsum.photos/600/450?image=668" data-tags="Blog,Megazine" alt="Alt 7" />
-                            <img src="https://picsum.photos/600/450?image=660" data-tags="Blog" alt="Alt 8" />
-
-                            <img src="https://picsum.photos/600/450?image=659" data-tags="Blog,Portfolio" alt="Alt 9" />
-                            <img src="https://picsum.photos/600/450?image=513" data-tags="Business" alt="Alt 10" />
-                            <img src="https://picsum.photos/600/450?image=535" data-tags="Shop" alt="Alt 11" />
-                            <img src="https://picsum.photos/600/450?image=531" data-tags="Shop,Blog" alt="Alt 12" />
-
-
+                        <div class="photo-gallery">
+                            <a href="javascript:void(0)" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
+                            <div id="buttons"></div>
+                            <div id="gallery">
+                                <div class="row">
+                                    <div class="col-md-2 base" data-tags="Blog">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog1">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog1">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog1">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
