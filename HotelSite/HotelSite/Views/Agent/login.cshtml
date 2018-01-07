@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a href="javascript:void(0)" class="nextLogin btn-primary">Continue</a>
+                            <a href="javascript:void(0)" class="nextLogin btn btn-danger">Continue</a>
                         </div>
                         <div class="quickLinks">
                             <p>@Html.ActionLink("Don't have an account?", "register")</p>
@@ -42,7 +42,7 @@
                             <input type="text" class="form-control" id="Password" name="Password" placeholder="Enter your Password">
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn-primary" value="Login" />
+                            <input type="submit" class="btn btn-danger" value="Login" />
                         </div>
                         <div class="quickLinks">
                             <p> <a href="javascript:void(0)" onclick="showModal('forgotPassword', 'zoomIn', 'zoomOut');">Forgot password?</a></p>
@@ -72,6 +72,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+       
         $("#emailId").focus();
     });
 

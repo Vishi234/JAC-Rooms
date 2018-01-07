@@ -29,7 +29,23 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2"></div>
+                    <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2">
+                        <div class="UserProfile">
+                            <span class="myButton pull-right"><img src="~/Content/images/user.png" /> <img src="~/Content/images/sort-down.svg" /></span>
+                        </div>
+                        <div class="hotelier_drop">
+                            <div class="triangle-with-shadow">
+                            </div>
+                            <div class="drop_body">
+                               <p>Welcome Hotel Yes</p>
+                                <ul>
+                                    <li><a href="/Agent/property"><i class="fa fa-plus"></i> Add Hotel</a></li>
+                                    <li><a href="javascript:void(0)">Change Password</a></li>
+                                    <li><a href="javascript:void(0)">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,7 +98,7 @@
             </div>
         </div>
     </div>
-        @RenderBody()
+    @RenderBody()
     <script src="~/scripts/jquery-3.2.1.min.js"></script>
     <script src="~/scripts/bootstrap.min.js"></script>
     <script src="~/scripts/jquery.min.js"></script>
@@ -99,6 +115,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
 
             $('select').niceSelect();
             function toggleIcon(e) {
@@ -150,6 +167,13 @@
                 });
 
             });
+
+        });
+        $(".myButton").click(function () {
+            $('.hotelier_drop').css('display', 'block');
+            $('.hotelier_drop').toggleClass('bounceInRight', 'bounceOutRight')
+           
+            
         });
         var selector = $(".navigation li a");
         $(selector).on('click', function () {

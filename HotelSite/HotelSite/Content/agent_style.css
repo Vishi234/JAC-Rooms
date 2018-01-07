@@ -283,6 +283,7 @@ a {
 
 .header-top {
     background: #fff;
+    height: 65px;
 }
 
 .header-bottom {
@@ -359,7 +360,7 @@ a {
         margin: 0 auto;
         width: 70px;
         height: 70px;
-        padding: 19px;
+        padding: 15px;
         background: #EB2226;
         color: #fff;
         box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
@@ -878,17 +879,22 @@ a {
         background: #f37758;
     }
 
+.myButton {
+    display: block !important;
+}
+
 .hotelier_drop {
     display: none;
     width: 200px;
-    margin-left: 890px;
-    position: absolute;
+    margin-top: 30px;
+    margin-left: -14px;
 }
 
 .drop_body p {
     text-align: left;
-    /* font-weight: 500; */
+    font-weight: 500;
     color: #808080;
+    overflow: hidden;
 }
 
 .drop_body hr {
@@ -903,6 +909,26 @@ a {
     text-align: center;
     border-radius: 4px;
     font-size: 16px;
+}
+
+.drop_body li {
+    display: block;
+    width: 100%;
+}
+
+    .drop_body li a {
+        border: none;
+        text-align: left;
+        font-size: 12px;
+    }
+
+.myAcco .triangle-with-shadow:after {
+    left: 100px !important;
+}
+
+.drop_body li a:hover {
+    color: #3b5998;
+    text-decoration: underline !important;
 }
 
 .bounceInRight {
@@ -1022,11 +1048,12 @@ a {
         text-align: center;
         font-size: 14px;
     }
-    
+
 .passwordBase {
     display: none;
     margin-left: -822px;
 }
+
 .loginInside {
     width: 85%;
     display: block;
@@ -1505,4 +1532,23 @@ a {
 
     .supportDrop .triangle-with-shadow:after {
         left: 100px !important;
+    }
+
+.UserProfile {
+    float: right;
+    display: block;
+    width: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .UserProfile span img:nth-child(1) {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+    }
+
+    .UserProfile span img:nth-child(2) {
+        width: 15px;
+        margin-left: 5px;
     }
