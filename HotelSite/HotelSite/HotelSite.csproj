@@ -245,6 +245,7 @@
     <Content Include="Views\User\_LayoutInside.cshtml" />
     <Content Include="Views\_CommonLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Agent\UserValidation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
