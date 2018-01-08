@@ -157,6 +157,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\6667-gradient.jpg" />
     <Content Include="Content\images\automation.svg" />
     <Content Include="Content\images\bridge.png" />
     <Content Include="Content\images\bundle.svg" />
