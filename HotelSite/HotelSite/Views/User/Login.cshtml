@@ -73,13 +73,12 @@
     </div>
 </div>
 
-<script src="~/scripts/jquery.toast.min.js"></script>
-<script src="~/scripts/jquery.toast.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#emailId").focus();
-    });
 
+<script type="text/javascript">
+    //$(document).ready(function()
+    //{
+       
+    //})
     function LoadData()
     {
         debugger;
@@ -103,7 +102,6 @@
     }
     function checkEmail()
     {
-        debugger;
         $.get("/User/GetEmail", { email: $("#emailId").val() }, function (data) {
             if (data.res == true)
             {

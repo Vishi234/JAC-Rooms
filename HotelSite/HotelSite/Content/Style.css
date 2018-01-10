@@ -411,7 +411,7 @@ a {
     padding: 8px;
     border-radius: 4px;
     width: 100%;
-    display: block;
+    display: block!important;
     transition: all 0.4s ease-in-out;
 }
 
