@@ -89,6 +89,21 @@ namespace HotelSite.Models.Login
                 return false;
             }
         }
+        public bool checkEmailUser(string email)
+        {
+            bool result = false;
+            try
+            {
+                string query = "select 1 from tbl_User_Detail where lower(Email) = '"+email.ToLower()+"'";
+                result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? false : true ;
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                ExceptionHandling.WriteException(ex);
+            }
+            return result;
+        }
     }
     public class Agent
     {

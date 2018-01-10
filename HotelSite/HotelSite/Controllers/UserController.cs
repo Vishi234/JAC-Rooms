@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace HotelSite.Controllers
 {
-    [SessionState(System.Web.SessionState.SessionStateBehavior.Default)]
     public class UserController : Controller
     {
         // GET: User
@@ -67,6 +66,13 @@ namespace HotelSite.Controllers
         public JsonResult ForgotPassword(string email)
         {
             return Json("asd", JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEmail(string email)
+        {
+            Register register = new Register();
+            bool EmailValid=register.checkEmailUser(email);
+            return Json(new { res = EmailValid }, JsonRequestBehavior.AllowGet);
         }
     }
 }

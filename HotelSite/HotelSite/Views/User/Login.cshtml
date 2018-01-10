@@ -3,7 +3,8 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/User/_LayoutOutside.cshtml";
 }
-
+<link href="~/Content/jquery.toast.css" rel="stylesheet" />
+<link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
 
 <form action="@Url.Action("LoggingIN","User")" method="post">
     <div class="register_base">
@@ -22,7 +23,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a href="javascript:void(0)" class="nextLogin btn-primary">Continue</a>
+                            <a href="javascript:void(0)" onclick="checkEmail()" class="nextLogin btn-primary">Continue</a>
                         </div>
                         <div class="quickLinks">
                             <p>@Html.ActionLink("Don't have an account?", "Register")</p>
@@ -71,6 +72,9 @@
 
     </div>
 </div>
+
+<script src="~/scripts/jquery.toast.min.js"></script>
+<script src="~/scripts/jquery.toast.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#emailId").focus();
@@ -97,6 +101,19 @@
             }
         });
     }
-    
+    function checkEmail()
+    {
+        debugger;
+        $.get("/User/GetEmail", { email: $("#emailId").val() }, function (data) {
+            if (data.res == true)
+            {
+                $.toast("asdasd");
+            }
+            else
+            {
+                $.toast("asdasdasda");
+            }
+        });  
+    }
 </script>
 
