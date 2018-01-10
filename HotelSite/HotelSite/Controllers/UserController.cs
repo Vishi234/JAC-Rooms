@@ -17,8 +17,7 @@ namespace HotelSite.Controllers
         {
             try
             {
-                Common.SendEmail("<div><b>Test</b></div>", "Test Emila");
-                
+                               
                 return View();
             }
             catch (Exception ex)
