@@ -1154,8 +1154,9 @@ a {
 }
 
 .slider {
-    background: url(images/6667-gradient.jpg) no-repeat center;
-    height: 400px;
+    background: #124680;
+    width: 100%;
+    height: 300px;
 }
 
 .home-search {
@@ -1165,6 +1166,66 @@ a {
     box-shadow: 0px 3px 25px rgba(0,0,0,0.3);
     top: 0;
     height: 470px;
-    width: 200px;
+    width: 550px;
     border-radius: 0px 0px 4px 4px;
+}
+
+    .home-search h2 {
+        text-align: center;
+    }
+
+    .home-search .form-control {
+        border: none;
+        box-shadow: none;
+        border-bottom: 2px solid #124680;
+        height: 40px;
+    }
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.home-search .form-control-placeholder {
+    position: absolute;
+    top: 0;
+    padding: 0px 0 0 13px;
+    margin-top: 10px;
+    transition: all 200ms;
+    opacity: 0.5;
+}
+
+.home-search .form-control:focus {
+    border-color: #124680 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    background-color: #fff !important;
+}
+
+.home-search .form-control::-webkit-input-placeholder {
+    font-weight: 300;
+    color: #124680 !important;
+}
+
+.home-search .form-control:focus + .form-control-placeholder,
+.home-search .form-control:valid + .form-control-placeholder {
+    font-size: 75%;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+    color: #124680 !important;
+}
+
+.home-search .form-group label {
+    margin-bottom: 0px !important;
+    font-weight: 500 !important;
+    font-size: 14px;
+}
+
+.home-search .form-group .fa-marker {
+    position: absolute;
+    right: 9px;
+    top: 10px;
+    font-size: 20px;
+    /* color: #ccc; */
+    opacity: 0.3;
 }
