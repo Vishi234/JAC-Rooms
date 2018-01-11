@@ -13,7 +13,7 @@
     <link href="~/Content/jquery.toast.css" rel="stylesheet" />
     <link href="~/Content/nice-select.css" rel="stylesheet" />
     <script src="~/scripts/common.js"></script>
-    
+
 </head>
 <body class="main-bdy">
     <div class="common-header">
@@ -35,13 +35,9 @@
                                         <li><a href="javascript:void(0)">My Booking</a></li>
                                         <li><a href="javascript:void(0)">My Whitelist</a></li>
                                     </ul>
-                                    <span class="pull-left"><a href="javascript:void(0)">Login</a></span>
-                                    <span class="pull-right"><a href="javascript:void(0)">SignUp</a></span>
-                                    <hr />
-                                    <ul>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-address-book"></i> My Booking</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-list"></i> My Whitelist</a></li>
-                                    </ul>
+                                    <span class="pull-left"><a href="/User/Login">Login</a></span>
+                                    <span class="pull-right"><a href="/User/Register">SignUp</a></span>
+
                                 </div>
                             </div>
                         </li>
@@ -106,6 +102,21 @@
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/filter-tags.js"></script>
     <!-- Angular Material requires Angular.js Libraries -->
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="~/scripts/jquery.ui.datepicker.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".calendar").datepicker({
+                dateFormat: 'dd-mmm-yyyy',
+                defaultDate: -1,
+                minDate: 0,
+                inline: true,
+                firstDay: 1,
+                showOtherMonths: true,
+                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+            });
+        })
+    </script>
+
 </body>
 </html>
