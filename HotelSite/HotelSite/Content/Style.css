@@ -1425,3 +1425,15 @@ a {
 }
  
 .ui-datepicker-other-month .ui-state-default { color: #565656; }
+
+.daterangepicker 
+{
+    
+    width: 500px!important;
+}
+.ranges
+{
+        
+    width: 96%!important;
+    text-align:right!important;
+}
