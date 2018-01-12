@@ -3,9 +3,6 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/User/_LayoutOutside.cshtml";
 }
-<link href="~/Content/jquery.toast.css" rel="stylesheet" />
-<link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
-
 <form action="@Url.Action("LoggingIN","User")" method="post">
     <div class="register_base">
         <div class="container">
@@ -77,7 +74,7 @@
 <script type="text/javascript">
     //$(document).ready(function()
     //{
-       
+
     //})
     function LoadData()
     {
@@ -102,16 +99,30 @@
     }
     function checkEmail()
     {
-        $.get("/User/GetEmail", { email: $("#emailId").val() }, function (data) {
-            if (data.res == true)
+
+
+        try {
+            let Email = $('#emailId').val();
+            if (Email != null && Email != "")
             {
-                $.toast("asdasd");
+                $.get("/User/GetEmail", { email: Email }, function (data) {
+                    if (data.res == true) {
+                        $.toast("asdasd");
+                    }
+                    else {
+                        $.toast("asdasdasda");
+                    }
+                });
             }
             else
             {
-                $.toast("asdasdasda");
+                alert("Please Enter Email ID");
+                return false;
             }
-        });  
+        }
+        catch (e) {
+
+        }
     }
 </script>
 
