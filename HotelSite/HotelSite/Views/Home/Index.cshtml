@@ -8,7 +8,19 @@
         <div class="row">
             <div class="home-search">
                 <h2>Book on India's Largest Hotel Booking Platform</h2>
-                <div class="search-base">
+                <div class="search-change">
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider-check"></span>
+                    </label>
+                    <div class="optName">
+                        <span>Hotel</span>
+                        <span>Holiday</span>
+                    </div>
+                    
+                </div>
+                <div class="search-base hotelBase">
+                    
                     <span>HOTEL</span>
                     <form class="form-inline" action="/action.php">
                         <div class="form-fields">
@@ -36,6 +48,37 @@
                     </form>
 
                    
+                </div>
+
+                <div class="search-base hotelBase">
+
+                    <span>HOLIDAY</span>
+                    <form class="form-inline" action="/action.php">
+                        <div class="form-fields">
+                            <div class="form-group">
+                                <input type="text" id="seachBoxHolidy" class="searchBox form-control" required>
+                                <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
+                                <i class="fa fa-map-marker icon mapIcon"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="checkin" name="daterangepicker_start" class="datePicker form-control" required>
+                                <label class="form-control-placeholder" for="checkin">Check-in</label>
+                                <i class="fa fa-calendar icon"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="checkout" name="daterangepicker_end" value="" class="datepicker2 form-control" required>
+                                <label class="form-control-placeholder" for="checkout">Check-out</label>
+                                <i class="fa fa-calendar icon"></i>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="room" readonly class="form-control" required>
+                                <label class="form-control-placeholder" for="room">1 Pepole 2 Room</label>
+                                <img src="~/Content/images/sort-down.svg" class="img-icon" />
+                            </div>
+                        </div>
+                    </form>
+
+
                 </div>
             </div>
             <div id="calendar" class="calendar"></div>
