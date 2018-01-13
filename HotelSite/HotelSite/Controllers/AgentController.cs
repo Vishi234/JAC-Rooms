@@ -25,6 +25,19 @@ namespace HotelSite.Controllers
             return View();
         }
         [HttpPost]
+        public ActionResult LoggingIN(Signin signin)
+        {
+            Register register = new Register();
+            if (register.SignIn(signin,true))
+            {
+                return View("Dashboard");
+            }
+            else
+            {
+                return View("Login");
+            }
+        }
+        [HttpPost]
         public ActionResult RegisterAgent(FormCollection formCollection)
         {
             string Email = formCollection["EmailID"].ToString();

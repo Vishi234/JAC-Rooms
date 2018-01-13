@@ -22,6 +22,7 @@ namespace HotelSite.Models.Login
     {
         public string EmailID { get; set; }
         public string Password { get; set; }
+        public bool? IsAgent { get; set; }
 
     }
     public class Register
@@ -56,13 +57,14 @@ namespace HotelSite.Models.Login
             }
             return result;
         }
-        public bool SignIn(Signin signin)
+        public bool SignIn(Signin signin,bool IsAgent = false)
         {
             try
             {
                 List<SqlParameter> lstsqlparam = new List<SqlParameter>();
                 lstsqlparam.Add(new SqlParameter("@EmailID", signin.EmailID));
                 lstsqlparam.Add(new SqlParameter("@Password", signin.Password));
+                lstsqlparam.Add(new SqlParameter("@IsAgent", signin.Password));
                 DataSet ds = SqlHelper.ExecuteDataset(sqlconn, "sp_Login", lstsqlparam.ToArray());
                 if (ds.Tables.Count > 0)
                 {
