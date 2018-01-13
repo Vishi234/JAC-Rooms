@@ -9,7 +9,7 @@
     <link href="~/Content/Style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
     <link href="~/Content/bootstrap-3.2.0.min.css" rel="stylesheet">
-   <link href="~/Content/nice-select.css" rel="stylesheet" />
+    <link href="~/Content/nice-select.css" rel="stylesheet" />
     <script src="~/scripts/common.js"></script>
 
 </head>
@@ -128,6 +128,23 @@
             $('.searchBox').focusout(function () {
                 $('.mapIcon').addClass('fa-map-marker');
                 $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
+            });
+            $('.switchType').change(function () {
+                if ($(this).is(":checked")) {
+
+                    $('.hotelBase').removeClass('bounceOutLeft');
+                    $('.hotelBase').addClass('bounceInRight');
+                    $('.holidayBase').addClass('bounceOutLeft');
+                    $('.holidayBase').removeClass('bounceInRight');
+                }
+                else {
+                    $('.hotelBase').removeClass('bounceInRight');
+                    $('.hotelBase').addClass('bounceOutLeft');
+                    $('.holidayBase').removeClass('bounceOutLeft');
+                    $('.holidayBase').addClass('bounceInRight');
+                    $('.holidayBase').css('display', 'block');
+                }
+
             });
         })
     </script>
