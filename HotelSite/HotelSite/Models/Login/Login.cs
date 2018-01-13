@@ -136,8 +136,9 @@ namespace HotelSite.Models.Login
             int result = 0;
             try
             {
-                string query = "select 1 from tbl_AgentLogin where LinkId like '%" + guid + "%'";
-                result = (int)SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query);
+                SqlParameter sqlParameter = new SqlParameter("@LinkId", guid);
+                object obj = SqlHelper.ExecuteScalar(sqlconn, "sp_VerifyAgent", sqlParameter);
+                result = Convert.ToInt32(obj);
             }
             catch (Exception ex)
             {

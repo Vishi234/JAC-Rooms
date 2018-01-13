@@ -40,7 +40,7 @@ namespace HotelSite.Controllers
             Common.SendEmail(body, "clickhere");
             return View("UserValidation");
         }
-
+        [Route(Name ="as")]
         public ViewResult AgentComfirmation()
         {
             Guid activationCode = new Guid(RouteData.Values["id"].ToString());
