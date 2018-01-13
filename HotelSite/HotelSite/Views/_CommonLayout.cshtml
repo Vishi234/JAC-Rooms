@@ -11,6 +11,8 @@
     <link href="~/Content/bootstrap-3.2.0.min.css" rel="stylesheet">
     <link href="~/Content/nice-select.css" rel="stylesheet" />
     <script src="~/scripts/common.js"></script>
+    <link href="~/Content/easy-autocomplete.css" rel="stylesheet" />
+    <link href="~/Content/easy-autocomplete.themes.css" rel="stylesheet" />
 
 </head>
 <body class="main-bdy">
@@ -108,6 +110,7 @@
     <script type="text/javascript" src="~/scripts/daterangerpicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
+    <script src="~/scripts/jquery.easy-autocomplete.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.datePicker').daterangepicker();
@@ -146,6 +149,23 @@
                 }
 
             });
+
+            //Autocomplete start here
+            var searchOption = {
+
+                url: "/Search-Data/Countries.json",//Autocomplete Json File
+
+                getValue: "name",//Field Name to get
+
+                list: {
+                    match: {
+                        enabled: true
+                    }
+                },
+
+                theme: "square"
+            };
+            $(".hotelSearch").easyAutocomplete(searchOption);
         })
     </script>
 

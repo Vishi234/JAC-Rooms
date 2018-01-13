@@ -155,6 +155,8 @@
     <Content Include="Content\bootstrap-3.2.0.min.css" />
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\easy-autocomplete.css" />
+    <Content Include="Content\easy-autocomplete.themes.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\6667-gradient.jpg" />
@@ -185,8 +187,6 @@
     <Content Include="Exception\Exception.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap-select.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\bootstrap3.3.2.min.js" />
@@ -198,6 +198,7 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
     <Content Include="scripts\jquery-ui.min.js" />
+    <Content Include="scripts\jquery.easy-autocomplete.js" />
     <Content Include="scripts\jquery.js" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\jquery.nice-select.js" />
@@ -249,6 +250,7 @@
     <Content Include="Views\_CommonLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Agent\UserValidation.cshtml" />
+    <Content Include="Search-Data\Countries.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -21,13 +21,13 @@
     @RenderBody()
     @Scripts.Render("~/bundle/jquery")
     <script src="~/scripts/bootstrap.min.js"></script>
-    <script src="~/scripts/jquery.toast.js"></script>
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
+    <script src="~/scripts/common.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            debugger;
-            $('select').niceSelect();            
+
+            $('select').niceSelect();
             $(".addProbtn").click(function () {
                 $('.addProperty').removeClass("bounceInRight");
                 $('.addProperty').removeClass("zoomIn");
@@ -56,9 +56,21 @@
                 //   $('.passwordBase').css("display", 'none');
 
             });
-
-
-
+            $(".nxt").click(function () {
+                $('.emailBase').removeClass("zoomIn");
+                $('.emailBase').addClass("zoomOut");
+                $('.passwordBase').removeClass("bounceOutRight");
+                $('.passwordBase').addClass("bounceInRight");
+                $('.passwordBase').css("display", 'block');
+                
+            });
+            $(".fa-arrow-left").click(function ()
+            {
+                $('.passwordBase').removeClass("bounceInRight");
+                $('.emailBase').addClass("zoomIn");
+                $('.passwordBase').addClass("bounceOutRight");
+                $('.emailBase').removeClass("zoomOut");
+            });
         });
 
     </script>

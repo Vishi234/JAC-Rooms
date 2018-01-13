@@ -14,7 +14,11 @@ namespace HotelSite
                 "~/scripts/jquery-1.8.5.min.js",
                 "~/scripts/jquery-1.11.2.min.js",
                 "~/scripts/jquery-1.9.1.min.js",
-                "~/scripts/jquery-3.2.1.min.js"));
+                "~/scripts/jquery-3.2.1.min.js",
+                "~/scripts/bootstrap.min.js",
+                "~/scripts/jquery.js",
+                "~/scripts/jquery.nice-select.js",
+                "~/scripts/common.js"));
 
 
 

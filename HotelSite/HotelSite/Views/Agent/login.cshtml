@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a href="javascript:void(0)" class="nextLogin btn btn-danger">Continue</a>
+                            <a href="javascript:void(0)" id="nxt" class="nxt btn btn-danger">Continue</a>
                         </div>
                         <div class="quickLinks">
                             <p>@Html.ActionLink("Don't have an account?", "register")</p>
@@ -71,14 +71,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function () {
-       
-        $("#emailId").focus();
-    });
-
+   
     function LoadData()
     {
-        debugger;
         var data = {
             email: $('#ForgotEmailID').val()
         }
