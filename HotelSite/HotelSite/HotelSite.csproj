@@ -155,8 +155,7 @@
     <Content Include="Content\bootstrap-3.2.0.min.css" />
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\easy-autocomplete.css" />
-    <Content Include="Content\easy-autocomplete.themes.css" />
+    <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\6667-gradient.jpg" />
@@ -203,6 +202,7 @@
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\jquery.nice-select.js" />
     <Content Include="scripts\jquery.ui.datepicker.min.js" />
+    <Content Include="scripts\moment.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
