@@ -54,13 +54,16 @@ namespace HotelSite.Controllers
             Common.SendEmail(body, "clickhere");
             return View("UserValidation");
         }
-        [Route(Name ="as")]
+        [Route(Name = "as")]
         public ViewResult AgentComfirmation()
         {
             Guid activationCode = new Guid(RouteData.Values["id"].ToString());
             Agent agent = new Agent();
             int rslt = agent.CheckAgent(activationCode);
-            if (rslt == 1) return View("Index");
+            if (rslt == 1)
+            {
+                return View("Index");
+            }
             else
             {
                 ViewBag.Result = rslt;

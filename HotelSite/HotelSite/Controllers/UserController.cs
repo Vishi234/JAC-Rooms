@@ -46,8 +46,6 @@ namespace HotelSite.Controllers
         [HttpPost]
         public ActionResult LoggingIN(Signin signin)
         {
-            signin.IsAgent = true; 
-
             Register register = new Register();
             if (register.SignIn(signin))
             {
