@@ -4,91 +4,62 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/Style.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 </head>
-<body>
+<body class="Dash_back">
     <div class="login_header">
         <div class="container">
             <div class="login_top">
-                <div class="top_nav">
-                    <span class="myAccount">Hi Vishal<img src="~/Content/images/sort-down.svg" /></span>
-                    <div class="hotelier_drop myAcco bounceInLeft" id="hot_drop">
-                        <div class="triangle-with-shadow">
-                        </div>
-                        <div class="drop_body">
-                            <img src="~/Content/images/user.png" />
-                            <ul>
-                                <li><a href="javascript:void(0)">My Booking</a></li>
-                                <li><a href="javascript:void(0)">My Profile</a></li>
-                                <li><a href="javascript:void(0)">Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <span class="supportBtn">Support<img src="~/Content/images/sort-down.svg" /></span>
-                    <div class="hotelier_drop supportDrop bounceInLeft" id="supportDrop">
-                        <div class="triangle-with-shadow">
-                        </div>
-                        <div class="drop_body">
+                <div class="common-nav">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)">
+                                Hi Vishal <img src="~/Content/images/sort-down.svg" />
+                            </a>
+                            <div class="nav-drop">
+                                <div class="triangle-with-shadow">
 
-                            <ul>
-                                <li><a href="javascript:void(0)">Contact Us</a></li>
-                                <li><a href="javascript:void(0)">Complete Booking</a></li>
-                                <li><a href="javascript:void(0)">Make a Payment</a></li>
-                                <li><a href="javascript:void(0)">Hotel Cancellation Charges</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                                </div>
+                                <div class="drop_body">
+                                    <img src="~/Content/images/user.png" />
+                                    <ul>
+                                        <li><a href="javascript:void(0)">My Booking</a></li>
+                                        <li><a href="javascript:void(0)">My Profile</a></li>
+                                        <li><a href="javascript:void(0)">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                Support <img src="~/Content/images/sort-down.svg" />
+                            </a>
+                            <div class="nav-drop">
+                                <div class="triangle-with-shadow">
 
+                                </div>
+                                <div class="drop_body">
+
+                                    <ul>
+                                        <li><a href="javascript:void(0)">Contact Us</a></li>
+                                        <li><a href="javascript:void(0)">Complete Booking</a></li>
+                                        <li><a href="javascript:void(0)">Make a Payment</a></li>
+                                        <li><a href="javascript:void(0)">Hotel Cancellation Charges</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
     @RenderBody()
-    <script src="~/scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/scripts/bootstrap.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+    @Scripts.Render("~/bundle/jquery")
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $(".myAccount").toggle(function () {
-                $('#supportDrop').addClass("bounceOutRight")
-                $('#supportDrop').removeClass("bounceInRight");
-                //$('.hotelier_drop').css("display", 'none');
-                $(".supportBtn").removeClass("top_active");
-                $(this).addClass("top_active");
-                $('.myAcco').css("display", 'block');
-                $('#hot_drop').removeClass("bounceOutRight");
-                $('#hot_drop').addClass("bounceInRight");//bounceOutRight
-
-
-            }, function () {
-                $('#hot_drop').addClass("bounceOutRight")
-                $('#hot_drop').removeClass("bounceInRight");
-                //$('.hotelier_drop').css("display", 'none');
-                $(this).removeClass("top_active");
-            });
-
-            $(".supportBtn").toggle(function () {
-                $('#hot_drop').addClass("bounceOutRight")
-                $('#hot_drop').removeClass("bounceInRight");
-                //$('.hotelier_drop').css("display", 'none');
-                $(".myAccount").removeClass("top_active");
-                $(this).addClass("top_active");
-                $('.supportDrop').css("display", 'block');
-                $('#supportDrop').removeClass("bounceOutRight");
-                $('#supportDrop').addClass("bounceInRight");//bounceOutRight
-
-
-            }, function () {
-                $('#supportDrop').addClass("bounceOutRight")
-                $('#supportDrop').removeClass("bounceInRight");
-                //$('.hotelier_drop').css("display", 'none');
-                $(this).removeClass("top_active");
-            });
         });
     </script>
 </body>

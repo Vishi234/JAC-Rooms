@@ -4,97 +4,92 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/Style.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
-    @*<link href="~/Content/bootstrap-3.2.0.min.css" rel="stylesheet">*@
-    <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
-    <link href="~/Content/jquery.toast.css" rel="stylesheet" />
-    <script src="~/scripts/common.js"></script>
-
 </head>
 <body class="login_body">
     <div class="login_header">
         <div class="container">
             <div class="login_top">
-                <div class="top_nav">
-                    <span class="myButton">Are you hotelier<img src="~/Content/images/sort-down.svg" /></span>
-                    <div class="hotelier_drop bounceInLeft" id="hot_drop">
-                        <div class="triangle-with-shadow">
-                        </div>
-                        <div class="drop_body">
-                            <a href="/Agent/Login/" class="btn_active">Login </a>
-                            <p>Don't have an account?</p>
-                            <hr />
-                            <a href="/Agent/Register/">Register</a>
-                        </div>
-                    </div>
+                <div class="common-nav">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)">
+                                Are you hotelier? <img src="~/Content/images/sort-down.svg" />
+                            </a>
+                            <div class="nav-drop">
+                                <div class="triangle-with-shadow">
+
+                                </div>
+                                <div class="drop_body">
+                                    <a href="/Agent/Login/" class="btn_active">Login </a>
+                                    <p>Don't have an account?</p>
+                                    <hr />
+                                    <a href="/Agent/Register/">Register</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+                
             </div>
         </div>
     </div>
     @RenderBody()
-    <script src="~/scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/scripts/bootstrap.min.js"></script>
-    <script src="~/scripts/jquery.min.js"></script>
-    <script src="~/scripts/jquery-ui.min.js"></script>
-    <script src="~/scripts/jquery-1.11.2.min.js"></script>
-    <script src="~/scripts/bootstrap3.3.2.min.js"></script>
-    <script src="~/scripts/jquery-1.4.2.min.js"></script>
-    <script src="~/scripts/jquery-1.8.5.min.js"></script>
-    @*<script src="~/scripts/jquery.js"></script>
-    <script src="~/scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/scripts/jquery.toast.min.js"></script>
-    <script src="~/scripts/jquery.toast.js"></script>*@
+    @Scripts.Render("~/bundle/jquery")
+
     <script type="text/javascript">
         $(document).ready(function () {
-           
-            $(".myButton").toggle(function () {
-                $(this).addClass("top_active");
-                $('.hotelier_drop').css("display", 'block');
-                $('#hot_drop').removeClass("bounceOutRight");
-                $('#hot_drop').addClass("bounceInRight");//bounceOutRight
 
-            }, function () {
-                $('#hot_drop').removeClass("bounceInRight");
+            $(".nextLogin").click(function () {
 
-                $('#hot_drop').addClass("bounceOutRight");
-                $(this).removeClass("top_active");
+                if (checkEmail()) {
+                    $('.emailBase').removeClass("zoomIn");
+                    $('.emailBase').addClass("zoomOut");
+                    $('.passwordBase').removeClass("bounceOutRight");
+                    $('.passwordBase').addClass("bounceInRight");
+                    $('.passwordBase').css("display", 'block');
+                }
+                else {
+                    return false;
+                }
+
+
             });
-
-            $(".nextLogin").toggle(function () {
-                $('.emailBase').removeClass("zoomIn");//bounceOutLeft
-                $('.emailBase').addClass("zoomOut");//bounceOutLeft
-                $('.passwordBase').removeClass("bounceOutRight");
-                $('.passwordBase').addClass("bounceInRight");
-                $('.passwordBase').css("display", 'block');
-
-            }, function () {
-                $('.emailBase').removeClass("zoomIn");//bounceOutLeft
-                $('.emailBase').addClass("zoomOut");//bounceOutLeft
-                $('.passwordBase').removeClass("bounceOutRight");
-                $('.passwordBase').addClass("bounceInRight");
-                // $('.passwordBase').css("display", 'none');
-            });
-            //fa-arrow-left
-            $(".fa-arrow-left").toggle(function () {
-                $('.emailBase').removeClass("zoomOut");//bounceOutLeft
+            $(".fa-arrow-left").click(function () {
                 $('.passwordBase').removeClass("bounceInRight");
-                $('.emailBase').addClass("zoomIn");//bounceOutLeft
-
+                $('.emailBase').addClass("zoomIn");
                 $('.passwordBase').addClass("bounceOutRight");
-                //   $('.passwordBase').css("display", 'none');
-
-            }, function () {
-                $('.emailBase').removeClass("zoomOut");//bounceOutLeft
-                $('.emailBase').addClass("zoomIn");//bounceOutLeft
-                $('.passwordBase').removeClass("bounceInRight");
-                $('.passwordBase').addClass("bounceOutRight");
-
+                $('.emailBase').removeClass("zoomOut");
             });
+
+
         });
+        function checkEmail() {
 
+            try {
+                let Email = $('.emailId').val();
+                if (Email != null && Email != "") {
+                    $.get("/User/GetEmail", { email: Email }, function (data) {
+                        if (data.res == true) {
+                            //alert(data.res);
+                            return true;
+                        }
+                        else {
+                            //$.toast("asdasdasda");
+                            alert("This email id not registered with JAC rooms.");
+                            return false;
+                        }
+                    });
+                  //  return true;
+                }
+                else {
+                    alert("Please Enter Email ID");
+                    return false;
+                }
+            }
+            catch (e) { }
+        }
     </script>
 </body>
 </html>

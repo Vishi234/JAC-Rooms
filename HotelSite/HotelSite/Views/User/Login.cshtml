@@ -16,11 +16,11 @@
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Your Email ID<span class="mandate">*</span></label>
-                            <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Registered Email ID">
+                            <input type="email" class="emailId form-control" id="emailId" name="EmailID" placeholder="Registered Email ID">
                         </div>
 
                         <div class="form-group">
-                            <a href="javascript:void(0)" onclick="checkEmail()" class="nextLogin btn-primary">Continue</a>
+                            <a href="javascript:void(0)" class="nextLogin btn btn-danger">Continue</a>
                         </div>
                         <div class="quickLinks">
                             <p>@Html.ActionLink("Don't have an account?", "Register")</p>
@@ -41,7 +41,7 @@
                             <input type="text" class="form-control" id="Password" name="Password" placeholder="Enter your Password">
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn-primary" value="Login" />
+                            <input type="submit" class="btn btn-danger" value="Login" />
                         </div>
                         <div class="quickLinks">
                             <p> <a href="javascript:void(0)" onclick="showModal('forgotPassword', 'zoomIn', 'zoomOut');">Forgot password?</a></p>
@@ -97,32 +97,6 @@
             }
         });
     }
-    function checkEmail()
-    {
 
-
-        try {
-            let Email = $('#emailId').val();
-            if (Email != null && Email != "")
-            {
-                $.get("/User/GetEmail", { email: Email }, function (data) {
-                    if (data.res == true) {
-                        $.toast("asdasd");
-                    }
-                    else {
-                        $.toast("asdasdasda");
-                    }
-                });
-            }
-            else
-            {
-                alert("Please Enter Email ID");
-                return false;
-            }
-        }
-        catch (e) {
-
-        }
-    }
 </script>
 

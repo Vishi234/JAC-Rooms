@@ -12,7 +12,7 @@
     <div class="login_header">
         <div class="container">
             <div class="login_top">
-                <div class="top_nav">
+                <div class="top_nav agent_auth">
                     <span>Already have an account? <a href="/Agent/login/" class="btn btn-danger">Login now</a></span>
                 </div>
             </div>
@@ -20,10 +20,8 @@
     </div>
     @RenderBody()
     @Scripts.Render("~/bundle/jquery")
-    <script src="~/scripts/bootstrap.min.js"></script>
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
-    <script src="~/scripts/common.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -62,10 +60,9 @@
                 $('.passwordBase').removeClass("bounceOutRight");
                 $('.passwordBase').addClass("bounceInRight");
                 $('.passwordBase').css("display", 'block');
-                
+
             });
-            $(".fa-arrow-left").click(function ()
-            {
+            $(".fa-arrow-left").click(function () {
                 $('.passwordBase').removeClass("bounceInRight");
                 $('.emailBase').addClass("zoomIn");
                 $('.passwordBase').addClass("bounceOutRight");
