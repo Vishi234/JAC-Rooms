@@ -31,13 +31,12 @@
                         </li>
                     </ul>
                 </div>
-                
             </div>
         </div>
     </div>
     @RenderBody()
     @Scripts.Render("~/bundle/jquery")
-
+    
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -54,7 +53,6 @@
                     return false;
                 }
 
-
             });
             $(".fa-arrow-left").click(function () {
                 $('.passwordBase').removeClass("bounceInRight");
@@ -62,8 +60,6 @@
                 $('.passwordBase').addClass("bounceOutRight");
                 $('.emailBase').removeClass("zoomOut");
             });
-
-
         });
         function checkEmail() {
 
@@ -81,7 +77,7 @@
                             return false;
                         }
                     });
-                  //  return true;
+                    //  return true;
                 }
                 else {
                     alert("Please Enter Email ID");

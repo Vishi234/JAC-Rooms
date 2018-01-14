@@ -23,7 +23,6 @@ namespace HotelSite.Models.Login
         public string EmailID { get; set; }
         public string Password { get; set; }
         public bool? IsAgent { get; set; } = false;
-
     }
     public class Register
     {
@@ -70,7 +69,7 @@ namespace HotelSite.Models.Login
                 {
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        HttpContext.Current.Session["UserID"] = ds.Tables[0].Rows[0]["UserID"].ToString();  
+                        HttpContext.Current.Session["UserID"] = ds.Tables[0].Rows[0]["UserID"].ToString();
                         HttpContext.Current.Session["Name"] = ds.Tables[0].Rows[0]["FirstName"].ToString() + ds.Tables[0].Rows[0]["LastName"].ToString();
                         HttpContext.Current.Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
                         HttpContext.Current.Session["Mobile"] = ds.Tables[0].Rows[0]["Mobile"].ToString();
@@ -96,8 +95,8 @@ namespace HotelSite.Models.Login
             bool result = false;
             try
             {
-                string query = "select 1 from tbl_User_Detail where lower(Email) = '"+email.ToLower()+"'";
-                result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? false : true ;
+                string query = "select 1 from tbl_User_Detail where lower(Email) = '" + email.ToLower() + "'";
+                result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? false : true;
             }
             catch (Exception ex)
             {

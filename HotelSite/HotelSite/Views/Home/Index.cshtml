@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="home-search">
+
                 <h2>Book on India's Largest Hotel Booking Platform</h2>
                 <div class="search-change">
                     <label class="switch">
@@ -19,7 +20,6 @@
                     </div>
                 </div>
                 <div class="search-base hotelBase">
-
                     <span>HOTEL</span>
                     <form class="form-inline" action="/action.php">
                         <div class="form-fields">
@@ -42,6 +42,8 @@
                                 <input type="text" id="room" readonly class="form-control" required>
                                 <label class="form-control-placeholder" for="room">1 Pepole 2 Room</label>
                                 <img src="~/Content/images/sort-down.svg" class="img-icon" />
+
+
                             </div>
                             <div class="form-group">
                                 <a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>
@@ -51,6 +53,76 @@
 
 
                 </div>
+
+
+                <div class="nav-drop roomDetails">
+                    <div class="triangle-with-shadow">
+
+                    </div>
+                    <div class="nav-list">
+                        <div class="room_list">
+                            <h5>Room 1:</h5>
+                            <div class="adult_age">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <h6>Adults</h6>
+                                        <p>Above 12 years</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn-adult" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                    <span class="fa fa-minus"></span>
+                                                </button>
+                                            </span>
+                                            <input type="text" readonly name="quant[1]" class="form-control input-adult" value="1" min="1" max="10">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn-adult" data-type="plus" data-field="quant[1]">
+                                                    <span class="fa fa-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="adult_age">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <h6>Children</h6>
+                                        <p>Below 0 years</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn-children" disabled="disabled" data-type="minus" data-field="quant[2]">
+                                                    <span class="fa fa-minus"></span>
+                                                </button>
+                                            </span>
+                                            <input type="text" readonly name="quant[2]" class="form-control input-children" value="1" min="1" max="10">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn-children" data-type="plus" data-field="quant[2]">
+                                                    <span class="fa fa-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="room_base"></div>
+                        <div class="ButtonGroup">
+                            <a href="javascript:void(0)" onclick="addRoom();" class="pull-left btn btn-light">Add Room</a>
+                            <a href="javascript:void(0)" class="pull-right btn btn-danger">Done</a>
+                        </div>
+
+                    </div>
+                </div>
+
 
                 <div class="search-base holidayBase">
 
@@ -81,7 +153,7 @@
 
                 </div>
             </div>
-            <div id="calendar" class="calendar"></div>
+
         </div>
     </div>
 </div>
