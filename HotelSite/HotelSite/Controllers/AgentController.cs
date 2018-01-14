@@ -28,7 +28,8 @@ namespace HotelSite.Controllers
         public ActionResult LoggingIN(Signin signin)
         {
             Register register = new Register();
-            if (register.SignIn(signin,true))
+            signin.IsAgent = true;
+            if (register.SignIn(signin))
             {
                 return View("Dashboard");
             }
