@@ -122,16 +122,12 @@ a {
     background: #3b5998;
 }
 
-.Dash_back {
-    background: #F0F3F4 !important;
-}
-
 .login_body {
-    background-repeat: repeat-x !important;
-    background-size: 75% !important;
-    background-position: top !important;
-    background-image: url(/Content/images/bridge.png) !important;
-    background-color: #f4f6f8 !important;
+    background-repeat: repeat-x;
+    background-size: 75%;
+    background-position: top;
+    background-image: url(/Content/images/bridge.png);
+    background-color: #f4f6f8;
 }
 
 .login_header {
@@ -149,7 +145,7 @@ a {
 }
 
 .top_nav {
-    padding: 0px;
+    padding: 15px;
     text-align: right;
 }
 
@@ -233,27 +229,11 @@ a {
         background: #f37758;
     }
 
-.login_top .common-nav li .nav-drop {
-    margin-left: -37px;
-    margin-top: -9px;
-}
-
-.Dash_back .triangle-with-shadow {
-    margin-left: -52px;
-}
-
-.Dash_back .nav-drop {
-    margin-left: -43px;
-    width: 180px;
-}
-
 .hotelier_drop {
     display: none;
     width: 200px;
     margin-left: 890px;
     position: absolute;
-    margin-left: 925px;
-    margin-top: -14px;
 }
 
 .drop_body p {
@@ -779,8 +759,6 @@ a {
 
 .supportDrop {
     width: 170px !important;
-    margin-top: 4px;
-    z-index: 9999999;
 }
 
     .supportDrop .triangle-with-shadow:after {
@@ -789,9 +767,7 @@ a {
 
 .myAcco {
     width: 170px !important;
-    margin-left: 826px !important;
-    margin-top: 4px !important;
-    z-index: 9999999;
+    margin-left: 800px !important;
 }
 
 .drop_body li {
@@ -1095,6 +1071,7 @@ a {
     position: absolute;
     margin-left: -60px;
     margin-top: -14px;
+    background: #fff;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
@@ -1175,6 +1152,7 @@ a {
     box-shadow: 0px 2px 4px rgba(0,0,0,0.4) !important;
     font-weight: 500 !important;
     cursor: pointer !important;
+    
 }
 
 .btn-success {
@@ -1570,23 +1548,7 @@ input:checked + .slider-check:before {
         .holidayBase .form-fields .form-group:last-child {
             border-right: none !important;
         }
-
-    .holidayBase .form-control {
-        width: 91% !important;
-    }
-
-.dashboard-header {
-    padding: 15px !important;
-}
-
-.form-fields .form-group:last-child {
-    padding: 0px;
-}
-
-.searchBtn {
-    padding: 11px !important;
-    /* display: block; */
-    width: 125px;
-    margin-top: -3px;
-    font-size: 18px !important;
-}
+        .holidayBase .form-control
+        {
+            width:91%!important;
+        }
