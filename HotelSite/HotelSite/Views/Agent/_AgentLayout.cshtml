@@ -4,15 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/agent_style.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
-    <link href="~/Content/bootstrap-3.2.0.min.css" rel="stylesheet">
-    <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
-    <link href="~/Content/jquery.toast.css" rel="stylesheet" />
-    <link href="~/Content/nice-select.css" rel="stylesheet" />
-    <script src="~/scripts/common.js"></script>
 </head>
 <body>
     <div class="header-top">
@@ -30,21 +23,31 @@
                         </div>
                     </div>
                     <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2">
-                        <div class="UserProfile">
-                            <span class="myButton pull-right"><img src="~/Content/images/user.png" /> <img src="~/Content/images/sort-down.svg" /></span>
+                        <div class="common-nav">
+                            <ul>
+                                <li>
+                                    <div class="UserProfile">
+                                        <span class="myButton pull-right"><img src="~/Content/images/user.png" /> <img src="~/Content/images/sort-down.svg" /></span>
+                                    </div>
+                                    <div class="nav-drop">
+                                        <div class="triangle-with-shadow">
+
+                                        </div>
+                                        <div class="drop_body">
+                                            <p>Welcome Hotel Yes</p>
+                                            <ul>
+                                                <li><a href="/Agent/property"><i class="fa fa-plus"></i> Add Hotel</a></li>
+                                                <li><a href="javascript:void(0)">Change Password</a></li>
+                                                <li><a href="javascript:void(0)">Logout</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
                         </div>
-                        <div class="hotelier_drop">
-                            <div class="triangle-with-shadow">
-                            </div>
-                            <div class="drop_body">
-                               <p>Welcome Hotel Yes</p>
-                                <ul>
-                                    <li><a href="/Agent/property"><i class="fa fa-plus"></i> Add Hotel</a></li>
-                                    <li><a href="javascript:void(0)">Change Password</a></li>
-                                    <li><a href="javascript:void(0)">Logout</a></li>
-                                </ul>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -99,92 +102,28 @@
         </div>
     </div>
     @RenderBody()
-    <script src="~/scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/scripts/bootstrap.min.js"></script>
-    <script src="~/scripts/jquery.min.js"></script>
-    <script src="~/scripts/jquery-ui.min.js"></script>
-    <script src="~/scripts/jquery-1.11.2.min.js"></script>
-    <script src="~/scripts/bootstrap3.3.2.min.js"></script>
-    <script src="~/scripts/jquery-1.4.2.min.js"></script>
-    <script src="~/scripts/jquery-1.8.5.min.js"></script>
-    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    @*<script src="~/scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/scripts/bootstrap.min.js"></script>
+        <script src="~/scripts/jquery.min.js"></script>
+        <script src="~/scripts/jquery-ui.min.js"></script>
+        <script src="~/scripts/jquery-1.11.2.min.js"></script>
+        <script src="~/scripts/bootstrap3.3.2.min.js"></script>
+        <script src="~/scripts/jquery-1.4.2.min.js"></script>
+        <script src="~/scripts/jquery-1.8.5.min.js"></script>
+        <script src="~/scripts/jquery-1.9.1.min.js"></script>
+        <script src="~/scripts/jquery.js"></script>
+        <script src="~/scripts/jquery.nice-select.js"></script>
+        <script src="~/scripts/filter-tags.js"></script>*@
+    @Scripts.Render("~/bundle/jquery")
+
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
-    <script src="~/scripts/filter-tags.js"></script>
-    <script src="~/scripts/jquery.toast.min.js"></script>
-    <script src="~/scripts/jquery.toast.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            //$.toast({
-            //    heading: 'Success',
-            //    text: 'Loaders are enabled by default. Use `loader`, `loaderBg` to change the default behavior',
-            //    icon: 'info',
-            //    loader: true,        // Change it to false to disable loader
-            //    loaderBg: '#9EC600'  // To change the background
-            //});
-
             $('select').niceSelect();
-            function toggleIcon(e) {
-                $(e.target)
-                    .prev('.panel-heading')
-                    .find(".more-less")
-                    .toggleClass('glyphicon-plus glyphicon-minus');
-            }
-            $('.panel-group').on('hidden.bs.collapse', toggleIcon);
-            $('.panel-group').on('shown.bs.collapse', toggleIcon);
 
-            $(function () {
 
-                $('body').on('click', '.list-group .list-group-item', function () {
-                    $(this).toggleClass('active');
-                });
-                $('.list-arrows button').click(function () {
-                    var $button = $(this), actives = '';
-                    if ($button.hasClass('move-left')) {
-                        actives = $('.list-right ul li.active');
-                        actives.clone().appendTo('.list-left ul');
-                        actives.remove();
-                    } else if ($button.hasClass('move-right')) {
-                        actives = $('.list-left ul li.active');
-                        actives.clone().appendTo('.list-right ul');
-                        actives.remove();
-                    }
-                });
-                $('.dual-list .selector').click(function () {
-                    var $checkBox = $(this);
-                    if (!$checkBox.hasClass('selected')) {
-                        $checkBox.addClass('selected').closest('.well').find('ul li:not(.active)').addClass('active');
-                        $checkBox.children('i').removeClass('glyphicon-unchecked').addClass('glyphicon-check');
-                    } else {
-                        $checkBox.removeClass('selected').closest('.well').find('ul li.active').removeClass('active');
-                        $checkBox.children('i').removeClass('glyphicon-check').addClass('glyphicon-unchecked');
-                    }
-                });
-                $('[name="SearchDualList"]').keyup(function (e) {
-                    var code = e.keyCode || e.which;
-                    if (code == '9') return;
-                    if (code == '27') $(this).val(null);
-                    var $rows = $(this).closest('.dual-list').find('.list-group li');
-                    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-                    $rows.show().filter(function () {
-                        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-                        return !~text.indexOf(val);
-                    }).hide();
-                });
 
-            });
-
-        });
-        $(".myButton").click(function () {
-            $('.hotelier_drop').css('display', 'block');
-            $('.hotelier_drop').toggleClass('bounceInRight', 'bounceOutRight')
-           
-            
-        });
-        var selector = $(".navigation li a");
-        $(selector).on('click', function () {
-            $(selector).removeClass('navActive');
-            $(this).addClass('navActive');
         });
     </script>
 </body>
