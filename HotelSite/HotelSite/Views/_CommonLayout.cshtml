@@ -95,6 +95,10 @@
         var children = 2;
         var html = '';
         $(document).ready(function () {
+
+            $('.rooMHover').click(function () {
+                $('.roomDetails').toggle();
+            });
             $('.datePicker').daterangepicker();
             $('.datePicker').keydown(function () {
                 return false;
@@ -263,6 +267,8 @@
 
             });
         });
+
+        
 
         function addRoom() {
 

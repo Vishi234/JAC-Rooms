@@ -1609,8 +1609,12 @@ input:checked + .slider-check:before {
     right: 310px !important;
     margin-top: -11px !important;
     overflow: visible !important;
+    display: none;
 }
-
+.rooMHover:hover .roomDetails
+{
+    display:block;
+}
     .roomDetails .triangle-with-shadow {
         margin-left: 70px !important;
     }
