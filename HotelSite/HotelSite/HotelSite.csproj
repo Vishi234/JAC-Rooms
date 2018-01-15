@@ -159,13 +159,18 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\6667-gradient.jpg" />
+    <Content Include="Content\images\air-conditioner.svg" />
     <Content Include="Content\images\automation.svg" />
+    <Content Include="Content\images\bed.svg" />
     <Content Include="Content\images\bridge.png" />
     <Content Include="Content\images\bundle.svg" />
+    <Content Include="Content\images\cleaning-service.svg" />
+    <Content Include="Content\images\cutlery.svg" />
     <Content Include="Content\images\inbox.svg" />
     <Content Include="Content\images\Lead_generation.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\migration.svg" />
+    <Content Include="Content\images\monitor.svg" />
     <Content Include="Content\images\personalized.svg" />
     <Content Include="Content\images\relationship_management.png" />
     <Content Include="Content\images\Sales.png" />
@@ -181,6 +186,8 @@
     <Content Include="Content\images\user.png" />
     <Content Include="Content\images\user.svg" />
     <Content Include="Content\images\website.svg" />
+    <Content Include="Content\images\wifi.svg" />
+    <Content Include="Content\jquery.auto-complete.css" />
     <Content Include="Content\nice-select.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Exception\Exception.txt" />
@@ -197,7 +204,8 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
     <Content Include="scripts\jquery-ui.min.js" />
-    <Content Include="scripts\jquery.easy-autocomplete.js" />
+    <Content Include="scripts\jquery.auto-complete.js" />
+    <Content Include="scripts\jquery.auto-complete.min.js" />
     <Content Include="scripts\jquery.js" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\jquery.nice-select.js" />

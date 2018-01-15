@@ -1032,7 +1032,7 @@ a {
 
 
 .main-bdy {
-    background: #f4f4f4;
+    background: #f4f4f4 !important;
 }
 
 .common-header {
@@ -1567,8 +1567,14 @@ input:checked + .slider-check:before {
         border-right: 1px solid #000 !important;
     }
 
-        .holidayBase .form-fields .form-group:last-child {
+        .holidayBase .form-fields .form-group:nth-child(3) {
             border-right: none !important;
+            width: 400px !important;
+        }
+
+        .holidayBase .form-fields .form-group:last-child {
+            width: 125px !important;
+            text-align: right;
         }
 
     .holidayBase .form-control {
@@ -1590,3 +1596,90 @@ input:checked + .slider-check:before {
     margin-top: -3px;
     font-size: 18px !important;
 }
+
+.center {
+    width: 150px;
+    margin: 40px auto;
+}
+
+.roomDetails {
+    max-height: 800px !important;
+    width: 270px !important;
+    margin-left: 0px !important;
+    right: 310px !important;
+    margin-top: -11px !important;
+    overflow: visible !important;
+}
+
+    .roomDetails .triangle-with-shadow {
+        margin-left: 70px !important;
+    }
+
+    .roomDetails .nav-list {
+        padding: 0px !important;
+        max-height: 400px;
+        height:auto;
+        overflow: scroll;
+    }
+
+    .roomDetails .room_list {
+        padding: 5px 10px;
+    }
+
+.room_list h5 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid #ccc !important;
+    padding-bottom: 4px !important;
+}
+
+.room_list h6 {
+    font-size: 14px !important;
+    margin-bottom: 3px !important;
+    font-weight: 500;
+}
+
+.room_list p:nth-child(1) {
+    font-size: 12px !important;
+    color: #808080 !important;
+}
+
+.input-group {
+    width: 112px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.adult_age {
+    display: inline-block !important;
+}
+
+.input-group-btn {
+    margin: 0px !important;
+}
+
+.input-group .form-control {
+    border: 1px solid #ccc !important;
+    border-radius: 0px !important;
+    height: 34px !important;
+    width: 45px !important;
+    text-align: center !important;
+    margin-left: 0px !important;
+}
+
+.input-group .btn-default {
+    padding: 6px 1px !important;
+}
+
+.ButtonGroup {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 19px;
+}
+
+    .ButtonGroup .btn {
+        box-shadow: none !important;
+        border-radius: 0px !important;
+        margin-top: 0px;
+    }

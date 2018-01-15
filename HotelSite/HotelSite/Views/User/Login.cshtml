@@ -26,7 +26,6 @@
                             <p>@Html.ActionLink("Don't have an account?", "Register")</p>
                         </div>
                     </div>
-
                 </div>
                 <div class="register_form loginForm passwordBase">
                     <i class="fa fa-arrow-left pull-left"></i>
@@ -51,9 +50,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </form>
 <div class="modal-bg">
@@ -69,15 +65,12 @@
 
     </div>
 </div>
-
-
 <script type="text/javascript">
     //$(document).ready(function()
     //{
 
     //})
-    function LoadData()
-    {
+    function LoadData() {
         debugger;
         var data = {
             email: $('#ForgotEmailID').val()
@@ -89,7 +82,7 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function () {
-                 alert("Data has been added successfully.");
+                alert("Data has been added successfully.");
                 //LoadData();
             },
             error: function () {
