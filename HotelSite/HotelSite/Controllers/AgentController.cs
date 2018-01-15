@@ -54,7 +54,6 @@ namespace HotelSite.Controllers
             Common.SendEmail(body, "clickhere");
             return View("UserValidation");
         }
-        [Route(Name = "as")]
         public ViewResult AgentComfirmation()
         {
             Guid activationCode = new Guid(RouteData.Values["id"].ToString());
@@ -69,6 +68,12 @@ namespace HotelSite.Controllers
                 ViewBag.Result = rslt;
                 return View("UserValidation");
             }
+        }
+
+        [HttpPost]
+        public string SaveHotelBasics()
+        {
+            return "thanks";
         }
     }
 }
