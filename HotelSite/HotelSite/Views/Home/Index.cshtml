@@ -39,8 +39,8 @@
                                 <i class="fa fa-calendar icon"></i>
                             </div>
                             <div class="form-group rooMHover">
-                                <input type="text" id="room" readonly class="form-control" required>
-                                <label class="form-control-placeholder" for="room">1 Pepole 2 Room</label>
+                                <input type="text" id="room" readonly class="form-control room_val" value="2 Pepole 1 Room" required>
+                                <label class="form-control-placeholder" for="room"></label>
                                 <img src="~/Content/images/sort-down.svg" class="img-icon" />
                             </div>
                             <div class="form-group">
@@ -75,7 +75,7 @@
                                                     <span class="fa fa-minus"></span>
                                                 </button>
                                             </span>
-                                            <input type="text" readonly name="quant[1]" class="form-control input-adult" value="1" min="1" max="10">
+                                            <input type="text" readonly name="quant[1]" class="form-control input-adult adultCount" value="1" min="1" max="10">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default btn-adult" data-type="plus" data-field="quant[1]">
                                                     <span class="fa fa-plus"></span>
@@ -100,7 +100,7 @@
                                                     <span class="fa fa-minus"></span>
                                                 </button>
                                             </span>
-                                            <input type="text" readonly name="quant[2]" class="form-control input-children" value="1" min="1" max="10">
+                                            <input type="text" readonly name="quant[2]" class="form-control input-children childrenCount" value="1" min="1" max="10">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default btn-children" data-type="plus" data-field="quant[2]">
                                                     <span class="fa fa-plus"></span>
@@ -115,7 +115,7 @@
                         <div class="room_base"></div>
                         <div class="ButtonGroup">
                             <a href="javascript:void(0)" onclick="addRoom();" class="pull-left btn btn-light">Add Room</a>
-                            <a href="javascript:void(0)" class="pull-right btn btn-danger">Done</a>
+                            <a href="javascript:void(0)" class="pull-right btn btn-danger saveRoom">Done</a>
                         </div>
 
                     </div>

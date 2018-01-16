@@ -93,6 +93,8 @@
     <script type="text/javascript">
         var divId = 1;
         var children = 2;
+        var adultQuant = 2;
+        var childQuant = 3;
         var html = '';
         $(document).ready(function () {
 
@@ -119,6 +121,7 @@
                 $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
             });
             $('.switchType').change(function () {
+                $('.roomDetails').hide();
                 if ($(this).is(":checked")) {
 
                     $('.hotelBase').removeClass('bounceOutLeft');
@@ -266,32 +269,156 @@
 
 
             });
+            var Pepole = 0;
+            $('.saveRoom').click(function () {
+                Pepole = 0;
+                $(".room_list :text").each(function () {
+                    var value = parseInt($(this).val());
+                    Pepole = Pepole + value;
+                });
+                var Room = divId;
+                $('.room_val').val(Pepole + " pepole " + Room + " room");
+                $('.roomDetails').hide();
+            });
         });
 
-        
+
 
         function addRoom() {
 
             if (divId >= 1) {
                 divId = divId + 1;
+                adultQuant = adultQuant + 1;
+                childQuant = childQuant + 2;
                 children = children + 1;
             }
 
             html += '<div class="room_list" id=' + divId + '><h5>Room ' + divId + ':</h5><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Adults</h6>',
             html += '<p>Above 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
-            html += '<button type="button" class="btn btn-default btn-adult' + divId + '" disabled="disabled" data-type="minus" data-field="quant[' + divId + ']"><span class="fa fa-minus"></span>',
-            html += '</button></span><input type="text" readonly name="quant[' + divId + ']" class="form-control input-adult' + divId + '" value="1" min="1" max="10"><span class="input-group-btn">',
-            html += '<button type="button" class="btn btn-default btn-adult" data-type="plus" data-field="quant[' + divId + ']"><span class="fa fa-plus"></span>',
+            html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + divId + '" disabled="disabled" data-type="minus" data-field="quant[' + adultQuant + ']"><span class="fa fa-minus"></span>',
+            html += '</button></span><input type="text" onfocusin="adultFocusin(this);" onchange="adultChange(this,' + divId + ');" readonly name="quant[' + adultQuant + ']" class="adultCount form-control input-adult' + divId + '" value="1" min="1" max="10"><span class="input-group-btn">',
+            html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult" data-type="plus" data-field="quant[' + adultQuant + ']"><span class="fa fa-plus"></span>',
             html += '</button></span></div></div></div></div><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Children</h6>',
             html += '<p>Below 0 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
-            html += '<button type="button" class="btn btn-default btn-children' + children + '" disabled="disabled" data-type="minus" data-field="quant[' + children + ']">',
-            html += '<span class="fa fa-minus"></span></button></span><input type="text" readonly name="quant[' + children + ']" class="form-control input-children' + children + '" value="1" min="1" max="10">',
-            html += '<span class="input-group-btn"><button type="button" class="btn btn-default btn-children' + children + '" data-type="plus" data-field="quant[' + children + ']">',
+            html += '<button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" disabled="disabled" data-type="minus" data-field="quant[' + childQuant + ']">',
+            html += '<span class="fa fa-minus"></span></button></span><input type="text" onfocusin="childFocusin(this);" onchange="childChange(this,' + children + ');" readonly name="quant[' + childQuant + ']" class="childrenCount form-control input-children' + children + '" value="1" min="1" max="10">',
+            html += '<span class="input-group-btn"><button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" data-type="plus" data-field="quant[' + childQuant + ']">',
             html += '<span class="fa fa-plus"></span></button></span></div></div></div></div><a href="javascript:void(0)" onclick="removeDiv(' + divId + ');" class="pull-right">Remove</a></div>';
+
+
             $('.room_base').html(html);
-            divId = divId + 1;
-            children = children + 1;
+
         }
+        function childFunc(e) {
+            e.preventDefault;
+
+            fieldName = $(e).attr('data-field');
+            type = $(e).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(e).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(e).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+        }
+        function childFocusin(e) {
+            $(e).data('oldValue', $(e).val());
+        }
+        function childChange(e, children) {
+            minValue = parseInt($(e).attr('min'));
+            maxValue = parseInt($(e).attr('max'));
+            valueCurrent = parseInt($(e).val());
+
+            name = $(e).attr('name');
+            if (valueCurrent >= minValue) {
+                $(".btn-children" + children + "[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(e).val($(e).data('oldValue'));
+            }
+            if (valueCurrent <= maxValue) {
+                $(".btn-children" + children + "[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(e).val($(e).data('oldValue'));
+            }
+        }
+
+        function adultFunc(e) {
+            e.preventDefault;
+
+            fieldName = $(e).attr('data-field');
+            type = $(e).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(e).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(e).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+
+        }
+        function adultFocusin(e) {
+            $(e).data('oldValue', $(e).val());
+        }
+        function adultChange(e, divId) {
+            minValue = parseInt($(e).attr('min'));
+            maxValue = parseInt($(e).attr('max'));
+            valueCurrent = parseInt($(e).val());
+
+            name = $(e).attr('name');
+            if (valueCurrent >= minValue) {
+                $(".btn-adult" + divId + "[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(e).val($(e).data('oldValue'));
+            }
+            if (valueCurrent <= maxValue) {
+                $(".btn-adult" + divId + "[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(e).val($(e).data('oldValue'));
+            }
+        }
+
+
         function removeDiv(id) {
             $('.room_base').each(function () {
                 var dID = $(this).find('.room_list').attr('id');
@@ -299,7 +426,7 @@
                     $(this).find('.room_list').remove();
                 }
             })
-        }
+        };
     </script>
 
 </body>
