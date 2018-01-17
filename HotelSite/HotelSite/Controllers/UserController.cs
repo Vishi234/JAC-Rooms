@@ -15,8 +15,9 @@ namespace HotelSite.Controllers
         public ActionResult Register()
         {
             try
+
             {
-                               
+                throw new NotImplementedException();
                 return View();
             }
             catch (Exception ex)
