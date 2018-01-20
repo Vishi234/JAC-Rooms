@@ -91,13 +91,13 @@
     <link rel="stylesheet" type="text/css" href="~/Content/daterangepicker.css" />
     <script src="~/scripts/jquery.auto-complete.js"></script>
     <script type="text/javascript">
-        var divId = 1;
+        var divId = 0;
         var children = 2;
-        var adultQuant = 2;
-        var childQuant = 3;
+        var adultQuant = 0;
+        var childQuant = 1;
         var html = '';
         $(document).ready(function () {
-
+            addRoom(0);
             $('.rooMHover').click(function () {
                 $('.roomDetails').toggle();
             });
@@ -154,121 +154,6 @@
 
             });
 
-
-            $('.btn-adult').click(function (e) {
-                e.preventDefault();
-
-                fieldName = $(this).attr('data-field');
-                type = $(this).attr('data-type');
-                var input = $("input[name='" + fieldName + "']");
-                var currentVal = parseInt(input.val());
-                if (!isNaN(currentVal)) {
-                    if (type == 'minus') {
-
-                        if (currentVal > input.attr('min')) {
-                            input.val(currentVal - 1).change();
-                        }
-                        if (parseInt(input.val()) == input.attr('min')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    } else if (type == 'plus') {
-
-                        if (currentVal < input.attr('max')) {
-                            input.val(currentVal + 1).change();
-                        }
-                        if (parseInt(input.val()) == input.attr('max')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    }
-                } else {
-                    input.val(0);
-                }
-            });
-            $('.input-adult').focusin(function () {
-                $(this).data('oldValue', $(this).val());
-            });
-            $('.input-adult').change(function () {
-
-                minValue = parseInt($(this).attr('min'));
-                maxValue = parseInt($(this).attr('max'));
-                valueCurrent = parseInt($(this).val());
-
-                name = $(this).attr('name');
-                if (valueCurrent >= minValue) {
-                    $(".btn-adult[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the minimum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-                if (valueCurrent <= maxValue) {
-                    $(".btn-adult[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the maximum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-
-
-            });
-
-
-            $('.btn-children').click(function (e) {
-                e.preventDefault();
-
-                fieldName = $(this).attr('data-field');
-                type = $(this).attr('data-type');
-                var input = $("input[name='" + fieldName + "']");
-                var currentVal = parseInt(input.val());
-                if (!isNaN(currentVal)) {
-                    if (type == 'minus') {
-
-                        if (currentVal > input.attr('min')) {
-                            input.val(currentVal - 1).change();
-                        }
-                        if (parseInt(input.val()) == input.attr('min')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    } else if (type == 'plus') {
-
-                        if (currentVal < input.attr('max')) {
-                            input.val(currentVal + 1).change();
-                        }
-                        if (parseInt(input.val()) == input.attr('max')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    }
-                } else {
-                    input.val(0);
-                }
-            });
-            $('.input-children').focusin(function () {
-                $(this).data('oldValue', $(this).val());
-            });
-            $('.input-children').change(function () {
-
-                minValue = parseInt($(this).attr('min'));
-                maxValue = parseInt($(this).attr('max'));
-                valueCurrent = parseInt($(this).val());
-
-                name = $(this).attr('name');
-                if (valueCurrent >= minValue) {
-                    $(".btn-children[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the minimum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-                if (valueCurrent <= maxValue) {
-                    $(".btn-children[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the maximum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-
-
-            });
             var Pepole = 0;
             $('.saveRoom').click(function () {
                 Pepole = 0;
@@ -276,37 +161,48 @@
                     var value = parseInt($(this).val());
                     Pepole = Pepole + value;
                 });
-                var Room = divId;
+                var Room = divId + 1;
                 $('.room_val').val(Pepole + " pepole " + Room + " room");
                 $('.roomDetails').hide();
             });
         });
+        function addRoom(val) {
+            divId = divId + val;
+            adultQuant = adultQuant + val;
+            childQuant = childQuant + val;
+            children = children + val;
+            html = '';
 
+            for (var i = 0; i <= divId; i++) {
 
-
-        function addRoom() {
-
-            if (divId >= 1) {
-                divId = divId + 1;
-                adultQuant = adultQuant + 1;
+                html += '<div class="room_list" id=' + i + '><h5>Room ' + parseInt(i + 1) + ':</h5><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Adults</h6>',
+                html += '<p>Above 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
+                html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + i + '" disabled="disabled" data-type="minus" data-field="quant[' + adultQuant + ']"><span class="fa fa-minus"></span>',
+                html += '</button></span><input type="text" onfocusin="adultFocusin(this);" onchange="adultChange(this,' + i + ');" readonly name="quant[' + adultQuant + ']" class="adultCount form-control input-adult' + i + '" value="1" min="1" max="10"><span class="input-group-btn">',
+                html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult" data-type="plus" data-field="quant[' + adultQuant + ']"><span class="fa fa-plus"></span>',
+                html += '</button></span></div></div></div></div><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Children</h6>',
+                html += '<p>Below 0 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
+                html += '<button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" disabled="disabled" data-type="minus" data-field="quant[' + childQuant + ']">',
+                html += '<span class="fa fa-minus"></span></button></span><input type="text" onfocusin="childFocusin(this);" onchange="childChange(this,' + children + ');" readonly name="quant[' + childQuant + ']" class="childrenCount form-control input-children' + children + '" value="1" min="1" max="10">',
+                html += '<span class="input-group-btn"><button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" data-type="plus" data-field="quant[' + childQuant + ']">',
+                html += '<span class="fa fa-plus"></span></button></span></div></div></div></div><a href="javascript:void(0)" onclick="removeDiv(' + i + ');" class="removeBtn pull-right">Remove</a></div>';
+                adultQuant = adultQuant + 2;
                 childQuant = childQuant + 2;
-                children = children + 1;
             }
 
-            html += '<div class="room_list" id=' + divId + '><h5>Room ' + divId + ':</h5><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Adults</h6>',
-            html += '<p>Above 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
-            html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + divId + '" disabled="disabled" data-type="minus" data-field="quant[' + adultQuant + ']"><span class="fa fa-minus"></span>',
-            html += '</button></span><input type="text" onfocusin="adultFocusin(this);" onchange="adultChange(this,' + divId + ');" readonly name="quant[' + adultQuant + ']" class="adultCount form-control input-adult' + divId + '" value="1" min="1" max="10"><span class="input-group-btn">',
-            html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult" data-type="plus" data-field="quant[' + adultQuant + ']"><span class="fa fa-plus"></span>',
-            html += '</button></span></div></div></div></div><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Children</h6>',
-            html += '<p>Below 0 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
-            html += '<button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" disabled="disabled" data-type="minus" data-field="quant[' + childQuant + ']">',
-            html += '<span class="fa fa-minus"></span></button></span><input type="text" onfocusin="childFocusin(this);" onchange="childChange(this,' + children + ');" readonly name="quant[' + childQuant + ']" class="childrenCount form-control input-children' + children + '" value="1" min="1" max="10">',
-            html += '<span class="input-group-btn"><button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" data-type="plus" data-field="quant[' + childQuant + ']">',
-            html += '<span class="fa fa-plus"></span></button></span></div></div></div></div><a href="javascript:void(0)" onclick="removeDiv(' + divId + ');" class="pull-right">Remove</a></div>';
-
-
             $('.room_base').html(html);
+            $('.room_list').each(function () {
+                var dID = $(this).attr('id');
+                if (dID != 0) {
+
+                    $(this).find('.removeBtn').css('display', 'block');
+                }
+                else {
+                    $(this).find('.removeBtn').css('display', 'none');
+                }
+            });
+
+            // divId = divId + 1;
 
         }
         function childFunc(e) {
@@ -362,7 +258,6 @@
                 $(e).val($(e).data('oldValue'));
             }
         }
-
         function adultFunc(e) {
             e.preventDefault;
 
@@ -417,15 +312,19 @@
                 $(e).val($(e).data('oldValue'));
             }
         }
-
-
         function removeDiv(id) {
             $('.room_base').each(function () {
                 var dID = $(this).find('.room_list').attr('id');
                 if (dID == id) {
                     $(this).find('.room_list').remove();
                 }
-            })
+            });
+            divId = divId - 1;
+            children = children - 1;
+            adultQuant = adultQuant - 1;
+            childQuant = childQuant - 1;
+            html = '';
+            addRoom(0);
         };
     </script>
 
