@@ -14,7 +14,13 @@
             border: "none"
         };
         if (Email == null || Email == "") {
-            $('#Email').addClass("validation")
+            $('#Email').addClass("validation");
+            $.toast({
+                heading: 'Required*',
+                text: 'Email id can not be blank.',
+                showHideTransition: 'fade',
+                icon: 'error'
+            })
            //$('#Email').focus();
             evt.preventDefault();
             return false;
@@ -24,7 +30,12 @@
         }
         let Mobile = $('#Mobile').val();
         if (Mobile == null || Mobile == "") {
-            $("#Mobile").css(errorStyle);
+            $.toast({
+                heading: 'Required*',
+                text: 'Mobile no can not be blank.',
+                showHideTransition: 'fade',
+                icon: 'error'
+            })
             $("#Mobile").focus();
             evt.preventDefault();
             return false;
@@ -34,7 +45,12 @@
         }
         let Password = $('#Password').val();
         if (Password == null || Password == "") {
-            $("#Password").css(errorStyle);
+            $.toast({
+                heading: 'Required*',
+                text: 'Password can not be blank',
+                showHideTransition: 'fade',
+                icon: 'error'
+            })
             $("#Password").focus();
             evt.preventDefault();
             return false;
@@ -45,7 +61,12 @@
 
         let FirstName = $('#FirstName').val();
         if (FirstName == null || FirstName == "") {
-            $("#FirstName").css(errorStyle);
+            $.toast({
+                heading: 'Required*',
+                text: 'First name can not be blank.',
+                showHideTransition: 'fade',
+                icon: 'error'
+            })
             $("#FirstName").focus();
             evt.preventDefault();
             return false;
@@ -53,16 +74,7 @@
         else {
             $('#FirstName').css(successStyle);
         }
-        let LastName = $('#LastName').val();
-        if (LastName == null || LastName == "") {
-            $("#LastName").css(errorStyle);
-            $("#LastName").focus();
-            evt.preventDefault();
-            return false;
-        }
-        else {
-            $('#LastName').css(successStyle);
-        }
+        
     }
 
 </script>
@@ -92,7 +104,7 @@
                             <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="Enter your First Name">
                         </div>
                         <div class="form-group">
-                            <label for="Email Id">Last Name<span class="mandate">*</span></label>
+                            <label for="Email Id">Last Name<span class="mandate"></span></label>
                             <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Enter your Last Name">
                         </div>
                         <div class="form-group">
