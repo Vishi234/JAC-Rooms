@@ -70,7 +70,7 @@ namespace HotelSite.Models.Login
                 {
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        if (signin.IsAgent == true)
+                        if (signin.IsAgent == false)
                         {
                             HttpContext.Current.Session["UserID"] = ds.Tables[0].Rows[0]["UserID"].ToString();
                             HttpContext.Current.Session["Name"] = ds.Tables[0].Rows[0]["FirstName"].ToString() + ds.Tables[0].Rows[0]["LastName"].ToString();

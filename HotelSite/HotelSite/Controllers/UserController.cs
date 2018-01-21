@@ -15,9 +15,7 @@ namespace HotelSite.Controllers
         public ActionResult Register()
         {
             try
-
             {
-                throw new NotImplementedException();
                 return View();
             }
             catch (Exception ex)
@@ -72,7 +70,7 @@ namespace HotelSite.Controllers
         public JsonResult GetEmail(string email)
         {
             Register register = new Register();
-            bool EmailValid=register.checkEmailUser(email);
+            bool EmailValid = register.checkEmailUser(email);
             return Json(new { res = EmailValid }, JsonRequestBehavior.AllowGet);
         }
     }

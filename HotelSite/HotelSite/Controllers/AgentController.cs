@@ -2,6 +2,7 @@
 using HotelSite.Models.Login;
 using System;
 using System.Web.Mvc;
+using HotelSite.Models.Agent;
 
 namespace HotelSite.Controllers
 {
@@ -31,7 +32,7 @@ namespace HotelSite.Controllers
             signin.IsAgent = true;
             if (register.SignIn(signin))
             {
-                return View("Dashboard");
+                return View("Index");
             }
             else
             {
@@ -52,7 +53,7 @@ namespace HotelSite.Controllers
             body += "<br /><a href = '" + string.Format("{0}://{1}/Agent/AgentComfirmation/{2}", Request.Url.Scheme, Request.Url.Authority, Guid) + "'>Click here to activate your account.</a>";
             body += "<br /><br />Thanks";
             Common.SendEmail(body, "clickhere");
-            return View("UserValidation");
+            return View("Login");
         }
         public ViewResult AgentComfirmation()
         {
@@ -71,9 +72,11 @@ namespace HotelSite.Controllers
         }
 
         [HttpPost]
-        public string SaveHotelBasics()
+        public int SaveHotelBasics(HotelBasics hotelBasics)
         {
-            return "thanks";
+            HotelInformation hotelInformation = new HotelInformation();
+            int result =hotelInformation.AddHotel(hotelBasics);
+            return result;
         }
     }
 }

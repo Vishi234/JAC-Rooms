@@ -1,8 +1,8 @@
 ===============================start==============================================
 Inner Exception's
-MessageThe method or operation is not implemented.
-StackTrace   at HotelSite.Controllers.UserController.Register() in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Controllers\UserController.cs:line 20
-TargetSiteSystem.Web.Mvc.ActionResult Register()
-DateTime : 	1/21/2018 12:15:52 PM
+MessageObject reference not set to an instance of an object.
+StackTrace   at HotelSite.Models.Agent.HotelInformation.AddHotel(HotelBasics hotelBasics)
+TargetSiteInt32 AddHotel(HotelSite.Models.Agent.HotelBasics)
+DateTime : 	21-01-18 10:58:11
 ================================end============================================= 
 

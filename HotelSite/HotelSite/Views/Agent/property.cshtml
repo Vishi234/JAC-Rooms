@@ -25,7 +25,7 @@
                         <div class="panel-first">
                             <div class="panelBody">
 
-                                <form class="form-horizontal" action="@Url.Action("LoggingIN","Agent")" method="post">
+                                <form class="form-horizontal">
                                     <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Name*</label>
@@ -36,7 +36,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Chain Name</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" name="ChainName">
+                                                <select class="selectpicker" id="ChainName" name="ChainName">
                                                     <option selected="selected">Select chain name</option>
                                                 </select>
                                             </div>
@@ -44,27 +44,27 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Floors</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" name="HotelFloor" placeholder="Enter no of floors">
+                                                <input type="text" class="form-control" id="HotelFloor" name="HotelFloor" placeholder="Enter no of floors">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">CheckoutTime*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" name="CheckOutTime" placeholder="Enter checkout time">
+                                                <input type="text" class="form-control" id="CheckOutTime" name="CheckOutTime" placeholder="Enter checkout time">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Currency</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" name="">
+                                                <select class="selectpicker" id="Currency" name="Currency">
                                                     <option value="INR" selected="selected">Indian rupee</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email" name="HotelType">Hotel Type</label>
+                                            <label class="control-label col-sm-3" for="email" >Hotel Type</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker">
+                                                <select class="selectpicker" id="HotelType" name="HotelType">
                                                     <option selected="selected">Select hotel type</option>
                                                     <option>Resort</option>
                                                     <option>Hotel</option>
@@ -102,13 +102,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Display Name*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" name="DisplayName" placeholder="Enter display name">
+                                                <input type="text" class="form-control" id="DisplayName" name="DisplayName" placeholder="Enter display name">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Star Rating*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" name="HotelStar">
+                                                <select class="selectpicker" id="HotelStar" name="HotelStar">
                                                     <option value="1" selected="selected">*</option>
                                                     <option value="2">* *</option>
                                                     <option value="3">* * *</option>
@@ -121,20 +121,20 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Built Year</label>
                                             <div class="col-sm-9">
-                                                <input type="text" name="HotelBuiltYear" class="form-control" id="email" placeholder="Enter year">
+                                                <input type="text" name="HotelBuiltYear" class="form-control" id="BuiltYear" placeholder="Enter year">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Rooms*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="HotelRooms" id="email" placeholder="Enter no. of rooms">
+                                                <input type="text" class="form-control" name="HotelRooms" id="HotelRooms" placeholder="Enter no. of rooms">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Checkin Time*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" name="HotelCheckInTime" placeholder="Enter checkin time">
+                                                <input type="text" class="form-control" id="HotelCheckInTime" name="HotelCheckInTime" placeholder="Enter checkin time">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -590,14 +590,14 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Street Address*</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="7" name="StreetAdress" class="form-control"></textarea>
+                                                <textarea cols="5" rows="7" name="StreetAdress" id="StreetAdress" class="form-control"></textarea>
 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Locality</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="Locality" id="email" placeholder="Enter locality">
+                                                <input type="text" class="form-control" name="Locality" id="Locality" placeholder="Enter locality">
                                             </div>
                                         </div>
 
@@ -607,31 +607,31 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Country*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker">
-                                                    <option value="IN" selected="selected" name="Country">India</option>
+                                                <select class="selectpicker" id="Country" name="Country">
+                                                    <option value="IN" selected="selected" >India</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker">
-                                                    <option value="" name="State">Select state</option>
+                                                <select class="selectpicker" id="State" name="State">
+                                                    <option value="" >Select state</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker">
-                                                    <option value="" name="City">Select city</option>
+                                                <select class="selectpicker" id="City"  name="City">
+                                                    <option value="">Select city</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Zip Code*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" name="ZipCode" placeholder="Enter zipcode">
+                                                <input type="text" class="form-control" id="ZipCode" name="ZipCode" placeholder="Enter zipcode">
                                             </div>
                                         </div>
                                     </div>
@@ -1035,11 +1035,29 @@
 
 <script type="text/javascript">
     function InsertHotelBasicInfo() {
+        var Hotel = {
+            HotelName: $('#hotelName').val(),
+            HotelFloor: $('#HotelFloor').val(),
+            HotelType: $('#HotelType').val(),
+            DisplayName: $('#DisplayName').val(),
+            HotelStar: $('#HotelStar').val(),
+            HotelBuiltYear: $('#BuiltYear').val(),
+            HotelRooms: $('#HotelRooms').val(),
+            HotelCheckInTime: $('#HotelCheckInTime').val(),
+            HotelCheckOutTime: $('#CheckOutTime').val(),
+            StreetAdress: $('#StreetAdress').val(),
+            Locality: $('#Locality').val(),
+            Country: $('#Country').val(),
+            State: $('#State').val(),
+            City: $('#City').val(),
+            ZipCode: $('#ZipCode').val(),
+            AgentID: ""
+        }
         $.ajax({
             type: 'POST',
-            dataType: 'json',
-            url: '/Agent/SaveHotelBasics',
-            data: "",
+            url: "@Url.Action("SaveHotelBasics", "Agent")",
+            contentType: "application/json",
+            data: JSON.stringify({ hotelBasics: Hotel}),
             success: function (Data) {
                 alert(data.id);
                 alert(data.name);
