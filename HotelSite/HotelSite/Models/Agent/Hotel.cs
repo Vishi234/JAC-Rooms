@@ -30,6 +30,16 @@ namespace HotelSite.Models.Agent
         public int AgentID { get; set; }
 
     }
+    public class HotelContactInfo
+    {
+        public long  HotelPhone { get; set; }
+        public long HotelMobile { get; set; }
+        public string HotelEmail { get; set; }
+        public string HotelPhoneList { get; set; }
+        public string HotelEmailList { get; set; }
+        public string HotelWebsiteList { get; set; }
+
+    }
 
     public class HotelInformation
     {
@@ -74,5 +84,7 @@ namespace HotelSite.Models.Agent
                 return 0;
             }
         }
+
+        public int AddHotelContactDetail()
     }
 }
