@@ -18,15 +18,24 @@ namespace HotelSite.Models.Common
         #region Sendmail
         public static void SendEmail(string mailBodyHtml, string mailSubject)
         {
-            var msg = new MailMessage(ConfigurationManager.AppSettings["FromMail"], ConfigurationManager.AppSettings["ToMail"], mailSubject, mailBodyHtml);
-            msg.To.Add("vishalsingh9407@gmail.com");
-            msg.To.Add("esreekumar@outlook.com");
-            msg.IsBodyHtml = true;
-            var smtpClient = new SmtpClient("smtp.gmail.com", 587); //if your from email address is "from@hotmail.com" then host should be "smtp.hotmail.com"**
-            smtpClient.UseDefaultCredentials = true;
-            smtpClient.Credentials = new NetworkCredential("devil.terex@gmail.com", "Terex@2018");
-            smtpClient.EnableSsl = true;
-            smtpClient.Send(msg);
+            try
+            {
+                var mail = new MailMessage(ConfigurationManager.AppSettings["FromMail"], ConfigurationManager.AppSettings["ToMail"], mailSubject, mailBodyHtml);
+                mail.To.Add("vishalsingh9407@gmail.com");
+                mail.To.Add("esreekumar@outlook.com");
+                mail.IsBodyHtml = true;
+                var smtpClient = new SmtpClient("smtp.gmail.com", 587); //if your from email address is "from@hotmail.com" then host should be "smtp.hotmail.com"**
+                smtpClient.UseDefaultCredentials = true;
+                smtpClient.Credentials = new NetworkCredential("devil.terex@gmail.com", "Terex@2018");
+                mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess | DeliveryNotificationOptions.OnFailure;
+                mail.Priority = MailPriority.Normal;
+                smtpClient.EnableSsl = true;
+                smtpClient.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
         }
         #endregion
 
