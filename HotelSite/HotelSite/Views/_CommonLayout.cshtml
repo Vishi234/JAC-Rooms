@@ -178,12 +178,12 @@
                 html += '<div class="room_list" id=' + i + '><h5>Room ' + parseInt(i + 1) + ':</h5><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Adults</h6>',
                 html += '<p>Above 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
                 html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + i + '" disabled="disabled" data-type="minus" data-field="quant[' + adultQuant + ']"><span class="fa fa-minus"></span>',
-                html += '</button></span><input type="text" onfocusin="adultFocusin(this);" onchange="adultChange(this,' + i + ');" readonly name="quant[' + adultQuant + ']" class="adultCount form-control input-adult' + i + '" value="1" min="1" max="10"><span class="input-group-btn">',
+                html += '</button></span><input type="text" onfocusin="adultFocusin(this);" onchange="adultChange(this,' + i + ');" readonly name="quant[' + adultQuant + ']" class="adultCount form-control input-adult' + i + '" value="1" min="1" max="3"><span class="input-group-btn">',
                 html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult" data-type="plus" data-field="quant[' + adultQuant + ']"><span class="fa fa-plus"></span>',
                 html += '</button></span></div></div></div></div><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Children</h6>',
-                html += '<p>Below 0 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
+                html += '<p>Below 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
                 html += '<button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" disabled="disabled" data-type="minus" data-field="quant[' + childQuant + ']">',
-                html += '<span class="fa fa-minus"></span></button></span><input type="text" onfocusin="childFocusin(this);" onchange="childChange(this,' + children + ');" readonly name="quant[' + childQuant + ']" class="childrenCount form-control input-children' + children + '" value="1" min="1" max="10">',
+                html += '<span class="fa fa-minus"></span></button></span><input type="text" onfocusin="childFocusin(this);" onchange="childChange(this,' + children + ');" readonly name="quant[' + childQuant + ']" class="childrenCount form-control input-children' + children + '" value="0" min="0" max="4">',
                 html += '<span class="input-group-btn"><button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" data-type="plus" data-field="quant[' + childQuant + ']">',
                 html += '<span class="fa fa-plus"></span></button></span></div></div></div></div><a href="javascript:void(0)" onclick="removeDiv(' + i + ');" class="removeBtn pull-right">Remove</a></div>';
                 adultQuant = adultQuant + 2;
