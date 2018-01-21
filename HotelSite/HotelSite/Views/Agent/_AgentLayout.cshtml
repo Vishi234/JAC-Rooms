@@ -127,7 +127,8 @@
 
 
         });
-            function InsertHotelBasicInfo() {
+        function InsertHotelBasicInfo()
+        {
         var Hotel = {
             HotelName: $('#hotelName').val(),
             HotelFloor: $('#HotelFloor').val(),
@@ -166,8 +167,22 @@
 
             }
         });
-
-    }
+        }
+        function InsertHotelContactInfo()
+        {
+            var hotelContact =
+                {
+                    HotelPhone: $('#HotelPhone').val(),
+                    HotelMobile: $('#HotelMobile').val(),
+                    HotelEmail: $('#HotelEmail').val(),
+                    HotelPhoneList: $('#HotelPhoneList').val(),
+                    HotelEmailList: $('#HotelEmailList').val(),
+                    HotelWebsiteList: $('#HotelWebsiteList').val()
+                }
+            $.ajax(
+                {
+                })
+        }
     </script>
 </body>
 </html>

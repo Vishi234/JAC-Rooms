@@ -32,7 +32,7 @@ namespace HotelSite.Models.Agent
     }
     public class HotelContactInfo
     {
-        public long  HotelPhone { get; set; }
+        public long HotelPhone { get; set; }
         public long HotelMobile { get; set; }
         public string HotelEmail { get; set; }
         public string HotelPhoneList { get; set; }
@@ -43,9 +43,9 @@ namespace HotelSite.Models.Agent
 
     public class HotelInformation
     {
+        string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
         public int AddHotel(HotelBasics hotelBasics)
         {
-            string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
             try
             {
                 SqlParameter[] sqlParameter = new SqlParameter[17];
@@ -69,7 +69,7 @@ namespace HotelSite.Models.Agent
                 sqlParameter[16].Direction = ParameterDirection.Output;
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertAgentHotel", sqlParameter);
                 string message = sqlParameter[16].Value.ToString().Trim();
-                if(message == "1")
+                if (message == "1")
                 {
                     return 2;
                 }
@@ -85,6 +85,36 @@ namespace HotelSite.Models.Agent
             }
         }
 
-        public int AddHotelContactDetail()
+        public int AddHotelContactDetail(HotelContactInfo hotelContactInfo)
+        {
+            try
+            {
+                SqlParameter[] sqlParameter = new SqlParameter[8];
+                sqlParameter[0] = new SqlParameter("@HotelPhone",hotelContactInfo.HotelPhone );
+                sqlParameter[1] = new SqlParameter("@HotelMobile", hotelContactInfo.HotelMobile);
+                sqlParameter[2] = new SqlParameter("@HotelEmail", hotelContactInfo.HotelEmail);
+                sqlParameter[3] = new SqlParameter("@HotelPhoneLlist", hotelContactInfo.HotelPhoneList);
+                sqlParameter[4] = new SqlParameter("@HotelEmailList", hotelContactInfo.HotelEmailList);
+                sqlParameter[5] = new SqlParameter("@HotelWebsiteList", hotelContactInfo.HotelWebsiteList);
+                sqlParameter[6] = new SqlParameter("@AgentID", HttpContext.Current.Session["UserID"].ToString());
+                sqlParameter[7] = new SqlParameter("@Result", SqlDbType.Int);
+                sqlParameter[7].Direction = ParameterDirection.Output;
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertHotelContactDetail", sqlParameter);
+                string message = sqlParameter[7].Value.ToString().Trim();
+                if (message == "2")
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
     }
 }

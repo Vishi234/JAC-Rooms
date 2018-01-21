@@ -77,5 +77,11 @@ namespace HotelSite.Controllers
             HotelInformation hotelInformation = new HotelInformation();
             return hotelInformation.AddHotel(hotelBasics);            
         }
+
+        public int SaveHotelContact(HotelContactInfo hotelContactInfo)
+        {
+            HotelInformation hotelInformation = new HotelInformation();
+            return hotelInformation.AddHotelContactDetail(hotelContactInfo);
+        }
     }
 }
