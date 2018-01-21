@@ -12,12 +12,10 @@
                     <h2 class="pull-left">Property</h2>
                 </div>
                 <ul class="tab-header nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
-                    <li><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
-                    <li><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
-                    <li><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
-
-
+                    <li id="1" class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
+                    <li id="2" class="disabled"><a id="sree" data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
+                    <li id="3" class="disabled"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
+                    <li id="4" class="disabled"><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -62,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email" >Hotel Type</label>
+                                            <label class="control-label col-sm-3" for="email">Hotel Type</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker" id="HotelType" name="HotelType">
                                                     <option selected="selected">Select hotel type</option>
@@ -608,7 +606,7 @@
                                             <label class="control-label col-sm-3" for="email">Country*</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker" id="Country" name="Country">
-                                                    <option value="IN" selected="selected" >India</option>
+                                                    <option value="IN" selected="selected">India</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -616,14 +614,14 @@
                                             <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker" id="State" name="State">
-                                                    <option value="" >Select state</option>
+                                                    <option value="">Select state</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="City"  name="City">
+                                                <select class="selectpicker" id="City" name="City">
                                                     <option value="">Select city</option>
                                                 </select>
                                             </div>
@@ -645,7 +643,7 @@
                         <div class="panel-first">
                             <div class="panelBody">
 
-                                <form class="form-horizontal" action="/action_page.php">
+                                <form class="form-horizontal">
                                     <div class="panelTitle">
                                         <span class="pull-left">Contact Info</span>
                                         <span class="pull-right">Mandatory field marked as (*)</span>
@@ -692,8 +690,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <button id="saveContact" class="btn btn-danger">Save & Continue</button>
                                 </form>
                             </div>
@@ -713,7 +709,7 @@
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body panelBody">
-                                        <form class="form-horizontal" action="/action_page.php">
+                                        <form class="form-horizontal">
                                             <div class="panelTitle">
                                                 <span class="pull-left">Room Info</span>
                                                 <span class="pull-right">Mandatory field marked as (*)</span>
@@ -1058,9 +1054,11 @@
             url: "@Url.Action("SaveHotelBasics", "Agent")",
             contentType: "application/json",
             data: JSON.stringify({ hotelBasics: Hotel}),
-            success: function (Data) {
-                alert(data.id);
-                alert(data.name);
+            success: function (data) {
+                $('#2').removeClass('disabled');
+                $('#sree').click();
+
+
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
 

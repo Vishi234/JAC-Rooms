@@ -75,8 +75,7 @@ namespace HotelSite.Controllers
         public int SaveHotelBasics(HotelBasics hotelBasics)
         {
             HotelInformation hotelInformation = new HotelInformation();
-            int result =hotelInformation.AddHotel(hotelBasics);
-            return result;
+            return hotelInformation.AddHotel(hotelBasics);            
         }
     }
 }
