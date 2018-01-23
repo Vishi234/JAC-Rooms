@@ -3,6 +3,8 @@
     ViewBag.Title = "property";
     Layout = "~/Views/Agent/_AgentLayout.cshtml";
 }
+<link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
+
 
 <div class="agent_body">
     <div class="container">
@@ -12,12 +14,10 @@
                     <h2 class="pull-left">Property</h2>
                 </div>
                 <ul class="tab-header nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
-                    <li><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
-                    <li><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
-                    <li><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
-
-
+                    <li id="1" class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
+                    <li id="2" class="disabled"><a id="sree" data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
+                    <li id="3" class="disabled"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
+                    <li id="4" class="disabled"><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -62,7 +62,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email" >Hotel Type</label>
+                                            <label class="control-label col-sm-3" for="email">Hotel Type</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker" id="HotelType" name="HotelType">
                                                     <option selected="selected">Select hotel type</option>
@@ -608,7 +608,7 @@
                                             <label class="control-label col-sm-3" for="email">Country*</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker" id="Country" name="Country">
-                                                    <option value="IN" selected="selected" >India</option>
+                                                    <option value="IN" selected="selected">India</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -616,14 +616,14 @@
                                             <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
                                                 <select class="selectpicker" id="State" name="State">
-                                                    <option value="" >Select state</option>
+                                                    <option value="">Select state</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="City"  name="City">
+                                                <select class="selectpicker" id="City" name="City">
                                                     <option value="">Select city</option>
                                                 </select>
                                             </div>
@@ -645,7 +645,7 @@
                         <div class="panel-first">
                             <div class="panelBody">
 
-                                <form class="form-horizontal" action="/action_page.php">
+                                <form class="form-horizontal">
                                     <div class="panelTitle">
                                         <span class="pull-left">Contact Info</span>
                                         <span class="pull-right">Mandatory field marked as (*)</span>
@@ -654,20 +654,20 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Phone*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter phone no.">
+                                                <input type="text" class="form-control" id="HotelPhone" name="HotelPhone" placeholder="Enter phone no.">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Email*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel email">
+                                                <input type="text" class="form-control" id="HotelEmail" name="HotelEmail" placeholder="Enter hotel email">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Email List</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="8" class="form-control" placeholder="Separate email with commas(,)"></textarea>
+                                                <textarea cols="5" rows="8" class="form-control" id="HotelEmailList" name="HotelEmailList" placeholder="Separate email with commas(,)"></textarea>
                                             </div>
                                         </div>
 
@@ -676,25 +676,23 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Mobile*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="email" placeholder="Enter hotel mobile no.">
+                                                <input type="text" class="form-control" id="HotelMobile" name="HotelMobile" placeholder="Enter hotel mobile no.">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Phone List</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="5" class="form-control" placeholder="Separate phone with commas(,)"></textarea>
+                                                <textarea cols="5" rows="5" class="form-control" id="HotelPhoneList" name="HotelPhoneList" placeholder="Separate phone with commas(,)"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Website List</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="5" class="form-control" placeholder="Separate website with commas(,)"></textarea>
+                                                <textarea cols="5" rows="5" class="form-control" id="HotelWebsiteList" name="HotelWebsiteList" placeholder="Separate website with commas(,)"></textarea>
                                             </div>
                                         </div>
                                     </div>
-
-
-                                    <button id="saveContact" class="btn btn-danger">Save & Continue</button>
+                                    <input type="button" onclick="return InsertHotelContactInfo()" id="submitHotelContact" class="btn btn-danger" value="Save & Continue">
                                 </form>
                             </div>
 
@@ -713,7 +711,7 @@
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body panelBody">
-                                        <form class="form-horizontal" action="/action_page.php">
+                                        <form class="form-horizontal">
                                             <div class="panelTitle">
                                                 <span class="pull-left">Room Info</span>
                                                 <span class="pull-right">Mandatory field marked as (*)</span>
@@ -1032,41 +1030,3 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-    function InsertHotelBasicInfo() {
-        var Hotel = {
-            HotelName: $('#hotelName').val(),
-            HotelFloor: $('#HotelFloor').val(),
-            HotelType: $('#HotelType').val(),
-            DisplayName: $('#DisplayName').val(),
-            HotelStar: $('#HotelStar').val(),
-            HotelBuiltYear: $('#BuiltYear').val(),
-            HotelRooms: $('#HotelRooms').val(),
-            HotelCheckInTime: $('#HotelCheckInTime').val(),
-            HotelCheckOutTime: $('#CheckOutTime').val(),
-            StreetAdress: $('#StreetAdress').val(),
-            Locality: $('#Locality').val(),
-            Country: $('#Country').val(),
-            State: $('#State').val(),
-            City: $('#City').val(),
-            ZipCode: $('#ZipCode').val(),
-            AgentID: ""
-        }
-        $.ajax({
-            type: 'POST',
-            url: "@Url.Action("SaveHotelBasics", "Agent")",
-            contentType: "application/json",
-            data: JSON.stringify({ hotelBasics: Hotel}),
-            success: function (Data) {
-                alert(data.id);
-                alert(data.name);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-            }
-        });
-
-    }
-
-</script>

@@ -1,8 +1,8 @@
 ===============================start==============================================
 Inner Exception's
 MessageObject reference not set to an instance of an object.
-StackTrace   at HotelSite.Models.Agent.HotelInformation.AddHotel(HotelBasics hotelBasics)
+StackTrace   at HotelSite.Models.Agent.HotelInformation.AddHotel(HotelBasics hotelBasics) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 42
 TargetSiteInt32 AddHotel(HotelSite.Models.Agent.HotelBasics)
-DateTime : 	21-01-18 10:58:11
+DateTime : 	21-01-18 20:09:42
 ================================end============================================= 
 

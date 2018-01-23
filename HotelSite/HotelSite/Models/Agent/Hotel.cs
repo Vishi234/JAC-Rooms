@@ -3,6 +3,7 @@ using Microsoft.ApplicationBlocks.Data;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,10 +17,10 @@ namespace HotelSite.Models.Agent
         public string HotelType { get; set; }
         public string DisplayName { get; set; }
         public int HotelStar { get; set; }
-        public DateTime HotelBuiltYear { get; set; }
+        public string HotelBuiltYear { get; set; }
         public int HotelRooms { get; set; }
-        public TimeSpan HotelCheckInTime { get; set; } = new TimeSpan();
-        public TimeSpan HotelCheckOutTime { get; set; }
+        public string HotelCheckInTime { get; set; }
+        public string HotelCheckOutTime { get; set; }
         public string StreetAdress { get; set; }
         public string Locality { get; set; }
         public string Country { get; set; }
@@ -29,41 +30,85 @@ namespace HotelSite.Models.Agent
         public int AgentID { get; set; }
 
     }
+    public class HotelContactInfo
+    {
+        public long HotelPhone { get; set; }
+        public long HotelMobile { get; set; }
+        public string HotelEmail { get; set; }
+        public string HotelPhoneList { get; set; }
+        public string HotelEmailList { get; set; }
+        public string HotelWebsiteList { get; set; }
+
+    }
 
     public class HotelInformation
     {
+        string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
         public int AddHotel(HotelBasics hotelBasics)
         {
-            string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
             try
             {
-                SqlParameter sqlParameter = new SqlParameter();
-                sqlParameter.Direction = System.Data.ParameterDirection.Output;
-                sqlParameter.DbType = System.Data.DbType.Int16;
-                sqlParameter.ParameterName = "@Result";
+                SqlParameter[] sqlParameter = new SqlParameter[17];
+                sqlParameter[0] = new SqlParameter("@AgentID", HttpContext.Current.Session["UserID"].ToString());
+                sqlParameter[1] = new SqlParameter("@HotelName", hotelBasics.HotelName);
+                sqlParameter[2] = new SqlParameter("@HotelDisplay", hotelBasics.DisplayName);
+                sqlParameter[3] = new SqlParameter("@HotelStar", hotelBasics.HotelStar);
+                sqlParameter[4] = new SqlParameter("@HotelFloor", hotelBasics.HotelFloor);
+                sqlParameter[5] = new SqlParameter("@HotelBuildYear", hotelBasics.HotelBuiltYear);
+                sqlParameter[6] = new SqlParameter("@HotelRooms", hotelBasics.HotelRooms);
+                sqlParameter[7] = new SqlParameter("@CheckInTime", hotelBasics.HotelCheckInTime);
+                sqlParameter[8] = new SqlParameter("@CheckOutTime", hotelBasics.HotelCheckOutTime);
+                sqlParameter[9] = new SqlParameter("@HotelType", hotelBasics.HotelType);
+                sqlParameter[10] = new SqlParameter("@StreetAddress", hotelBasics.StreetAdress);
+                sqlParameter[11] = new SqlParameter("@Country", hotelBasics.Country);
+                sqlParameter[12] = new SqlParameter("@State", hotelBasics.State);
+                sqlParameter[13] = new SqlParameter("@City", hotelBasics.City);
+                sqlParameter[14] = new SqlParameter("@Locality", hotelBasics.Locality);
+                sqlParameter[15] = new SqlParameter("@ZipCode", hotelBasics.ZipCode);
+                sqlParameter[16] = new SqlParameter("@Result", SqlDbType.Int);
+                sqlParameter[16].Direction = ParameterDirection.Output;
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertAgentHotel", sqlParameter);
+                string message = sqlParameter[16].Value.ToString().Trim();
+                if (message == "1")
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
 
-
-                List<SqlParameter> lstsqlparam = new List<SqlParameter>();
-                lstsqlparam.Add(new SqlParameter("@AgentID", HttpContext.Current.Session["UserID"].ToString()));
-                lstsqlparam.Add(new SqlParameter("@HotelName", hotelBasics.HotelName));
-                lstsqlparam.Add(new SqlParameter("@HotelDisplay", hotelBasics.DisplayName));
-                lstsqlparam.Add(new SqlParameter("@HotelStar", hotelBasics.HotelStar));
-                lstsqlparam.Add(new SqlParameter("@HotelFloor", hotelBasics.HotelFloor));
-                lstsqlparam.Add(new SqlParameter("@HotelBuildYear", hotelBasics.HotelBuiltYear));
-                lstsqlparam.Add(new SqlParameter("@HotelRooms", hotelBasics.HotelRooms));
-                lstsqlparam.Add(new SqlParameter("@CheckInTime", hotelBasics.HotelCheckInTime));
-                lstsqlparam.Add(new SqlParameter("@CheckOutTime", hotelBasics.HotelCheckOutTime));
-                lstsqlparam.Add(new SqlParameter("@HotelType", hotelBasics.HotelType));
-                lstsqlparam.Add(new SqlParameter("@StreetAddress", hotelBasics.StreetAdress));
-                lstsqlparam.Add(new SqlParameter("@Country", hotelBasics.Country));
-                lstsqlparam.Add(new SqlParameter("@State", hotelBasics.State));
-                lstsqlparam.Add(new SqlParameter("@City", hotelBasics.City));
-                lstsqlparam.Add(new SqlParameter("@Locality", hotelBasics.Locality));
-                lstsqlparam.Add(new SqlParameter("@ZipCode", hotelBasics.ZipCode));
-                lstsqlparam.Add(sqlParameter);
-                SqlHelper.ExecuteNonQuery(sqlconn, "sp_InsertAgentHotel", lstsqlparam.ToArray());
-                int a = (int)lstsqlparam[16].Value;
-                return a;
+        public int AddHotelContactDetail(HotelContactInfo hotelContactInfo)
+        {
+            try
+            {
+                SqlParameter[] sqlParameter = new SqlParameter[8];
+                sqlParameter[0] = new SqlParameter("@HotelPhone",hotelContactInfo.HotelPhone );
+                sqlParameter[1] = new SqlParameter("@HotelMobile", hotelContactInfo.HotelMobile);
+                sqlParameter[2] = new SqlParameter("@HotelEmail", hotelContactInfo.HotelEmail);
+                sqlParameter[3] = new SqlParameter("@HotelPhoneLlist", hotelContactInfo.HotelPhoneList);
+                sqlParameter[4] = new SqlParameter("@HotelEmailList", hotelContactInfo.HotelEmailList);
+                sqlParameter[5] = new SqlParameter("@HotelWebsiteList", hotelContactInfo.HotelWebsiteList);
+                sqlParameter[6] = new SqlParameter("@AgentID", HttpContext.Current.Session["UserID"].ToString());
+                sqlParameter[7] = new SqlParameter("@Result", SqlDbType.Int);
+                sqlParameter[7].Direction = ParameterDirection.Output;
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertHotelContactDetail", sqlParameter);
+                string message = sqlParameter[7].Value.ToString().Trim();
+                if (message == "2")
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
             catch (Exception ex)
             {
