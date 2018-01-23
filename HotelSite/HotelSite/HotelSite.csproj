@@ -426,6 +426,7 @@
     <Content Include="Content\jquery.toast.min.css" />
     <Content Include="Content\nice-select.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Exception\Exception.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\bootstrap-select.min.js" />
