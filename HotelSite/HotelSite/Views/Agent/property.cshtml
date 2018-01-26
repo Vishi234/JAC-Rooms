@@ -30,7 +30,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Name*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="HotelName" id="hotelName" placeholder="Enter hotel name">
+                                                <input type="text" class="form-control" name="HotelName" AlphaNumeric id="hotelName" placeholder="Enter hotel name">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -44,7 +44,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Floors</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" NumberOnly id="HotelFloor" name="HotelFloor" placeholder="Enter no of floors">
+                                                <input type="text" class="form-control" NumberOnly maxlength="3" id="HotelFloor" name="HotelFloor" placeholder="Enter no of floors">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -102,7 +102,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Display Name*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="DisplayName" name="DisplayName" placeholder="Enter display name">
+                                                <input type="text" class="form-control" id="DisplayName" AlphaNumeric name="DisplayName" placeholder="Enter display name">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -121,13 +121,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Built Year</label>
                                             <div class="col-sm-9">
-                                                <input type="text" name="HotelBuiltYear" class="form-control" id="BuiltYear" placeholder="Enter year">
+                                                <input type="text" name="HotelBuiltYear" NumberOnly class="form-control" id="BuiltYear" placeholder="Enter year">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Rooms*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="HotelRooms" id="HotelRooms" placeholder="Enter no. of rooms">
+                                                <input type="text" class="form-control" NumberOnly name="HotelRooms" id="HotelRooms" placeholder="Enter no. of rooms">
                                             </div>
                                         </div>
 
@@ -590,14 +590,14 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Street Address*</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="7" name="StreetAdress" id="StreetAdress" class="form-control"></textarea>
+                                                <textarea cols="5" rows="7" AlphaNumeric name="StreetAdress" id="StreetAdress" class="form-control"></textarea>
 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Locality</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="Locality" id="Locality" placeholder="Enter locality">
+                                                <input type="text" class="form-control" AlphaNumeric name="Locality" id="Locality" placeholder="Enter locality">
                                             </div>
                                         </div>
 
@@ -631,7 +631,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Zip Code*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="ZipCode" name="ZipCode" placeholder="Enter zipcode">
+                                                <input type="text" class="form-control" NumberOnly maxlength="7" id="ZipCode" name="ZipCode" placeholder="Enter zipcode">
                                             </div>
                                         </div>
                                     </div>
@@ -654,7 +654,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Phone*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="HotelPhone" name="HotelPhone" placeholder="Enter phone no.">
+                                                <input type="text" class="form-control" NumberOnly id="HotelPhone" name="HotelPhone" placeholder="Enter phone no.">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -721,13 +721,13 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea cols="5" rows="4" class="form-control"></textarea>
+                                                        <textarea cols="5" rows="4" class="form-control" AlphaNumeric></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Total Rooms*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter total rooms">
+                                                        <input type="text" class="form-control" id="email" NumberOnly maxlength="10" placeholder="Enter total rooms">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -773,7 +773,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Display Name*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter display name">
+                                                        <input type="text" class="form-control" id="email" AlphaNumeric placeholder="Enter display name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -809,19 +809,19 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Adult(Base)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter adult base">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter adult base">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Adult(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter max adult">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max adult">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Infant(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter max infant">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max infant">
                                                     </div>
                                                 </div>
                                             </div>
@@ -829,7 +829,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Child(Base)*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter child base">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter child base">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -841,15 +841,15 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Guest(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter max guest">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max guest">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="panelTitle">
+                                            @*<div class="panelTitle" style="display:none">
                                                 <span class="pull-left">Amenities</span>
                                             </div>
-                                            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                                            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12" style="display:none">
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Room Amenities</label>
                                                     <div class="col-sm-9">
@@ -912,7 +912,7 @@
                                                     </div>
                                                 </div>
 
-                                            </div>
+                                            </div>*@
                                             <button id="saveContact" class="btn btn-danger">Save & Continue</button>
                                         </form>
                                     </div>
