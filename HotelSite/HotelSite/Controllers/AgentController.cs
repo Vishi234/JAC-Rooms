@@ -36,7 +36,7 @@ namespace HotelSite.Controllers
             }
             else
             {
-                return Content("alert('a')");
+                return View("Login");
             }
         }
         [HttpPost]
