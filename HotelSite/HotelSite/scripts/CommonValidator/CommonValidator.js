@@ -25,5 +25,3 @@ $('[AlphaNumeric]').keydown(function (e) {
     }
 
 });
-
-$('')

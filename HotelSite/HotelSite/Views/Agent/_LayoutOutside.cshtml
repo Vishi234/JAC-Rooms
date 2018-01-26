@@ -56,6 +56,17 @@
 
             });
             $(".nxt").click(function () {
+                if ($('#emailId').val().trim() == "" || $('#emailId').val().trim() == null)
+                {
+                    calltoast("Please Enter a Valid Email");
+                    emailId.focus();
+                    return false;
+                }
+                if (!CheckEmail($('#emailId').val())) {
+                    calltoast("It seems you have entered a invalid Email");
+                    emailId.focus();
+                    return false;
+                }
                 $('.emailBase').removeClass("zoomIn");
                 $('.emailBase').addClass("zoomOut");
                 $('.passwordBase').removeClass("bounceOutRight");
@@ -70,6 +81,57 @@
                 $('.emailBase').removeClass("zoomOut");
             });
         });
+
+        $('.btn-agentLogin').click(function () {
+            let pass = $('#Password');
+            if (pass.val() == '' || pass.val() == null)
+            {
+                calltoast("Enter the Password");
+                pass.focus();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        })
+        function checkAgentRegister() {
+            let fullName = $('#FullName');
+            if (fullName.val().trim() == "" || fullName.val().trim() == null) {
+                calltoast("Please Enter Your Name");
+                fullName.focus();
+                return false;
+            }
+            let HotelType = $('#HotelType');
+            if (HotelType.val().trim() == "-1" || HotelType.val().trim() == null) {
+                calltoast("Please Select Your HotelType");
+                HotelType.focus();
+                return false;
+            }
+            let emailId = $('#emailId');
+            if (emailId.val().trim() == "" || emailId.val().trim() == null) {
+                calltoast("Please Enter Your Email");
+                emailId.focus();
+                return false;
+            }
+            if (!CheckEmail(emailId.val())) {
+                calltoast("It seems you have entered a invalid Email");
+                emailId.focus();
+                return false;
+            }
+            let password = $('#Password');
+            if (password.val().trim() == '' || password.val().trim() == null) {
+                calltoast("Please enter a Password");
+                password.focus();
+                return false;
+            }
+            if (password.val().trim() !== $('#CPassword').val().trim()) {
+                calltoast("Password do not match");
+                password.focus();
+                return false;
+            }
+            return false;
+        }
 
     </script>
 </body>

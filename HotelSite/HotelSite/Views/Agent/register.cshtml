@@ -4,7 +4,6 @@
     Layout = "~/Views/Agent/_LayoutOutside.cshtml";
 }
 
-
 @using (Html.BeginForm("RegisterAgent", "Agent"))
 {
     <div class="register_base">
@@ -17,14 +16,13 @@
                     <div class="loginInside">
                         <div class="form-group">
                             <label for="Email Id">Full Name<span class="mandate">*</span></label>
-                            <input type="text" class="form-control" id="FullName" name="FullName" placeholder="Full Name">
+                            <input type="text" class="form-control" maxlength="100" id="FullName" name="FullName" placeholder="Full Name">
                         </div>
                         <div class="form-group">
                             <label for="HotelType">Hotel Type<span class="mandate">*</span></label>
                             <select id="HotelType" name="HotelType">
                                 <option value="1" selected="selected">Hotel</option>
                                 <option value="2">Hotel Chain</option>
-                                <option value="3">Channel Manager</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -34,15 +32,14 @@
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Create Password<span class="mandate">*</span></label>
-                            <input type="password" class="form-control" id="Password" name="Password" placeholder="Create Password">
+                            <input type="password" class="form-control" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="Password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required placeholder="Create Password">
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Confirm Password<span class="mandate">*</span></label>
                             <input type="password" class="form-control" id="CPassword" name="CPassword" placeholder="Confirm Password">
                         </div>
                         <div class="form-group">
-                            @*<a href="javascript:void(0)" class="nextLogin btn btn-danger">Register</a>*@
-                            <input type="submit" value="Register" onclick="" class="nextLogin btn btn-danger" />
+                            <input type="submit" value="Register" onclick="return checkAgentRegister();" class="nextLogin btn btn-danger" />
                         </div>
                     </div>
                 </div>

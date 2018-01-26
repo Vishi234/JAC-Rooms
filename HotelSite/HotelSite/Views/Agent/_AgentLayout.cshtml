@@ -105,13 +105,13 @@
         </div>
     </div>
     @RenderBody()
-    
+
     @Scripts.Render("~/bundle/jquery")
 
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
-    <script src="~/scripts/CommonValidator/CommonValidator.js"></script>    
+    <script src="~/scripts/CommonValidator/CommonValidator.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -119,18 +119,18 @@
 
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
-                twentyFour: true, //Display 24 hour format, defaults to false 
-                upArrow: 'fa fa-angle-up', //The up arrow class selector to use, for custom CSS 
-                downArrow: 'fa fa-angle-down', //The down arrow class selector to use, for custom CSS 
+                twentyFour: true, //Display 24 hour format, defaults to false
+                upArrow: 'fa fa-angle-up', //The up arrow class selector to use, for custom CSS
+                downArrow: 'fa fa-angle-down', //The down arrow class selector to use, for custom CSS
                 close: 'fa fa-times', //The close class selector to use, for custom CSS
-                hoverState: 'hover-state', //The hover state class to use, for custom CSS 
-                title: 'Timepicker', //The Wickedpicker's title, 
-                showSeconds: false, //Whether or not to show seconds, 
-                secondsInterval: 1, //Change interval for seconds, defaults to 1  , 
-                minutesInterval: 1, //Change interval for minutes, defaults to 1 
-                beforeShow: null, //A function to be called before the Wickedpicker is shown 
-                show: null, //A function to be called when the Wickedpicker is shown 
-                clearable: false, //Make the picker's input clearable (has clickable "x")  
+                hoverState: 'hover-state', //The hover state class to use, for custom CSS
+                title: 'Timepicker', //The Wickedpicker's title,
+                showSeconds: false, //Whether or not to show seconds,
+                secondsInterval: 1, //Change interval for seconds, defaults to 1  ,
+                minutesInterval: 1, //Change interval for minutes, defaults to 1
+                beforeShow: null, //A function to be called before the Wickedpicker is shown
+                show: null, //A function to be called when the Wickedpicker is shown
+                clearable: false, //Make the picker's input clearable (has clickable "x")
             };
             $('.timepicker').wickedpicker(options);
 

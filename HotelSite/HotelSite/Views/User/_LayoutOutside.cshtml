@@ -70,11 +70,9 @@
                 if (Email != null && Email != "") {
                     $.get("/User/GetEmail", { email: Email }, function (data) {
                         if (data.res == true) {
-                            //alert(data.res);
                             return true;
                         }
                         else {
-                            //$.toast("asdasdasda");
                             $.toast({
                                 heading: 'Invalid Email ID',
                                 text: 'This email id not registered with JAC rooms.',
@@ -85,7 +83,6 @@
                             return false;
                         }
                     });
-                    //  return true;
                 }
                 else {
                     $.toast({
@@ -94,7 +91,6 @@
                         showHideTransition: 'fade',
                         icon: 'error'
                     })
-                   // alert("");
                     return false;
                 }
             }
