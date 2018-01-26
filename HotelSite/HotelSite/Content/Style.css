@@ -1611,24 +1611,25 @@ input:checked + .slider-check:before {
     overflow: visible !important;
     display: none;
 }
-.rooMHover:hover .roomDetails
-{
-    display:block;
+
+.rooMHover:hover .roomDetails {
+    display: block;
 }
-    .roomDetails .triangle-with-shadow {
-        margin-left: 70px !important;
-    }
 
-    .roomDetails .nav-list {
-        padding: 0px !important;
-        max-height: 400px;
-        height:auto;
-        overflow: scroll;
-    }
+.roomDetails .triangle-with-shadow {
+    margin-left: 70px !important;
+}
 
-    .roomDetails .room_list {
-        padding: 5px 10px;
-    }
+.roomDetails .nav-list {
+    padding: 0px !important;
+    max-height: 400px;
+    height: auto;
+    overflow: scroll;
+}
+
+.roomDetails .room_list {
+    padding: 5px 10px;
+}
 
 .room_list h5 {
     font-size: 16px !important;
@@ -1687,3 +1688,182 @@ input:checked + .slider-check:before {
         border-radius: 0px !important;
         margin-top: 0px;
     }
+
+.search_box {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #eee;
+    margin-left: -10px;
+    width: 26.1%;
+    margin-top: 10px;
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.2);
+    height: auto;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    display:none;
+    transition:all 0.4s ease-in-out;
+}
+
+    .search_box::-webkit-scrollbar {
+        width: 5px;
+        height: 8px;
+        background-color: #eee; /* or add it to the track */
+    }
+/* Add a thumb */
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.search_box ul {
+    margin: 0px;
+}
+
+.search_header {
+    padding: 8px;
+    text-align: right;
+    /*border-bottom: 1px solid #ccc;*/
+    color: #ccc;
+    font-weight: 500;
+}
+
+.search_box li a {
+    padding: 7px;
+    display: block;
+    color: #808080;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.search-base li:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.search_box li a:hover {
+    background: #f4f4f4;
+}
+
+.calendar {
+    position: absolute;
+    /* width: 100%; */
+    /* padding: 0px; */
+    z-index: 9999999;
+    top: 45.5%;
+    left: 39%;
+    transition: all 0.4s ease-in-out;
+    display: none;
+}
+
+.pignose-calendar-top {
+    padding: 7px !important;
+    margin: -1px !important;
+}
+
+.pignose-calendar {
+    margin: 0px !important;
+    width: 130% !important;
+}
+
+.pignose-calendar-top-date {
+    padding: 0px;
+    margin-top: -9px;
+    text-transform: capitalize;
+    display: inline-flex;
+    width: auto;
+    font-size: 10px;
+}
+
+.pignose-calendar-top-month {
+    margin: -14px;
+}
+
+.pignose-calendar-top-year {
+    margin: -14px;
+}
+
+.pignose-calendar-top-prev {
+    margin-left: 300px !important;
+}
+
+.pignose-calendar-top-next {
+    margin-right: 0px !important;
+}
+
+.pignose-calendar-top-date span {
+    background: none;
+}
+
+.pignose-calendar .pignose-calendar-header {
+    margin-top: 0px !important;
+    padding: 0px !important;
+}
+
+.pignose-calendar .pignose-calendar-body {
+    padding: 0px !important;
+}
+
+.pignose-calendar-top a span {
+    background: none;
+    padding: 0px;
+}
+
+.pignose-calendar-unit {
+           height: 43px !important;
+    line-height: 41px !important;
+    border: 1px solid #eee !important;
+    padding: 0px !important;
+}
+
+    .pignose-calendar-unit a {
+        border-radius: 0px !important;
+        margin: -1px !important;
+        width: 49px !important;
+        height: 43px!important;
+        line-height: 41px!important;
+    }
+    .pignose-calendar.pignose-calendar-blue .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-range a
+    {
+        background-color: rgba(243, 73, 90,0.1)!important;
+    }
+    .pignose-calendar.pignose-calendar-blue .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-active a
+    {
+        background-color:#F3495A!important;
+        box-shadow:none!important;
+    }
+     .input-calendar {
+        display: block;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        height: 3.2em;
+        line-height: 3.2em;
+        font: inherit;
+        padding: 0 1.2em;
+        border: 1px solid #d8d8d8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        -o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+    }
+
+    .btn-calendar {
+        display: block;
+        width: 100%;
+        max-width: 360px;
+        height: 3.2em;
+        line-height: 3.2em;
+        background-color: #52555a;
+        margin: 0 auto;
+        font-weight: 600;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        -o-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+    }
+
+        .btn-calendar:hover {
+            background-color: #5a6268;
+        }

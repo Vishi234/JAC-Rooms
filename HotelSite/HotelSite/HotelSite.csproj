@@ -390,7 +390,14 @@
     <Content Include="Content\bootstrap-3.2.0.min.css" />
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\daterangepicker.css" />
+    <Content Include="Content\DateRangerPicker\css\pignose.calendar.css" />
+    <Content Include="Content\DateRangerPicker\css\pignose.calendar.min.css" />
+    <Content Include="Content\DateRangerPicker\fonts\icon_navs.svg" />
+    <Content Include="Content\DateRangerPicker\fonts\pignose.calendar.svg" />
+    <Content Include="Content\DateRangerPicker\js\pignose.calendar.full.js" />
+    <Content Include="Content\DateRangerPicker\js\pignose.calendar.full.min.js" />
+    <Content Include="Content\DateRangerPicker\js\pignose.calendar.js" />
+    <Content Include="Content\DateRangerPicker\js\pignose.calendar.min.js" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\6667-gradient.jpg" />
@@ -435,25 +442,17 @@
     <Content Include="scripts\bootstrap3.3.2.min.js" />
     <Content Include="scripts\common.js" />
     <Content Include="scripts\CommonValidator\CommonValidator.js" />
-    <Content Include="scripts\daterangerpicker.js" />
     <Content Include="scripts\filter-tags.js" />
     <Content Include="scripts\jquery-1.11.2.min.js" />
     <Content Include="scripts\jquery-1.8.5.min.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
     <Content Include="scripts\jquery-ui.min.js" />
-    <Content Include="scripts\jquery.auto-complete.js" />
-    <Content Include="scripts\jquery.auto-complete.min.js" />
     <Content Include="scripts\jquery.js" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\jquery.nice-select.js" />
     <Content Include="scripts\jquery.toast.min.js" />
-    <Content Include="scripts\jquery.ui.datepicker.min.js" />
-    <Content Include="scripts\moment.min.js" />
     <Content Include="scripts\wickedpicker.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -680,12 +679,19 @@
     <Content Include="assets\fonts\readme" />
     <Content Include="assets\js\ace\readme" />
     <Content Include="assets\js\ace\scripts.json" />
+    <Content Include="Content\DateRangerPicker\fonts\icon_navs.eot" />
+    <Content Include="Content\DateRangerPicker\fonts\icon_navs.ttf" />
+    <Content Include="Content\DateRangerPicker\fonts\icon_navs.woff" />
+    <Content Include="Content\DateRangerPicker\fonts\pignose.calendar.eot" />
+    <Content Include="Content\DateRangerPicker\fonts\pignose.calendar.ttf" />
+    <Content Include="Content\DateRangerPicker\fonts\pignose.calendar.woff" />
     <None Include="Properties\PublishProfiles\Hotel Site.pubxml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
