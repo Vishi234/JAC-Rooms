@@ -30,3 +30,12 @@ function myFunction() {
         x.type = "password";
     }
 }
+function calltoast(text) {
+    $.toast({
+        text: text,
+        hideAfter: 3000,
+        textAlign: 'left',
+        bgColor: '#000000',
+        position: 'bottom-right',
+    })
+}
