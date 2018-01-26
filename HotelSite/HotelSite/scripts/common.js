@@ -11,3 +11,9 @@ function hideModal(modalName, effectClass, removeClass) {
     $(".modal-bg").addClass(effectClass);
     setTimeout(function () { $(".modal-bg").css('display', 'none'); }, 1000);
 }
+
+function CheckEmail()
+{
+    var regrex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+    var a = regrex.test()
+}

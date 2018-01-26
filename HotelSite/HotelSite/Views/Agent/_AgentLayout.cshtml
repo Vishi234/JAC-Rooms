@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
     <script src="~/scripts/jquery.toast.min.js"></script>
+
 </head>
 <body>
     <div class="header-top">
@@ -120,6 +121,7 @@
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
+    <script src="~/scripts/CommonValidator/CommonValidator.js"></script>    
     <script type="text/javascript">
         $(document).ready(function () {
             $('select').niceSelect();
@@ -127,29 +129,28 @@
 
 
         });
-        function InsertHotelBasicInfo()
-        {
-        var Hotel = {
-            HotelName: $('#hotelName').val(),
-            HotelFloor: $('#HotelFloor').val(),
-            HotelType: $('#HotelType').val(),
-            DisplayName: $('#DisplayName').val(),
-            HotelStar: $('#HotelStar').val(),
-            HotelBuiltYear: $('#BuiltYear').val(),
-            HotelRooms: $('#HotelRooms').val(),
-            HotelCheckInTime: $('#HotelCheckInTime').val(),
-            HotelCheckOutTime: $('#CheckOutTime').val(),
-            StreetAdress: $('#StreetAdress').val(),
-            Locality: $('#Locality').val(),
-            Country: $('#Country').val(),
-            State: $('#State').val(),
-            City: $('#City').val(),
-            ZipCode: $('#ZipCode').val(),
-            AgentID: ""
-        }
-        $.ajax({
-            type: 'POST',
-            url: "@Url.Action("SaveHotelBasics", "Agent")",
+        function InsertHotelBasicInfo() {
+            var Hotel = {
+                HotelName: $('#hotelName').val(),
+                HotelFloor: $('#HotelFloor').val(),
+                HotelType: $('#HotelType').val(),
+                DisplayName: $('#DisplayName').val(),
+                HotelStar: $('#HotelStar').val(),
+                HotelBuiltYear: $('#BuiltYear').val(),
+                HotelRooms: $('#HotelRooms').val(),
+                HotelCheckInTime: $('#HotelCheckInTime').val(),
+                HotelCheckOutTime: $('#CheckOutTime').val(),
+                StreetAdress: $('#StreetAdress').val(),
+                Locality: $('#Locality').val(),
+                Country: $('#Country').val(),
+                State: $('#State').val(),
+                City: $('#City').val(),
+                ZipCode: $('#ZipCode').val(),
+                AgentID: ""
+            }
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("SaveHotelBasics", "Agent")",
             contentType: "application/json",
             data: JSON.stringify({ hotelBasics: Hotel}),
             success: function (data) {
@@ -179,9 +180,41 @@
                     HotelEmailList: $('#HotelEmailList').val(),
                     HotelWebsiteList: $('#HotelWebsiteList').val()
                 }
-            $.ajax(
+           $.ajax({
+            type: 'POST',
+            url: "@Url.Action("SaveHotelContact", "Agent")",
+            contentType: "application/json",
+            data: JSON.stringify({ hotelContactInfo: hotelContact}),
+            success: function (data) {
+                if (data == "2")
                 {
-                })
+                    $.toast({
+                        heading: 'Success',
+                        text: 'Here is some kind of success message with a success icon that you can notice at the left side.',
+                        icon: 'success',
+                        position: 'top-right'
+                    });
+                    $('#2').removeClass('active');
+                    $('#contact').removeClass('active in')
+                    $('#3').removeClass('disabled').addClass('active');
+                    $('#rooms').addClass("in active");
+                }
+                else
+                {
+                    $.toast({
+                        heading: 'Error',
+                        text: 'Error Found While Adding Hotel Contact Detail',
+                        showHideTransition: 'fade',
+                        icon: 'error',
+                        position: 'top-right'
+                    })
+                }
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            }
+        });
         }
     </script>
 </body>

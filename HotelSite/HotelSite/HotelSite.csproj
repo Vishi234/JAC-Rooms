@@ -433,6 +433,7 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\bootstrap3.3.2.min.js" />
     <Content Include="scripts\common.js" />
+    <Content Include="scripts\CommonValidator\CommonValidator.js" />
     <Content Include="scripts\daterangerpicker.js" />
     <Content Include="scripts\filter-tags.js" />
     <Content Include="scripts\jquery-1.11.2.min.js" />
