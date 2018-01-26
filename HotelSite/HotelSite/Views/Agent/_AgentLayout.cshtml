@@ -6,8 +6,9 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
-    <script src="~/scripts/jquery.toast.min.js"></script>
 
+    <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
+    <link href="~/Content/wickedpicker.css" rel="stylesheet" />
 </head>
 <body>
     <div class="header-top">
@@ -104,29 +105,34 @@
         </div>
     </div>
     @RenderBody()
-    @*<script src="~/scripts/jquery-3.2.1.min.js"></script>
-        <script src="~/scripts/bootstrap.min.js"></script>
-        <script src="~/scripts/jquery.min.js"></script>
-        <script src="~/scripts/jquery-ui.min.js"></script>
-        <script src="~/scripts/jquery-1.11.2.min.js"></script>
-        <script src="~/scripts/bootstrap3.3.2.min.js"></script>
-        <script src="~/scripts/jquery-1.4.2.min.js"></script>
-        <script src="~/scripts/jquery-1.8.5.min.js"></script>
-        <script src="~/scripts/jquery-1.9.1.min.js"></script>
-        <script src="~/scripts/jquery.js"></script>
-        <script src="~/scripts/jquery.nice-select.js"></script>
-        <script src="~/scripts/filter-tags.js"></script>*@
+    
     @Scripts.Render("~/bundle/jquery")
 
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="~/scripts/CommonValidator/CommonValidator.js"></script>    
+    <script src="~/scripts/wickedpicker.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('select').niceSelect();
 
-
+            var options = {
+                now: "12:35", //hh:mm 24 hour format only, defaults to current time
+                twentyFour: true, //Display 24 hour format, defaults to false 
+                upArrow: 'fa fa-angle-up', //The up arrow class selector to use, for custom CSS 
+                downArrow: 'fa fa-angle-down', //The down arrow class selector to use, for custom CSS 
+                close: 'fa fa-times', //The close class selector to use, for custom CSS
+                hoverState: 'hover-state', //The hover state class to use, for custom CSS 
+                title: 'Timepicker', //The Wickedpicker's title, 
+                showSeconds: false, //Whether or not to show seconds, 
+                secondsInterval: 1, //Change interval for seconds, defaults to 1  , 
+                minutesInterval: 1, //Change interval for minutes, defaults to 1 
+                beforeShow: null, //A function to be called before the Wickedpicker is shown 
+                show: null, //A function to be called when the Wickedpicker is shown 
+                clearable: false, //Make the picker's input clearable (has clickable "x")  
+            };
+            $('.timepicker').wickedpicker(options);
 
         });
         function InsertHotelBasicInfo() {

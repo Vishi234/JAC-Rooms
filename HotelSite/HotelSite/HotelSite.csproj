@@ -426,6 +426,7 @@
     <Content Include="Content\jquery.toast.min.css" />
     <Content Include="Content\nice-select.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\wickedpicker.css" />
     <Content Include="Exception\Exception.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
@@ -449,6 +450,7 @@
     <Content Include="scripts\jquery.toast.min.js" />
     <Content Include="scripts\jquery.ui.datepicker.min.js" />
     <Content Include="scripts\moment.min.js" />
+    <Content Include="scripts\wickedpicker.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -678,6 +680,7 @@
     <Content Include="assets\fonts\readme" />
     <Content Include="assets\js\ace\readme" />
     <Content Include="assets\js\ace\scripts.json" />
+    <None Include="Properties\PublishProfiles\Hotel Site.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
