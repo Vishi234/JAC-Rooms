@@ -430,7 +430,6 @@
     <Content Include="Content\images\user.svg" />
     <Content Include="Content\images\website.svg" />
     <Content Include="Content\images\wifi.svg" />
-    <Content Include="Content\jquery.auto-complete.css" />
     <Content Include="Content\jquery.toast.min.css" />
     <Content Include="Content\nice-select.css" />
     <Content Include="Content\Style.css" />
