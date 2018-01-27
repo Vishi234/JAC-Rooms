@@ -2064,3 +2064,9 @@ input[type=checkbox] {
     font-weight: normal;
     display: block;
 }
+
+.reset-filter {
+    font-weight: normal;
+    font-size: 12px;
+    text-decoration: underline !important;
+}
