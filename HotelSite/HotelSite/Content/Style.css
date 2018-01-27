@@ -1534,7 +1534,6 @@ input:checked + .slider-check:before {
 }
 
 .optName {
-   
     position: absolute;
     margin-top: -37px;
 }
@@ -1985,6 +1984,7 @@ input:checked + .slider-check:before {
     display: none;
     position: absolute;
     width: 100%;
+    z-index: 999999;
 }
 
     .search_field .triangle-with-shadow {
@@ -2023,3 +2023,44 @@ input:checked + .slider-check:before {
     .search-modification .roomDetails .triangle-with-shadow:after {
         background-color: #fff;
     }
+
+.listing-filter {
+    background: #fff;
+    height: 100%;
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+/*** custom checkboxes ***/
+
+input[type=checkbox] {
+    display: none;
+}
+    /* to hide the checkbox itself */
+    input[type=checkbox] + label:before {
+        font-family: FontAwesome;
+        display: inline-block;
+    }
+
+    input[type=checkbox] + label:before {
+        content: "\f096";
+    }
+    /* unchecked icon */
+    input[type=checkbox] + label:before {
+        letter-spacing: 10px;
+    }
+    /* space between checkbox and label */
+
+    input[type=checkbox]:checked + label:before {
+        content: "\f046";
+    }
+    /* checked icon */
+    input[type=checkbox]:checked + label:before {
+        letter-spacing: 5px;
+    }
+/* allow space for check mark */
+.filter-style label {
+    font-weight: normal;
+    display: block;
+}
