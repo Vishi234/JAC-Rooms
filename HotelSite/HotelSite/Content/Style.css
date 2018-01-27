@@ -392,7 +392,6 @@ a {
     font-size: 16px;
     font-size: 1rem;
     transition: all .15s ease-out;
-    background-color: #f5f8fa;
     color: #33475b;
     display: block;
     height: 2.5rem;
@@ -408,7 +407,6 @@ a {
         border-color: rgba(0,208,228,.5);
         box-shadow: 0 0 4px 1px rgba(0,208,228,.3), 0 0 0 1px #00d0e4;
         outline: 0;
-        background-color: #f5f8fa;
     }
 
     .form-control::-webkit-input-placeholder {
@@ -1189,7 +1187,8 @@ a {
 }
 
 .slider {
-    background: linear-gradient(91deg, #f0772c, #f95776);
+    /*background: linear-gradient(91deg, #f0772c, #f95776);*/
+    background: url(images/sliderImage.jpg) no-repeat center;
     width: 100%;
     height: 400px;
     box-shadow: 0px 0px 300px rgba(0,0,0,0.9) inset;
@@ -1204,8 +1203,9 @@ a {
     .home-search h2 {
         text-align: center;
         color: #fff;
-        font-weight: 300;
+        font-weight: 400;
         margin-bottom: 30px;
+        text-shadow: 2px 0px 3px rgba(0,0,0,0.9);
     }
 
 .form-control-placeholder {
@@ -1238,11 +1238,9 @@ a {
         color: #fff;
         padding: 13px 22px;
         border-radius: 2px 2px 0px 0px;
-        display: inline-block;
-        font-size: 16px;
         font-weight: 500;
         display: block;
-        background: #333;
+        background: rgba(0,0,0,0.6);
         text-align: center;
         font-size: 18px;
     }
@@ -1250,7 +1248,7 @@ a {
     .search-base .form-control {
         border: none !important;
         box-shadow: none !important;
-        padding: 20px 13px !important;
+        padding: 5px 13px !important;
         width: 94% !important;
     }
 
@@ -1491,7 +1489,7 @@ a {
     background-color: #a5cd4e;
     -webkit-transition: .4s;
     transition: .4s;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
     .slider-check:before {
@@ -1536,7 +1534,7 @@ input:checked + .slider-check:before {
 }
 
 .optName {
-    display: inline-block;
+   
     position: absolute;
     margin-top: -37px;
 }
@@ -1622,9 +1620,13 @@ input:checked + .slider-check:before {
 
 .roomDetails .nav-list {
     padding: 0px !important;
-    max-height: 400px;
+}
+
+.room_base {
     height: auto;
-    overflow: scroll;
+    max-height: 350px;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 .roomDetails .room_list {
@@ -1745,12 +1747,11 @@ input:checked + .slider-check:before {
 }
 
 .calendar {
-    position: absolute;
-    /* width: 100%; */
-    /* padding: 0px; */
-    z-index: 9999999;
-    top: 45.5%;
     left: 39%;
+    position: relative;
+    left: 0;
+    top: 6px;
+    z-index: 9999999;
     transition: all 0.4s ease-in-out;
     display: none;
 }
@@ -1928,9 +1929,97 @@ input:checked + .slider-check:before {
 
     .search-modification .search-area {
         padding: 10px;
-        background: #fff;
+        background: #124680;
         width: 100%;
         display: inline-block;
-        box-shadow: 0px 0px 12px rgba(0,0,0,0.1);
-        border-radius: 2px;
+        box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
+        border-radius: 4px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .search-modification .triangle-with-shadow:after {
+        background: #124680;
+    }
+
+.search-area .search-base {
+    box-shadow: none;
+}
+
+.search-area .form-fields {
+    background: none;
+}
+
+    .search-area .form-fields .form-group {
+        padding: 5px;
+        border-right: 0px;
+    }
+
+        .search-area .form-fields .form-group:nth-child(1) {
+            width: 375px;
+            border-right: 0px;
+        }
+
+        .search-area .form-fields .form-group .form-control {
+            background-color: transparent !important;
+            border-bottom: 1px solid #87a1bf !important;
+            /* background: 0 0; */
+            color: #fff !important;
+        }
+
+        .search-area .form-fields .form-group .form-control-placeholder {
+            color: #87a1bf;
+        }
+
+        .search-area .form-fields .form-group .form-control:focus + .form-control-placeholder, .form-control:valid + .form-control-placeholder {
+            color: #87a1bf;
+        }
+
+        .search-area .form-fields .form-group .icon {
+            color: #f5f5f5;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+.search_field {
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
+    .search_field .triangle-with-shadow {
+        left: 0;
+        z-index: 99999;
+    }
+
+        .search_field .triangle-with-shadow:after {
+            background: #fff;
+        }
+
+    .search_field .search_box {
+        margin-top: 0px;
+        border: none;
+        width: 22%;
+        margin-left: 0px;
+        max-height: 300px;
+        box-shadow: 0px 0px 19px rgba(0,0,0,0.4);
+    }
+
+.cal_base {
+    position: absolute;
+    margin-left: -14px;
+    margin-top: 6px;
+    transition: all 0.4s ease-in-out;
+}
+
+.search-modification .cal_base {
+    margin-left: 0px;
+}
+
+.search-modification .roomDetails .triangle-with-shadow {
+    left: -10px;
+}
+
+    .search-modification .roomDetails .triangle-with-shadow:after {
+        background-color: #fff;
     }

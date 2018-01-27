@@ -86,9 +86,11 @@
     <script type="text/javascript">
         $('.checkinDate').click(function () {
             $('.calendar').css('display', 'block');
-            $('.calendar').css('left', '39%');
+            $('.cal_base').css('margin-left', '-14px');
+            $('.search-modification .cal_base').css('margin-left', '0px');
             $('.search_box').css('display', 'none');
             $('.roomDetails').css('display', 'none');
+            $('.search_field').css('display', 'none');
 
         });
         $('.checkoutDate').click(function () {
@@ -106,7 +108,8 @@
             minDate: finalDate,
             select: function (dates, context) {
                 context.context.settings.multiple = true;
-                $('.calendar').css('left', '52.3%')
+                $('.cal_base').css('margin-left', '190px')
+                $('.search-modification .cal_base').css('margin-left', '200px');
                 $('.checkinDate').val(dates[0].format('DD-MMM-YYYY'));
                 $('.checkoutDate').val(dates[1].format('DD-MMM-YYYY'));
                 if (dates[1] != null) {
@@ -117,6 +120,7 @@
         $('.search_box ul li a').click(function () {
             $('.searchBox').val($(this).text());
             $('.search_box').css('display', 'none');
+            $('.search_field').css('display', 'none');
         })
         var divId = 0;
         var children = 2;
@@ -129,14 +133,12 @@
                 $('.loading-bar').css('max-height', '0');
                 
             });
-            
-
-
             addRoom(0);
             $('.rooMHover').click(function () {
                 $('.calendar').css('display', 'none');
                 $('.search_box').css('display', 'none');
                 $('.roomDetails').toggle();
+                $('.search_field').css('display', 'none');
             });
             
             $('.datePicker').keydown(function () {
@@ -154,6 +156,7 @@
                         $('.mapIcon').addClass('fa-map-marker');
                         $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
                         $('.search_box').css('display', 'block');
+                        $('.search_field').css('display', 'block');
                     }, 3000);
 
 
@@ -162,6 +165,7 @@
                     $('.mapIcon').addClass('fa-map-marker');
                     $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
                     $('.search_box').css('display', 'none');
+                    $('.search_field').css('display', 'none');
                 }
             });
             $('.searchBox').focusout(function () {
