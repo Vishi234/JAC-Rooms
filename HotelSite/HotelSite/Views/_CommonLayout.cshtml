@@ -124,13 +124,21 @@
         var childQuant = 1;
         var html = '';
         $(document).ready(function () {
+            $('.progress').animate({ width: '100%' }, 10000, function () {
+                $('.loading-bar').css('padding', '0px');
+                $('.loading-bar').css('max-height', '0');
+                
+            });
+            
+
+
             addRoom(0);
             $('.rooMHover').click(function () {
                 $('.calendar').css('display', 'none');
                 $('.search_box').css('display', 'none');
                 $('.roomDetails').toggle();
             });
-
+            
             $('.datePicker').keydown(function () {
                 return false;
             });
