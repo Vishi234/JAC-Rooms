@@ -27,16 +27,18 @@
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Email<span class="mandate">*</span></label>
-                            <input type="email" class="form-control" id="emailId" name="EmailID" placeholder="Email ID">
+                            <input type="email" class="form-control" id="emailId" name="EmailID" autocomplete="off" placeholder="Email ID">
                             <p>Note : This will be your login id</p>
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Create Password<span class="mandate">*</span></label>
-                            <input type="password" class="form-control" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="Password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required placeholder="Create Password">
+                            <input type="password" data-toggle="tooltip"  data-placement="right" autocomplete="off" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="Password" required placeholder="Create Password">
+                            <i class="fa fa-eye-slash eyeIcon pull-right" onclick="return showPassword(this,'Password');"></i>
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Confirm Password<span class="mandate">*</span></label>
-                            <input type="password" class="form-control" id="CPassword" name="CPassword" placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="CPassword" name="CPassword" autocomplete="off" placeholder="Confirm Password">
+                            <i class="fa fa-eye-slash eyeIcon pull-right" onclick="return showPassword(this, 'CPassword');"></i>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Register" onclick="return checkAgentRegister();" class="nextLogin btn btn-danger" />

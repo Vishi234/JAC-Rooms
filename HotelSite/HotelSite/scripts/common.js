@@ -22,7 +22,7 @@ function CheckPasswordComplexity()
 {
     var regex = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
 }
-function ShowPassword(id) {
+function myFunction(id) {
     var x = document.getElementById(id);
     if (x.type === "password") {
         x.type = "text";
@@ -38,10 +38,4 @@ function calltoast(text) {
         bgColor: '#000000',
         position: 'bottom-right',
     })
-}
-function getLocationJSON(c) {
-    $.getJSON("../../Location Data/" + c + ".json", function (result) {
-        console.log(result);
-    });
-
 }
