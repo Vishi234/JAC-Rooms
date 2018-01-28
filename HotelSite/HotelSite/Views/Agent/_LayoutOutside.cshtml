@@ -25,7 +25,7 @@
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
+            getLocationJSON('cities');
             $('select').niceSelect();
             $(".addProbtn").click(function () {
                 $('.addProperty').removeClass("bounceInRight");

@@ -16,8 +16,7 @@ $('[AlphaNumeric]').keydown(function (e) {
     }
     let keyCode = e.keyCode ? e.keyCode : e.which;
     let pressedKey = String.fromCharCode(keyCode);
-
-    if (/[^A-Za-z0-9 ]/.test(pressedKey)) {
+    if (/[^A-Za-z0-9\b ]/.test(pressedKey)) {
         return false;
     }
     else {

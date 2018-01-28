@@ -198,7 +198,7 @@ C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\bin\Antlr3.Runtime.pdb
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\bin\Newtonsoft.Json.xml
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\bin\System.Web.Optimization.xml
+C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\obj\Debug\HotelSite.csprojResolveAssemblyReference.cache
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\obj\Debug\HotelSite.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\obj\Debug\HotelSite.dll
 C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\obj\Debug\HotelSite.pdb
-C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\obj\Debug\HotelSite.csprojResolveAssemblyReference.cache
