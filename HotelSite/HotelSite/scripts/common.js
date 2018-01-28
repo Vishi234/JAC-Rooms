@@ -12,15 +12,14 @@ function hideModal(modalName, effectClass, removeClass) {
     setTimeout(function () { $(".modal-bg").css('display', 'none'); }, 1000);
 }
 
-function CheckEmail(Email)
-{
+function CheckEmail(Email) {
     var regrex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
     return regrex.test(Email);
 }
 
-function CheckPasswordComplexity()
-{
+function CheckPasswordComplexity(password) {
     var regex = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
+    return regex.test(password.val());
 }
 function myFunction(id) {
     var x = document.getElementById(id);

@@ -23,11 +23,9 @@
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
-   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-           
             $('[data-toggle="tooltip"]').tooltip();
             $('select').niceSelect();
             $(".addProbtn").click(function () {
@@ -59,8 +57,7 @@
 
             });
             $(".nxt").click(function () {
-                if ($('#emailId').val().trim() == "" || $('#emailId').val().trim() == null)
-                {
+                if ($('#emailId').val().trim() == "" || $('#emailId').val().trim() == null) {
                     calltoast("Please Enter a Valid Email");
                     emailId.focus();
                     return false;
@@ -84,24 +81,22 @@
                 $('.emailBase').removeClass("zoomOut");
             });
         });
-        function showPassword(event,id) {
+        function showPassword(event, id) {
             $(event).toggleClass("fa-eye-slash fa-eye");
             myFunction(id);
         }
         $('.btn-agentLogin').click(function () {
             let pass = $('#Password');
-            if (pass.val() == '' || pass.val() == null)
-            {
+            if (pass.val() == '' || pass.val() == null) {
                 calltoast("Enter the Password");
                 pass.focus();
                 return false;
             }
-            else
-            {
+            else {
                 return true;
             }
-        })
-        function checkAgentRegister() {
+        });
+        function checkAgentRegister(event) {
             let fullName = $('#FullName');
             if (fullName.val().trim() == "" || fullName.val().trim() == null) {
                 calltoast("Please Enter Your Name");
@@ -131,12 +126,24 @@
                 password.focus();
                 return false;
             }
+            //if (!CheckPasswordComplexity(password))
+            //{
+            //    password.focus();
+            //    return false;
+            //}
+            let cfmPassword = $('#CPassword');
+            if (cfmPassword.val().trim() == '' || cfmPassword.val().trim() == null) {
+                calltoast("Please confirm Password");
+                password.focus();
+                return false;
+            }
             if (password.val().trim() !== $('#CPassword').val().trim()) {
                 calltoast("Password do not match");
                 password.focus();
                 return false;
             }
-            return false;
+            $('.insideButtonSpinner').css('max-width', '100px');
+            return true;
         }
 
     </script>

@@ -14,13 +14,13 @@ StackTrace   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectio
    at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
-   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.DiscoverSpParameterSet(SqlConnection connection, String spName, Boolean includeReturnValueParameter) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\SQLHelper.cs:line 2429
-   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.GetSpParameterSetInternal(SqlConnection connection, String spName, Boolean includeReturnValueParameter) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\SQLHelper.cs:line 2602
-   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.GetSpParameterSet(String connectionString, String spName, Boolean includeReturnValueParameter) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\SQLHelper.cs:line 2546
-   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.GetSpParameterSet(String connectionString, String spName) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\SQLHelper.cs:line 2526
-   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteDataset(String connectionString, String spName, Object[] parameterValues) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\SQLHelper.cs:line 544
-   at HotelSite.Models.Login.Register.SignIn(Signin signin) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\Login\Login.cs:line 68
+   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.DiscoverSpParameterSet(SqlConnection connection, String spName, Boolean includeReturnValueParameter) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 2429
+   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.GetSpParameterSetInternal(SqlConnection connection, String spName, Boolean includeReturnValueParameter) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 2602
+   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.GetSpParameterSet(String connectionString, String spName, Boolean includeReturnValueParameter) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 2546
+   at Microsoft.ApplicationBlocks.Data.SqlHelperParameterCache.GetSpParameterSet(String connectionString, String spName) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 2526
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(String connectionString, String spName, Object[] parameterValues) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 1142
+   at HotelSite.Models.Login.Agent.CreateAgent(String Email, String Password, String HotelType, String FullName) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\Login\Login.cs:line 132
 TargetSiteVoid .ctor(System.Data.ProviderBase.DbConnectionPoolIdentity, System.Data.SqlClient.SqlConnectionString, System.Data.SqlClient.SqlCredential, System.Object, System.String, System.Security.SecureString, Boolean, System.Data.SqlClient.SqlConnectionString, System.Data.SqlClient.SessionData, System.Data.ProviderBase.DbConnectionPool, System.String, Boolean)
-DateTime : 	1/27/2018 12:10:14 AM
+DateTime : 	1/29/2018 12:38:49 AM
 ================================end============================================= 
 
