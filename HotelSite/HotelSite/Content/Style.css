@@ -2070,3 +2070,25 @@ input[type=checkbox] {
     font-size: 12px;
     text-decoration: underline !important;
 }
+
+.hotel_list {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+    .hotel_list li {
+        display: inline-block;
+        border-radius: 4px 4px 0px 0px;
+        overflow: hidden;
+    }
+
+        .hotel_list li .thumg-img {
+            width: 400px;
+            overflow: hidden;
+        }
+
+            .hotel_list li .thumg-img img {
+                width: 100%;
+                height: 100%;
+            }

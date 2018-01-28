@@ -22,8 +22,8 @@ function CheckPasswordComplexity()
 {
     var regex = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
 }
-function myFunction() {
-    var x = document.getElementById("myInput");
+function myFunction(id) {
+    var x = document.getElementById(id);
     if (x.type === "password") {
         x.type = "text";
     } else {
