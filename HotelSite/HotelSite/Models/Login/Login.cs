@@ -100,13 +100,22 @@ namespace HotelSite.Models.Login
                 return false;
             }
         }
-        public bool checkEmailUser(string email)
+        public bool checkEmailUser(string email,bool IsAgent)
         {
             bool result = false;
             try
             {
-                string query = "select 1 from tbl_User_Detail where lower(Email) = '" + email.ToLower() + "'";
-                result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? false : true;
+                string tblName = IsAgent ? "tbl_AgentLogin#AgentEmail" : "tbl_User_Detail#Email";
+                if (!IsAgent)
+                {
+                    string query = string.Format("select 1 from {0}  where lower({1}) = '" + email.ToLower() + "'",tblName.Split('#')[0], tblName.Split('#')[1]);
+                    result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? false : true;
+                }
+                else
+                {
+
+                }
+                
             }
             catch (Exception ex)
             {

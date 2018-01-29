@@ -97,7 +97,24 @@
             else {
                 return true;
             }
-        })
+        });
+        function checkEmail()
+        {
+            $.get("/User/GetEmail", { email: Email }, function (data) {
+                if (data.res == true) {
+                    return true;
+                }
+                else {
+                    $.toast({
+                        heading: 'Invalid Email ID',
+                        text: 'This email id not registered with JAC rooms.',
+                        showHideTransition: 'fade',
+                        icon: 'error'
+                    });
+                    return false;
+                }
+        }
+
 
 
         function checkAgentRegister() {

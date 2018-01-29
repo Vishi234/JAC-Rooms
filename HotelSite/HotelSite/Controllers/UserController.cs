@@ -70,7 +70,7 @@ namespace HotelSite.Controllers
         public JsonResult GetEmail(string email)
         {
             Register register = new Register();
-            bool EmailValid = register.checkEmailUser(email);
+            bool EmailValid = register.checkEmailUser(email,false);
             return Json(new { res = EmailValid }, JsonRequestBehavior.AllowGet);
         }
     }
