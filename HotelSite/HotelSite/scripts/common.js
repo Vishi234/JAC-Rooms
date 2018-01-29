@@ -55,11 +55,54 @@ function getJsonData(path) {
         })
     return resData;
 }
-function BindDropDownFromJson(ddlID,Data,Value,ID) {
+function BindCountryDropDown(ddlID) {
     try {
+        var Countires = getJsonData('../../Location Data/countries.json');
+        $.each(Countires.countries, function (i, item) {
+            var option = document.createElement("option");
+            option.text = item.name;
+            option.value = item.id;
+            var select = document.getElementById(ddlID);
+            select.appendChild(option);
+        });
+       
 
     }
     catch (e) {
 
     }
+}
+function BindStateDropDown(ddlID,CountyID)
+{
+    var states = getJsonData('../../Location Data/states.json');
+    let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
+    $('#' + ddlID).empty();
+
+    let StateBindData =$.grep(states.states, function (n, i) {
+        return n.country_id == cID;
+    })
+    $.each(StateBindData, function (i, item) {
+        var option = document.createElement("option");
+        option.text = item.name;
+        option.value = item.id;
+        var select = document.getElementById(ddlID);
+        select.appendChild(option);
+    });
+
+}
+function BindCityDropDown(ddlID, StateID) {
+    var citiess = getJsonData('../../Location Data/cities.json');
+    let SID = (StateID == "" || StateID == null) ? "10" : StateID;
+
+    let cityBindData = $.grep(citiess.cities, function (n, i) {
+        return n.state_id == SID;
+    })
+    $.each(cityBindData, function (i, item) {
+        var option = document.createElement("option");
+        option.text = item.name;
+        option.value = item.id;
+        var select = document.getElementById(ddlID);
+        select.appendChild(option);
+    });
+
 }
