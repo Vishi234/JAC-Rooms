@@ -97,11 +97,11 @@
             else {
                 return true;
             }
-        });
+        })
 
 
         function checkAgentRegister() {
-
+            debugger;
             let fullName = $('#FullName');
             if (fullName.val().trim() == "" || fullName.val().trim() == null) {
                 calltoast("Please Enter Your Name");
@@ -125,7 +125,6 @@
                 emailId.focus();
                 return false;
             }
-
             let password = $('#Password');
             if (password.val().trim() == '' || password.val().trim() == null) {
                 calltoast("Please enter a Password");
@@ -143,30 +142,32 @@
                 HotelType: HotelType.val(),
                 FullName: fullName.val()
             }
-            $('.insideButtonLoading').css('max-width', '100px');
+
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("RegisterAgent")',
                 data: JSON.stringify({ agentDetail: obj }),
-                async: true,
+                async : false,
                 contentType: "application/json; charset=utf-8",
+                beforeSend: function ()
+                {
+                    $('.spinner').addClass('fa fa-cog fa-spin');
+                },
                 success: function (response) {
-                    if (response == '1') {
-
-                        $('.msgArea').html('<p class="msg">Please Check Your Email to Authenicate Your Account </p>');
-                        $('.msgArea').css('max-height', '100px');
-                        $('.insideButtonLoading').css('max-width', '0');
-                        $('#FullName').val('');
-                        $('#Password').val('');
-                        $('#CPassword').val('');
+                    if (response == '1')
+                    {
+                        $('.nextLogin').after('<p>Please Check Your Email to Authenicate Your Account </p>')
+                        $('.spinner').removeClass('fa fa-cog fa-spin');
                     }
                 },
                 error: function () {
                     alert("Error while inserting data");
-                }
+                            }
             });
             return false;
         }
+
+
     </script>
 </body>
 </html>

@@ -1573,27 +1573,7 @@ a {
         width: 15px;
         margin-left: 5px;
     }
-
-.tooltip.right {
-    width: 200px !important;
-}
-
-.insideButtonLoading {
-    margin-right: 10px;
-    max-width:0;
-    overflow: hidden;
-    transition: all 0.4s ease-in-out;
-}
-
-.msgArea {
-    margin-bottom: 0px !important;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s ease-in-out;
-}
-
-.msg {
-    text-align: center !important;
-    font-weight: 500 !important;
-    color: red !important;
-}
+    .tooltip.right
+    {
+        width:200px!important;
+    }
