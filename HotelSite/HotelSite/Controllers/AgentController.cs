@@ -53,8 +53,7 @@ namespace HotelSite.Controllers
             body += "<br /><a href = '" + string.Format("{0}://{1}/Agent/AgentComfirmation/{2}", Request.Url.Scheme, Request.Url.Authority, Guid) + "'>Click here to activate your account.</a>";
             body += "<br /><br />Thanks";
             Common.SendEmail(body, "clickhere");
-            ViewBag.Result = 1;
-            return View("Register");
+            return View("Login");
         }
         public ViewResult AgentComfirmation()
         {
@@ -63,7 +62,7 @@ namespace HotelSite.Controllers
             int rslt = agent.CheckAgent(activationCode);
             if (rslt == 1)
             {
-                return View("Login");
+                return View("Index");
             }
             else
             {
