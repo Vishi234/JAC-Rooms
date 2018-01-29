@@ -115,8 +115,9 @@
     <script src="~/scripts/wickedpicker.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            var Countires = getJsonData('../../Location Data/countries.json');
+            BindDropDownFromJson('Country', Countires, 'name','id')
             $('select').niceSelect();
-
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
                 twentyFour: true, //Display 24 hour format, defaults to false
@@ -157,9 +158,9 @@
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("SaveHotelBasics", "Agent")",
-            contentType: "application/json",
-            data: JSON.stringify({ hotelBasics: Hotel}),
-            success: function (data) {
+                contentType: "application/json",
+                data: JSON.stringify({ hotelBasics: Hotel}),
+                success: function (data) {
                 $.toast({
                     text: 'Basics info is added ,please add contact',
                     hideAfter: 5000,
