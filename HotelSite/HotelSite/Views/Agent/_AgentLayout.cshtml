@@ -112,11 +112,13 @@
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="~/scripts/CommonValidator/CommonValidator.js"></script>
+    <script src="~/scripts/common.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            var Countires = getJsonData('../../Location Data/countries.json');
-            BindDropDownFromJson('Country', Countires, 'name','id')
+        $(document).ready(function () {            
+            BindCountryDropDown('Country');
+            BindStateDropDown('State');
+            BindCityDropDown('City');
             $('select').niceSelect();
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time

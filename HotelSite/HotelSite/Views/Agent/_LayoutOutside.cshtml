@@ -98,8 +98,7 @@
                 return true;
             }
         });
-        function checkEmail()
-        {
+        function checkEmail() {
             $.get("/User/GetEmail", { email: Email }, function (data) {
                 if (data.res == true) {
                     return true;
@@ -113,12 +112,13 @@
                     });
                     return false;
                 }
-        }
+            }
+                }
 
 
 
-        function checkAgentRegister() {
-            debugger;
+        function checkAgentRegister()
+        {
             let fullName = $('#FullName');
             if (fullName.val().trim() == "" || fullName.val().trim() == null) {
                 calltoast("Please Enter Your Name");
