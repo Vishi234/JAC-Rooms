@@ -41,6 +41,14 @@ namespace HotelSite.Models.Agent
 
     }
 
+    public class AgentDetail
+    {
+        public string EmailID { get; set; }
+        public string Password { get; set; }
+        public string HotelType { get; set; }
+        public string FullName { get; set; }
+    }
+
     public class HotelInformation
     {
         string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
@@ -90,7 +98,7 @@ namespace HotelSite.Models.Agent
             try
             {
                 SqlParameter[] sqlParameter = new SqlParameter[8];
-                sqlParameter[0] = new SqlParameter("@HotelPhone",hotelContactInfo.HotelPhone );
+                sqlParameter[0] = new SqlParameter("@HotelPhone", hotelContactInfo.HotelPhone);
                 sqlParameter[1] = new SqlParameter("@HotelMobile", hotelContactInfo.HotelMobile);
                 sqlParameter[2] = new SqlParameter("@HotelEmail", hotelContactInfo.HotelEmail);
                 sqlParameter[3] = new SqlParameter("@HotelPhoneLlist", hotelContactInfo.HotelPhoneList);

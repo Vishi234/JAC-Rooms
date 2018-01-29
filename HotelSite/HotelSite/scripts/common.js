@@ -17,9 +17,8 @@ function CheckEmail(Email) {
     return regrex.test(Email);
 }
 
-function CheckPasswordComplexity(password) {
+function CheckPasswordComplexity() {
     var regex = new RegExp("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
-    return regex.test(password.val());
 }
 function myFunction(id) {
     var x = document.getElementById(id);
@@ -37,4 +36,30 @@ function calltoast(text) {
         bgColor: '#000000',
         position: 'bottom-right',
     })
+}
+
+function getJsonData(path) {
+    var resData = new Object();
+    $.ajax(
+        {
+            url: path,
+            type: 'get',
+            dataType: 'json',
+            async: false,
+            success: function (response) {
+                resData = response;
+            },
+            error: function (xhr, status, error) {
+
+            }
+        })
+    return resData;
+}
+function BindDropDownFromJson(ddlID,Data,Value,ID) {
+    try {
+
+    }
+    catch (e) {
+
+    }
 }

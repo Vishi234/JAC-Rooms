@@ -23,9 +23,11 @@
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
             $('[data-toggle="tooltip"]').tooltip();
             $('select').niceSelect();
             $(".addProbtn").click(function () {
@@ -95,8 +97,11 @@
             else {
                 return true;
             }
-        });
-        function checkAgentRegister(event) {
+        })
+
+
+        function checkAgentRegister() {
+            debugger;
             let fullName = $('#FullName');
             if (fullName.val().trim() == "" || fullName.val().trim() == null) {
                 calltoast("Please Enter Your Name");
@@ -126,25 +131,42 @@
                 password.focus();
                 return false;
             }
-            //if (!CheckPasswordComplexity(password))
-            //{
-            //    password.focus();
-            //    return false;
-            //}
-            let cfmPassword = $('#CPassword');
-            if (cfmPassword.val().trim() == '' || cfmPassword.val().trim() == null) {
-                calltoast("Please confirm Password");
-                password.focus();
-                return false;
-            }
             if (password.val().trim() !== $('#CPassword').val().trim()) {
                 calltoast("Password do not match");
                 password.focus();
                 return false;
             }
-            $('.insideButtonSpinner').css('max-width', '100px');
-            return true;
+            var obj = {
+                EmailID: emailId.val(),
+                Password: password.val(),
+                HotelType: HotelType.val(),
+                FullName: fullName.val()
+            }
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RegisterAgent")',
+                data: JSON.stringify({ agentDetail: obj }),
+                async : false,
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function ()
+                {
+                    $('.spinner').addClass('fa fa-cog fa-spin');
+                },
+                success: function (response) {
+                    if (response == '1')
+                    {
+                        $('.nextLogin').after('<p>Please Check Your Email to Authenicate Your Account </p>')
+                        $('.spinner').removeClass('fa fa-cog fa-spin');
+                    }
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                            }
+            });
+            return false;
         }
+
 
     </script>
 </body>

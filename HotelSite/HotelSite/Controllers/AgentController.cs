@@ -40,20 +40,29 @@ namespace HotelSite.Controllers
             }
         }
         [HttpPost]
-        public ActionResult RegisterAgent(FormCollection formCollection)
+        public string RegisterAgent(AgentDetail agentDetail)
         {
-            string Email = formCollection["EmailID"].ToString();
-            string Password = formCollection["Password"].ToString();
-            string HotelType = formCollection["HotelType"].ToString();
-            string FullName = formCollection["FullName"].ToString();
-            Agent agent = new Agent();
-            string Guid = agent.CreateAgent(Email, Password, HotelType, FullName);
-            string body = "Hello " + FullName + ",";
-            body += "<br /><br />Please click the following link to activate your account";
-            body += "<br /><a href = '" + string.Format("{0}://{1}/Agent/AgentComfirmation/{2}", Request.Url.Scheme, Request.Url.Authority, Guid) + "'>Click here to activate your account.</a>";
-            body += "<br /><br />Thanks";
-            Common.SendEmail(body, "clickhere");
-            return View("Login");
+            try
+            {
+                string Email = agentDetail.EmailID;
+                string Password = agentDetail.Password;
+                string HotelType = agentDetail.HotelType;
+                string FullName = agentDetail.FullName;
+                Agent agent = new Agent();
+                string Guid = agent.CreateAgent(Email, Password, HotelType, FullName);
+                string body = "Hello " + FullName + ",";
+                body += "<br /><br />Please click the following link to activate your account";
+                body += "<br /><a href = '" + string.Format("{0}://{1}/Agent/AgentComfirmation/{2}", Request.Url.Scheme, Request.Url.Authority, Guid) + "'>Click here to activate your account.</a>";
+                body += "<br /><br />Thanks";
+                Common.SendEmail(body, "clickhere", Email);
+                return "1";
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return "-1";
+            }
         }
         public ViewResult AgentComfirmation()
         {
@@ -75,7 +84,7 @@ namespace HotelSite.Controllers
         public int SaveHotelBasics(HotelBasics hotelBasics)
         {
             HotelInformation hotelInformation = new HotelInformation();
-            return hotelInformation.AddHotel(hotelBasics);            
+            return hotelInformation.AddHotel(hotelBasics);
         }
 
         public int SaveHotelContact(HotelContactInfo hotelContactInfo)
