@@ -106,16 +106,8 @@ namespace HotelSite.Models.Login
             try
             {
                 string tblName = IsAgent ? "tbl_AgentLogin#AgentEmail" : "tbl_User_Detail#Email";
-                if (!IsAgent)
-                {
-                    string query = string.Format("select 1 from {0}  where lower({1}) = '" + email.ToLower() + "'",tblName.Split('#')[0], tblName.Split('#')[1]);
-                    result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? false : true;
-                }
-                else
-                {
-
-                }
-                
+                string query = string.Format("select 1 from {0}  where lower({1}) = '" + email.ToLower() + "'", tblName.Split('#')[0], tblName.Split('#')[1]);
+                result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? true : false;
             }
             catch (Exception ex)
             {

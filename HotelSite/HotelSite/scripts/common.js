@@ -12,7 +12,7 @@ function hideModal(modalName, effectClass, removeClass) {
     setTimeout(function () { $(".modal-bg").css('display', 'none'); }, 1000);
 }
 
-function CheckEmail(Email) {
+function CheckEmailValidation(Email) {
     var regrex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
     return regrex.test(Email);
 }
@@ -104,5 +104,5 @@ function BindCityDropDown(ddlID, StateID) {
         var select = document.getElementById(ddlID);
         select.appendChild(option);
     });
-
 }
+        

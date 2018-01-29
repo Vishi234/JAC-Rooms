@@ -64,7 +64,7 @@
                     emailId.focus();
                     return false;
                 }
-                if (!CheckEmail($('#emailId').val())) {
+                if (!CheckEmailValidation($('#emailId').val())) {
                     calltoast("It seems you have entered a invalid Email");
                     emailId.focus();
                     return false;
@@ -98,27 +98,10 @@
                 return true;
             }
         });
-        function checkEmail() {
-            $.get("/User/GetEmail", { email: Email }, function (data) {
-                if (data.res == true) {
-                    return true;
-                }
-                else {
-                    $.toast({
-                        heading: 'Invalid Email ID',
-                        text: 'This email id not registered with JAC rooms.',
-                        showHideTransition: 'fade',
-                        icon: 'error'
-                    });
-                    return false;
-                }
-            }
-                }
 
 
+        function checkAgentRegister() {
 
-        function checkAgentRegister()
-        {
             let fullName = $('#FullName');
             if (fullName.val().trim() == "" || fullName.val().trim() == null) {
                 calltoast("Please Enter Your Name");
@@ -137,11 +120,18 @@
                 emailId.focus();
                 return false;
             }
-            if (!CheckEmail(emailId.val())) {
+            if (!CheckEmailValidation(emailId.val())) {
                 calltoast("It seems you have entered a invalid Email");
                 emailId.focus();
                 return false;
             }
+            var res = checkEmail();
+            console.log(res);
+            //if () {
+            //    $('.msgArea').html('<p class="msg">Email id already registered with jac rooms <a href="Login/">Click here</a> to login</p>');
+            //    $('.msgArea').css('max-height', '100px');
+            //    return false;
+            //}
             let password = $('#Password');
             if (password.val().trim() == '' || password.val().trim() == null) {
                 calltoast("Please enter a Password");
@@ -159,32 +149,63 @@
                 HotelType: HotelType.val(),
                 FullName: fullName.val()
             }
-
+            $('.insideButtonLoading').css('max-width', '100px');
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("RegisterAgent")',
                 data: JSON.stringify({ agentDetail: obj }),
-                async : false,
+                async: true,
                 contentType: "application/json; charset=utf-8",
-                beforeSend: function ()
-                {
-                    $('.spinner').addClass('fa fa-cog fa-spin');
-                },
                 success: function (response) {
-                    if (response == '1')
-                    {
-                        $('.nextLogin').after('<p>Please Check Your Email to Authenicate Your Account </p>')
-                        $('.spinner').removeClass('fa fa-cog fa-spin');
+                    if (response == '1') {
+
+                        $('.msgArea').html('<p class="msg">Please Check Your Email to Authenicate Your Account </p>');
+                        $('.msgArea').css('max-height', '100px');
+                        $('.insideButtonLoading').css('max-width', '0');
+                        $('#FullName').val('');
+                        $('#Password').val('');
+                        $('#CPassword').val('');
                     }
                 },
                 error: function () {
                     alert("Error while inserting data");
-                            }
+                }
             });
             return false;
         }
-
-
+        function checkEmail() {
+            try {
+                let Email = $('.emailId').val();
+                if (Email != null && Email != "") {
+                    $.get("/User/GetEmail", { email: Email, isAgent: true }, function (data) {
+                        if (data.res == true) {
+                            return true;
+                        }
+                        else {
+                            $.toast({
+                                heading: 'Invalid Email ID',
+                                text: 'This email id not registered with JAC rooms.',
+                                showHideTransition: 'fade',
+                                icon: 'error'
+                            })
+                            return false;
+                        }
+                    });
+                }
+                else {
+                    $.toast({
+                        heading: 'Required*',
+                        text: 'Please Enter Email ID',
+                        showHideTransition: 'fade',
+                        icon: 'error'
+                    })
+                    return false;
+                }
+            }
+            catch (e) {
+                return false;}
+        }
     </script>
 </body>
 </html>
+

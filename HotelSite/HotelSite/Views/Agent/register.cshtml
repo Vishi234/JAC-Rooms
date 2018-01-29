@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Email<span class="mandate">*</span></label>
-                            <input type="email" class="form-control" id="emailId" name="EmailID" autocomplete="off" placeholder="Email ID">
+                            <input type="email" class="form-control emailId" id="emailId" name="EmailID" autocomplete="off" placeholder="Email ID">
                             <p>Note : This will be your login id</p>
                         </div>
                         <div class="form-group">
@@ -40,12 +40,20 @@
                             <i class="fa fa-eye-slash eyeIcon pull-right" onclick="return showPassword(this, 'CPassword');"></i>
                         </div>
                         <div class="form-group">
-                            <button type="submit" value="Register" onclick="return checkAgentRegister();" class="nextLogin btn btn-danger">Register <i class="spinner"></i></button>
-                            @*<input type="submit"  ></input>*@
+                            <button type="submit" class="nextLogin btn btn-danger" onclick="return checkAgentRegister();">
+                                <i class="fa fa-spinner fa-spin insideButtonLoading"></i>Register
+                            </button>
                         </div>
+                        <div class="form-group msgArea">
+
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
+<script type="text/javascript">
+
+</script>
