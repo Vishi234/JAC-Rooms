@@ -1,0 +1,10 @@
+===============================start==============================================
+Inner Exception's
+MessageValue cannot be null.
+Parameter name: addresses
+StackTrace   at System.Net.Mail.MailAddressCollection.Add(String addresses)
+   at HotelSite.Models.Common.Common.SendEmail(String mailBodyHtml, String mailSubject, String toMail)
+TargetSiteVoid Add(System.String)
+DateTime : 	1/31/2018 1:05:55 AM
+================================end============================================= 
+

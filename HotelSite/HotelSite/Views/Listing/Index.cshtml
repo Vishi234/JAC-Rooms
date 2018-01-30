@@ -11,158 +11,161 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="search-modification">
-            <div class="triangle-with-shadow"></div>
-            <div class="search-area">
-                <div class="search-base hotelBase">
-                    <form class="form-inline" action="/action.php">
-                        <div class="form-fields">
-                            <div class="form-group">
-                                <input type="text" id="seachBox" name="seachBox" class="searchBox form-control" required>
-                                <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
-                                <i class="fa fa-map-marker icon mapIcon"></i>
-                                <div class="search_field">
-                                    <div class="triangle-with-shadow">
+    <div class="listing-body">
+        <div class="row">
+
+            <div class="search-modification">
+                <div class="triangle-with-shadow"></div>
+                <div class="search-area">
+                    <div class="search-base hotelBase">
+                        <form class="form-inline" action="/action.php">
+                            <div class="form-fields">
+                                <div class="form-group">
+                                    <input type="text" id="seachBox" name="seachBox" class="searchBox form-control" required>
+                                    <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
+                                    <i class="fa fa-map-marker icon mapIcon"></i>
+                                    <div class="search_field">
+                                        <div class="triangle-with-shadow">
+                                        </div>
+                                        <div class="search_box">
+                                            <ul>
+                                                <li><div class="search_header"><i class="fa fa-building"></i> Cities</div></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><div class="search_header"><i class="fa fa-map-marker"></i> Locations</div></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><div class="search_header"><i class="fa fa-hotel"></i> Hotels</div></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><div class="search_header"><i class="fa fa-building-o"></i> Hotel Chain</div></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="search_box">
-                                        <ul>
-                                            <li><div class="search_header"><i class="fa fa-building"></i> Cities</div></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><div class="search_header"><i class="fa fa-map-marker"></i> Locations</div></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><div class="search_header"><i class="fa fa-hotel"></i> Hotels</div></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><div class="search_header"><i class="fa fa-building-o"></i> Hotel Chain</div></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        </ul>
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="checkin" name="daterangepicker_start" class="checkinDate datePicker form-control" required>
+                                    <label class="form-control-placeholder" for="checkin">Check-in</label>
+                                    <i class="fa fa-calendar icon"></i>
+                                    <div class="cal_base">
+                                        <div class="calendar">
+
+                                        </div>
                                     </div>
                                 </div>
 
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="checkin" name="daterangepicker_start" class="checkinDate datePicker form-control" required>
-                                <label class="form-control-placeholder" for="checkin">Check-in</label>
-                                <i class="fa fa-calendar icon"></i>
-                                <div class="cal_base">
-                                    <div class="calendar">
-
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" id="checkout" name="daterangepicker_end" value="" class="checkoutDate datePicker form-control" required>
+                                    <label class="form-control-placeholder" for="checkout">Check-out</label>
+                                    <i class="fa fa-calendar icon"></i>
+                                </div>
+                                <div class="form-group rooMHover">
+                                    <input type="text" id="room" readonly class="form-control room_val" value="2 Pepole 1 Room" required>
+                                    <label class="form-control-placeholder" for="room"></label>
+                                    <img src="~/Content/images/sort-down.svg" class="img-icon" />
+                                </div>
+                                <div class="form-group">
+                                    <a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" id="checkout" name="daterangepicker_end" value="" class="checkoutDate datePicker form-control" required>
-                                <label class="form-control-placeholder" for="checkout">Check-out</label>
-                                <i class="fa fa-calendar icon"></i>
-                            </div>
-                            <div class="form-group rooMHover">
-                                <input type="text" id="room" readonly class="form-control room_val" value="2 Pepole 1 Room" required>
-                                <label class="form-control-placeholder" for="room"></label>
-                                <img src="~/Content/images/sort-down.svg" class="img-icon" />
-                            </div>
-                            <div class="form-group">
-                                <a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>
-                            </div>
-                        </div>
-
-                    </form>
+                        </form>
 
 
-                </div>
-                <div class="nav-drop roomDetails">
-                    <div class="triangle-with-shadow">
                     </div>
-                    <div class="nav-list">
-                        <div class="room_base"></div>
-                        <div class="ButtonGroup">
-                            <a href="javascript:void(0)" onclick="addRoom(1);" class="pull-left btn btn-light">Add Room</a>
-                            <a href="javascript:void(0)" class="pull-right btn btn-danger saveRoom">Done</a>
+                    <div class="nav-drop roomDetails">
+                        <div class="triangle-with-shadow">
+                        </div>
+                        <div class="nav-list">
+                            <div class="room_base"></div>
+                            <div class="ButtonGroup">
+                                <a href="javascript:void(0)" onclick="addRoom(1);" class="pull-left btn btn-light">Add Room</a>
+                                <a href="javascript:void(0)" class="pull-right btn btn-danger saveRoom">Done</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3 col-xs-12 col-sm-3 col-md-3">
-            <div class="row">
-                <div class="listing-filter">
-                    <h3>Hotels in Goa</h3>
-                    <hr />
-                    <div class="location-filter filter-style">
-                        <h5>Location</h5>
-                        <input type="text" class="form-control" placeholder="Seach by location" />
+        <div class="row">
+            <div class="col-lg-3 col-xs-12 col-sm-3 col-md-3">
+                <div class="row">
+                    <div class="listing-filter">
+                        <h3>Hotels in Goa</h3>
+                        <hr />
+                        <div class="location-filter filter-style">
+                            <h5>Location</h5>
+                            <input type="text" class="form-control" placeholder="Seach by location" />
+                        </div>
+                        <hr />
+                        <div class="hotelname-filter filter-style">
+                            <h5>Seach By Hotel Name </h5>
+                            <input type="text" class="form-control" placeholder="Hotel Name" />
+                        </div>
+                        <hr />
+                        <div class="smart-filter filter-style">
+                            <h5>Smart Filter <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="box1" type="checkbox" />
+                            <label for="box1">Pay At Checkout</label>
+                            <input id="box2" type="checkbox" />
+                            <label for="box2">Free Cancellation</label>
+                        </div>
+                        <hr />
+                        <div class="price-filter filter-style">
+                            <h5>Price Range <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="price1" type="checkbox" />
+                            <label for="price1">Upto <i class="fa fa-rupee"></i> 999</label>
+                            <input id="price2" type="checkbox" />
+                            <label for="price2"><i class="fa fa-rupee"></i> 1000 to <i class="fa fa-rupee"></i> 3000</label>
+                            <input id="price3" type="checkbox" />
+                            <label for="price3"><i class="fa fa-rupee"></i> 3000 to <i class="fa fa-rupee"></i> 5000</label>
+                            <input id="price4" type="checkbox" />
+                            <label for="price4"><i class="fa fa-rupee"></i> 5000 to <i class="fa fa-rupee"></i> 10000</label>
+                            <input id="price5" type="checkbox" />
+                            <label for="price5"><i class="fa fa-rupee"></i> 10000 +</label>
+                        </div>
+                        <hr />
+                        <div class="hoteltype-filter filter-style">
+                            <h5>Hotel Type<a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="type1" type="checkbox" />
+                            <label for="type1">Hotel</label>
+                            <input id="type2" type="checkbox" />
+                            <label for="type2">Bunglow</label>
+                            <input id="type1" type="checkbox" />
+                            <label for="type3">Guest House</label>
+                            <input id="type4" type="checkbox" />
+                            <label for="type4">Home Stay</label>
+                            <input id="type5" type="checkbox" />
+                            <label for="type5">Resorts</label>
+                        </div>
+                        <hr />
                     </div>
-                    <hr />
-                    <div class="hotelname-filter filter-style">
-                        <h5>Seach By Hotel Name </h5>
-                        <input type="text" class="form-control" placeholder="Hotel Name" />
-                    </div>
-                    <hr />
-                    <div class="smart-filter filter-style">
-                        <h5>Smart Filter <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
-                        <input id="box1" type="checkbox" />
-                        <label for="box1">Pay At Checkout</label>
-                        <input id="box2" type="checkbox" />
-                        <label for="box2">Free Cancellation</label>
-                    </div>
-                    <hr />
-                    <div class="price-filter filter-style">
-                        <h5>Price Range <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
-                        <input id="price1" type="checkbox" />
-                        <label for="price1">Upto <i class="fa fa-rupee"></i> 999</label>
-                        <input id="price2" type="checkbox" />
-                        <label for="price2"><i class="fa fa-rupee"></i> 1000 to <i class="fa fa-rupee"></i> 3000</label>
-                        <input id="price3" type="checkbox" />
-                        <label for="price3"><i class="fa fa-rupee"></i> 3000 to <i class="fa fa-rupee"></i> 5000</label>
-                        <input id="price4" type="checkbox" />
-                        <label for="price4"><i class="fa fa-rupee"></i> 5000 to <i class="fa fa-rupee"></i> 10000</label>
-                        <input id="price5" type="checkbox" />
-                        <label for="price5"><i class="fa fa-rupee"></i> 10000 +</label>
-                    </div>
-                    <hr />
-                    <div class="hoteltype-filter filter-style">
-                        <h5>Hotel Type<a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
-                        <input id="type1" type="checkbox" />
-                        <label for="type1">Hotel</label>
-                        <input id="type2" type="checkbox" />
-                        <label for="type2">Bunglow</label>
-                        <input id="type1" type="checkbox" />
-                        <label for="type3">Guest House</label>
-                        <input id="type4" type="checkbox" />
-                        <label for="type4">Home Stay</label>
-                        <input id="type5" type="checkbox" />
-                        <label for="type5">Resorts</label>
-                    </div>
-                    <hr />
                 </div>
             </div>
-        </div>
-        <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
-            <div class="row">
-                <div class="hotel_list">
-                    <ul>
-                        <li>
-                            <div class="thumg-img">
-                                <img src="~/Content/images/sliderImage.jpg" />
-                            </div>
-                            <div class="star-rating">
+            <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
+                <div class="row">
+                    <div class="hotel_list">
+                        <ul>
+                            <li>
+                                <div class="thumg-img">
+                                    <img src="~/Content/images/sliderImage.jpg" />
+                                </div>
+                                <div class="star-rating">
 
-                            </div>
-                            <div class="content-body">
+                                </div>
+                                <div class="content-body">
 
-                            </div>
-                        </li>
-                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

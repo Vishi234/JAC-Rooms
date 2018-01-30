@@ -1580,7 +1580,7 @@ a {
 
 .insideButtonLoading {
     margin-right: 10px;
-    max-width:0;
+    max-width: 0;
     overflow: hidden;
     transition: all 0.4s ease-in-out;
 }
@@ -1596,4 +1596,10 @@ a {
     text-align: center !important;
     font-weight: 500 !important;
     color: red !important;
+}
+
+.mailLoadingIcon {
+    position: absolute;
+    right: 45px;
+    margin-top: -26px;
 }

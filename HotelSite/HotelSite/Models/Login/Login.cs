@@ -107,7 +107,7 @@ namespace HotelSite.Models.Login
             {
                 string tblName = IsAgent ? "tbl_AgentLogin#AgentEmail" : "tbl_User_Detail#Email";
                 string query = string.Format("select 1 from {0}  where lower({1}) = '" + email.ToLower() + "'", tblName.Split('#')[0], tblName.Split('#')[1]);
-                result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? true : false;
+                result = (SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query) != null) ? false : true;
             }
             catch (Exception ex)
             {

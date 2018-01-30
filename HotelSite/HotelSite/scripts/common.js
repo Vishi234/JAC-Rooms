@@ -1,4 +1,5 @@
-﻿function showModal(modalName, effectClass, removeClass) {
+﻿
+function showModal(modalNme, effectClass, removeClass) {
     $(".modal-bg").css('display', 'block');
     $(".modal-bg").removeClass(removeClass);
     $("." + modalName).removeClass(removeClass);
@@ -65,20 +66,19 @@ function BindCountryDropDown(ddlID) {
             var select = document.getElementById(ddlID);
             select.appendChild(option);
         });
-       
+
 
     }
     catch (e) {
 
     }
 }
-function BindStateDropDown(ddlID,CountyID)
-{
+function BindStateDropDown(ddlID, CountyID) {
     var states = getJsonData('../../Location Data/states.json');
     let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
     $('#' + ddlID).empty();
 
-    let StateBindData =$.grep(states.states, function (n, i) {
+    let StateBindData = $.grep(states.states, function (n, i) {
         return n.country_id == cID;
     })
     $.each(StateBindData, function (i, item) {
@@ -105,4 +105,26 @@ function BindCityDropDown(ddlID, StateID) {
         select.appendChild(option);
     });
 }
-        
+function checkMail(controlClass, module ) {
+
+    let Email = $('.' + controlClass).val();
+    var obj = {
+        email: Email,
+        isAgent: module
+    }
+    var result;
+    $.ajax({
+        type: "POST",
+        url: '/User/GetEmail',
+        data: JSON.stringify(obj),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        success: function (response) {
+            result = response.res
+        },
+        error: function () {
+            
+        }
+    });
+    return result;
+}

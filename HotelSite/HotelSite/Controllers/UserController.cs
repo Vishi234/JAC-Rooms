@@ -68,7 +68,7 @@ namespace HotelSite.Controllers
         }
 
         public JsonResult GetEmail(string email,bool isAgent)
-        {
+            {
             Register register = new Register();
             bool EmailValid = register.checkEmailUser(email, isAgent);
             return Json(new { res = EmailValid }, JsonRequestBehavior.AllowGet);

@@ -17,14 +17,18 @@
                         </div>
                         <div class="form-group">
                             <label for="Email Id">Your Email ID<span class="mandate">*</span></label>
-                            <input type="text" class="form-control" id="emailId" name="EmailID" placeholder="Registered Email ID">
+                            <input type="text" class="form-control loginEmailValidation emailId" id="emailId" name="EmailID" placeholder="Registered Email ID">
+                            <i class="fa pull-right mailLoadingIcon"></i>
                         </div>
 
                         <div class="form-group">
-                            <a href="javascript:void(0)" id="nxt" onclick="ValidateEmail()" class="nxt btn btn-danger">Continue</a>
+                            <a href="javascript:void(0)" id="nxt" class="nxt btn btn-danger">Continue</a>
                         </div>
                         <div class="quickLinks">
                             <p>@Html.ActionLink("Don't have an account?", "register")</p>
+                        </div>
+                        <div class="form-group msgArea">
+
                         </div>
                     </div>
 
