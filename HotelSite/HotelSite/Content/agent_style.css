@@ -1603,3 +1603,9 @@ a {
     right: 45px;
     margin-top: -26px;
 }
+
+.validation:focus {
+    border-color: #F3495A !important;
+    background: rgba(243, 73, 90,0.2)!important;
+}
+

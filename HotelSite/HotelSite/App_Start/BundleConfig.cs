@@ -23,8 +23,9 @@ namespace HotelSite
                 "~/scripts/jquery-1.9.1.min.js",
                 "~/scripts/filter-tags.js",
                 "~/scripts/common.js",
-                "~/scripts/moment.min.js",
-                "~/scripts/daterangerpicker.js"));
+                "~/scripts/CommonValidator/CommonValidator.js",
+                "~/scripts/jquery.js",
+                "~/scripts/jquery.nice-select.js"));
 
             bundles.Add(new ScriptBundle("~/bundle/jquery2").Include
                 (

@@ -64,7 +64,7 @@ function BindCountryDropDown(ddlID) {
             option.text = item.name;
             option.value = item.id;
             var select = document.getElementById(ddlID);
-            select.appendChild(option);
+            if (option != null)  select.appendChild(option);
         });
 
 
@@ -74,6 +74,7 @@ function BindCountryDropDown(ddlID) {
     }
 }
 function BindStateDropDown(ddlID, CountyID) {
+    debugger;
     var states = getJsonData('../../Location Data/states.json');
     let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
     $('#' + ddlID).empty();
@@ -86,7 +87,10 @@ function BindStateDropDown(ddlID, CountyID) {
         option.text = item.name;
         option.value = item.id;
         var select = document.getElementById(ddlID);
-        select.appendChild(option);
+        if (option != null) {
+            select.appendChild(option);
+        }
+        
     });
 
 }
