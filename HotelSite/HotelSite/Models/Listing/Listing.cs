@@ -15,6 +15,7 @@ namespace HotelSite.Models.Listing
         public string HotelName { get; set; }
         public string HotelDisplayName { get; set; }
         string sqlconn = System.Configuration.ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
+
         public List<Listing> GetHotelDetail(string Key)
         {
             List<Listing> lst = new List<Listing>();
