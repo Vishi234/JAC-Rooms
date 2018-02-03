@@ -17,5 +17,13 @@ namespace HotelSite
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BundleTable.EnableOptimizations = true;
         }
+        protected void Application_EndRequest()
+        {
+            if (Context.Items["AjaxPermissionDenied"] is bool)
+            {
+                Context.Response.StatusCode = 401;
+                Context.Response.End();
+            }
+        }
     }
 }
