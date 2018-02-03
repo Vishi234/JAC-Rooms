@@ -112,6 +112,7 @@
     <script src="~/scripts/wickedpicker.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
             BindCountryDropDown('Country');
             BindStateDropDown('State');
             BindCityDropDown('City');
@@ -133,6 +134,11 @@
             };
             $('.timepicker').wickedpicker(options);
 
+        });
+        $(document).ajaxError(function (xhr, props) {
+            if (props.status === 401) {
+                window.location.href = '@Url.Action("Login","Agent")';
+            }
         });
         function InsertHotelBasicInfo() {
             var Hotel = {

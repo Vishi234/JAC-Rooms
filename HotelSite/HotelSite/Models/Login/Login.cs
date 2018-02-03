@@ -79,9 +79,9 @@ namespace HotelSite.Models.Login
                         }
                         else
                         {
-                            HttpContext.Current.Session["UserID"] = ds.Tables[0].Rows[0]["AgentID"].ToString();
-                            HttpContext.Current.Session["Name"] = ds.Tables[0].Rows[0]["AgentFullName"].ToString();
-                            HttpContext.Current.Session["Email"] = ds.Tables[0].Rows[0]["AgentEmail"].ToString();
+                            HttpContext.Current.Session["AgentId"] = ds.Tables[0].Rows[0]["AgentID"].ToString();
+                            HttpContext.Current.Session["AgentName"] = ds.Tables[0].Rows[0]["AgentFullName"].ToString();
+                            HttpContext.Current.Session["AgentEmail"] = ds.Tables[0].Rows[0]["AgentEmail"].ToString();
                         }
 
                         return true;
