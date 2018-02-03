@@ -64,7 +64,7 @@ function BindCountryDropDown(ddlID) {
             option.text = item.name;
             option.value = item.id;
             var select = document.getElementById(ddlID);
-            if (option != null)  select.appendChild(option);
+            if (option != null) select.appendChild(option);
         });
 
 
@@ -90,7 +90,7 @@ function BindStateDropDown(ddlID, CountyID) {
         if (option != null) {
             select.appendChild(option);
         }
-        
+
     });
 
 }
@@ -109,7 +109,7 @@ function BindCityDropDown(ddlID, StateID) {
         select.appendChild(option);
     });
 }
-function checkMail(controlClass, module ) {
+function checkMail(controlClass, module) {
 
     let Email = $('.' + controlClass).val();
     var obj = {
@@ -127,8 +127,9 @@ function checkMail(controlClass, module ) {
             result = response.res
         },
         error: function () {
-            
+
         }
     });
     return result;
 }
+

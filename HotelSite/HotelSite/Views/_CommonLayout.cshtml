@@ -131,7 +131,7 @@
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');
                 $('.loading-bar').css('max-height', '0');
-                
+
             });
             addRoom(0);
             $('.rooMHover').click(function () {
@@ -140,7 +140,7 @@
                 $('.roomDetails').toggle();
                 $('.search_field').css('display', 'none');
             });
-            
+
             $('.datePicker').keydown(function () {
                 return false;
             });
@@ -149,7 +149,9 @@
                 $('.roomDetails').css('display', 'none');
             })
             $('.searchBox').keyup(function () {
+                debugger;
                 if ($(this).val().length > 0 && $(this).val().length >= 3) {
+                    filterLocation($(this).val());
                     $('.mapIcon').removeClass('fa-map-marker');
                     $('.mapIcon').addClass('fa-circle-o-notch fa-spin');
                     setTimeout(function () {
@@ -158,8 +160,6 @@
                         $('.search_box').css('display', 'block');
                         $('.search_field').css('display', 'block');
                     }, 3000);
-
-
                 }
                 else {
                     $('.mapIcon').addClass('fa-map-marker');
@@ -212,16 +212,16 @@
             for (var i = 0; i <= divId; i++) {
 
                 html += '<div class="room_list" id=' + i + '><h5>Room ' + parseInt(i + 1) + ':</h5><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Adults</h6>',
-                html += '<p>Above 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
-                html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + i + '" disabled="disabled" data-type="minus" data-field="quant[' + adultQuant + ']"><span class="fa fa-minus"></span>',
-                html += '</button></span><input type="text" onfocusin="adultFocusin(this);" onchange="adultChange(this,' + i + ');" readonly name="quant[' + adultQuant + ']" class="adultCount form-control input-adult' + i + '" value="1" min="1" max="4"><span class="input-group-btn">',
-                html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + i + '" data-type="plus" data-field="quant[' + adultQuant + ']"><span class="fa fa-plus"></span>',
-                html += '</button></span></div></div></div></div><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Children</h6>',
-                html += '<p>Below 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
-                html += '<button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" disabled="disabled" data-type="minus" data-field="quant[' + childQuant + ']">',
-                html += '<span class="fa fa-minus"></span></button></span><input type="text" onfocusin="childFocusin(this);" onchange="childChange(this,' + children + ');" readonly name="quant[' + childQuant + ']" class="childrenCount form-control input-children' + children + '" value="0" min="0" max="4">',
-                html += '<span class="input-group-btn"><button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" data-type="plus" data-field="quant[' + childQuant + ']">',
-                html += '<span class="fa fa-plus"></span></button></span></div></div></div></div><a href="javascript:void(0)" onclick="removeDiv(' + i + ');" class="removeBtn pull-right">Remove</a></div>';
+                    html += '<p>Above 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
+                    html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + i + '" disabled="disabled" data-type="minus" data-field="quant[' + adultQuant + ']"><span class="fa fa-minus"></span>',
+                    html += '</button></span><input type="text" onfocusin="adultFocusin(this);" onchange="adultChange(this,' + i + ');" readonly name="quant[' + adultQuant + ']" class="adultCount form-control input-adult' + i + '" value="1" min="1" max="4"><span class="input-group-btn">',
+                    html += '<button type="button" onclick="adultFunc(this);" class="btn btn-default btn-adult' + i + '" data-type="plus" data-field="quant[' + adultQuant + ']"><span class="fa fa-plus"></span>',
+                    html += '</button></span></div></div></div></div><div class="adult_age"><div class="col-md-6"><div class="row"><h6>Children</h6>',
+                    html += '<p>Below 12 years</p></div></div><div class="col-md-6"><div class="row"><div class="input-group"><span class="input-group-btn">',
+                    html += '<button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" disabled="disabled" data-type="minus" data-field="quant[' + childQuant + ']">',
+                    html += '<span class="fa fa-minus"></span></button></span><input type="text" onfocusin="childFocusin(this);" onchange="childChange(this,' + children + ');" readonly name="quant[' + childQuant + ']" class="childrenCount form-control input-children' + children + '" value="0" min="0" max="4">',
+                    html += '<span class="input-group-btn"><button type="button" onclick="childFunc(this);" class="btn btn-default btn-children' + children + '" data-type="plus" data-field="quant[' + childQuant + ']">',
+                    html += '<span class="fa fa-plus"></span></button></span></div></div></div></div><a href="javascript:void(0)" onclick="removeDiv(' + i + ');" class="removeBtn pull-right">Remove</a></div>';
                 adultQuant = adultQuant + 2;
                 childQuant = childQuant + 2;
             }
@@ -364,6 +364,44 @@
             html = '';
             addRoom(0);
         };
+        function filterLocation(key) {
+            debugger;
+            var states = getJsonData('../../Location Data/states.json');
+            var citiess = getJsonData('../../Location Data/cities.json');
+            var finalResult = {};
+            var result1 =
+                $.grep(states.states, function (item, i) {
+                    return (item.name.toLowerCase().indexOf(key.toLowerCase()) !== -1);//&& item.country_id == '101'
+                });
+            var result2 =
+                $.grep(citiess.cities, function (item, i) {
+                    return (item.name.toLowerCase().indexOf(key.toLowerCase()) !== -1);
+                });
+
+            var result3 = GetHotel(key);
+            finalResult['state'] = result1.slice(0, 5);
+            finalResult['city'] = result2.slice(0, 5);
+            finalResult['Hotel'] = result3.slice(0, 3);
+            console.log(finalResult);
+        }
+        function GetHotel(key)
+        {
+            var hoteldata;
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("GetHotelData")",
+                contentType: "application/json",
+                async : false,
+                data: JSON.stringify({ Searchkey: key }),
+                success: function (data) {
+                    hoteldata = data;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(textStatus + "\n" + errorThrown);
+                }
+            });
+            return hoteldata;
+        }
     </script>
 
 </body>

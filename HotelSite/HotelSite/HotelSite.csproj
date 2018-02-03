@@ -468,6 +468,7 @@
     </Compile>
     <Compile Include="Models\Agent\Hotel.cs" />
     <Compile Include="Models\Common\Common.cs" />
+    <Compile Include="Models\Listing\Listing.cs" />
     <Compile Include="Models\Login\Login.cs" />
     <Compile Include="Models\SQLHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
