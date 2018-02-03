@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 
     <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
-    <link href="~/Content/wickedpicker.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="header-top">
@@ -107,15 +107,11 @@
     @RenderBody()
 
     @Scripts.Render("~/bundle/jquery")
-
-    <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
-    <script src="~/scripts/CommonValidator/CommonValidator.js"></script>
-    <script src="~/scripts/common.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {            
+        $(document).ready(function () {
             BindCountryDropDown('Country');
             BindStateDropDown('State');
             BindCityDropDown('City');
@@ -161,25 +157,24 @@
                 type: 'POST',
                 url: "@Url.Action("SaveHotelBasics", "Agent")",
                 contentType: "application/json",
-                data: JSON.stringify({ hotelBasics: Hotel}),
+                data: JSON.stringify({ hotelBasics: Hotel }),
                 success: function (data) {
-                $.toast({
-                    text: 'Basics info is added ,please add contact',
-                    hideAfter: 5000,
-                    position: 'bottom-center',
-                })
-                $('#1').removeClass('active');
-                $('#basicInfo').removeClass('active in')
-                $('#2').removeClass('disabled').addClass('active');
-                $('#contact').addClass("in active");
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $.toast({
+                        text: 'Basics info is added ,please add contact',
+                        hideAfter: 5000,
+                        position: 'bottom-center',
+                    })
+                    $('#1').removeClass('active');
+                    $('#basicInfo').removeClass('active in')
+                    $('#2').removeClass('disabled').addClass('active');
+                    $('#contact').addClass("in active");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-            }
-        });
+                }
+            });
         }
-        function InsertHotelContactInfo()
-        {
+        function InsertHotelContactInfo() {
             var hotelContact =
                 {
                     HotelPhone: $('#HotelPhone').val(),
@@ -189,41 +184,39 @@
                     HotelEmailList: $('#HotelEmailList').val(),
                     HotelWebsiteList: $('#HotelWebsiteList').val()
                 }
-           $.ajax({
-            type: 'POST',
-            url: "@Url.Action("SaveHotelContact", "Agent")",
-            contentType: "application/json",
-            data: JSON.stringify({ hotelContactInfo: hotelContact}),
-            success: function (data) {
-                if (data == "2")
-                {
-                    $.toast({
-                        heading: 'Success',
-                        text: 'Here is some kind of success message with a success icon that you can notice at the left side.',
-                        icon: 'success',
-                        position: 'top-right'
-                    });
-                    $('#2').removeClass('active');
-                    $('#contact').removeClass('active in')
-                    $('#3').removeClass('disabled').addClass('active');
-                    $('#rooms').addClass("in active");
-                }
-                else
-                {
-                    $.toast({
-                        heading: 'Error',
-                        text: 'Error Found While Adding Hotel Contact Detail',
-                        showHideTransition: 'fade',
-                        icon: 'error',
-                        position: 'top-right'
-                    })
-                }
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("SaveHotelContact", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ hotelContactInfo: hotelContact }),
+                success: function (data) {
+                    if (data == "2") {
+                        $.toast({
+                            heading: 'Success',
+                            text: 'Here is some kind of success message with a success icon that you can notice at the left side.',
+                            icon: 'success',
+                            position: 'top-right'
+                        });
+                        $('#2').removeClass('active');
+                        $('#contact').removeClass('active in')
+                        $('#3').removeClass('disabled').addClass('active');
+                        $('#rooms').addClass("in active");
+                    }
+                    else {
+                        $.toast({
+                            heading: 'Error',
+                            text: 'Error Found While Adding Hotel Contact Detail',
+                            showHideTransition: 'fade',
+                            icon: 'error',
+                            position: 'top-right'
+                        })
+                    }
 
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
 
-            }
-        });
+                }
+            });
         }
     </script>
 </body>
