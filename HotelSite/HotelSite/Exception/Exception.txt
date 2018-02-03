@@ -1,10 +1,11 @@
 ===============================start==============================================
 Inner Exception's
-MessageValue cannot be null.
-Parameter name: addresses
-StackTrace   at System.Net.Mail.MailAddressCollection.Add(String addresses)
-   at HotelSite.Models.Common.Common.SendEmail(String mailBodyHtml, String mailSubject, String toMail)
-TargetSiteVoid Add(System.String)
-DateTime : 	1/31/2018 1:05:55 AM
+MessageHotelID
+StackTrace   at System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.SqlClient.SqlDataReader.get_Item(String name)
+   at HotelSite.Models.Listing.Listing.GetHotelDetail(String Key) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\Listing\Listing.cs:line 30
+TargetSiteInt32 GetOrdinal(System.String)
+DateTime : 	03-02-18 20:56:58
 ================================end============================================= 
 
