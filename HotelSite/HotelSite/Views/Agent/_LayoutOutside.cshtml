@@ -121,7 +121,7 @@
                     else {
                         $('.mailLoadingIcon').addClass('fa-spinner fa-spin');
                         if (!checkMail('emailId', true)) {
-                            $('.msgArea').html('<p class="msg">Email id already registered with jac rooms<a href="/Agent/Login/"> Click here </a> to login</p>');
+                            $('.msgArea').html('<p class="msg">Email id already registered with jac rooms @Html.ActionLink("Click Here", "login") to login</p>');
                             $('.msgArea').css('max-height', '100px');
                             $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
                             $('.mailLoadingIcon').addClass('fa-times');
@@ -159,7 +159,7 @@
 
 
         function checkAgentRegister() {
-            
+
             let fullName = $('#FullName');
             if (fullName.val().trim() == "" || fullName.val().trim() == null) {
                 calltoast("Please Enter Your Name");

@@ -99,7 +99,7 @@
             $('.roomDetails').css('display', 'none');
         });
         var date = new Date();
-        var finalDate = date.getFullYear() + "-" + date.getMonth() + 1 + "-" + date.getDate();
+        var finalDate = date.getFullYear() + "-" + parseInt(date.getMonth()+1) + "-" + date.getDate();
         $('.calendar').pignoseCalendar({
             multiple: false,
             theme: 'blue',

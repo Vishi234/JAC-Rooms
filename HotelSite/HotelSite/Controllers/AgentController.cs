@@ -6,10 +6,16 @@ using HotelSite.Models.Agent;
 
 namespace HotelSite.Controllers
 {
+    [ApplicationController]
     public class AgentController : Controller
     {
-        // GET: Agent
+       
         public ActionResult Index()
+        {
+            return View();
+        }
+        
+        public ActionResult login()
         {
             return View();
         }
@@ -21,10 +27,7 @@ namespace HotelSite.Controllers
         {
             return View();
         }
-        public ActionResult login()
-        {
-            return View();
-        }
+
         [HttpPost]
         public ActionResult LoggingIN(Signin signin)
         {
