@@ -3,10 +3,12 @@ using HotelSite.Models.Login;
 using System;
 using System.Web.Mvc;
 using HotelSite.Models.Agent;
+using HotelSite.Models.Listing;
+using System.Collections.Generic;
 
 namespace HotelSite.Controllers
 {
-    
+
     public class AgentController : Controller
     {
         [ApplicationController]
@@ -14,7 +16,7 @@ namespace HotelSite.Controllers
         {
             return View();
         }
-        
+
         public ActionResult login()
         {
             return View();
@@ -102,8 +104,9 @@ namespace HotelSite.Controllers
 
         public JsonResult getHotelList(string agentId)
         {
-            Listing
-            return Json("asd", JsonRequestBehavior.AllowGet);
+            HotelBasics hotelObj = new HotelBasics();
+            List<HotelBasics> list = hotelObj.GetHotelList(agentId);
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -28,6 +28,34 @@ namespace HotelSite.Models.Agent
         public string City { get; set; }
         public int ZipCode { get; set; }
         public int AgentID { get; set; }
+        string sqlconn = System.Configuration.ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
+        public List<HotelBasics> GetHotelList(string AgentId)
+        {
+
+            List<HotelBasics> lst = new List<HotelBasics>();
+            try
+            {
+                string query = "select * from tbl_Agent_Hotel where AgentID=" + AgentId;
+                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        lst.Add(new HotelBasics()
+                        {
+                            DisplayName = sqlDataReader["HotelDisplay"].ToString(),
+                        });
+                    }
+                }
+                sqlDataReader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return lst;
+        }
 
     }
     public class HotelContactInfo
@@ -125,4 +153,6 @@ namespace HotelSite.Models.Agent
             }
         }
     }
+
+
 }

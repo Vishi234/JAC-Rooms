@@ -9,16 +9,16 @@ using System.Web;
 
 namespace HotelSite.Models.Listing
 {
-    public class Listing
+    public class Hotel
     {
         public long HotelID { get; set; }
         public string HotelName { get; set; }
         public string HotelDisplayName { get; set; }
         string sqlconn = System.Configuration.ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
 
-        public List<Listing> GetHotelDetail(string Key)
+        public List<Hotel> GetHotelDetail(string Key)
         {
-            List<Listing> lst = new List<Listing>();
+            List<Hotel> lst = new List<Hotel>();
             try
             {
                 List<SqlParameter> lstsqlparam = new List<SqlParameter>();
@@ -28,7 +28,7 @@ namespace HotelSite.Models.Listing
                 {
                     while(sqlDataReader.Read())
                     {
-                        lst.Add(new Listing()
+                        lst.Add(new Hotel()
                         {
                             HotelDisplayName = sqlDataReader["HotelDisplayName"].ToString(),
                             HotelID = (int)sqlDataReader["HotelID"],

@@ -31,10 +31,10 @@ namespace HotelSite.Controllers
                 return Json(rslt, JsonRequestBehavior.AllowGet);
             }
         }
-        public List<Listing> getHotel(string key)
+        public List<Hotel> getHotel(string key)
         {
-            Listing listing = new Listing();
-            List<Listing> list = listing.GetHotelDetail(key);
+            Hotel listing = new Hotel();
+            List<Hotel> list = listing.GetHotelDetail(key);
             return list;
         }
     }
