@@ -68,7 +68,7 @@
             try {
                 let Email = $('.emailId').val();
                 if (Email != null && Email != "") {
-                    $.get("/User/GetEmail", { email: Email }, function (data) {
+                    $.get("/User/GetEmail", { email: Email, isAgent: false }, function (data) {
                         if (data.res == true) {
                             return true;
                         }
@@ -79,7 +79,7 @@
                                 showHideTransition: 'fade',
                                 icon: 'error'
                             })
-                            
+
                             return false;
                         }
                     });
@@ -96,6 +96,7 @@
             }
             catch (e) { }
         }
+
     </script>
 </body>
 </html>

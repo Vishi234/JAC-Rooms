@@ -1,4 +1,5 @@
-﻿function showModal(modalName, effectClass, removeClass) {
+﻿
+function showModal(modalNme, effectClass, removeClass) {
     $(".modal-bg").css('display', 'block');
     $(".modal-bg").removeClass(removeClass);
     $("." + modalName).removeClass(removeClass);
@@ -12,7 +13,7 @@ function hideModal(modalName, effectClass, removeClass) {
     setTimeout(function () { $(".modal-bg").css('display', 'none'); }, 1000);
 }
 
-function CheckEmail(Email) {
+function CheckEmailValidation(Email) {
     var regrex = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
     return regrex.test(Email);
 }
@@ -65,6 +66,8 @@ function BindCountryDropDown(ddlID) {
             var select = document.getElementById(ddlID);
             select.appendChild(option);
         });
+
+
     }
     catch (e) {
 
@@ -101,5 +104,27 @@ function BindCityDropDown(ddlID, StateID) {
         var select = document.getElementById(ddlID);
         select.appendChild(option);
     });
+}
+function checkMail(controlClass, module ) {
 
+    let Email = $('.' + controlClass).val();
+    var obj = {
+        email: Email,
+        isAgent: module
+    }
+    var result;
+    $.ajax({
+        type: "POST",
+        url: '/User/GetEmail',
+        data: JSON.stringify(obj),
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        success: function (response) {
+            result = response.res
+        },
+        error: function () {
+            
+        }
+    });
+    return result;
 }
