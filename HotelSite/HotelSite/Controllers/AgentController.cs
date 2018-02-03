@@ -6,10 +6,10 @@ using HotelSite.Models.Agent;
 
 namespace HotelSite.Controllers
 {
-    [ApplicationController]
+    
     public class AgentController : Controller
     {
-       
+        [ApplicationController]
         public ActionResult Index()
         {
             return View();
@@ -27,7 +27,11 @@ namespace HotelSite.Controllers
         {
             return View();
         }
-
+        public ActionResult logout()
+        {
+            Session.Abandon();
+            return View("login");
+        }
         [HttpPost]
         public ActionResult LoggingIN(Signin signin)
         {
@@ -94,6 +98,12 @@ namespace HotelSite.Controllers
         {
             HotelInformation hotelInformation = new HotelInformation();
             return hotelInformation.AddHotelContactDetail(hotelContactInfo);
+        }
+
+        public JsonResult getHotelList(string agentId)
+        {
+            Listing
+            return Json("asd", JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -37,11 +37,11 @@
 
                                         </div>
                                         <div class="drop_body">
-                                            <p>Welcome Hotel Yes</p>
+                                            <p>Welcome @Session["AgentName"]</p>
                                             <ul>
                                                 <li><a href="/Agent/property"><i class="fa fa-plus"></i> Add Hotel</a></li>
                                                 <li><a href="javascript:void(0)">Change Password</a></li>
-                                                <li><a href="javascript:void(0)">Logout</a></li>
+                                                <li>@Html.ActionLink("Logout","logout")</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -135,11 +135,7 @@
             $('.timepicker').wickedpicker(options);
 
         });
-        $(document).ajaxError(function (xhr, props) {
-            if (props.status === 401) {
-                window.location.href = '@Url.Action("Login","Agent")';
-            }
-        });
+        
         function InsertHotelBasicInfo() {
             var Hotel = {
                 HotelName: $('#hotelName').val(),

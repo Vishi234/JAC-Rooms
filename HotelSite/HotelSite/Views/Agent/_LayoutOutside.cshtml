@@ -142,11 +142,7 @@
             });
 
         });
-        $(document).ajaxError(function (xhr, props) {
-            if (props.status === 401) {
-                window.location.href = '@Url.Action("Index","Agent")';
-            }
-        });
+       
         function showPassword(event, id) {
             $(event).toggleClass("fa-eye-slash fa-eye");
             myFunction(id);
