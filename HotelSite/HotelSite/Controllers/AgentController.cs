@@ -102,7 +102,6 @@ namespace HotelSite.Controllers
 
         public JsonResult getHotelList(string agentId)
         {
-            Listing
             return Json("asd", JsonRequestBehavior.AllowGet);
         }
     }
