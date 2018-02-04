@@ -41,7 +41,7 @@
                                             <ul>
                                                 <li><a href="/Agent/property"><i class="fa fa-plus"></i> Add Hotel</a></li>
                                                 <li><a href="javascript:void(0)">Change Password</a></li>
-                                                <li>@Html.ActionLink("Logout","logout")</li>
+                                                <li>@Html.ActionLink("Logout", "logout")</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@
     <script src="~/scripts/wickedpicker.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
+            GetAgentHotelList();
             BindCountryDropDown('Country');
             BindStateDropDown('State');
             BindCityDropDown('City');
@@ -135,7 +135,7 @@
             $('.timepicker').wickedpicker(options);
 
         });
-        
+
         function InsertHotelBasicInfo() {
             var Hotel = {
                 HotelName: $('#hotelName').val(),
@@ -219,6 +219,23 @@
 
                 }
             });
+        }
+        function GetAgentHotelList()
+        {
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("getHotelList","Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ agentId: @Session["AgentId"] }),
+                success:function(data)
+                {
+                    console.log(JSON.stringify(data));
+                },
+                error:function()
+                {
+
+                }
+            })
         }
     </script>
 </body>
