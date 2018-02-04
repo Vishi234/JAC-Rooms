@@ -239,35 +239,8 @@
                 }
             })
         }
-        //function BindStateDropDown(ddlID, CountyID) {
-        //    debugger;
-        //    var states = getJsonData('../../Location Data/states.json');
-        //    let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
-        //    $('#' + ddlID).empty();
 
-        //    let StateBindData = $.grep(states.states, function (n, i) {
-        //        return n.country_id == cID;
-        //    })
-        //    var select = document.getElementById(ddlID);
-        //    var ul = document.getElementsByClassName(ddlID);
-        //    $('#'+ddlID).empty();
-        //    $('.'+ddlID).empty();
-        //    $.each(StateBindData, function (i, item) {
-        //        var option = document.createElement("option");
-        //        option.text = item.name;
-        //        option.value = item.id;
-        //        if (option != null) {
-        //            select.appendChild(option);
-        //        }
-        //        var li = $('<li/>')
-        //                       .addClass('option')
-        //                       .attr('data-value', item.id)
-        //                       .text(item.name)
-        //                       .appendTo(ul);
 
-        //    });
-
-        //}
         function BindHotelList(ddlID, data) {
             try {
 
@@ -286,16 +259,13 @@
         }
 
         function BindStateDropDown(ddlID, CountyID) {
-            debugger;
             var states = getJsonData('../../Location Data/states.json');
             let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
-            $('#' + ddlID).empty();
-
             let StateBindData = $.grep(states.states, function (n, i) {
                 return n.country_id == cID;
-            })
+            });
             var select = document.getElementById(ddlID);
-            var ul=document.getElementsByClassName(ddlID);
+            var ul = document.getElementsByClassName(ddlID);
             $.each(StateBindData, function (i, item) {
                 var option = document.createElement("option");
                 option.text = item.name;
@@ -303,13 +273,14 @@
                 if (option != null) {
                     select.appendChild(option);
                 }
-                var li=$('<li/>')
+                var li =$('<li/>')
                 .addClass('opt')
                 .appendTo(ul);
-                var label=$('<label/>')
+                var label= $('<label/>')
                 .text(item.name)
                 .appendTo(li);
             });
+
 
         }
     </script>

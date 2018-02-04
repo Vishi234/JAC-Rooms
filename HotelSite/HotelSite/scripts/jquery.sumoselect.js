@@ -41,7 +41,7 @@
 
             search: false,                // to display input for filtering content. selectAlltext will be input text placeholder
             searchText: 'Search...',      // placeholder for search input
-            searchFn: function(haystack, needle) { // search function
+            searchFn: function (haystack, needle) { // search function
                 return haystack.toLowerCase().indexOf(needle.toLowerCase()) < 0;
             },
             noMatch: 'No matches for "{0}"',
@@ -288,6 +288,9 @@
 
                     O.ftxt.on('keyup.sumo', function () {
                         var hid = O.optDiv.find('ul.options li.opt').each(function (ix, e) {
+                            if (e.className != "opt selected" && e.className != "opt" && e.className != "opt hidden" && e.className != "opt selected hidden") {
+                                e = e.context;
+                            }
                             var e = $(e),
                                 opt = e.data('opt')[0];
                             opt.hidden = fn(e.text(), O.ftxt.val());
@@ -739,7 +742,7 @@
                     var O = this;
                     var options = O.E.find('option');
 
-                    for (var x = (options.length - 1); x >= 0; x--) {
+                    for (var x = (options.length - 1) ; x >= 0; x--) {
                         if (options[x].selected !== true) {
                             O.remove(x);
                         }
