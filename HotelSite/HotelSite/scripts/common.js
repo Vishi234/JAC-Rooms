@@ -74,7 +74,7 @@ function BindCountryDropDown(ddlID) {
     }
 }
 function BindStateDropDown(ddlID, CountyID) {
-    debugger;
+
     var states = getJsonData('../../Location Data/states.json');
     let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
     $('#' + ddlID).empty();
@@ -132,4 +132,6 @@ function checkMail(controlClass, module) {
     });
     return result;
 }
+
+
 

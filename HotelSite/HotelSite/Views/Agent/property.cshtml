@@ -590,7 +590,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Street Address*</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="7" AlphaNumeric name="StreetAdress" id="StreetAdress" class="form-control"></textarea>
+                                                <textarea cols="5" rows="5" AlphaNumeric name="StreetAdress" id="StreetAdress" class="form-control"></textarea>
 
                                             </div>
                                         </div>
@@ -602,13 +602,13 @@
                                         </div>
 
                                     </div>
-                                    <script src="~/scripts/common.js"></script>
+                                    
                                     <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Country*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" onchange="BindStateDropDown(this.id,this.value)" id="Country" name="Country">
+                                                <select class="selectpicker" onchange="BindStateDropDown('State', this.value);" id="Country" name="Country">
                                                     @*<option value="IN" selected="selected">India</option>*@
                                                 </select>
                                             </div>

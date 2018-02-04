@@ -12,6 +12,7 @@ namespace HotelSite.Models.Agent
 {
     public class HotelBasics
     {
+        public string HotelID { get; set; }
         public string HotelName { get; set; }
         public int HotelFloor { get; set; }
         public string HotelType { get; set; }
@@ -28,34 +29,8 @@ namespace HotelSite.Models.Agent
         public string City { get; set; }
         public int ZipCode { get; set; }
         public int AgentID { get; set; }
-        string sqlconn = System.Configuration.ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
-        public List<HotelBasics> GetHotelList(string AgentId)
-        {
-
-            List<HotelBasics> lst = new List<HotelBasics>();
-            try
-            {
-                string query = "select * from tbl_Agent_Hotel where AgentID=" + AgentId;
-                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
-                if (sqlDataReader.HasRows)
-                {
-                    while (sqlDataReader.Read())
-                    {
-                        lst.Add(new HotelBasics()
-                        {
-                            DisplayName = sqlDataReader["HotelDisplay"].ToString(),
-                        });
-                    }
-                }
-                sqlDataReader.Close();
-
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandling.WriteException(ex);
-            }
-            return lst;
-        }
+        
+        
 
     }
     public class HotelContactInfo
@@ -151,6 +126,35 @@ namespace HotelSite.Models.Agent
                 ExceptionHandling.WriteException(ex);
                 return 0;
             }
+        }
+
+        public List<HotelBasics> GetHotelList(string AgentId)
+        {
+
+            List<HotelBasics> lst = new List<HotelBasics>();
+            try
+            {
+                string query = "select * from tbl_Agent_Hotel where AgentID=" + AgentId;
+                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        lst.Add(new HotelBasics()
+                        {
+                            HotelID = sqlDataReader["HotelID"].ToString(),
+                            DisplayName = sqlDataReader["HotelDisplayName"].ToString(),
+                        });
+                    }
+                }
+                sqlDataReader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return lst;
         }
     }
 
