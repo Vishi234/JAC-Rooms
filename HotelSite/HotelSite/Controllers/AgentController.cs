@@ -104,9 +104,15 @@ namespace HotelSite.Controllers
 
         public JsonResult getHotelList(string agentId)
         {
-            HotelBasics hotelObj = new HotelBasics();
+            HotelInformation hotelObj = new HotelInformation();
             List<HotelBasics> list = hotelObj.GetHotelList(agentId);
             return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetHotelDetails(string HotelID)
+        {
+            HotelInformation hotelDetails = new HotelInformation();
+
+            return Json("", JsonRequestBehavior.AllowGet);
         }
     }
 }

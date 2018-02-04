@@ -21,7 +21,7 @@ namespace HotelSite
                 "~/scripts/common.js",
                 "~/scripts/CommonValidator/CommonValidator.js",
                 "~/scripts/jquery.js",
-                "~/scripts/jquery.nice-select.js"));
+                "~/scripts/jquery.sumoselect.js"));
 
             bundles.Add(new ScriptBundle("~/bundle/jquery2").Include
                 (

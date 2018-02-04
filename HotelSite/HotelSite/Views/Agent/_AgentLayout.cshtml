@@ -20,9 +20,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-8 col-lg-8 col-md-8">
                         <div class="seachBox">
-                            <select>
-                                <option data-subtext="Rep California">Tom Foolery</option>
-                            </select>
+                            <select class="nice-select" id="AgentHotelList"></select>
                         </div>
                     </div>
                     <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2">
@@ -110,13 +108,14 @@
     <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
+    <script src="~/scripts/jquery.sumoselect.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            GetAgentHotelList();
+
             BindCountryDropDown('Country');
-            BindStateDropDown('State');
-            BindCityDropDown('City');
-            $('select').niceSelect();
+            $('select').SumoSelect({search: true, searchText: 'Enter here.'});
+            GetAgentHotelList();
+            //$('#AgentHotelList').niceSelect();
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
                 twentyFour: true, //Display 24 hour format, defaults to false
@@ -229,13 +228,86 @@
                 data: JSON.stringify({ agentId: @Session["AgentId"] }),
                 success:function(data)
                 {
-                    console.log(JSON.stringify(data));
+                    BindHotelList("AgentHotelList",data);
                 },
                 error:function()
                 {
 
                 }
             })
+        }
+        //function BindStateDropDown(ddlID, CountyID) {
+        //    debugger;
+        //    var states = getJsonData('../../Location Data/states.json');
+        //    let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
+        //    $('#' + ddlID).empty();
+
+        //    let StateBindData = $.grep(states.states, function (n, i) {
+        //        return n.country_id == cID;
+        //    })
+        //    var select = document.getElementById(ddlID);
+        //    var ul = document.getElementsByClassName(ddlID);
+        //    $('#'+ddlID).empty();
+        //    $('.'+ddlID).empty();
+        //    $.each(StateBindData, function (i, item) {
+        //        var option = document.createElement("option");
+        //        option.text = item.name;
+        //        option.value = item.id;
+        //        if (option != null) {
+        //            select.appendChild(option);
+        //        }
+        //        var li = $('<li/>')
+        //                       .addClass('option')
+        //                       .attr('data-value', item.id)
+        //                       .text(item.name)
+        //                       .appendTo(ul);
+
+        //    });
+
+        //}
+        function BindHotelList(ddlID, data) {
+            try {
+
+                $.each(data, function (i, item) {
+                    var option = document.createElement("option");
+                    option.text = item.DisplayName;
+                    option.value = item.HotelID;
+                    var select = document.getElementById(ddlID);
+                    if (option != null) select.appendChild(option);
+                });
+
+            }
+            catch (e) {
+
+            }
+        }
+
+        function BindStateDropDown(ddlID, CountyID) {
+            debugger;
+            var states = getJsonData('../../Location Data/states.json');
+            let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
+            $('#' + ddlID).empty();
+
+            let StateBindData = $.grep(states.states, function (n, i) {
+                return n.country_id == cID;
+            })
+            var select = document.getElementById(ddlID);
+            var ul=document.getElementsByClassName(ddlID);
+            $.each(StateBindData, function (i, item) {
+                var option = document.createElement("option");
+                option.text = item.name;
+                option.value = item.id;
+                if (option != null) {
+                    select.appendChild(option);
+                }
+                var li=$('<li/>')
+                .addClass('opt')
+                .appendTo(ul);
+                var label=$('<label/>')
+                .text(item.name)
+                .appendTo(li);
+            });
+
         }
     </script>
 </body>
