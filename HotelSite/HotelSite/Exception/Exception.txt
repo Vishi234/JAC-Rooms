@@ -1,8 +1,11 @@
 ===============================start==============================================
 Inner Exception's
-MessageObject reference not set to an instance of an object.
-StackTrace   at HotelSite.Models.Agent.HotelInformation.AddHotelContactDetail(HotelContactInfo hotelContactInfo) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 135
-TargetSiteInt32 AddHotelContactDetail(HotelSite.Models.Agent.HotelContactInfo)
-DateTime : 	2/4/2018 1:18:47 AM
+MessageHotelDisplay
+StackTrace   at System.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   at System.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.SqlClient.SqlDataReader.get_Item(String name)
+   at HotelSite.Models.Agent.HotelBasics.GetHotelList(String AgentId) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\My_Hotel_Project\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 44
+TargetSiteInt32 GetOrdinal(System.String)
+DateTime : 	04-02-18 12:22:36
 ================================end============================================= 
 
