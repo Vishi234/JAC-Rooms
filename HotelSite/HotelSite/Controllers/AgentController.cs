@@ -25,6 +25,7 @@ namespace HotelSite.Controllers
         {
             return View();
         }
+        [ApplicationController]
         public ActionResult property()
         {
             return View();

@@ -85,7 +85,7 @@ namespace HotelSite.Models.Agent
             try
             {
                 SqlParameter[] sqlParameter = new SqlParameter[17];
-                sqlParameter[0] = new SqlParameter("@AgentID", HttpContext.Current.Session["UserID"].ToString());
+                sqlParameter[0] = new SqlParameter("@AgentID", HttpContext.Current.Session["AgentId"].ToString());
                 sqlParameter[1] = new SqlParameter("@HotelName", hotelBasics.HotelName);
                 sqlParameter[2] = new SqlParameter("@HotelDisplay", hotelBasics.DisplayName);
                 sqlParameter[3] = new SqlParameter("@HotelStar", hotelBasics.HotelStar);
@@ -132,7 +132,7 @@ namespace HotelSite.Models.Agent
                 sqlParameter[3] = new SqlParameter("@HotelPhoneLlist", hotelContactInfo.HotelPhoneList);
                 sqlParameter[4] = new SqlParameter("@HotelEmailList", hotelContactInfo.HotelEmailList);
                 sqlParameter[5] = new SqlParameter("@HotelWebsiteList", hotelContactInfo.HotelWebsiteList);
-                sqlParameter[6] = new SqlParameter("@AgentID", HttpContext.Current.Session["UserID"].ToString());
+                sqlParameter[6] = new SqlParameter("@AgentID", HttpContext.Current.Session["AgentId"].ToString());
                 sqlParameter[7] = new SqlParameter("@Result", SqlDbType.Int);
                 sqlParameter[7].Direction = ParameterDirection.Output;
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertHotelContactDetail", sqlParameter);

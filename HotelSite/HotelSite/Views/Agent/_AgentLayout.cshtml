@@ -161,15 +161,18 @@
                 contentType: "application/json",
                 data: JSON.stringify({ hotelBasics: Hotel }),
                 success: function (data) {
-                    $.toast({
-                        text: 'Basics info is added ,please add contact',
-                        hideAfter: 5000,
-                        position: 'bottom-center',
-                    })
-                    $('#1').removeClass('active');
-                    $('#basicInfo').removeClass('active in')
-                    $('#2').removeClass('disabled').addClass('active');
-                    $('#contact').addClass("in active");
+                    console.log(data);
+                    if (data != '2') {
+                        $.toast({
+                            text: 'Basics info is added ,please add contact',
+                            hideAfter: 5000,
+                            position: 'bottom-center',
+                        })
+                        $('#1').removeClass('active');
+                        $('#basicInfo').removeClass('active in')
+                        $('#2').removeClass('disabled').addClass('active');
+                        $('#contact').addClass("in active");
+                    }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
