@@ -115,7 +115,6 @@
             BindCountryDropDown('Country');
             $('select').SumoSelect({search: true, searchText: 'Enter here.'});
             GetAgentHotelList();
-            //$('#AgentHotelList').niceSelect();
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
                 twentyFour: true, //Display 24 hour format, defaults to false
@@ -222,6 +221,10 @@
                 }
             });
         }
+        function InsertHotelRoomInfo()
+        {
+
+        }
         function GetAgentHotelList()
         {
             $.ajax({
@@ -259,7 +262,7 @@
         }
 
         function BindStateDropDown(ddlID, CountyID) {
-            debugger;
+            
             var states = getJsonData('../../Location Data/states.json');
             let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
             let StateBindData = $.grep(states.states, function (n, i) {
@@ -278,7 +281,6 @@
         }
         function BindCityDropDown(ddlID, StateID)
         {
-            debugger;
             var citiess = getJsonData('../../Location Data/cities.json');
             let SID = (StateID == "" || StateID == null) ? "10" : StateID;
 
