@@ -259,13 +259,13 @@
         }
 
         function BindStateDropDown(ddlID, CountyID) {
+            debugger;
             var states = getJsonData('../../Location Data/states.json');
             let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
             let StateBindData = $.grep(states.states, function (n, i) {
                 return n.country_id == cID;
             });
             var select = document.getElementById(ddlID);
-            var ul = document.getElementsByClassName(ddlID);
             $.each(StateBindData, function (i, item) {
                 var option = document.createElement("option");
                 option.text = item.name;
@@ -273,15 +273,28 @@
                 if (option != null) {
                     select.appendChild(option);
                 }
-                var li =$('<li/>')
-                .addClass('opt')
-                .appendTo(ul);
-                var label= $('<label/>')
-                .text(item.name)
-                .appendTo(li);
             });
+            $('#' + ddlID)[0].sumo.reload();
+        }
+        function BindCityDropDown(ddlID, StateID)
+        {
+            debugger;
+            var citiess = getJsonData('../../Location Data/cities.json');
+            let SID = (StateID == "" || StateID == null) ? "10" : StateID;
 
-
+            let cityBindData = $.grep(citiess.cities, function (n, i) {
+                return n.state_id == SID;
+            })
+            var select = document.getElementById(ddlID);
+            $.each(cityBindData, function (i, item) {
+                var option = document.createElement("option");
+                option.text = item.name;
+                option.value = item.id;
+                if (option != null) {
+                    select.appendChild(option);
+                }
+            });
+            $('#' + ddlID)[0].sumo.reload();
         }
     </script>
 </body>
