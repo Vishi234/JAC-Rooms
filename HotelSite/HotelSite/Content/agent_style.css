@@ -1636,3 +1636,7 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #000 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn)
+{
+    width:100%!important;
+}

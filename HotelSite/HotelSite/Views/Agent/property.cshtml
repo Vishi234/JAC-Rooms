@@ -607,7 +607,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Country*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" onchange="BindStateDropDown('State', this.value);" id="Country" name="Country">
+                                                <select class="selectpicker" onchange="BindStateDropDown('State', this.value);" data-live-search="true" id="Country" name="Country">
                                                     @*<option value="IN" selected="selected">India</option>*@
                                                 </select>
                                             </div>
@@ -615,15 +615,15 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="State" name="State">
-                                                   s
+                                                <select class="selectpicker" onchange="BindCityDropDown('City', this.value);" id="State" data-live-search="true" name="State">
+                                                  
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="City" name="City">
+                                                <select class="selectpicker" id="City" data-live-search="true" name="City">
                                                     
                                                 </select>
                                             </div>

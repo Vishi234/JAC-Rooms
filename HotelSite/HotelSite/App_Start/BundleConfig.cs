@@ -20,8 +20,7 @@ namespace HotelSite
                 "~/scripts/filter-tags.js",
                 "~/scripts/common.js",
                 "~/scripts/CommonValidator/CommonValidator.js",
-                "~/scripts/jquery.js",
-                "~/scripts/jquery.sumoselect.js"));
+                "~/scripts/jquery.js"));
 
             bundles.Add(new ScriptBundle("~/bundle/jquery2").Include
                 (

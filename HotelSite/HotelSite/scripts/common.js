@@ -77,22 +77,20 @@ function BindStateDropDown(ddlID, CountyID) {
 
     var states = getJsonData('../../Location Data/states.json');
     let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
-    $('#' + ddlID).empty();
-
     let StateBindData = $.grep(states.states, function (n, i) {
         return n.country_id == cID;
-    })
+    });
+    $('#' + ddlID).empty();
+    var select = document.getElementById(ddlID);
     $.each(StateBindData, function (i, item) {
         var option = document.createElement("option");
         option.text = item.name;
         option.value = item.id;
-        var select = document.getElementById(ddlID);
         if (option != null) {
             select.appendChild(option);
         }
-
     });
-
+    $('select').selectpicker('refresh');
 }
 function BindCityDropDown(ddlID, StateID) {
     var citiess = getJsonData('../../Location Data/cities.json');
@@ -100,14 +98,17 @@ function BindCityDropDown(ddlID, StateID) {
 
     let cityBindData = $.grep(citiess.cities, function (n, i) {
         return n.state_id == SID;
-    })
+    });
+    $('#' + ddlID).empty();
+    var select = document.getElementById(ddlID);
     $.each(cityBindData, function (i, item) {
         var option = document.createElement("option");
         option.text = item.name;
         option.value = item.id;
-        var select = document.getElementById(ddlID);
+
         select.appendChild(option);
     });
+    $('select').selectpicker('refresh');
 }
 function checkMail(controlClass, module) {
 
@@ -132,6 +133,3 @@ function checkMail(controlClass, module) {
     });
     return result;
 }
-
-
-
