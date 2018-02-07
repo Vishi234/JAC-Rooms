@@ -223,6 +223,35 @@
         }
         function InsertHotelRoomInfo()
         {
+            var Roominfo =
+                {
+                    HotelDescription: $('#txtDescription').val(),
+                    RoomType: $('#RoomType').val(),
+                    DisplayName: "",
+                    TotalRoom: $('#totalRoom').val(),
+                    BedType: "",
+                    ExtraBedType: "",
+                    RoomView: $('#RoomView').val(),
+                    MinAdult: "",
+                    MaxAdult: "",
+                    MinChild: "",
+                    MaxChild: "",
+                    MaxInfant: "",
+                    MaxGuest:""
+                }
+              $.ajax({
+                type: 'POST',
+                url: "@Url.Action("SaveHotelRoom", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ hotelRoom: Roominfo }),
+                success: function (data) {
+
+                    alert(data)
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
 
         }
         function GetAgentHotelList()
@@ -262,7 +291,7 @@
         }
 
         function BindStateDropDown(ddlID, CountyID) {
-            
+
             var states = getJsonData('../../Location Data/states.json');
             let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
             let StateBindData = $.grep(states.states, function (n, i) {

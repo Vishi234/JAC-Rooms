@@ -721,19 +721,19 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea cols="5" rows="4" class="form-control" AlphaNumeric></textarea>
+                                                        <textarea cols="5" rows="4" id="txtDescription" class="form-control" AlphaNumeric></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Total Rooms*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" NumberOnly maxlength="10" placeholder="Enter total rooms">
+                                                        <input type="text" class="form-control" id="totalRoom" NumberOnly maxlength="10" placeholder="Enter total rooms">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Room View</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker">
+                                                        <select class="selectpicker" id="RoomView">
                                                             <option value="">Select view</option>
                                                             <option value="">None</option>
                                                             <option value="sv">Sea View</option>
@@ -758,7 +758,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Room Type*</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker">
+                                                        <select class="selectpicker" id="RoomType">
                                                             <option value="">Select Room Type</option>
                                                             <option value="deluxe">Deluxe</option>
                                                             <option value="standard">Standard</option>
@@ -845,7 +845,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button id="saveContact" type="button" onclick="InsertHotelRoomInfo()" class="btn btn-danger">Save & Continue</button>
+                                            <button id="saveContact" type="button" onclick="return InsertHotelRoomInfo()" class="btn btn-danger">Save & Continue</button>
                                             
                                         </form>
                                     </div>

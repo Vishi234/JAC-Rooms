@@ -32,6 +32,7 @@ namespace HotelSite.Controllers
         }
         public ActionResult logout()
         {
+            Session.Clear();
             Session.Abandon();
             return View("login");
         }
@@ -102,7 +103,7 @@ namespace HotelSite.Controllers
             HotelInformation hotelInformation = new HotelInformation();
             return hotelInformation.AddHotelContactDetail(hotelContactInfo);
         }
-        public int SaveHotelRoom()
+        public int SaveHotelRoom(HotelRoom hotelRoom)
         {
             return 0;
         }
