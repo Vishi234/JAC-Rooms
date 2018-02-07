@@ -129,12 +129,12 @@
                 $('.loading-bar').css('max-height', '0');
 
             });
-            $('#search_box li a').click(function () {
+            $("#search_box ul li a").click(function () {
                 debugger;
                 $('.searchBox').val($(this).text());
                 $('.search_box').css('display', 'none');
                 $('.search_field').css('display', 'none');
-            })
+            });
             addRoom(0);
             $('.rooMHover').click(function () {
                 $('.calendar').css('display', 'none');

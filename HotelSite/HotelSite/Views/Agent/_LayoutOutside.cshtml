@@ -21,7 +21,6 @@
     @RenderBody()
     @Scripts.Render("~/bundle/jquery")
     <script src="~/scripts/jquery.js"></script>
-    <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -29,7 +28,7 @@
         $(document).ready(function () {
 
             $('[data-toggle="tooltip"]').tooltip();
-            $('select').niceSelect();
+
             $(".addProbtn").click(function () {
                 $('.addProperty').removeClass("bounceInRight");
                 $('.addProperty').removeClass("zoomIn");
@@ -142,7 +141,7 @@
             });
 
         });
-       
+
         function showPassword(event, id) {
             $(event).toggleClass("fa-eye-slash fa-eye");
             myFunction(id);

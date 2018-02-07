@@ -90,7 +90,7 @@ function BindStateDropDown(ddlID, CountyID) {
             select.appendChild(option);
         }
     });
-    $('select').selectpicker('refresh');
+    $('#' + ddlID).selectpicker('refresh');
 }
 function BindCityDropDown(ddlID, StateID) {
     var citiess = getJsonData('../../Location Data/cities.json');
@@ -108,7 +108,7 @@ function BindCityDropDown(ddlID, StateID) {
 
         select.appendChild(option);
     });
-    $('select').selectpicker('refresh');
+    $('#' + ddlID).selectpicker('refresh');
 }
 function checkMail(controlClass, module) {
 
