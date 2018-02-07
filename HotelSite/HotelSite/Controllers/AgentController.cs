@@ -102,6 +102,10 @@ namespace HotelSite.Controllers
             HotelInformation hotelInformation = new HotelInformation();
             return hotelInformation.AddHotelContactDetail(hotelContactInfo);
         }
+        public int SaveHotelRoom()
+        {
+            return 0;
+        }
 
         public JsonResult getHotelList(string agentId)
         {

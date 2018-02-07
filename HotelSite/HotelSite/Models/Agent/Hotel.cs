@@ -51,6 +51,23 @@ namespace HotelSite.Models.Agent
         public string HotelType { get; set; }
         public string FullName { get; set; }
     }
+    public class HotelRoom
+    {
+        public string HotelDescription { get; set; }
+        public string RoomType { get; set; }
+        public string DisplayName { get; set; }
+        public string TotalRoom { get; set; }
+        public string BedType { get; set; }
+        public string ExtraBedType { get; set; }
+        public string RoomView { get; set; }
+        public string MinAdult { get; set; }
+        public string MaxAdult { get; set; }
+        public string MinChild { get; set; }
+        public string MaxChild { get; set; }
+        public string MaxInfant { get; set; }
+        public string MaxGuest { get; set; }
+
+    }
 
     public class HotelInformation
     {
