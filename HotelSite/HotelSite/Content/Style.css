@@ -1728,6 +1728,14 @@ input:checked + .slider-check:before {
     color: #ccc;
     font-weight: 500;
 }
+.search_header i
+{
+    margin-right:5px;
+}
+.seach-match
+{
+    color:#f3495a;
+}
 
 .search_box li a {
     padding: 7px;
@@ -1744,7 +1752,7 @@ input:checked + .slider-check:before {
 .search_box li a:hover {
     background: #f4f4f4;
 }
-
+.search_box li a.selected {background: #f4f4f4}
 .calendar {
     left: 39%;
     position: relative;

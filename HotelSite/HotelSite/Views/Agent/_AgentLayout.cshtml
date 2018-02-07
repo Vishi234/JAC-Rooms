@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-8 col-lg-8 col-md-8">
                         <div class="seachBox">
-                            <select class="nice-select" id="AgentHotelList"></select>
+                            <select class="selectpicker" data-live-search="true" id="AgentHotelList"></select>
                         </div>
                     </div>
                     <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2">
@@ -105,15 +105,14 @@
     @RenderBody()
 
     @Scripts.Render("~/bundle/jquery")
-    <script src="~/scripts/jquery.nice-select.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
-    <script src="~/scripts/jquery.sumoselect.js"></script>
+    <script src="~/scripts/bootstrap-select.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
             BindCountryDropDown('Country');
-            $('select').SumoSelect({search: true, searchText: 'Enter here.'});
+            $('select').selectpicker();
             GetAgentHotelList();
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
@@ -221,39 +220,6 @@
                 }
             });
         }
-        function InsertHotelRoomInfo()
-        {
-            var Roominfo =
-                {
-                    HotelDescription: $('#txtDescription').val(),
-                    RoomType: $('#RoomType').val(),
-                    DisplayName: "",
-                    TotalRoom: $('#totalRoom').val(),
-                    BedType: "",
-                    ExtraBedType: "",
-                    RoomView: $('#RoomView').val(),
-                    MinAdult: "",
-                    MaxAdult: "",
-                    MinChild: "",
-                    MaxChild: "",
-                    MaxInfant: "",
-                    MaxGuest:""
-                }
-              $.ajax({
-                type: 'POST',
-                url: "@Url.Action("SaveHotelRoom", "Agent")",
-                contentType: "application/json",
-                data: JSON.stringify({ hotelRoom: Roominfo }),
-                success: function (data) {
-
-                    alert(data)
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-                }
-            });
-
-        }
         function GetAgentHotelList()
         {
             $.ajax({
@@ -275,14 +241,14 @@
 
         function BindHotelList(ddlID, data) {
             try {
-
+                var select = document.getElementById(ddlID);
                 $.each(data, function (i, item) {
                     var option = document.createElement("option");
                     option.text = item.DisplayName;
                     option.value = item.HotelID;
-                    var select = document.getElementById(ddlID);
                     if (option != null) select.appendChild(option);
                 });
+                $('select').selectpicker('refresh');
 
             }
             catch (e) {
@@ -290,43 +256,7 @@
             }
         }
 
-        function BindStateDropDown(ddlID, CountyID) {
 
-            var states = getJsonData('../../Location Data/states.json');
-            let cID = (CountyID == "" || CountyID == null) ? "101" : CountyID;
-            let StateBindData = $.grep(states.states, function (n, i) {
-                return n.country_id == cID;
-            });
-            var select = document.getElementById(ddlID);
-            $.each(StateBindData, function (i, item) {
-                var option = document.createElement("option");
-                option.text = item.name;
-                option.value = item.id;
-                if (option != null) {
-                    select.appendChild(option);
-                }
-            });
-            $('#' + ddlID)[0].sumo.reload();
-        }
-        function BindCityDropDown(ddlID, StateID)
-        {
-            var citiess = getJsonData('../../Location Data/cities.json');
-            let SID = (StateID == "" || StateID == null) ? "10" : StateID;
-
-            let cityBindData = $.grep(citiess.cities, function (n, i) {
-                return n.state_id == SID;
-            })
-            var select = document.getElementById(ddlID);
-            $.each(cityBindData, function (i, item) {
-                var option = document.createElement("option");
-                option.text = item.name;
-                option.value = item.id;
-                if (option != null) {
-                    select.appendChild(option);
-                }
-            });
-            $('#' + ddlID)[0].sumo.reload();
-        }
     </script>
 </body>
 </html>

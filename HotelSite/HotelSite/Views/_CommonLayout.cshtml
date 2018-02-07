@@ -99,7 +99,7 @@
             $('.roomDetails').css('display', 'none');
         });
         var date = new Date();
-        var finalDate = date.getFullYear() + "-" + parseInt(date.getMonth()+1) + "-" + date.getDate();
+        var finalDate = date.getFullYear() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getDate();
         $('.calendar').pignoseCalendar({
             multiple: false,
             theme: 'blue',
@@ -117,11 +117,7 @@
                 }
             }
         });
-        $('.search_box ul li a').click(function () {
-            $('.searchBox').val($(this).text());
-            $('.search_box').css('display', 'none');
-            $('.search_field').css('display', 'none');
-        })
+       
         var divId = 0;
         var children = 2;
         var adultQuant = 0;
@@ -133,6 +129,12 @@
                 $('.loading-bar').css('max-height', '0');
 
             });
+            $('#search_box li a').click(function () {
+                debugger;
+                $('.searchBox').val($(this).text());
+                $('.search_box').css('display', 'none');
+                $('.search_field').css('display', 'none');
+            })
             addRoom(0);
             $('.rooMHover').click(function () {
                 $('.calendar').css('display', 'none');
@@ -149,7 +151,6 @@
                 $('.roomDetails').css('display', 'none');
             })
             $('.searchBox').keyup(function () {
-                debugger;
                 if ($(this).val().length > 0 && $(this).val().length >= 3) {
                     filterLocation($(this).val());
                     $('.mapIcon').removeClass('fa-map-marker');
@@ -159,7 +160,7 @@
                         $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
                         $('.search_box').css('display', 'block');
                         $('.search_field').css('display', 'block');
-                    }, 3000);
+                    }, 500);
                 }
                 else {
                     $('.mapIcon').addClass('fa-map-marker');
@@ -364,8 +365,9 @@
             html = '';
             addRoom(0);
         };
+
+
         function filterLocation(key) {
-            debugger;
             var states = getJsonData('../../Location Data/states.json');
             var citiess = getJsonData('../../Location Data/cities.json');
             var finalResult = {};
@@ -382,16 +384,34 @@
             finalResult['state'] = result1.slice(0, 5);
             finalResult['city'] = result2.slice(0, 5);
             finalResult['Hotel'] = result3.slice(0, 3);
-            console.log(finalResult);
+            var div = document.getElementById("search_box");
+            var html = "<ul>";
+            var title = "";
+            $.each(finalResult, function (i, item) {
+                title = toTitleCase(i);
+                if (finalResult[i].length > 0) {
+                    html += '<li><div class="search_header"><i class="fa fa-building"></i>' + title + '</div></li>';
+                    $.each(item, function (j, val) {
+                        if (j <= 5) {
+
+                            html += '<li><a href="javascript:void(0)">' + ((val.name.indexOf(toTitleCase(key)) > -1) ? val.name.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : val.name.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
+                        }
+                    });
+                }
+
+            });
+            html += "</ul>";
+
+            document.getElementById("search_box").innerHTML = html;
+
         }
-        function GetHotel(key)
-        {
+        function GetHotel(key) {
             var hoteldata;
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("GetHotelData")",
                 contentType: "application/json",
-                async : false,
+                async: false,
                 data: JSON.stringify({ Searchkey: key }),
                 success: function (data) {
                     hoteldata = data;
@@ -401,6 +421,12 @@
                 }
             });
             return hoteldata;
+        }
+        function toTitleCase(str) {
+            str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+                return letter.toUpperCase();
+            });
+            return str;
         }
     </script>
 
