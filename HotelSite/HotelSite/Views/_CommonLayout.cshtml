@@ -98,6 +98,14 @@
             $('.search_box').css('display', 'none');
             $('.roomDetails').css('display', 'none');
         });
+        function getSearchValue(event)
+        {
+            $('.searchBox').val(event.textContent);
+            $('.search_box').css('display', 'none');
+            $('.search_field').css('display', 'none');
+            $('.checkinDate').trigger("click");
+            
+        }
         var date = new Date();
         var finalDate = date.getFullYear() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getDate();
         $('.calendar').pignoseCalendar({
@@ -117,7 +125,7 @@
                 }
             }
         });
-       
+
         var divId = 0;
         var children = 2;
         var adultQuant = 0;
@@ -128,12 +136,6 @@
                 $('.loading-bar').css('padding', '0px');
                 $('.loading-bar').css('max-height', '0');
 
-            });
-            $("#search_box ul li a").click(function () {
-                debugger;
-                $('.searchBox').val($(this).text());
-                $('.search_box').css('display', 'none');
-                $('.search_field').css('display', 'none');
             });
             addRoom(0);
             $('.rooMHover').click(function () {
@@ -152,7 +154,6 @@
             })
             $('.searchBox').keyup(function () {
                 if ($(this).val().length > 0 && $(this).val().length >= 3) {
-                    filterLocation($(this).val());
                     $('.mapIcon').removeClass('fa-map-marker');
                     $('.mapIcon').addClass('fa-circle-o-notch fa-spin');
                     setTimeout(function () {
@@ -160,7 +161,8 @@
                         $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
                         $('.search_box').css('display', 'block');
                         $('.search_field').css('display', 'block');
-                    }, 500);
+                    }, 2000);
+                    filterLocation($(this).val());
                 }
                 else {
                     $('.mapIcon').addClass('fa-map-marker');
@@ -394,7 +396,7 @@
                     $.each(item, function (j, val) {
                         if (j <= 5) {
 
-                            html += '<li><a href="javascript:void(0)">' + ((val.name.indexOf(toTitleCase(key)) > -1) ? val.name.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : val.name.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
+                            html += '<li><a href="javascript:void(0)" onclick="getSearchValue(this);">' + ((val.name.indexOf(toTitleCase(key)) > -1) ? val.name.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : val.name.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
                         }
                     });
                 }
