@@ -1,0 +1,331 @@
+﻿
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/Views/Agent/_AgentLayout.cshtml";
+}
+
+<div class="agent_body">
+    <div class="container">
+        <div class="agent_module_base">
+            <div class="property_module inventory_module">
+                <div class="top">
+                    <h2 class="pull-left">Inventory</h2>
+                </div>
+                <ul class="tab-header nav nav-tabs">
+                    <li id="1" class="active"><a data-toggle="tab" href="#roomView">Room View</a></li>
+                    <li id="2"><a data-toggle="tab" href="#rateView">Rate View</a></li>
+                    <li id="3"><a data-toggle="tab" href="#manageRoom">Manage Rooms</a></li>
+                    <li id="4"><a data-toggle="tab" href="#manageRates">Manage Rates</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="roomView" class="tab-pane fade in active">
+                        <div class="panel-first">
+                            <div class="panelBody" id="roomVLayout">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="rateView" class="tab-pane fade">
+                        <div class="panel-first">
+                            <div class="panelBody">
+
+                                <form class="form-horizontal">
+                                    <div class="panelTitle">
+                                        <span class="pull-left">Contact Info</span>
+                                        <span class="pull-right">Mandatory field marked as (*)</span>
+                                    </div>
+                                    <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Hotel Phone*</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" NumberOnly id="HotelPhone" name="HotelPhone" placeholder="Enter phone no.">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Hotel Email*</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="HotelEmail" name="HotelEmail" placeholder="Enter hotel email">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Email List</label>
+                                            <div class="col-sm-9">
+                                                <textarea cols="5" rows="8" class="form-control" id="HotelEmailList" name="HotelEmailList" placeholder="Separate email with commas(,)"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Hotel Mobile*</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="HotelMobile" name="HotelMobile" placeholder="Enter hotel mobile no.">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Phone List</label>
+                                            <div class="col-sm-9">
+                                                <textarea cols="5" rows="5" class="form-control" id="HotelPhoneList" name="HotelPhoneList" placeholder="Separate phone with commas(,)"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Website List</label>
+                                            <div class="col-sm-9">
+                                                <textarea cols="5" rows="5" class="form-control" id="HotelWebsiteList" name="HotelWebsiteList" placeholder="Separate website with commas(,)"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="button" onclick="return InsertHotelContactInfo()" id="submitHotelContact" class="btn btn-danger" value="Save & Continue">
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="manageRoom" class="tab-pane fade">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" expanded="true" aria-controls="collapseOne">
+                                            <i class="more-less glyphicon glyphicon-plus"></i>
+                                            Add Rooms
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body panelBody">
+                                        <form class="form-horizontal">
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Room Info</span>
+                                                <span class="pull-right">Mandatory field marked as (*)</span>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Description</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea cols="5" rows="4" class="form-control" AlphaNumeric></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Total Rooms*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" NumberOnly maxlength="10" placeholder="Enter total rooms">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room View</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="">Select view</option>
+                                                            <option value="">None</option>
+                                                            <option value="sv">Sea View</option>
+                                                            <option value="vv">Valley View</option>
+                                                            <option value="hv">Hill View</option>
+                                                            <option value="pv">Pool View</option>
+                                                            <option value="gv">Garden View</option>
+                                                            <option value="rv">River View</option>
+                                                            <option value="lv">Lake View</option>
+                                                            <option value="plcv">Palace View</option>
+                                                            <option value="bv">Bay View</option>
+                                                            <option value="jv">Jungle View</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Room Type*</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="">Select Room Type</option>
+                                                            <option value="deluxe">Deluxe</option>
+                                                            <option value="standard">Standard</option>
+                                                            <option value="luxury">Luxury</option>
+                                                            <option value="master">Master</option>
+                                                            <option value="common">Common</option>
+                                                            <option value="tent">Tent</option>
+                                                            <option value="other">other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Display Name*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" AlphaNumeric placeholder="Enter display name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Bed Type</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="" selected="selected">Select bed type</option>
+                                                            <option value="twin">Twin</option>
+                                                            <option value="king">King</option>
+                                                            <option value="queen">Queen</option>
+                                                            <option value="double">Double</option>
+                                                            <option value="single">Single</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Extra Bed Type</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="selectpicker">
+                                                            <option value="0">No Extra Bed</option>
+                                                            <option value="1">Matress</option>
+                                                            <option value="2">Cot</option>
+                                                            <option value="3">Sofa cum bed</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panelTitle">
+                                                <span class="pull-left">Room Occupancy</span>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Adult(Base)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter adult base">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Adult(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max adult">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Infant(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max infant">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Child(Base)*</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter child base">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Child(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter maz child">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="email">Guest(Max)</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max guest">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button id="saveContact" class="btn btn-danger">Save & Continue</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="more-less glyphicon glyphicon-plus"></i>
+                                            Existing Rooms
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- panel-group -->
+
+                    </div>
+                    <div id="manageRates" class="tab-pane fade">
+                        <div class="photo-gallery">
+                            <a href="javascript:void(0)" onclick="showModal('uploadHotelImages', 'zoomIn', 'zoomOut');" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
+                            <div id="buttons"></div>
+                            <div id="gallery">
+                                <div class="row">
+                                    <div class="col-md-2 base" data-tags="Blog">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog1">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog1">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 base" data-tags="Blog1">
+                                        <div class="thumbnail">
+                                            <img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">
+                                            <div class="caption">
+                                                <span class="pull-left">Active</span>
+                                                <span class="pull-right">Remove</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="~/scripts/CommonValidator/CommonValidator.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

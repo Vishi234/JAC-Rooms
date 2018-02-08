@@ -130,7 +130,7 @@
                 clearable: false, //Make the picker's input clearable (has clickable "x")
             };
             $('.timepicker').wickedpicker(options);
-
+            bindRoomView();
         });
 
         function InsertHotelBasicInfo() {
@@ -256,7 +256,19 @@
             }
         }
 
-
+        function bindRoomView()
+        {
+            var count=10;
+            var date=new Date();
+            var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            var table="<table><tr>";
+            for(var i=0;i<count;i++)
+            {
+                table+="<td><span>"+parseInt(date.getMonth()+1)+","+date.getFullYear()+"</span><span>" +parseInt(firstDay.getDate()+i) +"</span></td>";
+            }
+            table+="</tr></table>";
+            $("#roomVLayout").html(table);
+        }
     </script>
 </body>
 </html>

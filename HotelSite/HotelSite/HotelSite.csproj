@@ -694,6 +694,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Listing\Index.cshtml" />
+    <Content Include="Views\Agent\Inventory.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

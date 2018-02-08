@@ -120,5 +120,9 @@ namespace HotelSite.Controllers
 
             return Json("", JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Inventory()
+        {
+            return View();
+        }
     }
 }
