@@ -1103,8 +1103,8 @@ a {
 }
 
     .form-control:focus {
-        box-shadow: 0 0 2px #7799D0!important;
-        border-color: #7799D0!important;
+        box-shadow: 0 0 2px #7799D0 !important;
+        border-color: #7799D0 !important;
         /*border: 2px solid #333 !important;
         box-shadow: none !important;*/
         outline: 0 !important;
@@ -1414,15 +1414,16 @@ a {
 .SumoSelect > .optWrapper > .options li label {
     font-weight: normal !important;
 }
-.SumoSelect
-{
-    width:100%!important;
+
+.SumoSelect {
+    width: 100% !important;
 }
-.SumoSelect > .CaptionCont
-{
-    padding: 8px 20px!important;
-    height: 35px!important;
-}
+
+    .SumoSelect > .CaptionCont {
+        padding: 8px 20px !important;
+        height: 35px !important;
+    }
+
 .nice-select {
     width: 100% !important;
     margin-bottom: 15px !important;
@@ -1636,7 +1637,90 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #000 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
-.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn)
-{
-    width:100%!important;
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100% !important;
+}
+
+
+
+.table thead td {
+    padding: 0px !important;
+    vertical-align: inherit !important;
+}
+
+    .table thead td:nth-child(1) {
+        width: 400px;
+        font-size: 16px;
+        font-weight: 600;
+        padding-left: 10px !important;
+    }
+
+    .table thead td span {
+        display: block;
+        text-align: center;
+        padding: 5px;
+        font-weight: 600;
+    }
+
+        .table thead td span:nth-child(1) {
+            font-size: 20px;
+            margin: 5px;
+            margin-bottom: 0px;
+            background: #fff;
+        }
+
+        .table thead td span:nth-child(2) {
+            font-size: 14px;
+            /* color: #f4f4f4; */
+        }
+
+.table td {
+    max-width: 90px;
+    overflow: hidden;
+}
+
+.table tbody tr {
+    height: 50px;
+}
+
+.table tbody td:not(:first-child) {
+    text-align: center;
+}
+
+.table tbody td .label:not(:last-child) {
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.bedgesList li {
+    display: inline-block;
+}
+
+.tHead {
+    width: 96%;
+    margin-left: 22px;
+}
+
+    .tHead td:nth-child(2) {
+        text-align: center;
+    }
+
+    .tHead td:last-child {
+        text-align: right;
+    }
+
+    .tHead td:not(:last-child) a i {
+        margin-right: 5px;
+    }
+
+    .tHead td:last-child a i {
+        margin-left: 5px;
+    }
+
+input[type=checkbox] {
+    display: block!important;
+    float: left;
+    margin-right:5px!important;
 }
