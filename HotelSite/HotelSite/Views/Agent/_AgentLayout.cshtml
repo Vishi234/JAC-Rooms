@@ -152,6 +152,37 @@
                 ZipCode: $('#ZipCode').val(),
                 AgentID: ""
             }
+            if(Hotel.HotelName=="")
+            {
+                calltoast("Enter Hotel Name.");
+                return false;
+            }
+            if(Hotel.DisplayName=="")
+            {
+                calltoast("Enter Display Name.");
+                return false;
+            }
+            if(Hotel.StreetAdress=="")
+            {
+                calltoast("Enter Street Address.");
+                return false;
+            }
+            if(Hotel.State==null)
+            {
+                calltoast("Please select State.");
+                return false;
+            }
+            if(Hotel.City==null)
+            {
+                calltoast("Please select City.");
+                return false;
+            }
+            if(Hotel.ZipCode=="")
+            {
+                calltoast("Enter Zip Code.");
+                return false;
+            }
+
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("SaveHotelBasics", "Agent")",
@@ -175,6 +206,10 @@
 
                 }
             });
+        }
+        function hotelValidation()
+        {
+
         }
         function InsertHotelContactInfo() {
             var hotelContact =
