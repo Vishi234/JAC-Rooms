@@ -146,10 +146,6 @@ namespace HotelSite.Controllers
                         foreach (string file in Request.Files)
                         {
                             HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
-                            string a = AppDomain.CurrentDomain.BaseDirectory;
-                            //string savedFileName = Path.Combine(
-                            //   AppDomain.CurrentDomain.BaseDirectory,
-                            //   Path.GetFileName(hpf.FileName));
                             hpf.SaveAs(Path.Combine(driveToSave,hpf.FileName));
                         }
                     }
@@ -183,7 +179,7 @@ namespace HotelSite.Controllers
                 ExceptionHandling.WriteException(ex);
                 return false;
             }
-        }
+        }        
 
     }
 }
