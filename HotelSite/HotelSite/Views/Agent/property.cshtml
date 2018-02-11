@@ -15,7 +15,7 @@
                 <ul class="tab-header nav nav-tabs">
                     <li id="1" class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
                     <li id="2" class="disabled"><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
-                    <li id="3" class="disabled"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
+                    <li id="3"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
                     <li id="4" class="disabled"><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
                 </ul>
 
@@ -710,7 +710,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea cols="5" id="RoomsDesc" name="RoomsDesc" rows="4" class="form-control" AlphaNumeric></textarea>
+                                                        <textarea cols="5" id="txtDescription" rows="4" class="form-control" AlphaNumeric></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -873,7 +873,7 @@
                                                     <td></td>
                                                     <td><i class="fa fa-pencil" title="Edit"></i><i class="fa fa-times" title="Delete"></i></td>
                                                     <td><input type="checkbox" value="">Active</td>
-                                                    <td><i class="fa fa-plus" title="Add plan" onclick="showModal('addRatePlan', 'zoomIn', 'zoomOut');"></i><i class="fa fa-eye-slash" onclick="    viewRatePlan(this);" title="View plan"></i></td>
+                                                    <td><i class="fa fa-plus" title="Add plan" onclick="showModal('addRatePlan', 'zoomIn', 'zoomOut');"></i><i class="fa fa-eye-slash" onclick=" viewRatePlan(this);" title="View plan"></i></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -886,7 +886,7 @@
                     </div>
                     <div id="photos" class="tab-pane fade">
                         <div class="photo-gallery">
-                            <a href="javascript:void(0)"  onclick="showModal('uploadHotelImages', 'zoomIn', 'zoomOut');" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
+                            <a href="javascript:void(0)" onclick="showModal('uploadHotelImages', 'zoomIn', 'zoomOut');" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
                             <div id="buttons"></div>
                             <div id="gallery">
                                 <div class="row">
@@ -969,6 +969,49 @@
                 <input type="file" id="txtUploadFile" multiple />
             </label>
             <p>Note: You can choose mulitple files to upload.</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-bg ">
+    <div class="modal-inner addRatePlan">
+        <div class="modal-hdr">
+            <h2>Add Rate Plan <i onclick="hideModal('addRatePlan', 'zoomOut', 'zoomIn');" class="fa fa-times-rectangle pull-right"></i></h2>
+        </div>
+        <div class="modal-bdy">
+            <div class="form-group">
+                <label for="planName">Plan Name<span class="mandate">*</span>:</label>
+                <input type="text" class="form-control" name="planName" id="planName" />
+            </div>
+            <div class="form-group">
+                <label for="mealPlan">Meal Plan<span class="mandate">*</span>:</label>
+                <select class="chosen-select" name="mealPlan" id="mealPlan">
+                    <option value="" selected>Select Mealplan</option>
+                    <option value="EP">Accommodation only</option>
+                    <option value="CP">FREE Breakfast</option>
+                    <option value="MAP">FREE Breakfast and Dinner</option>
+                    <option value="AP">FREE Breakfast, Lunch and Dinner</option>
+                    <option value="CB">FREE Cooked Breakfast</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="payMode">Payment Mode:</label>
+                <select class="chosen-select" name="payMode" id="payMode">
+                    <option value="0" selected>Pay Now</option>
+                    <option value="1">Pay At Hotel</option>
+                    <option value="2">Both</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="refund">
+                    Refundable
+                    <input type="checkbox" name="refund" />
+                </label>
+            </div>
+            <div class="form-group">
+                <button id="rateBtn" class="btn btn-danger">Save</button>
+            </div>
         </div>
 
     </div>

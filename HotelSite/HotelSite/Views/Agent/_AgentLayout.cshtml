@@ -341,7 +341,7 @@
         }
 
         $('#txtUploadFile').on('change', function (e) {
-            debugger;
+            
             var files = e.target.files;
             var myID = 3;
             if (files.length > 0) {
@@ -372,6 +372,23 @@
                 }
             }
         });
+
+        function viewRatePlan(e)
+        {
+            $(e).toggleClass("fa-eye-slash fa-eye");
+            var rowIndex=0;
+            if($(e).hasClass("fa-eye"))
+            {
+                var newRow="<tr><td colspan='5'><table class='table table-bordered table-hover'><thead><tr><th>Plan Name</th><th>Meal Plan</th><th>Status</th><th>Payment Mode</th><th>Action</th></tr></thead></table></td></tr>";
+                rowIndex=$(e).closest('td').parent()[0].sectionRowIndex
+                $(".roomTable tbody tr").eq(rowIndex).after(newRow);
+            }
+            else
+            {
+                rowIndex=$(e).closest('td').parent()[0].sectionRowIndex
+                $(".roomTable tbody tr").eq(rowIndex+1).remove();
+            }
+        }
     </script>
 </body>
 </html>
