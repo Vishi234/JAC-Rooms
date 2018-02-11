@@ -341,39 +341,6 @@
             table+="</tbody></table>"
             $("#roomVLayout").html(table);
         }
-        function viewRatePlan(e)
-        {
-            $(e).toggleClass("fa-eye-slash fa-eye");
-            var rowIndex=0;
-            if($(e).hasClass("fa-eye"))
-            {
-                var newRow="<tr><td colspan='5'><table class='table table-bordered table-hover'><thead><tr><th>Plan Name</th><th>Meal Plan</th><th>Status</th><th>Payment Mode</th><th>Action</th></tr></thead></table></td></tr>";
-                rowIndex=$(e).closest('td').parent()[0].sectionRowIndex
-                $(".roomTable tbody tr").eq(rowIndex).after(newRow);
-            }
-            else
-            {
-                rowIndex=$(e).closest('td').parent()[0].sectionRowIndex
-                $(".roomTable tbody tr").eq(rowIndex+1).remove();
-            }
-        }
-        function getRoomList()
-        {
-            $.ajax({
-                type: 'POST',
-                url: "@Url.Action("getHotelList","Agent")",
-                contentType: "application/json",
-                data: JSON.stringify({ agentId: @Session["AgentId"] }),
-                success:function(data)
-                {
-                    BindHotelList("AgentHotelList",data);
-                },
-                error:function()
-                {
-
-                }
-            })
-        }
     </script>
 </body>
 </html>
