@@ -71,11 +71,11 @@ namespace HotelSite.Models.Agent
     }
     public class RoomPlan
     {
-        public int IsRefundable { get; set; }
+        public string IsRefundable { get; set; }
         public string MealPlan { get; set; }
-        public int PaymentMode { get; set; }
+        public string PaymentMode { get; set; }
         public string PlanName { get; set; }
-        public int RoomID { get; set; }
+        public string RoomID { get; set; }
 
     }
 
