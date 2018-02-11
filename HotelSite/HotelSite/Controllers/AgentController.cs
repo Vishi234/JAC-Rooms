@@ -124,5 +124,11 @@ namespace HotelSite.Controllers
         {
             return View();
         }
+        public JsonResult getRoomList(string HotelID)
+        {
+            HotelInformation roomInfo = new HotelInformation();
+            
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
     }
 }

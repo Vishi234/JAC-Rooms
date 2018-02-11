@@ -173,6 +173,35 @@ namespace HotelSite.Models.Agent
             }
             return lst;
         }
+
+        //public List<HotelRoom> getRoomList(string HotelID)
+        //{
+        //    List<HotelBasics> lst = new List<HotelBasics>();
+        //    try
+        //    {
+        //        string query = "select * from tbl_HotelRooms";
+        //        SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
+        //        if (sqlDataReader.HasRows)
+        //        {
+        //            while (sqlDataReader.Read())
+        //            {
+        //                lst.Add(new HotelRoom()
+        //                {
+        //                    HotelID = sqlDataReader["HotelID"].ToString(),
+        //                    DisplayName = sqlDataReader["HotelDisplayName"].ToString(),
+        //                });
+        //            }
+        //        }
+        //        sqlDataReader.Close();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionHandling.WriteException(ex);
+        //    }
+        //    return lst;
+
+        //}
     }
 
 

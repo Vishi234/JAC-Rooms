@@ -966,7 +966,7 @@ a {
 .modal-inner {
     width: 50%;
     background: #262629;
-    display: block;
+    
     margin: 0 auto;
     margin-top: 10%;
     border-radius: 4px;

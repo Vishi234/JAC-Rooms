@@ -15,7 +15,7 @@
                 <ul class="tab-header nav nav-tabs">
                     <li id="1" class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
                     <li id="2" class="disabled"><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
-                    <li id="3" class="disabled"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
+                    <li id="3"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
                     <li id="4" class="disabled"><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
                 </ul>
 
@@ -115,7 +115,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Rooms*</label>
                                             <div class="col-sm-9">
@@ -594,7 +594,7 @@
                                         </div>
 
                                     </div>
-                                    
+
                                     <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
 
                                         <div class="form-group">
@@ -608,17 +608,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" onchange="BindCityDropDown('City', this.value);" id="State" data-live-search="true" name="State">
-                                                  
-                                                </select>
+                                                <select class="selectpicker" onchange="BindCityDropDown('City', this.value);" id="State" data-live-search="true" name="State"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="City" data-live-search="true" name="City">
-                                                    
-                                                </select>
+                                                <select class="selectpicker" id="City" data-live-search="true" name="City"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -854,7 +850,33 @@
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                     <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        <table class="table table-bordered roomTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Room Name</th>
+                                                    <th>Description</th>
+                                                    <th>Actions</th>
+                                                    <th>Status</th>
+                                                    <th>Rateplan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="fa fa-pencil" title="Edit"></i><i class="fa fa-times" title="Delete"></i></td>
+                                                    <td><input type="checkbox" value="">Active</td>
+                                                    <td><i class="fa fa-plus" title="Add plan"></i><i class="fa fa-eye-slash" onclick="viewRatePlan(this);" title="View plan"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><i class="fa fa-pencil" title="Edit"></i><i class="fa fa-times" title="Delete"></i></td>
+                                                    <td><input type="checkbox" value="">Active</td>
+                                                    <td><i class="fa fa-plus" title="Add plan" onclick="showModal('addRatePlan', 'zoomIn', 'zoomOut');"></i><i class="fa fa-eye-slash" onclick="    viewRatePlan(this);" title="View plan"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -932,7 +954,7 @@
         </div>
     </div>
 </div>
-<div class="modal-bg">
+<div class="modal-bg ">
     <div class="modal-inner uploadHotelImages">
         <div class="modal-hdr">
             <h2>Upload Hotel Images <i onclick="hideModal('uploadHotelImages', 'zoomOut', 'zoomIn');" class="fa fa-times-rectangle pull-right"></i></h2>
@@ -952,7 +974,50 @@
     </div>
 </div>
 
+<div class="modal-bg ">
+    <div class="modal-inner addRatePlan">
+        <div class="modal-hdr">
+            <h2>Add Rate Plan <i onclick="hideModal('addRatePlan', 'zoomOut', 'zoomIn');" class="fa fa-times-rectangle pull-right"></i></h2>
+        </div>
+        <div class="modal-bdy">
+            <div class="form-group">
+                <label for="planName">Plan Name<span class="mandate">*</span>:</label>
+                <input type="text" class="form-control" name="planName" id="planName" />
+            </div>
+            <div class="form-group">
+                <label for="mealPlan">Meal Plan<span class="mandate">*</span>:</label>
+                <select class="chosen-select" name="mealPlan" id="mealPlan">
+                    <option value="" selected>Select Mealplan</option>
+                    <option value="EP">Accommodation only</option>
+                    <option value="CP">FREE Breakfast</option>
+                    <option value="MAP">FREE Breakfast and Dinner</option>
+                    <option value="AP">FREE Breakfast, Lunch and Dinner</option>
+                    <option value="CB">FREE Cooked Breakfast</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="payMode">Payment Mode:</label>
+                <select class="chosen-select" name="payMode" id="payMode">
+                    <option value="0" selected>Pay Now</option>
+                    <option value="1">Pay At Hotel</option>
+                    <option value="2">Both</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="refund">
+                    Refundable
+                    <input type="checkbox" name="refund" />
+                </label>
+            </div>
+            <div class="form-group">
+                <button id="rateBtn" class="btn btn-danger">Save</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="~/scripts/CommonValidator/CommonValidator.js"></script>    
+<script type="text/javascript" src="~/scripts/CommonValidator/CommonValidator.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -1,8 +1,9 @@
 ﻿
-function showModal(modalNme, effectClass, removeClass) {
+function showModal(modalName, effectClass, removeClass) {
     $(".modal-bg").css('display', 'block');
     $(".modal-bg").removeClass(removeClass);
     $("." + modalName).removeClass(removeClass);
+    $("." + modalName).css('display', 'block');
     $("." + modalName).addClass(effectClass);
 
 }
@@ -10,7 +11,7 @@ function hideModal(modalName, effectClass, removeClass) {
     $("." + modalName).removeClass(removeClass);
     $("." + modalName).addClass(effectClass);
     $(".modal-bg").addClass(effectClass);
-    setTimeout(function () { $(".modal-bg").css('display', 'none'); }, 1000);
+    setTimeout(function () { $(".modal-bg").css('display', 'none'); $("." + modalName).css('display', 'none'); }, 1000);
 }
 
 function CheckEmailValidation(Email) {
@@ -90,7 +91,7 @@ function BindStateDropDown(ddlID, CountyID) {
             select.appendChild(option);
         }
     });
-    $('#' + ddlID).selectpicker('refresh');
+    $('#' + ddlID).trigger("chosen:updated");
 }
 function BindCityDropDown(ddlID, StateID) {
     var citiess = getJsonData('../../Location Data/cities.json');
@@ -108,7 +109,8 @@ function BindCityDropDown(ddlID, StateID) {
 
         select.appendChild(option);
     });
-    $('#' + ddlID).selectpicker('refresh');
+    $('#' + ddlID).trigger("chosen:updated");
+    //$('#' + ddlID).selectpicker('refresh');
 }
 function checkMail(controlClass, module) {
 
