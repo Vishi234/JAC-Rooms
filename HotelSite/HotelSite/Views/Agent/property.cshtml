@@ -721,19 +721,19 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea cols="5" rows="4" class="form-control" AlphaNumeric></textarea>
+                                                        <textarea cols="5" id="txtDescription" rows="4" class="form-control" AlphaNumeric></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Total Rooms*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" NumberOnly maxlength="10" placeholder="Enter total rooms">
+                                                        <input type="text" class="form-control" id="totalRoom" NumberOnly maxlength="10" placeholder="Enter total rooms">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Room View</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker">
+                                                        <select class="selectpicker" id="roomView">
                                                             <option value="">Select view</option>
                                                             <option value="">None</option>
                                                             <option value="sv">Sea View</option>
@@ -758,7 +758,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Room Type*</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker">
+                                                        <select class="selectpicker" id="roomType">
                                                             <option value="">Select Room Type</option>
                                                             <option value="deluxe">Deluxe</option>
                                                             <option value="standard">Standard</option>
@@ -773,13 +773,13 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Display Name*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" AlphaNumeric placeholder="Enter display name">
+                                                        <input type="text" class="form-control" id="displayName" AlphaNumeric placeholder="Enter display name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Bed Type</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker">
+                                                        <select class="selectpicker" id="bedType">
                                                             <option value="" selected="selected">Select bed type</option>
                                                             <option value="twin">Twin</option>
                                                             <option value="king">King</option>
@@ -792,7 +792,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Extra Bed Type</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker">
+                                                        <select class="selectpicker" id="extraBed">
                                                             <option value="0">No Extra Bed</option>
                                                             <option value="1">Matress</option>
                                                             <option value="2">Cot</option>
@@ -809,19 +809,19 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Adult(Base)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter adult base">
+                                                        <input type="text" class="form-control" NumberOnly id="minAdult" placeholder="Enter adult base">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Adult(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max adult">
+                                                        <input type="text" class="form-control" NumberOnly id="maxAdult" placeholder="Enter max adult">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Infant(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max infant">
+                                                        <input type="text" class="form-control" NumberOnly id="maxInfant" placeholder="Enter max infant">
                                                     </div>
                                                 </div>
                                             </div>
@@ -829,23 +829,23 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Child(Base)*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter child base">
+                                                        <input type="text" class="form-control" NumberOnly id="minChild" placeholder="Enter child base">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Child(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="email" placeholder="Enter maz child">
+                                                        <input type="text" class="form-control" id="maxChild" placeholder="Enter maz child">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Guest(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" NumberOnly id="email" placeholder="Enter max guest">
+                                                        <input type="text" class="form-control" NumberOnly id="maxGuest" placeholder="Enter max guest">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button id="saveContact" class="btn btn-danger">Save & Continue</button>
+                                            <button id="saveContact" onclick="return SaveHotelRoomData()" class="btn btn-danger">Save & Continue</button>
                                         </form>
                                     </div>
                                 </div>

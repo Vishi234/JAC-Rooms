@@ -255,6 +255,36 @@
 
             }
         }
+        function SaveHotelRoomData()
+        {
+               var roomData =
+                {
+                       HotelDescription: $('#txtDescription').val(),
+                       RoomType: $('#roomType').val() ,
+                       DisplayName: $('#displayName').val(),
+                       TotalRoom: $('#totalRoom').val(),
+                       BedType: $('#bedType').val(),
+                       ExtraBedType: $('#extraBed').val(),
+                       RoomView: $('#roomView').val(),
+                       MinAdult: $('#minAdult').val(),
+                       MaxAdult: $('#maxAdult').val(),
+                       MinChild: $('#minChild').val(),
+                       MaxChild: $('#maxChild').val(),
+                       MaxInfant: $('#maxInfant').val(),
+                       MaxGuest: $('#maxGuest').val()
+                }
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("SaveHotelRoom", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ hotelRoom: roomData }),
+                success: function (data) {
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+        }
 
 
     </script>
