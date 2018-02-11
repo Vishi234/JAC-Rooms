@@ -14,9 +14,9 @@
                 </div>
                 <ul class="tab-header nav nav-tabs">
                     <li id="1" class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
-                    <li id="2" class="disabled"><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
-                    <li id="3" class="disabled"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
-                    <li id="4" class="disabled"><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
+                    <li id="2" @*class="disabled"*@><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
+                    <li id="3" @*class="disabled"*@><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
+                    <li id="4" @*class="disabled"*@><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -115,7 +115,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Rooms*</label>
                                             <div class="col-sm-9">
@@ -594,7 +594,7 @@
                                         </div>
 
                                     </div>
-                                    
+
                                     <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
 
                                         <div class="form-group">
@@ -608,17 +608,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" onchange="BindCityDropDown('City', this.value);" id="State" data-live-search="true" name="State">
-                                                  
-                                                </select>
+                                                <select class="selectpicker" onchange="BindCityDropDown('City', this.value);" id="State" data-live-search="true" name="State"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="City" data-live-search="true" name="City">
-                                                    
-                                                </select>
+                                                <select class="selectpicker" id="City" data-live-search="true" name="City"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -714,7 +710,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea cols="5" id="txtDescription" rows="4" class="form-control" AlphaNumeric></textarea>
+                                                        <textarea cols="5" id="RoomsDesc" name="RoomsDesc" rows="4" class="form-control" AlphaNumeric></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -864,7 +860,7 @@
                     </div>
                     <div id="photos" class="tab-pane fade">
                         <div class="photo-gallery">
-                            <a href="javascript:void(0)" onclick="showModal('uploadHotelImages', 'zoomIn', 'zoomOut');" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
+                            <a href="javascript:void(0)"  onclick="showModal('uploadHotelImages', 'zoomIn', 'zoomOut');" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
                             <div id="buttons"></div>
                             <div id="gallery">
                                 <div class="row">
@@ -944,15 +940,14 @@
             </select>
             <label class="btn-bs-file btn btn-lg btn-success">
                 Choose file
-                <input type="file" multiple />
+                <input type="file" id="txtUploadFile" multiple />
             </label>
             <p>Note: You can choose mulitple files to upload.</p>
         </div>
 
     </div>
 </div>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="~/scripts/CommonValidator/CommonValidator.js"></script>    
+<script type="text/javascript" src="~/scripts/CommonValidator/CommonValidator.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

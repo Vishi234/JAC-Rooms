@@ -5,6 +5,12 @@ using System.Web.Mvc;
 using HotelSite.Models.Agent;
 using HotelSite.Models.Listing;
 using System.Collections.Generic;
+using System.Web;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using System.Configuration;
 
 namespace HotelSite.Controllers
 {
@@ -105,7 +111,8 @@ namespace HotelSite.Controllers
         }
         public int SaveHotelRoom(HotelRoom hotelRoom)
         {
-            return 0;
+            HotelInformation hotelInformation = new HotelInformation();
+            return hotelInformation.AddRoomDetails(hotelRoom);
         }
 
         public JsonResult getHotelList(string agentId)
@@ -124,5 +131,59 @@ namespace HotelSite.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult UploadHomeReport()
+        {
+            try
+            {
+                string drive = ConfigurationManager.AppSettings["PicDrive"];
+                string folderName = ConfigurationManager.AppSettings["FolderName"];
+                string driveToSave = Path.Combine(drive, folderName);
+                if (CheckDirectory(driveToSave))
+                {
+                    if (Request.Files.Count > 0)
+                    {
+                        foreach (string file in Request.Files)
+                        {
+                            HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
+                            string a = AppDomain.CurrentDomain.BaseDirectory;
+                            //string savedFileName = Path.Combine(
+                            //   AppDomain.CurrentDomain.BaseDirectory,
+                            //   Path.GetFileName(hpf.FileName));
+                            hpf.SaveAs(Path.Combine(driveToSave,hpf.FileName));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Upload failed");
+            }
+
+            return Json("File uploaded successfully");
+        }
+        private bool CheckDirectory(string directory)
+        {
+            try
+            {
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return false;
+            }
+        }
+
     }
 }

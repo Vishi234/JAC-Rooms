@@ -53,7 +53,7 @@ namespace HotelSite.Models.Agent
     }
     public class HotelRoom
     {
-        public string HotelDescription { get; set; }
+        public string RoomsDesc { get; set; }
         public string RoomType { get; set; }
         public string DisplayName { get; set; }
         public string TotalRoom { get; set; }
@@ -172,6 +172,35 @@ namespace HotelSite.Models.Agent
                 ExceptionHandling.WriteException(ex);
             }
             return lst;
+        }
+
+        public int AddRoomDetails(HotelRoom hotelRoom)
+        {
+            try
+            {
+                SqlParameter[] sqlParameter = new SqlParameter[14];
+                sqlParameter[0] = new SqlParameter("@RoomsDesc", hotelRoom.RoomsDesc);
+                sqlParameter[1] = new SqlParameter("@RoomType", hotelRoom.RoomType);
+                sqlParameter[2] = new SqlParameter("@DisplayName",hotelRoom.DisplayName);
+                sqlParameter[3] = new SqlParameter("@TotalRoom", hotelRoom.TotalRoom );
+                sqlParameter[4] = new SqlParameter("@BedType", hotelRoom.BedType );
+                sqlParameter[5] = new SqlParameter("@RoomView",hotelRoom.RoomView);
+                sqlParameter[6] = new SqlParameter("@ExtraBedType", hotelRoom.ExtraBedType);
+                sqlParameter[7] = new SqlParameter("@MinAdult", hotelRoom.MinAdult);
+                sqlParameter[8] = new SqlParameter("@MinChild", hotelRoom.MinChild);
+                sqlParameter[9] = new SqlParameter("@MaxAdult", hotelRoom.MaxAdult);
+                sqlParameter[10] = new SqlParameter("@MaxChild", hotelRoom.MaxChild);
+                sqlParameter[11] = new SqlParameter("@MaxInfant", hotelRoom.MaxInfant);
+                sqlParameter[12] = new SqlParameter("@MaxGuest", hotelRoom.MaxGuest);
+                sqlParameter[13] = new SqlParameter("@HotelID", "1310");
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_HotelRoom", sqlParameter);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
         }
     }
 
