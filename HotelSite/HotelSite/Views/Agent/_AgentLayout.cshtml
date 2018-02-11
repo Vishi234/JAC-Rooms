@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-8 col-lg-8 col-md-8">
                         <div class="seachBox">
-                            <select class="selectpicker" data-live-search="true" id="AgentHotelList"></select>
+                            <select class="chosen-select" data-live-search="true" id="AgentHotelList"></select>
                         </div>
                     </div>
                     <div class="col-lg-2 col-xs-12 col-sm-2 col-md-2">
@@ -107,12 +107,13 @@
     @Scripts.Render("~/bundle/jquery")
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
-    <script src="~/scripts/bootstrap-select.min.js"></script>
+    <script src="~/scripts/chosen.jquery.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
             BindCountryDropDown('Country');
-            $('select').selectpicker();
+            $("select").chosen();
+            //$('select').selectpicker();
             GetAgentHotelList();
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
@@ -207,10 +208,7 @@
                 }
             });
         }
-        function hotelValidation()
-        {
 
-        }
         function InsertHotelContactInfo() {
             var hotelContact =
                 {
@@ -283,7 +281,8 @@
                     option.value = item.HotelID;
                     if (option != null) select.appendChild(option);
                 });
-                $('select').selectpicker('refresh');
+                $('#'+ddlID).trigger("chosen:updated");
+                // $('select').selectpicker('refresh');
 
             }
             catch (e) {
@@ -292,22 +291,22 @@
         }
         function SaveHotelRoomData()
         {
-               var roomData =
-                {
-                       HotelDescription: $('#txtDescription').val(),
-                       RoomType: $('#roomType').val() ,
-                       DisplayName: $('#displayName').val(),
-                       TotalRoom: $('#totalRoom').val(),
-                       BedType: $('#bedType').val(),
-                       ExtraBedType: $('#extraBed').val(),
-                       RoomView: $('#roomView').val(),
-                       MinAdult: $('#minAdult').val(),
-                       MaxAdult: $('#maxAdult').val(),
-                       MinChild: $('#minChild').val(),
-                       MaxChild: $('#maxChild').val(),
-                       MaxInfant: $('#maxInfant').val(),
-                       MaxGuest: $('#maxGuest').val()
-                }
+            var roomData =
+             {
+                 HotelDescription: $('#txtDescription').val(),
+                 RoomType: $('#roomType').val() ,
+                 DisplayName: $('#displayName').val(),
+                 TotalRoom: $('#totalRoom').val(),
+                 BedType: $('#bedType').val(),
+                 ExtraBedType: $('#extraBed').val(),
+                 RoomView: $('#roomView').val(),
+                 MinAdult: $('#minAdult').val(),
+                 MaxAdult: $('#maxAdult').val(),
+                 MinChild: $('#minChild').val(),
+                 MaxChild: $('#maxChild').val(),
+                 MaxInfant: $('#maxInfant').val(),
+                 MaxGuest: $('#maxGuest').val()
+             }
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("SaveHotelRoom", "Agent")",
@@ -327,7 +326,7 @@
             var count=5;
             var date=new Date();
             var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-            var table="<table cellspacing='10' class='table table-hover'>";
+            var table="<table cellspacing='10' class='table table-hover roomInventory'>";
             table+="<thead><tr><td>Rooms</td>";
             for(var i=0;i<count;i++)
             {
@@ -342,39 +341,6 @@
             table+="</tbody></table>"
             $("#roomVLayout").html(table);
         }
-
-        $('#txtUploadFile').on('change', function (e) {
-            debugger;
-            var files = e.target.files;
-            var myID = 3;
-            if (files.length > 0) {
-                if (window.FormData !== undefined) {
-                    var data = new FormData();
-                    for (var x = 0; x < files.length; x++) {
-                        data.append("file" + x, files[x]);
-                    }
-
-                    $.ajax({
-                        type: "POST",
-                        url: '/Agent/UploadHomeReport?id=' + myID,
-                        contentType: false,
-                        processData: false,
-                        data: data,
-                        success: function (result) {
-                            console.log(result);
-                        },
-                        error: function (xhr, status, p3, p4) {
-                            var err = "Error " + " " + status + " " + p3 + " " + p4;
-                            if (xhr.responseText && xhr.responseText[0] == "{")
-                                err = JSON.parse(xhr.responseText).Message;
-                            console.log(err);
-                        }
-                    });
-                } else {
-                    alert("This browser doesn't support HTML5 file uploads!");
-                }
-            }
-        });
     </script>
 </body>
 </html>
