@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:Void(0)">
+                        <a href="/Agent/Inventory/">
                             Inventory
                         </a>
                     </li>
@@ -130,7 +130,7 @@
                 clearable: false, //Make the picker's input clearable (has clickable "x")
             };
             $('.timepicker').wickedpicker(options);
-
+            bindRoomView();
         });
 
         function InsertHotelBasicInfo() {
@@ -152,6 +152,37 @@
                 ZipCode: $('#ZipCode').val(),
                 AgentID: ""
             }
+            if(Hotel.HotelName=="")
+            {
+                calltoast("Enter Hotel Name.");
+                return false;
+            }
+            if(Hotel.DisplayName=="")
+            {
+                calltoast("Enter Display Name.");
+                return false;
+            }
+            if(Hotel.StreetAdress=="")
+            {
+                calltoast("Enter Street Address.");
+                return false;
+            }
+            if(Hotel.State==null)
+            {
+                calltoast("Please select State.");
+                return false;
+            }
+            if(Hotel.City==null)
+            {
+                calltoast("Please select City.");
+                return false;
+            }
+            if(Hotel.ZipCode=="")
+            {
+                calltoast("Enter Zip Code.");
+                return false;
+            }
+
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("SaveHotelBasics", "Agent")",
@@ -175,6 +206,10 @@
 
                 }
             });
+        }
+        function hotelValidation()
+        {
+
         }
         function InsertHotelContactInfo() {
             var hotelContact =
@@ -286,7 +321,27 @@
             });
         }
 
-
+        function bindRoomView()
+        {
+            var monthNames=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+            var count=5;
+            var date=new Date();
+            var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            var table="<table cellspacing='10' class='table table-hover'>";
+            table+="<thead><tr><td>Rooms</td>";
+            for(var i=0;i<count;i++)
+            {
+                table+="<td><span>"+parseInt(firstDay.getDate()+i)+"</span><span>" +monthNames[date.getMonth()]+","+date.getFullYear() +"</span></td>";
+            }
+            table+="</tr></thead>";
+            table+="<tbody>";
+            for(var i=0;i<count;i++)
+            {
+                table+='<tr><td>Details</td><td><ul class="bedgesList"><li><span class="label label-success">4</span></li><li><span class="label label-danger">4</span></li><li><span class="label label-warning">4</span></li><li><span class="label label-info">4</span></li></ul><label><input type="checkbox" value="">Block</label></td><td>Details</td><td>Details</td><td>Details</td><td>Details</td></tr>';
+            }
+            table+="</tbody></table>"
+            $("#roomVLayout").html(table);
+        }
     </script>
 </body>
 </html>
