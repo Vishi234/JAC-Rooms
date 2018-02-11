@@ -29,8 +29,8 @@ namespace HotelSite.Models.Agent
         public string City { get; set; }
         public int ZipCode { get; set; }
         public int AgentID { get; set; }
-        
-        
+
+
 
     }
     public class HotelContactInfo
@@ -66,6 +66,16 @@ namespace HotelSite.Models.Agent
         public string MaxChild { get; set; }
         public string MaxInfant { get; set; }
         public string MaxGuest { get; set; }
+        public int IsActive { get; set; }
+
+    }
+    public class RoomPlan
+    {
+        public int IsRefundable { get; set; }
+        public string MealPlan { get; set; }
+        public int PaymentMode { get; set; }
+        public string PlanName { get; set; }
+        public int RoomID { get; set; }
 
     }
 
@@ -181,10 +191,10 @@ namespace HotelSite.Models.Agent
                 SqlParameter[] sqlParameter = new SqlParameter[14];
                 sqlParameter[0] = new SqlParameter("@RoomsDesc", hotelRoom.RoomsDesc);
                 sqlParameter[1] = new SqlParameter("@RoomType", hotelRoom.RoomType);
-                sqlParameter[2] = new SqlParameter("@DisplayName",hotelRoom.DisplayName);
-                sqlParameter[3] = new SqlParameter("@TotalRoom", hotelRoom.TotalRoom );
-                sqlParameter[4] = new SqlParameter("@BedType", hotelRoom.BedType );
-                sqlParameter[5] = new SqlParameter("@RoomView",hotelRoom.RoomView);
+                sqlParameter[2] = new SqlParameter("@DisplayName", hotelRoom.DisplayName);
+                sqlParameter[3] = new SqlParameter("@TotalRoom", hotelRoom.TotalRoom);
+                sqlParameter[4] = new SqlParameter("@BedType", hotelRoom.BedType);
+                sqlParameter[5] = new SqlParameter("@RoomView", hotelRoom.RoomView);
                 sqlParameter[6] = new SqlParameter("@ExtraBedType", hotelRoom.ExtraBedType);
                 sqlParameter[7] = new SqlParameter("@MinAdult", hotelRoom.MinAdult);
                 sqlParameter[8] = new SqlParameter("@MinChild", hotelRoom.MinChild);
@@ -192,8 +202,69 @@ namespace HotelSite.Models.Agent
                 sqlParameter[10] = new SqlParameter("@MaxChild", hotelRoom.MaxChild);
                 sqlParameter[11] = new SqlParameter("@MaxInfant", hotelRoom.MaxInfant);
                 sqlParameter[12] = new SqlParameter("@MaxGuest", hotelRoom.MaxGuest);
-                sqlParameter[13] = new SqlParameter("@HotelID", "1310");
+                sqlParameter[13] = new SqlParameter("@HotelID", "1000");
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_HotelRoom", sqlParameter);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
+
+        public List<HotelRoom> GetRoomList(string HotelID)
+        {
+            List<HotelRoom> lst = new List<HotelRoom>();
+            try
+            {
+                string query = "select * from tbl_HotelRooms";
+                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        lst.Add(new HotelRoom()
+                        {
+                            RoomsDesc = sqlDataReader["RoomsDesc"].ToString(),
+                            RoomType = sqlDataReader["RoomType"].ToString(),
+                            DisplayName = sqlDataReader["RoomDisplayName"].ToString(),
+                            TotalRoom = sqlDataReader["TotalRoom"].ToString(),
+                            BedType = sqlDataReader["BedType"].ToString(),
+                            ExtraBedType = sqlDataReader["ExtraBedType"].ToString(),
+                            RoomView = sqlDataReader["RoomView"].ToString(),
+                            MaxAdult = sqlDataReader["MaxAdult"].ToString(),
+                            MaxChild = sqlDataReader["MaxChild"].ToString(),
+                            MaxGuest = sqlDataReader["MaxGuest"].ToString(),
+                            MaxInfant = sqlDataReader["MaxInfant"].ToString(),
+                            MinAdult = sqlDataReader["MinAdult"].ToString(),
+                            MinChild = sqlDataReader["MinChild"].ToString(),
+                            IsActive = Convert.ToInt32(sqlDataReader["IsActive"]),
+                        });
+                    }
+                }
+                sqlDataReader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return lst;
+        }
+
+        public int SaveRoomPlan(RoomPlan RoomPlan)
+        {
+            try
+            {
+                SqlParameter[] sqlParameter = new SqlParameter[6];
+                sqlParameter[0] = new SqlParameter("@PlanName", RoomPlan.PlanName);
+                sqlParameter[1] = new SqlParameter("@MealPlan", RoomPlan.MealPlan);
+                sqlParameter[2] = new SqlParameter("@PaymentMode", RoomPlan.PaymentMode);
+                sqlParameter[3] = new SqlParameter("@IsRefundable", RoomPlan.IsRefundable);
+                sqlParameter[4] = new SqlParameter("@RoomID", RoomPlan.RoomID);
+                sqlParameter[5].Direction = ParameterDirection.Output;
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_RoomWise_Plan", sqlParameter);
                 return 1;
             }
             catch (Exception ex)

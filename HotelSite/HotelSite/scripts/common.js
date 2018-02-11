@@ -1,10 +1,9 @@
 ﻿
 function showModal(modalName, effectClass, removeClass) {
-    $(".modal-bg").css('display', 'block');
     $(".modal-bg").removeClass(removeClass);
     $("." + modalName).removeClass(removeClass);
     $("." + modalName).css('display', 'block');
-    $("." + modalName).addClass(effectClass);
+    $(".modal-bg").addClass(effectClass);
 
 }
 function hideModal(modalName, effectClass, removeClass) {

@@ -111,8 +111,8 @@
 
             BindCountryDropDown('Country');
             $("select").chosen();``
-            //$('select').selectpicker();
             GetAgentHotelList();
+            GetRoomList();
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
                 twentyFour: true, //Display 24 hour format, defaults to false
@@ -255,7 +255,7 @@
         {
             $.ajax({
                 type: 'POST',
-                url: "@Url.Action("getHotelList","Agent")",
+                url: "@Url.Action("GetHotelList","Agent")",
                 contentType: "application/json",
                 data: JSON.stringify({ agentId: @Session["AgentId"] }),
                 success:function(data)
@@ -341,7 +341,7 @@
         }
 
         $('#txtUploadFile').on('change', function (e) {
-            
+
             var files = e.target.files;
             var myID = 3;
             if (files.length > 0) {
@@ -389,6 +389,84 @@
                 $(".roomTable tbody tr").eq(rowIndex+1).remove();
             }
         }
+
+        function GetRoomList()
+        {
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("GetRoomList", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ HotelID: "" }),
+                success: function (data) {
+                    var row="";
+                    var table=document.getElementById("roomTable");
+                    if(data.length > 0)
+                    {
+                        $.each(data,function(i,item)
+                        {
+                            row+='<tr><td>'+item.RoomDisplayName+'</td><td>'+item.RoomsDesc+'</td>';
+                            row+='<td><i class="fa fa-pencil" roomData="" title="Edit"></i>';
+                            row+='<i class="fa fa-times" title="Delete"></i></td>';
+                            row+='<td><input type="checkbox" id="check"'+i+' value="">Active</td>';
+                            row+='<td><i class="fa fa-plus" title="Add plan" data-toggle="modal" data-target="#addRatePlan"></i><i class="fa fa-eye-slash" onclick=" viewRatePlan(this);" title="View plan"></i></td></tr>';
+                            if(item.IsActive==1)
+                            {
+                                $("#check"+i).attr("checked");
+                            }
+                            else
+                            {
+                                $("#check"+i).removeAttr("checked");
+                            }
+
+
+                        });
+                        $('#roomTable').html(row);
+                    }
+                    else
+                    {
+                        row="<tr><td colspan='5' align='center'>No record found.</td></tr>";
+                        $('#roomTable tbody').html(row);
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+        }
+        $('#rateBtn').click(function()
+        {
+            var IsRefund=0;
+            if ($('#refundVal').is(':checked'))
+            {
+                IsRefund=1;
+            }
+            var RoomDetails=
+                {
+                    PlanName:$(".planName").val(),
+                    MealPlan:$(".mealPlan").val(),
+                    PaymentMode:$("#payMode").val(),
+                    IsRefundable:IsRefund,
+                    RoomID:"105",
+                };
+            $.ajax({
+                typ:'POST',
+                url:"@Url.Action("SaveRoomPlan", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ Details: RoomDetails }),
+                success:function(data)
+                {
+                    if(data==1)
+                    {
+                        alert("Room plan has been added.")
+                    }
+                    else
+                    {
+                        alert("Something went wrong.")
+                    }
+                }
+            })
+        })
     </script>
 </body>
 </html>

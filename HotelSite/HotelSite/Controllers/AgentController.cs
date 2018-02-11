@@ -115,7 +115,7 @@ namespace HotelSite.Controllers
             return hotelInformation.AddRoomDetails(hotelRoom);
         }
 
-        public JsonResult getHotelList(string agentId)
+        public JsonResult GetHotelList(string agentId)
         {
             HotelInformation hotelObj = new HotelInformation();
             List<HotelBasics> list = hotelObj.GetHotelList(agentId);
@@ -146,7 +146,7 @@ namespace HotelSite.Controllers
                         foreach (string file in Request.Files)
                         {
                             HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
-                            hpf.SaveAs(Path.Combine(driveToSave,hpf.FileName));
+                            hpf.SaveAs(Path.Combine(driveToSave, hpf.FileName));
                         }
                     }
                 }
@@ -179,7 +179,17 @@ namespace HotelSite.Controllers
                 ExceptionHandling.WriteException(ex);
                 return false;
             }
-        }        
+        }
+        public JsonResult GetRoomList(String HotelID)
+        {
+            HotelInformation hInfo = new HotelInformation();
 
+            return Json(hInfo.GetRoomList(""), JsonRequestBehavior.AllowGet);
+        }
+        public int SaveRoomPlan(RoomPlan Details)
+        {
+            HotelInformation hotelInfo = new HotelInformation();
+            return hotelInfo.SaveRoomPlan(Details);
+        }
     }
 }
