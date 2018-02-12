@@ -110,7 +110,7 @@
         $(document).ready(function () {
 
             BindCountryDropDown('Country');
-            $("select").chosen();``
+            $("select").chosen();
             GetAgentHotelList();
             GetRoomList();
             var options = {
@@ -188,17 +188,28 @@
                 contentType: "application/json",
                 data: JSON.stringify({ hotelBasics: Hotel }),
                 success: function (data) {
-                    console.log(data);
-                    if (data != '2') {
+                    if(data==2)
+                    {
                         $.toast({
-                            text: 'Basics info is added ,please add contact',
-                            hideAfter: 5000,
-                            position: 'bottom-center',
-                        })
+                            heading: 'Success',
+                            text: 'Basic info is added ,please add contact.',
+                            icon: 'success',
+                            position: 'bottom-right'
+                        });
+
                         $('#1').removeClass('active');
                         $('#basicInfo').removeClass('active in')
                         $('#2').removeClass('disabled').addClass('active');
                         $('#contact').addClass("in active");
+                    }
+                    else
+                    {
+                        $.toast({
+                            heading: 'Error',
+                            text: 'Error Found While Adding Hotel Basic Info.',
+                            icon: 'error',
+                            position: 'bottom-right'
+                        });
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -226,9 +237,9 @@
                     if (data == "2") {
                         $.toast({
                             heading: 'Success',
-                            text: 'Here is some kind of success message with a success icon that you can notice at the left side.',
+                            text: 'Hotel Contact Details Has Been Added.',
                             icon: 'success',
-                            position: 'top-right'
+                            position: 'bottom-right'
                         });
                         $('#2').removeClass('active');
                         $('#contact').removeClass('active in')
@@ -239,9 +250,8 @@
                         $.toast({
                             heading: 'Error',
                             text: 'Error Found While Adding Hotel Contact Detail',
-                            showHideTransition: 'fade',
                             icon: 'error',
-                            position: 'top-right'
+                            position: 'bottom-right'
                         })
                     }
 
@@ -260,7 +270,14 @@
                 data: JSON.stringify({ agentId: @Session["AgentId"] }),
                 success:function(data)
                 {
-                    BindHotelList("AgentHotelList",data);
+                    if(data.length>0)
+                    {
+                        BindHotelList("AgentHotelList",data);
+                        $('.Lagend_hotel_add').removeClass("bounceInRight");
+                        $('.Lagend_hotel_add').css('display','none');
+                    }
+
+
                 },
                 error:function()
                 {
@@ -291,26 +308,50 @@
         {
             var roomData =
              {
-                 HotelDescription: $('#txtDescription').val(),
+                 RoomsDesc: $('.RoomsDesc').val(),
                  RoomType: $('#roomType').val() ,
                  DisplayName: $('#displayName').val(),
                  TotalRoom: $('#totalRoom').val(),
                  BedType: $('#bedType').val(),
                  ExtraBedType: $('#extraBed').val(),
                  RoomView: $('#roomView').val(),
-                 MinAdult: $('#minAdult').val(),
-                 MaxAdult: $('#maxAdult').val(),
-                 MinChild: $('#minChild').val(),
-                 MaxChild: $('#maxChild').val(),
-                 MaxInfant: $('#maxInfant').val(),
-                 MaxGuest: $('#maxGuest').val()
+                 MinAdult: $('.minAdult').val(),
+                 MaxAdult: $('.maxAdult').val(),
+                 MinChild: $('.minChild').val(),
+                 MaxChild: $('.maxChild').val(),
+                 MaxInfant: $('.maxInfant').val(),
+                 MaxGuest: $('.maxGuest').val()
              }
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("SaveHotelRoom", "Agent")",
                 contentType: "application/json",
                 data: JSON.stringify({ hotelRoom: roomData }),
-                success: function (data) {
+                success: function (data)
+                {
+                    if(data==1)
+                    {
+                        $.toast({
+                            heading: 'Success',
+                            text: 'Room Details Has Been Added.',
+                            icon: 'success',
+                            position: 'bottom-right'
+                        });
+                        $('#2').removeClass('active');
+                        $('#contact').removeClass('active in')
+                        $('#3').removeClass('disabled').addClass('active');
+                        $('#rooms').addClass("in active");
+                    }
+                    else
+                    {
+                        $.toast({
+                            heading: 'Error',
+                            text: 'Error Found While Adding Room Detail',
+                            icon: 'error',
+                            position: 'bottom-right'
+                        })
+                    }
+                    console.log(data);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
 
@@ -404,23 +445,25 @@
                     {
                         $.each(data,function(i,item)
                         {
-                            row+='<tr><td>'+item.RoomDisplayName+'</td><td>'+item.RoomsDesc+'</td>';
-                            row+='<td><i class="fa fa-pencil" roomData="" title="Edit"></i>';
+                            var roomData=item.ID+"~"+item.RoomsDesc+"~"+item.RoomType+"~"+item.DisplayName+"~"+item.TotalRoom+"~"+item.BedType+"~"+item.ExtraBedType+"~"+item.RoomView+"~"+item.MaxAdult+"~"+item.MaxChild+"~"+item.MaxGuest+"~"+item.MaxInfant+"~"+item.MinAdult+"~"+item.MinChild;
+                            row+='<tr><td>'+item.DisplayName+'</td><td>'+item.RoomsDesc+'</td>';
+                            row+='<td><i class="fa fa-pencil roomEdit" id="edit'+i+'" roomData="'+roomData+'" onclick="EditRoom(this);" title="Edit"></i>';
                             row+='<i class="fa fa-times" title="Delete"></i></td>';
-                            row+='<td><input type="checkbox" id="check"'+i+' value="">Active</td>';
-                            row+='<td><i class="fa fa-plus" title="Add plan" data-toggle="modal" data-target="#addRatePlan"></i><i class="fa fa-eye-slash" onclick=" viewRatePlan(this);" title="View plan"></i></td></tr>';
+                            row+='<td><input type="checkbox" id="check'+i+'" value="">Active</td>';
+                            row+='<td><i class="fa fa-plus" title="Add plan" onclick="GetRoomID(this);" data-toggle="modal" data-target="#addRatePlan"></i><i class="fa fa-eye-slash" onclick=" viewRatePlan(this);" title="View plan"></i></td></tr>';
                             if(item.IsActive==1)
                             {
-                                $("#check"+i).attr("checked");
+                                $("#check"+i).prop('checked', true);
                             }
                             else
                             {
-                                $("#check"+i).removeAttr("checked");
+                                $("#check"+i).prop('checked', false);
                             }
 
 
+
                         });
-                        $('#roomTable').html(row);
+                        $('#roomTable tbody').html(row);
                     }
                     else
                     {
@@ -434,39 +477,59 @@
                 }
             });
         }
+        function GetRoomID(e)
+        {
+            var item = $(e).closest("tr").find(".roomEdit");
+            var roomID=item.attr("roomData").split('~')[0];
+            $("#rateBtn").attr("roomID",roomID);
+        }
         $('#rateBtn').click(function()
         {
-            var IsRefund=0;
+            var IsRefund="0";
             if ($('#refundVal').is(':checked'))
             {
-                IsRefund=1;
+                IsRefund="1";
             }
-            var RoomDetails=
-                {
-                    PlanName:$(".planName").val(),
-                    MealPlan:$(".mealPlan").val(),
-                    PaymentMode:$("#payMode").val(),
-                    IsRefundable:IsRefund,
-                    RoomID:"105",
-                };
+            var Hotel = {
+                IsRefundable: IsRefund,
+                MealPlan: $('.mealPlan').val(),
+                PaymentMode: $('.payMode').val(),
+                PlanName:$('.planName').val(),
+                RoomID: $(this).attr("roomID"),
+            }
+
             $.ajax({
-                typ:'POST',
+                type:'POST',
                 url:"@Url.Action("SaveRoomPlan", "Agent")",
                 contentType: "application/json",
-                data: JSON.stringify({ Details: RoomDetails }),
+                data: JSON.stringify({ Details: Hotel }),
                 success:function(data)
                 {
                     if(data==1)
                     {
-                        alert("Room plan has been added.")
+                        $.toast({
+                            heading: 'Success',
+                            text: 'Room Plan Has Been Added.',
+                            icon: 'success',
+                            position: 'bottom-right'
+                        });
+                        $('.mealPlan').val('');
+                        $('.payMode').val('');
+                        $('.planName').val('');
                     }
                     else
                     {
-                        alert("Something went wrong.")
+                        $.toast({
+                            heading: 'Error',
+                            text: 'Room Plan Has Beend Added.',
+                            icon: 'error',
+                            position: 'Something Went Wrong While Adding Rate Plan.'
+                        });
                     }
                 }
-            })
-        })
+            });
+        });
+       
     </script>
 </body>
 </html>

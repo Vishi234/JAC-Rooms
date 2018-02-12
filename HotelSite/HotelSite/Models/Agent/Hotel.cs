@@ -53,6 +53,7 @@ namespace HotelSite.Models.Agent
     }
     public class HotelRoom
     {
+        public int ID { get; set; }
         public string RoomsDesc { get; set; }
         public string RoomType { get; set; }
         public string DisplayName { get; set; }
@@ -202,7 +203,7 @@ namespace HotelSite.Models.Agent
                 sqlParameter[10] = new SqlParameter("@MaxChild", hotelRoom.MaxChild);
                 sqlParameter[11] = new SqlParameter("@MaxInfant", hotelRoom.MaxInfant);
                 sqlParameter[12] = new SqlParameter("@MaxGuest", hotelRoom.MaxGuest);
-                sqlParameter[13] = new SqlParameter("@HotelID", "1000");
+                sqlParameter[13] = new SqlParameter("@HotelID", "1060");
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_HotelRoom", sqlParameter);
                 return 1;
             }
@@ -226,6 +227,7 @@ namespace HotelSite.Models.Agent
                     {
                         lst.Add(new HotelRoom()
                         {
+                            ID = Convert.ToInt32(sqlDataReader["ID"]),
                             RoomsDesc = sqlDataReader["RoomsDesc"].ToString(),
                             RoomType = sqlDataReader["RoomType"].ToString(),
                             DisplayName = sqlDataReader["RoomDisplayName"].ToString(),
@@ -257,13 +259,12 @@ namespace HotelSite.Models.Agent
         {
             try
             {
-                SqlParameter[] sqlParameter = new SqlParameter[6];
+                SqlParameter[] sqlParameter = new SqlParameter[5];
                 sqlParameter[0] = new SqlParameter("@PlanName", RoomPlan.PlanName);
                 sqlParameter[1] = new SqlParameter("@MealPlan", RoomPlan.MealPlan);
                 sqlParameter[2] = new SqlParameter("@PaymentMode", RoomPlan.PaymentMode);
-                sqlParameter[3] = new SqlParameter("@IsRefundable", RoomPlan.IsRefundable);
+                sqlParameter[3] = new SqlParameter("@IsRefundale", RoomPlan.IsRefundable);
                 sqlParameter[4] = new SqlParameter("@RoomID", RoomPlan.RoomID);
-                sqlParameter[5].Direction = ParameterDirection.Output;
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_RoomWise_Plan", sqlParameter);
                 return 1;
             }

@@ -12,9 +12,9 @@ $('[NumberOnly]').keydown(function (e) {
 });
 
 $('[AlphaNumeric]').keydown(function (e) {
-    if (e.shiftKey == true) {
-        return false;
-    }
+    //if (e.shiftKey == true) {
+    //    return false;
+    //}
     let keyCode = e.keyCode ? e.keyCode : e.which;
     let pressedKey = String.fromCharCode(keyCode);
     if (/[^A-Za-z0-9\b ]/.test(pressedKey)) {

@@ -88,7 +88,7 @@ namespace HotelSite.Controllers
             int rslt = agent.CheckAgent(activationCode);
             if (rslt == 1)
             {
-                return View("Index");
+                return View("login");
             }
             else
             {
@@ -186,6 +186,8 @@ namespace HotelSite.Controllers
 
             return Json(hInfo.GetRoomList(""), JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
         public int SaveRoomPlan(RoomPlan Details)
         {
             HotelInformation hotelInfo = new HotelInformation();

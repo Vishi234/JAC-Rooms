@@ -23,11 +23,12 @@
     <script src="~/scripts/jquery.js"></script>
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/scripts/chosen.jquery.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
             $('[data-toggle="tooltip"]').tooltip();
-
+            $("select").chosen();
             $(".addProbtn").click(function () {
                 $('.addProperty').removeClass("bounceInRight");
                 $('.addProperty').removeClass("zoomIn");
@@ -58,12 +59,12 @@
             });
             $(".nxt").click(function () {
                 if ($('#emailId').val().trim() == "" || $('#emailId').val().trim() == null) {
-                    calltoast("Please Enter a Valid Email");
+                    calltoast("Please Enter a Valid Email.");
                     emailId.focus();
                     return false;
                 }
                 if (!CheckEmailValidation($('#emailId').val())) {
-                    calltoast("It seems you have entered a invalid Email");
+                    calltoast("It seems you have entered a invalid Email.");
                     emailId.focus();
                     return false;
                 }
@@ -226,6 +227,7 @@
             });
             return false;
         }
+      
     </script>
 </body>
 </html>
