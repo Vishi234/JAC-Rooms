@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
+
 namespace HotelSite.Models.Agent
 {
     public class HotelBasics
@@ -83,6 +84,7 @@ namespace HotelSite.Models.Agent
     public class HotelInformation
     {
         string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
+
         public int AddHotel(HotelBasics hotelBasics)
         {
             try
@@ -274,6 +276,25 @@ namespace HotelSite.Models.Agent
                 return 0;
             }
         }
+
+        public DataSet GetHotelData(string HotelID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                string query = "select * from tbl_Agent_Hotel where HotelID=" + HotelID + ";select * from tbl_Agent_Hotel_Contact where HotelID=" + HotelID+ ";select * from tbl_HotelRooms where HotelID=" + HotelID;
+                ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
+                ds.Tables[0].TableName = "BasicInfo";
+                ds.Tables[1].TableName = "ContactInfo";
+                ds.Tables[2].TableName = "RoomInfo";
+            }
+            catch
+            {
+
+            }
+            return ds;
+        }
+
     }
 
 

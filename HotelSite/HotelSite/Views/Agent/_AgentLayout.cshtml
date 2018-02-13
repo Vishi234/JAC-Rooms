@@ -35,7 +35,7 @@
                                         <div class="drop_body">
                                             <p>Welcome @Session["AgentName"]</p>
                                             <ul>
-                                                <li><a href="/Agent/property"><i class="fa fa-plus"></i> Add Hotel</a></li>
+                                                <li><a href="javascript:void(0)" onclick="transfer(this);" flag="A"><i class="fa fa-plus"></i> Add Hotel</a></li>
                                                 <li><a href="javascript:void(0)">Change Password</a></li>
                                                 <li>@Html.ActionLink("Logout", "logout")</li>
                                             </ul>
@@ -107,8 +107,9 @@
     <script src="~/scripts/wickedpicker.js"></script>
     <script src="~/scripts/chosen.jquery.js"></script>
     <script type="text/javascript">
+        var HotelFlag="";
         $(document).ready(function () {
-
+            
             BindCountryDropDown('Country');
             $("select").chosen();
             GetAgentHotelList();
@@ -263,6 +264,7 @@
         }
         function GetAgentHotelList()
         {
+            HotelFlag="E";
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("GetHotelList","Agent")",
@@ -275,6 +277,12 @@
                         BindHotelList("AgentHotelList",data);
                         $('.Lagend_hotel_add').removeClass("bounceInRight");
                         $('.Lagend_hotel_add').css('display','none');
+                        $(".tab-content").attr('HotelData',$("#AgentHotelList").val()+"~"+$("#AgentHotelList").text())
+                        $('.tab-header li').each(function()
+                        {
+                            $(this).removeClass('disabled')
+                        });
+                        GetHotelData();
                     }
 
 
@@ -529,7 +537,80 @@
                 }
             });
         });
-       
+        function GetHotelData()
+        {
+            try
+            {
+                if(HotelFlag!="A")
+                {
+                    var hotelId=$('.tab-content').attr("HotelData");
+                    if(hotelId.length > 0)
+                    {
+                        hotelId=hotelId.split('~')[0];
+                        $.ajax({
+                            type:'POST',
+                            url:"@Url.Action("GetHotelData","Agent")",
+                            contentType:"application/json",
+                        data:JSON.stringify({HotelID : hotelId}),
+                        success:function(data)
+                        {
+                            if(data.length > 0)
+                            {
+                                var HotelJson=JSON.parse(data);
+                                $("#hotelName").val(HotelJson.BasicInfo[0].HotelName);
+                                $("#HotelFloor").val(HotelJson.BasicInfo[0].HotelFloor);
+                                $("#CheckOutTime").val(HotelJson.BasicInfo[0].CheckOutTime);
+                                $("#HotelType").val(HotelJson.BasicInfo[0].HotelType);
+                                $("#HotelType").trigger("chosen:updated");
+                                $("#BuiltYear").val(HotelJson.BasicInfo[0].HotelBuildYear);
+                                $("#DisplayName").val(HotelJson.BasicInfo[0].HotelDisplayName);
+                                $("#HotelStar").val(HotelJson.BasicInfo[0].HotelStar);
+                                $("#HotelStar").trigger("chosen:updated");
+                                $("#HotelRooms").val(HotelJson.BasicInfo[0].HotelRooms);
+                                $("#HotelCheckInTime").val(HotelJson.BasicInfo[0].CheckInTime);
+                                $("#StreetAdress").val(HotelJson.BasicInfo[0].StreetAddress);
+                                $("#Locality").val(HotelJson.BasicInfo[0].Locality);
+                                $("#Country").val(HotelJson.BasicInfo[0].Country);
+                                $("#Country").trigger("chosen:updated");
+                                $("#Country").trigger("change");
+                                $("#State").val(HotelJson.BasicInfo[0].State);
+                                $("#State").trigger("chosen:updated");
+                                $("#State").trigger("change");
+                                $("#City").val(HotelJson.BasicInfo[0].City);
+                                $("#City").trigger("chosen:updated");
+                                $("#ZipCode").val(HotelJson.BasicInfo[0].ZipCode);
+                                $("#submitHote").val("Update & Continue");
+
+                                $("#HotelPhone").val(HotelJson.ContactInfo[0].HotelPhone);
+                                $("#HotelEmail").val(HotelJson.ContactInfo[0].HotelEmail);
+                                $("#HotelEmailList").val(HotelJson.ContactInfo[0].HotelEmailList);
+                                $("#HotelMobile").val(HotelJson.ContactInfo[0].HotelMobile);
+                                $("#HotelPhone").val(HotelJson.ContactInfo[0].HotelPhone);
+                                $("#HotelPhoneList").val(HotelJson.ContactInfo[0].HotelPhoneList);
+                                $("#submitHotelContact").val("Update & Continue");
+                            }
+                        },
+                        error:function(textStatus)
+                        {
+
+                        }
+                    })
+                }
+                }
+               
+            }
+            catch(e)
+            {
+                console.log(e.message);
+            }
+
+        }///
+        function transfer(e)
+        {
+            HotelFlag=$(e).attr("flag");
+            window.location.href="/Agent/property";
+            GetHotelData();
+        }
     </script>
 </body>
 </html>

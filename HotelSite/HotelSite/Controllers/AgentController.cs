@@ -193,5 +193,12 @@ namespace HotelSite.Controllers
             HotelInformation hotelInfo = new HotelInformation();
             return hotelInfo.SaveRoomPlan(Details);
         }
+        [HttpPost]
+        public JsonResult GetHotelData(string HotelID)
+        {
+            HotelInformation hInfo = new HotelInformation();
+            Common objCommon = new Common();
+            return Json(objCommon.DatasetToJson(hInfo.GetHotelData(HotelID)), JsonRequestBehavior.AllowGet);
+        }
     }
 }
