@@ -1731,7 +1731,6 @@ select:-webkit-autofill:focus {
     }
 
 input[type=checkbox] {
-    display: block !important;
     float: left;
     margin-right: 5px !important;
 }

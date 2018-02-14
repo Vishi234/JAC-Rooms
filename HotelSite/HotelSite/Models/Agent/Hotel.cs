@@ -81,6 +81,16 @@ namespace HotelSite.Models.Agent
 
     }
 
+    public class SearchHotel
+    {
+        public string Location { get; set; }
+        public string CheckIn { get; set; }
+        public string CheckOut { get; set; }
+        public string Person { get; set; }
+        public string Room { get; set; }
+
+    }
+
     public class HotelInformation
     {
         string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
@@ -283,6 +293,24 @@ namespace HotelSite.Models.Agent
             try
             {
                 string query = "select * from tbl_Agent_Hotel where HotelID=" + HotelID + ";select * from tbl_Agent_Hotel_Contact where HotelID=" + HotelID+ ";select * from tbl_HotelRooms where HotelID=" + HotelID;
+                ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
+                ds.Tables[0].TableName = "BasicInfo";
+                ds.Tables[1].TableName = "ContactInfo";
+                ds.Tables[2].TableName = "RoomInfo";
+            }
+            catch
+            {
+
+            }
+            return ds;
+        }
+
+        public DataSet GetSearchData(string HotelID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                string query = "select * from tbl_Agent_Hotel;select * from tbl_Agent_Hotel_Contact;select * from tbl_HotelRooms";
                 ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
                 ds.Tables[0].TableName = "BasicInfo";
                 ds.Tables[1].TableName = "ContactInfo";
