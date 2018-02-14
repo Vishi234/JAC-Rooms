@@ -112,7 +112,7 @@
             
             BindCountryDropDown('Country');
             $("select").chosen();
-            GetAgentHotelList();
+            (localStorage.getItem('flag') == 1) ? "" : GetAgentHotelList();
             GetRoomList();
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
@@ -607,9 +607,13 @@
         }///
         function transfer(e)
         {
+            debugger;
+            //$(this).closest('form').find("input[type=text], textarea").val("");
+            $('.tab-content').find("input[type=text], textarea").val("");
+            localStorage.setItem('flag', 1);
             HotelFlag=$(e).attr("flag");
             window.location.href="/Agent/property";
-            GetHotelData();
+           // GetHotelData();
         }
     </script>
 </body>
