@@ -3,7 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/_CommonLayout.cshtml";
 }
-
 <div class="loading-bar">
     <div class="progress"></div>
     <div class="content">
@@ -13,7 +12,6 @@
 <div class="container">
     <div class="listing-body">
         <div class="row">
-
             <div class="search-modification">
                 <div class="triangle-with-shadow"></div>
                 <div class="search-area">
@@ -29,26 +27,25 @@
                                         </div>
                                         <div class="search_box" id="search_box">
                                             @*<ul>
-                                                <li><div class="search_header"><i class="fa fa-building"></i> Cities</div></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><div class="search_header"><i class="fa fa-map-marker"></i> Locations</div></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><div class="search_header"><i class="fa fa-hotel"></i> Hotels</div></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><div class="search_header"><i class="fa fa-building-o"></i> Hotel Chain</div></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                            </ul>*@
+                                                    <li><div class="search_header"><i class="fa fa-building"></i> Cities</div></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><div class="search_header"><i class="fa fa-map-marker"></i> Locations</div></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><div class="search_header"><i class="fa fa-hotel"></i> Hotels</div></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><div class="search_header"><i class="fa fa-building-o"></i> Hotel Chain</div></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                                </ul>*@
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="form-group">
                                     <input type="text" id="checkin" name="daterangepicker_start" class="checkinDate datePicker form-control" required>
@@ -56,11 +53,9 @@
                                     <i class="fa fa-calendar icon"></i>
                                     <div class="cal_base">
                                         <div class="calendar">
-
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <input type="text" id="checkout" name="daterangepicker_end" value="" class="checkoutDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkout">Check-out</label>
@@ -75,9 +70,7 @@
                                     <a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>
                                 </div>
                             </div>
-
                         </form>
-
 
                     </div>
                     <div class="nav-drop roomDetails">
@@ -151,25 +144,34 @@
             </div>
             <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
                 <div class="row">
-                    <div class="hotel_list">
-                        <ul>
-                            <li>
-                                <div class="thumg-img">
-                                    <img src="~/Content/images/sliderImage.jpg" />
-                                </div>
-                                <div class="star-rating">
+                    <table class="hotelData table table-bordered" id="hotelData">
+                        <thead>
+                            <tr>
+                                <th>Hotel Name</th>
+                                <th>Hotel Type</th>
 
-                                </div>
-                                <div class="content-body">
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    @*<div class="hotel_list">
+                            <ul>
+                                <li>
+                                    <div class="thumg-img">
+                                        <img src="~/Content/images/sliderImage.jpg" />
+                                    </div>
+                                    <div class="star-rating">
 
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                                    </div>
+                                    <div class="content-body">
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>*@
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 

@@ -98,13 +98,12 @@
             $('.search_box').css('display', 'none');
             $('.roomDetails').css('display', 'none');
         });
-        function getSearchValue(event)
-        {
+        function getSearchValue(event) {
             $('.searchBox').val(event.textContent);
             $('.search_box').css('display', 'none');
             $('.search_field').css('display', 'none');
             $('.checkinDate').trigger("click");
-            
+
         }
         var date = new Date();
         var finalDate = date.getFullYear() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getDate();
@@ -132,6 +131,7 @@
         var childQuant = 1;
         var html = '';
         $(document).ready(function () {
+            GetSeachData();
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');
                 $('.loading-bar').css('max-height', '0');
@@ -429,6 +429,33 @@
                 return letter.toUpperCase();
             });
             return str;
+        }
+        function SearchHotels() {
+            window.location.href = "/Listing/Index";
+
+        }
+        function GetSeachData() {
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("GetSearchData", "Listing")",
+                contentType: "application/json",
+                async: false,
+                data: "",
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    var tr = "";
+                    $.each(jsonData["BasicInfo"], function (i, item) {
+                        tr += "<tr>";
+                        tr += "<td>" + item.HotelName + "</td><td>" + item.HotelType + "</td>";
+                        tr += "</tr>"
+                    });
+                    $("#hotelData tbody").html(tr);
+                },
+                error: function (error) {
+
+                }
+
+            })
         }
     </script>
 
