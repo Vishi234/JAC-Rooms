@@ -1,5 +1,4 @@
-﻿using HotelSite.Models.Agent;
-using HotelSite.Models.Common;
+﻿using HotelSite.Models.Common;
 using HotelSite.Models.Listing;
 using System;
 using System.Collections.Generic;
@@ -14,21 +13,9 @@ namespace HotelSite.Controllers
         // GET: Listing
         public ActionResult Index()
         {
-            if(Request.QueryString!=null)
-            {
-                string locatio = Request.QueryString["location"];
-                string checkIn= Request.QueryString["checkin"];
-                string checkOut = Request.QueryString["checkout"];
-            }
             return View();
         }
-        [HttpPost]
-        public JsonResult GetSearchData()
-        {
-            HotelInformation hInfo = new HotelInformation();
-            Common objCommon = new Common();
-            return Json(objCommon.DatasetToJson(hInfo.GetSearchData("")), JsonRequestBehavior.AllowGet);
-        }
+
         [HttpPost]
         public JsonResult GetHotelData(string Searchkey)
         {

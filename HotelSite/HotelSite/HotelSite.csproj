@@ -455,7 +455,6 @@
     <Content Include="scripts\jquery.js" />
     <Content Include="scripts\jquery.min.js" />
     <Content Include="scripts\jquery.toast.min.js" />
-    <Content Include="scripts\pignose.calendar.full.js" />
     <Content Include="scripts\wickedpicker.js" />
   </ItemGroup>
   <ItemGroup>
