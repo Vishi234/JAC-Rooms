@@ -158,6 +158,10 @@
                 calltoast("Enter Hotel Name.");
                 return false;
             }
+            if (Hotel.HotelFloor == "") {
+                calltoast("Enter Hotel Floor.");
+                return false;
+            }
             if(Hotel.DisplayName=="")
             {
                 calltoast("Enter Display Name.");
