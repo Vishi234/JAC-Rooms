@@ -1625,8 +1625,9 @@ a {
 }
 
 .mailLoadingIcon {
-    position: absolute;
-    right: 45px;
+    /* position: absolute; */
+    right: 0px;
+    margin-right: 15px;
     margin-top: -26px;
 }
 
@@ -1749,4 +1750,14 @@ input[type=checkbox] {
 
 .addRatePlan {
     height: 400px;
+}
+.agent_auth .logoBase
+{
+    overflow:visible;
+}
+.agent_auth .logoBase img
+{
+    width: 90px;
+    height: auto;
+    margin-top: -13px;
 }

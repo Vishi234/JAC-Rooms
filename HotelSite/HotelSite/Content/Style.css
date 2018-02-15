@@ -966,7 +966,6 @@ a {
 .modal-inner {
     width: 50%;
     background: #262629;
-    
     margin: 0 auto;
     margin-top: 10%;
     border-radius: 4px;
@@ -1226,6 +1225,7 @@ a {
     opacity: 1;
     color: #124680;
     font-weight: 500;
+    margin-top: -28px;
 }
 
 .search-base {
@@ -1590,7 +1590,6 @@ input:checked + .slider-check:before {
     padding: 11px !important;
     /* display: block; */
     width: 125px;
-    margin-top: -3px;
     font-size: 18px !important;
 }
 
@@ -1728,13 +1727,13 @@ input:checked + .slider-check:before {
     color: #ccc;
     font-weight: 500;
 }
-.search_header i
-{
-    margin-right:5px;
-}
-.seach-match
-{
-    color:#f3495a;
+
+    .search_header i {
+        margin-right: 5px;
+    }
+
+.seach-match {
+    color: #f3495a;
 }
 
 .search_box li a {
@@ -1752,7 +1751,11 @@ input:checked + .slider-check:before {
 .search_box li a:hover {
     background: #f4f4f4;
 }
-.search_box li a.selected {background: #f4f4f4}
+
+.search_box li a.selected {
+    background: #f4f4f4;
+}
+
 .calendar {
     left: 39%;
     position: relative;
@@ -2043,7 +2046,7 @@ input:checked + .slider-check:before {
 /*** custom checkboxes ***/
 
 input[type=checkbox] {
-    display: none;
+    display: none !important;
 }
     /* to hide the checkbox itself */
     input[type=checkbox] + label:before {
@@ -2100,3 +2103,23 @@ input[type=checkbox] {
                 width: 100%;
                 height: 100%;
             }
+
+.logoBase {
+    display: inline-block;
+    /* width: 100px; */
+    overflow: hidden;
+}
+
+    .logoBase img {
+            width: 85px;
+    }
+
+.listingBase {
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+.listingBase .form-control-placeholder
+{
+    position:relative;
+}
