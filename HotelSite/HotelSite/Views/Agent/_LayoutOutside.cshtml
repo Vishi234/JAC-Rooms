@@ -12,9 +12,21 @@
     <div class="login_header">
         <div class="container">
             <div class="login_top">
+
+
                 <div class="top_nav agent_auth">
-                    <span>Already have an account? <a href="/Agent/login/" class="btn btn-danger">Login now</a></span>
+                    <div class="col-lg-2">
+                        <div class="logoBase">
+                            <a href="/Home/Index/">
+                                <img src="~/Content/images/logo.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <span>Already have an account? <a href="/Agent/login/" class="btn btn-danger">Login now</a></span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -68,6 +80,22 @@
                     emailId.focus();
                     return false;
                 }
+                if (checkMail('emailId', true)) {
+                    $('.msgArea').html('<p class="msg">Email not Registered.<a href="/Agent/Register/"> Click Here </a> to Register</p>');
+                    $('.msgArea').css('max-height', '100px');
+                    $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
+                    $('.mailLoadingIcon').addClass('fa-times');
+                    $('.mailLoadingIcon').removeClass('fa-check');
+                    $('#emailId').focus();
+                    return false;
+                }
+                else {
+                    $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
+                    $('.mailLoadingIcon').removeClass('fa-times');
+                    $('.mailLoadingIcon').addClass('fa-check');
+                    $('.nxt').removeAttr('disabled');
+                    $('.msgArea').css('max-height', '0');
+                }
                 $('.emailBase').removeClass("zoomIn");
                 $('.emailBase').addClass("zoomOut");
                 $('.passwordBase').removeClass("bounceOutRight");
@@ -81,64 +109,8 @@
                 $('.passwordBase').addClass("bounceOutRight");
                 $('.emailBase').removeClass("zoomOut");
             });
-            $('.loginEmailValidation').blur(function () {
-                if ($('#emailId').val() != "") {
-                    if (!CheckEmailValidation($('#emailId').val())) {
-                        calltoast("It seems you have entered a invalid Email");
-                        $('#emailId').focus();
-                        return false;
-                    }
-                    else {
-                        $('.mailLoadingIcon').addClass('fa-spinner fa-spin');
-                        if (checkMail('emailId', true)) {
-                            $('.msgArea').html('<p class="msg">Email id not registered with jac rooms<a href="/Agent/Register/"> Click here </a> to register</p>');
-                            $('.msgArea').css('max-height', '100px');
-                            $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
-                            $('.mailLoadingIcon').addClass('fa-times');
-                            $('.mailLoadingIcon').removeClass('fa-check');
-                            $('#emailId').focus();
-                            $('.nxt').attr('disabled', 'disabled');
-                            return false;
-                        }
-                        else {
-                            $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
-                            $('.mailLoadingIcon').removeClass('fa-times');
-                            $('.mailLoadingIcon').addClass('fa-check');
-                            $('.nxt').removeAttr('disabled');
-                            $('.msgArea').css('max-height', '0');
-                        }
-                    }
-                }
-            })
-            $('.emailValidation').blur(function () {
-                if ($('#emailId').val() != "") {
-                    if (!CheckEmailValidation($('#emailId').val())) {
-                        calltoast("It seems you have entered a invalid Email");
-                        $('#emailId').focus();
-                        return false;
-                    }
-                    else {
-                        $('.mailLoadingIcon').addClass('fa-spinner fa-spin');
-                        if (!checkMail('emailId', true)) {
-                            $('.msgArea').html('<p class="msg">Email id already registered with jac rooms @Html.ActionLink("Click Here", "login") to login</p>');
-                            $('.msgArea').css('max-height', '100px');
-                            $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
-                            $('.mailLoadingIcon').addClass('fa-times');
-                            $('.mailLoadingIcon').removeClass('fa-check');
-                            $('#emailId').focus();
-                            $('.nextLogin').attr('disabled', 'disabled');
-                            return false;
-                        }
-                        else {
-                            $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
-                            $('.mailLoadingIcon').removeClass('fa-times');
-                            $('.mailLoadingIcon').addClass('fa-check');
-                            $('.nextLogin').removeAttr('disabled');
-                            $('.msgArea').css('max-height', '0');
-                        }
-                    }
-                }
-            });
+
+
 
         });
 
@@ -146,17 +118,17 @@
             $(event).toggleClass("fa-eye-slash fa-eye");
             myFunction(id);
         }
-        $('.btn-agentLogin').click(function () {
-            let pass = $('#Password');
-            if (pass.val() == '' || pass.val() == null) {
-                calltoast("Enter the Password");
-                pass.focus();
-                return false;
-            }
-            else {
-                return true;
-            }
-        });
+        //$('.btn-agentLogin').click(function () {
+        //    let pass = $('#Password');
+        //    if (pass.val() == '' || pass.val() == null) {
+        //        calltoast("Enter the Password");
+        //        pass.focus();
+        //        return false;
+        //    }
+        //    else {
+        //        return true;
+        //    }
+        //});
 
 
         function checkAgentRegister() {
@@ -183,6 +155,23 @@
                 calltoast("It seems you have entered a invalid Email");
                 emailId.focus();
                 return false;
+            }
+            $('.mailLoadingIcon').addClass('fa-spinner fa-spin');
+            if (!checkMail('emailId', true)) {
+                $('.msgArea').html('<p class="msg">Email Already Registered. @Html.ActionLink("Click Here", "login","Agent") To Login</p>');
+                $('.msgArea').css('max-height', '100px');
+                $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
+                $('.mailLoadingIcon').addClass('fa-times');
+                $('.mailLoadingIcon').removeClass('fa-check');
+                $('#emailId').focus();
+                return false;
+            }
+            else {
+                $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
+                $('.mailLoadingIcon').removeClass('fa-times');
+                $('.mailLoadingIcon').addClass('fa-check');
+                $('.nextLogin').removeAttr('disabled');
+                $('.msgArea').css('max-height', '0');
             }
             let password = $('#Password');
             if (password.val().trim() == '' || password.val().trim() == null) {
@@ -227,7 +216,7 @@
             });
             return false;
         }
-      
+
     </script>
 </body>
 </html>

@@ -6,10 +6,10 @@
 <div class="loading-bar">
     <div class="progress"></div>
     <div class="content">
-        Finding the best stays for you in Delhi
+        Finding the best stays for you in @Request.QueryString["Location"]
     </div>
 </div>
-<div class="container">
+<div class="container listingBase">
     <div class="listing-body">
         <div class="row">
             <div class="search-modification">
@@ -19,36 +19,19 @@
                         <form class="form-inline" action="/action.php">
                             <div class="form-fields">
                                 <div class="form-group">
-                                    <input type="text" id="seachBox" name="seachBox" class="searchBox form-control" required>
+                                    <input type="text" id="seachBox" name="seachBox" value="@Request.QueryString["Location"]" class="searchBox form-control" required>
                                     <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
                                     <i class="fa fa-map-marker icon mapIcon"></i>
                                     <div class="search_field">
                                         <div class="triangle-with-shadow">
                                         </div>
                                         <div class="search_box" id="search_box">
-                                            @*<ul>
-                                                    <li><div class="search_header"><i class="fa fa-building"></i> Cities</div></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><div class="search_header"><i class="fa fa-map-marker"></i> Locations</div></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><div class="search_header"><i class="fa fa-hotel"></i> Hotels</div></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><div class="search_header"><i class="fa fa-building-o"></i> Hotel Chain</div></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                    <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                                </ul>*@
+                                          
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkin" name="daterangepicker_start" class="checkinDate datePicker form-control" required>
+                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="daterangepicker_start" class="checkinDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkin">Check-in</label>
                                     <i class="fa fa-calendar icon"></i>
                                     <div class="cal_base">
@@ -57,12 +40,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkout" name="daterangepicker_end" value="" class="checkoutDate datePicker form-control" required>
+                                    <input type="text" id="checkout" name="daterangepicker_end" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkout">Check-out</label>
                                     <i class="fa fa-calendar icon"></i>
                                 </div>
                                 <div class="form-group rooMHover">
-                                    <input type="text" id="room" readonly class="form-control room_val" value="2 Pepole 1 Room" required>
+                                    <input type="text" id="room" readonly class="form-control room_val" value="@Request.QueryString["Person"] Pepole @Request.QueryString["Room"] Room" required>
                                     <label class="form-control-placeholder" for="room"></label>
                                     <img src="~/Content/images/sort-down.svg" class="img-icon" />
                                 </div>
@@ -154,21 +137,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    @*<div class="hotel_list">
-                            <ul>
-                                <li>
-                                    <div class="thumg-img">
-                                        <img src="~/Content/images/sliderImage.jpg" />
-                                    </div>
-                                    <div class="star-rating">
-
-                                    </div>
-                                    <div class="content-body">
-
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>*@
+                   
                 </div>
             </div>
         </div>

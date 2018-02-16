@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelSite.Models.Agent;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,15 @@ namespace HotelSite.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult search(SearchHotel data)
+        {
+            string person = data.Person.Split(' ')[0];
+            string room= data.Person.Split(' ')[2];
+            data.Person = person;
+            data.Room = room;
+            return RedirectToAction("Index", "Listing", data);
         }
     }
 }

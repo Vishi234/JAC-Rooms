@@ -23,35 +23,20 @@
                 </div>
                 <div class="search-base hotelBase">
                     <span>HOTEL</span>
-                    <form class="form-inline" action="/action.php">
+                    <form class="form-inline" action="@Url.Action("search","Home")" method="post">
                         <div class="form-fields">
                             <div class="form-group">
-                                <input type="text" id="seachBox" name="seachBox" class="searchBox form-control" required>
+                                <input type="text" id="seachBox" name="Location" class="searchBox form-control" required>
                                 <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
                                 <i class="fa fa-map-marker icon mapIcon"></i>
-                                <div class="search_box">
+                                <div class="search_box" id="search_box">
                                     <ul>
-                                        <li><div class="search_header"><i class="fa fa-building"></i> Cities</div></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><div class="search_header"><i class="fa fa-map-marker"></i> Locations</div></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><div class="search_header"><i class="fa fa-hotel"></i> Hotels</div></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><div class="search_header"><i class="fa fa-building-o"></i> Hotel Chain</div></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
-                                        <li><a href="javascript:void(0)">New Delhi, Delhi, India (23 Hotels)</a></li>
+                                        
                                     </ul>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="checkin" name="daterangepicker_start" class="checkinDate datePicker form-control" required>
+                                <input type="text" id="checkin" name="CheckIn" class="checkinDate datePicker form-control" required>
                                 <label class="form-control-placeholder" for="checkin">Check-in</label>
                                 <i class="fa fa-calendar icon"></i>
                                 <div class="cal_base">
@@ -62,19 +47,21 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="checkout" name="daterangepicker_end" value="" class="checkoutDate datePicker form-control" required>
+                                <input type="text" id="checkout" name="CheckOut" value="" class="checkoutDate datePicker form-control" required>
                                 <label class="form-control-placeholder" for="checkout">Check-out</label>
                                 <i class="fa fa-calendar icon"></i>
 
                             </div>
                             <div class="form-group rooMHover">
-                                <input type="text" id="room" readonly class="form-control room_val" value="2 Pepole 1 Room" required>
+                                <input type="text" id="room" readonly class="form-control room_val" name="Person" value="2 Pepole 1 Room" required>
                                 <label class="form-control-placeholder" for="room"></label>
                                 <img src="~/Content/images/sort-down.svg" class="img-icon" />
 
                             </div>
                             <div class="form-group">
-                                <a href="javascript:void(0)" onclick="SearchHotels();" class="searchBtn btn btn-danger">Search</a>
+                                <input type="submit" class="searchBtn btn btn-danger" value="Search" />
+                                @*@Html.ActionLink("Search", "Search", "Home", new { @class = "searchBtn btn btn-danger" });*@
+                                @*<a href="javascript:void(0)" onclick="SearchHotels();" class="searchBtn btn btn-danger">Search</a>*@
                             </div>
                         </div>
 
