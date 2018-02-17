@@ -14,13 +14,17 @@ namespace HotelSite.Controllers
         // GET: Listing
         public ActionResult Index()
         {
-            if (Request.QueryString != null)
-            {
-                string locatio = Request.QueryString["location"];
-                string checkIn = Request.QueryString["checkin"];
-                string checkOut = Request.QueryString["checkout"];
-            }
+           
             return View();
+        }
+        [HttpPost]
+        public ActionResult search(SearchHotel data)
+        {
+            string person = data.Person.Split(' ')[0];
+            string room = data.Person.Split(' ')[2];
+            data.Person = person;
+            data.Room = room;
+            return RedirectToAction("Index", "Listing", data);
         }
         [HttpPost]
         public JsonResult GetSearchData()

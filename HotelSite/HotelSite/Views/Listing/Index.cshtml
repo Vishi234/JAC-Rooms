@@ -16,22 +16,22 @@
                 <div class="triangle-with-shadow"></div>
                 <div class="search-area">
                     <div class="search-base hotelBase">
-                        <form class="form-inline" action="/action.php">
+                        <form class="form-inline" action="@Url.Action("search","Listing")">
                             <div class="form-fields">
                                 <div class="form-group">
-                                    <input type="text" id="seachBox" name="seachBox" value="@Request.QueryString["Location"]" class="searchBox form-control" required>
+                                    <input type="text" id="seachBox" name="Location" value="@Request.QueryString["Location"]" class="searchBox form-control" required>
                                     <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
                                     <i class="fa fa-map-marker icon mapIcon"></i>
                                     <div class="search_field">
                                         <div class="triangle-with-shadow">
                                         </div>
                                         <div class="search_box" id="search_box">
-                                          
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="daterangepicker_start" class="checkinDate datePicker form-control" required>
+                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="CheckIn" class="checkinDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkin">Check-in</label>
                                     <i class="fa fa-calendar icon"></i>
                                     <div class="cal_base">
@@ -40,17 +40,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkout" name="daterangepicker_end" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
+                                    <input type="text" id="checkout" name="CheckOut" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkout">Check-out</label>
                                     <i class="fa fa-calendar icon"></i>
                                 </div>
                                 <div class="form-group rooMHover">
-                                    <input type="text" id="room" readonly class="form-control room_val" value="@Request.QueryString["Person"] Pepole @Request.QueryString["Room"] Room" required>
+                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@Request.QueryString["Person"] Pepole @Request.QueryString["Room"] Room" required>
                                     <label class="form-control-placeholder" for="room"></label>
                                     <img src="~/Content/images/sort-down.svg" class="img-icon" />
                                 </div>
                                 <div class="form-group">
-                                    <a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>
+                                    <input type="submit" class="searchBtn btn btn-danger" value="Search" />
+                                    @*<a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>*@
                                 </div>
                             </div>
                         </form>
@@ -127,17 +128,181 @@
             </div>
             <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
                 <div class="row">
-                    <table class="hotelData table table-bordered" id="hotelData">
-                        <thead>
-                            <tr>
-                                <th>Hotel Name</th>
-                                <th>Hotel Type</th>
+                    <div class="hotelList">
+                        <ul>
+                            <li>
+                                <div class="hotelDiscount">
+                                    <span class="percentOff">70%</span>
+                                    <span>OFF</span>
+                                </div>
+                                <div class="hotelImage">
 
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                   
+                                </div>
+                                <div class="hotelPrice">
+                                    <span class="orginalPrice"><i class="fa fa-rupee"></i>7000</span>
+                                    <span class="discountedPrice">2000</span>
+                                </div>
+                                <div class="hotelContent">
+                                    <ul>
+                                        <li>Fab Hotel Star Delhi Airport</li>
+                                        <li><span><i class="fa fa-map-marker"></i>Sector 1, Manesar, Manesar</span></li>
+                                        <li>
+                                            <div class="star-rating">
+                                                <span class="fa fa-star-o" data-rating="1"></span>
+                                                <span class="fa fa-star-o" data-rating="2"></span>
+                                                <span class="fa fa-star-o" data-rating="3"></span>
+                                                <span class="fa fa-star-o" data-rating="4"></span>
+                                                <span class="fa fa-star-o" data-rating="5"></span>
+                                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="hotelContentBottom">
+                                    <a href="javascript:void(0)">Choose Room</a>
+                                    @*<ul>
+                                        <li><img src="~/Content/images/air-conditioner.svg" /></li>
+                                        <li><img src="~/Content/images/wifi.svg" /></li>
+                                        <li><img src="~/Content/images/monitor.svg" /></li>
+                                        <li><img src="~/Content/images/cleaning-service.svg" /></li>
+                                        <li><img src="~/Content/images/bed.svg" /></li>
+                                    </ul>*@
+                                </div>
+                            </li>
+                            <li>
+                                <div class="hotelDiscount">
+                                    <span class="percentOff">70%</span>
+                                    <span>OFF</span>
+                                </div>
+                                <div class="hotelImage">
+
+                                </div>
+                                <div class="hotelPrice">
+                                    <span class="orginalPrice"><i class="fa fa-rupee"></i>7000</span>
+                                    <span class="discountedPrice">2000</span>
+                                </div>
+                                <div class="hotelContent">
+                                    <ul>
+                                        <li>Fab Hotel Star Delhi Airport</li>
+                                        <li><span><i class="fa fa-map-marker"></i>Sector 1, Manesar, Manesar</span></li>
+                                        <li>
+                                            <div class="star-rating">
+                                                <span class="fa fa-star-o" data-rating="1"></span>
+                                                <span class="fa fa-star-o" data-rating="2"></span>
+                                                <span class="fa fa-star-o" data-rating="3"></span>
+                                                <span class="fa fa-star-o" data-rating="4"></span>
+                                                <span class="fa fa-star-o" data-rating="5"></span>
+                                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="hotelContentBottom">
+                                    <a href="javascript:void(0)">Choose Room</a>
+                                    @*<ul>
+                    <li><img src="~/Content/images/air-conditioner.svg" /></li>
+                    <li><img src="~/Content/images/wifi.svg" /></li>
+                    <li><img src="~/Content/images/monitor.svg" /></li>
+                    <li><img src="~/Content/images/cleaning-service.svg" /></li>
+                    <li><img src="~/Content/images/bed.svg" /></li>
+                </ul>*@
+                                </div>
+                            </li>
+                            <li>
+                                <div class="hotelDiscount">
+                                    <span class="percentOff">70%</span>
+                                    <span>OFF</span>
+                                </div>
+                                <div class="hotelImage">
+
+                                </div>
+                                <div class="hotelPrice">
+                                    <span class="orginalPrice"><i class="fa fa-rupee"></i>7000</span>
+                                    <span class="discountedPrice">2000</span>
+                                </div>
+                                <div class="hotelContent">
+                                    <ul>
+                                        <li>Fab Hotel Star Delhi Airport</li>
+                                        <li><span><i class="fa fa-map-marker"></i>Sector 1, Manesar, Manesar</span></li>
+                                        <li>
+                                            <div class="star-rating">
+                                                <span class="fa fa-star-o" data-rating="1"></span>
+                                                <span class="fa fa-star-o" data-rating="2"></span>
+                                                <span class="fa fa-star-o" data-rating="3"></span>
+                                                <span class="fa fa-star-o" data-rating="4"></span>
+                                                <span class="fa fa-star-o" data-rating="5"></span>
+                                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="hotelContentBottom">
+                                    <a href="javascript:void(0)">Choose Room</a>
+                                    @*<ul>
+                    <li><img src="~/Content/images/air-conditioner.svg" /></li>
+                    <li><img src="~/Content/images/wifi.svg" /></li>
+                    <li><img src="~/Content/images/monitor.svg" /></li>
+                    <li><img src="~/Content/images/cleaning-service.svg" /></li>
+                    <li><img src="~/Content/images/bed.svg" /></li>
+                </ul>*@
+                                </div>
+                            </li>
+                            <li>
+                                <div class="hotelDiscount">
+                                    <span class="percentOff">70%</span>
+                                    <span>OFF</span>
+                                </div>
+                                <div class="hotelImage">
+
+                                </div>
+                                <div class="hotelPrice">
+                                    <span class="orginalPrice"><i class="fa fa-rupee"></i>7000</span>
+                                    <span class="discountedPrice">2000</span>
+                                </div>
+                                <div class="hotelContent">
+                                    <ul>
+                                        <li>Fab Hotel Star Delhi Airport</li>
+                                        <li><span><i class="fa fa-map-marker"></i>Sector 1, Manesar, Manesar</span></li>
+                                        <li>
+                                            <div class="star-rating">
+                                                <span class="fa fa-star-o" data-rating="1"></span>
+                                                <span class="fa fa-star-o" data-rating="2"></span>
+                                                <span class="fa fa-star-o" data-rating="3"></span>
+                                                <span class="fa fa-star-o" data-rating="4"></span>
+                                                <span class="fa fa-star-o" data-rating="5"></span>
+                                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="hotelContentBottom">
+                                    <a href="javascript:void(0)">Choose Room</a>
+                                    @*<ul>
+                    <li><img src="~/Content/images/air-conditioner.svg" /></li>
+                    <li><img src="~/Content/images/wifi.svg" /></li>
+                    <li><img src="~/Content/images/monitor.svg" /></li>
+                    <li><img src="~/Content/images/cleaning-service.svg" /></li>
+                    <li><img src="~/Content/images/bed.svg" /></li>
+                </ul>*@
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    @*<table class="hotelData table table-bordered" id="hotelData">
+                            <thead>
+                                <tr>
+                                    <th>Hotel Name</th>
+                                    <th>Hotel Type</th>
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>*@
+
                 </div>
             </div>
         </div>

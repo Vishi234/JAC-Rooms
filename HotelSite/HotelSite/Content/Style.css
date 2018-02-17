@@ -1064,7 +1064,7 @@ a {
 
         .common-nav li:hover .nav-drop {
             max-height: 400px;
-            transition: all 0.4s ease-in-out;
+            transition: max-height 0.4s ease-in-out;
             overflow: visible;
         }
 
@@ -1106,7 +1106,7 @@ a {
 
 .nav-list {
     background: #fff;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
     overflow: hidden;
     border-radius: 4px;
     padding: 15px;
@@ -1146,19 +1146,19 @@ a {
         .nav-list span:nth-child(3) a {
             background: #f3495a !important;
             color: #fff !important;
-            border-radius: 3px !important;
+            /* border-radius: 3px !important; */
             padding: 7px 15px !important;
             font-weight: 500 !important;
-            box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+            /* box-shadow: 2px 2px 3px rgba(0,0,0,0.3); */
         }
 
         .nav-list span:nth-child(4) a {
-            background: #f3495a !important;
-            color: #fff !important;
-            border-radius: 2px !important;
-            padding: 7px 15px !important;
+            border: 1px solid #f3495a;
+            color: #f3495a !important;
+            /* border-radius: 2px !important; */
+            padding: 6px 10px !important;
             font-weight: 500 !important;
-            box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+            /* box-shadow: 2px 2px 3px rgba(0,0,0,0.3); */
         }
 
 
@@ -2039,6 +2039,7 @@ input:checked + .slider-check:before {
     background: #fff;
     height: 100%;
     display: block;
+    width: 285px;
     padding: 10px;
     margin-top: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
@@ -2111,7 +2112,7 @@ input[type=checkbox] {
 }
 
     .logoBase img {
-            width: 85px;
+        width: 85px;
     }
 
 .listingBase {
@@ -2119,7 +2120,160 @@ input[type=checkbox] {
     overflow: hidden;
     transition: all 0.4s ease-in-out;
 }
-.listingBase .form-control-placeholder
-{
-    position:relative;
+
+    .listingBase .form-control-placeholder {
+        position: relative;
+    }
+
+.hrStyle {
+    margin-top: 45px;
+    box-shadow: 0px -1px 5px rgba(0,0,0,0.2);
+    margin-bottom: 0px;
 }
+
+.hotelList {
+    display: block;
+    width: 100%;
+    display: block;
+    width: 100%;
+    padding: 20px 0px;
+    padding-left: 20px;
+}
+
+    .hotelList > ul > li {
+        display: inline-block;
+        box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
+        transition: all 0.4s ease-in-out;
+        margin-bottom:20px;
+    }
+
+    .hotelList li:nth-child(even) {
+        margin-left: 29px;
+    }
+
+        .hotelList li:nth-child(even) .hotelDiscount {
+            left: 444px;
+        }
+
+
+.hotelDiscount {
+    position: absolute;
+    z-index: 99;
+    background: #F34F4F;
+    padding: 7px 20px 5px 20px;
+    color: #fff;
+    font-size: 14px;
+    left: 10px;
+    box-shadow: 1px 2px 2px 0 rgba(0,0,0,0.4);
+    -moz-box-shadow: 1px 2px 2px 0 rgba(0,0,0,0.4);
+    -webkit-box-shadow: 1px 2px 2px 0 rgba(0,0,0,0.4);
+    top: 30px;
+}
+
+    .hotelDiscount:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 0;
+        border: 5px solid #F34F4F;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+
+.hotelImage {
+    background: url(images/6667-gradient.jpg)no-repeat center;
+    height: 250px;
+    width: 400px;
+    box-shadow: 0px -14px 65px rgba(0,0,0,0.3) inset;
+}
+
+.hotelPrice {
+    margin-top: -55px;
+    padding: 10px;
+}
+
+.orginalPrice {
+    font-size: 24px;
+    margin-right: 5px;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+    .orginalPrice i {
+        margin-right: 5px;
+    }
+
+.discountedPrice {
+    text-decoration: line-through;
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+.hotelContent {
+    display: inline-block;
+    background: #fff;
+    padding: 10px;
+    width: 100%;
+}
+
+.star-rating {
+    line-height: 32px;
+    font-size: 1.25em;
+}
+
+    .star-rating .fa-star {
+        color: yellow;
+    }
+
+.hotelContent li {
+    display: block;
+    margin-left: 0px !important;
+    width: 100%;
+}
+
+    .hotelContent li:nth-child(1) {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .hotelContent li:nth-child(2) {
+        max-width: 380px;
+    }
+
+        .hotelContent li:nth-child(2) span {
+            color: #808080;
+            /* max-width: 69px; */
+            word-wrap: break-word;
+        }
+
+            .hotelContent li:nth-child(2) span i {
+                margin-right: 5px;
+            }
+
+.hotelContentBottom {
+    background: #E9F4DE;
+    display: inline-block;
+    width: 100%;
+}
+
+    .hotelContentBottom li {
+        display: block;
+        float: left;
+    }
+
+        .hotelContentBottom li img {
+            width: 30px;
+            height: 30px;
+        }
+
+    .hotelContentBottom a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+        color: #7a8471;
+        font-weight: 500;
+    }
