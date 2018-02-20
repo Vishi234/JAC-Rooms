@@ -114,7 +114,7 @@
             $("select").chosen();
             GetAgentHotelList();
 
-            GetRoomList();
+            
             var options = {
                 now: "12:35", //hh:mm 24 hour format only, defaults to current time
                 twentyFour: true, //Display 24 hour format, defaults to false
@@ -151,7 +151,7 @@
                 State: $('#State').val(),
                 City: $('#City').val(),
                 ZipCode: $('#ZipCode').val(),
-                AgentID: ""
+                AgentID: @Session["AgentId"],
             }
             if(Hotel.HotelName=="")
             {
@@ -203,6 +203,7 @@
                         $('#basicInfo').removeClass('active in')
                         $('#2').removeClass('disabled').addClass('active');
                         $('#contact').addClass("in active");
+                        GetAgentHotelList();
                     }
                     else
                     {
@@ -265,44 +266,39 @@
         }
         function GetAgentHotelList()
         {
-            
-                $.ajax({
-                    type: 'POST',
-                    url: "@Url.Action("GetHotelList","Agent")",
-                    contentType: "application/json",
-                    data: JSON.stringify({ agentId: @Session["AgentId"] }),
-                    success:function(data)
+
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("GetHotelList","Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ agentId: @Session["AgentId"] }),
+                success:function(data)
+                {
+                    if(data.length > 0)
                     {
-                        if(data.length>0)
+                        BindHotelList("AgentHotelList",data);
+                        $('.Lagend_hotel_add').removeClass("bounceInRight");
+                        $('.Lagend_hotel_add').css('display','none');
+                        $(".tab-content").attr('HotelData',$("#AgentHotelList").val()+"~"+$("#AgentHotelList").text())
+                        if(localStorage.getItem("flag")=="E" || localStorage.getItem("flag")==null)
                         {
-                            BindHotelList("AgentHotelList",data);
-                            $('.Lagend_hotel_add').removeClass("bounceInRight");
-                            $('.Lagend_hotel_add').css('display','none');
-                            $(".tab-content").attr('HotelData',$("#AgentHotelList").val()+"~"+$("#AgentHotelList").text())
-                            $('.tab-header li').each(function()
-                            {
-                                $(this).removeClass('disabled')
-                            });
-                            if(localStorage.getItem('flag') != 1)
-                            {
-                                GetHotelData();
-                            }
+                            GetHotelData();
                         }
-
-
-                    },
-                    error:function()
-                    {
-
+                        localStorage.clear();
+                        GetRoomList();
                     }
-                })
-            
+                },
+                error:function()
+                {
+
+                }
+            })
+
 
         }
-
-
         function BindHotelList(ddlID, data) {
             try {
+                $('#'+ddlID).empty();
                 var select = document.getElementById(ddlID);
                 $.each(data, function (i, item) {
                     var option = document.createElement("option");
@@ -310,7 +306,9 @@
                     option.value = item.HotelID;
                     if (option != null) select.appendChild(option);
                 });
+                $('#AgentHotelList option:last').prop('selected',true);
                 $('#'+ddlID).trigger("chosen:updated");
+
                 // $('select').selectpicker('refresh');
 
             }
@@ -334,7 +332,8 @@
                  MinChild: $('.minChild').val(),
                  MaxChild: $('.maxChild').val(),
                  MaxInfant: $('.maxInfant').val(),
-                 MaxGuest: $('.maxGuest').val()
+                 MaxGuest: $('.maxGuest').val(),
+                 HotelID : $("#AgentHotelList").val(),
              }
             $.ajax({
                 type: 'POST',
@@ -355,6 +354,14 @@
                         $('#contact').removeClass('active in')
                         $('#3').removeClass('disabled').addClass('active');
                         $('#rooms').addClass("in active");
+                        $("#collapseOne").removeClass("in");
+                        $("#collapseOne").attr("aria-expanded",false);
+                        $("#collapseTwo").addClass("in");
+                        $("#collapseTwo").attr("aria-expanded",true);
+                        $("a[href$='#collapseTwo']").attr("aria-expanded",true);
+                        $("a[href$='#collapseTwo'] i").removeClass("glyphicon-plus");
+                        $("a[href$='#collapseTwo'] i").addClass("glyphicon-minus");
+                        GetRoomList();
                     }
                     else
                     {
@@ -371,6 +378,7 @@
 
                 }
             });
+            return false;
         }
 
         function bindRoomView()
@@ -451,7 +459,7 @@
                 type: 'POST',
                 url: "@Url.Action("GetRoomList", "Agent")",
                 contentType: "application/json",
-                data: JSON.stringify({ HotelID: "" }),
+                data: JSON.stringify({ HotelID: $("#AgentHotelList").val() }),
                 success: function (data) {
                     var row="";
                     var table=document.getElementById("roomTable");
@@ -547,22 +555,22 @@
         {
             try
             {
-                if(HotelFlag!="A")
+                var hotelId=$('#AgentHotelList').val();
+                if(hotelId.length > 0)
                 {
-                    var hotelId=$('.tab-content').attr("HotelData");
-                    if(hotelId.length > 0)
-                    {
-                        hotelId=hotelId.split('~')[0];
-                        $.ajax({
-                            type:'POST',
-                            url:"@Url.Action("GetHotelData","Agent")",
-                            contentType:"application/json",
-                            data:JSON.stringify({HotelID : hotelId}),
-                            success:function(data)
+                    hotelId=hotelId.split('~')[0];
+                    $.ajax({
+                        type:'POST',
+                        url:"@Url.Action("GetHotelData","Agent")",
+                        contentType:"application/json",
+                        data:JSON.stringify({HotelID : hotelId}),
+                        success:function(data)
+                        {
+                            if(data.length > 0)
                             {
-                                if(data.length > 0)
+                                var HotelJson=JSON.parse(data);
+                                if(HotelJson.BasicInfo.length > 0 )
                                 {
-                                    var HotelJson=JSON.parse(data);
                                     $("#hotelName").val(HotelJson.BasicInfo[0].HotelName);
                                     $("#HotelFloor").val(HotelJson.BasicInfo[0].HotelFloor);
                                     $("#CheckOutTime").val(HotelJson.BasicInfo[0].CheckOutTime);
@@ -586,22 +594,27 @@
                                     $("#City").trigger("chosen:updated");
                                     $("#ZipCode").val(HotelJson.BasicInfo[0].ZipCode);
                                     $("#submitHote").val("Update & Continue");
-
+                                }
+                                if(HotelJson.ContactInfo.length>0)
+                                {
                                     $("#HotelPhone").val(HotelJson.ContactInfo[0].HotelPhone);
                                     $("#HotelEmail").val(HotelJson.ContactInfo[0].HotelEmail);
                                     $("#HotelEmailList").val(HotelJson.ContactInfo[0].HotelEmailList);
                                     $("#HotelMobile").val(HotelJson.ContactInfo[0].HotelMobile);
-                                    $("#HotelPhone").val(HotelJson.ContactInfo[0].HotelPhone);
                                     $("#HotelPhoneList").val(HotelJson.ContactInfo[0].HotelPhoneList);
                                     $("#submitHotelContact").val("Update & Continue");
                                 }
-                            },
-                            error:function(textStatus)
-                            {
-
+                                $('.tab-header li').each(function()
+                                {
+                                    $(this).removeClass('disabled')
+                                });
                             }
-                        })
-                    }
+                        },
+                        error:function(textStatus)
+                        {
+
+                        }
+                    })
                 }
 
             }
@@ -615,11 +628,14 @@
         {
             //$(this).closest('form').find("input[type=text], textarea").val("");
             $('.tab-content').find("input[type=text], textarea").val("");
-            localStorage.setItem('flag', 1);
-            HotelFlag=$(e).attr("flag");
-            window.location.href="/Agent/property";
+            localStorage.setItem('flag', "A");
+            window.location.href="/Agent/property/";
             // GetHotelData();
         }
+        $('#AgentHotelList').change(function()
+        {
+            GetHotelData();
+        })
     </script>
 </body>
 </html>
