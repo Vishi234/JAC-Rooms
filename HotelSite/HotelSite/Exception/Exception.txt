@@ -1,7 +1,6 @@
 ===============================start==============================================
 Inner Exception's
-MessageCannot insert the value NULL into column 'RoomDisplayName', table 'HR_Solution.dbo.tbl_HotelRooms'; column does not allow nulls. INSERT fails.
-The statement has been terminated.
+MessageProcedure or function 'sp_InsertAgentHotel' expects parameter '@ZipCode', which was not supplied.
 StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
@@ -13,8 +12,8 @@ StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException excepti
    at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
    at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 335
    at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 252
-   at HotelSite.Models.Agent.HotelInformation.AddRoomDetails(HotelRoom hotelRoom) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 219
+   at HotelSite.Models.Agent.HotelInformation.AddHotel(HotelBasics hotelBasics) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 123
 TargetSiteVoid OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
-DateTime : 	2/15/2018 3:00:44 AM
+DateTime : 	2/20/2018 11:42:31 PM
 ================================end============================================= 
 

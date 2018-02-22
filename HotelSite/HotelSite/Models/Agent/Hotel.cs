@@ -31,6 +31,7 @@ namespace HotelSite.Models.Agent
         public int ZipCode { get; set; }
         public int AgentID { get; set; }
 
+        public string flag { get; set; }
 
 
     }
@@ -99,7 +100,7 @@ namespace HotelSite.Models.Agent
         {
             try
             {
-                SqlParameter[] sqlParameter = new SqlParameter[17];
+                SqlParameter[] sqlParameter = new SqlParameter[20];
                 sqlParameter[0] = new SqlParameter("@AgentID", HttpContext.Current.Session["AgentId"].ToString());
                 sqlParameter[1] = new SqlParameter("@HotelName", hotelBasics.HotelName);
                 sqlParameter[2] = new SqlParameter("@HotelDisplay", hotelBasics.DisplayName);
@@ -116,8 +117,10 @@ namespace HotelSite.Models.Agent
                 sqlParameter[13] = new SqlParameter("@City", hotelBasics.City);
                 sqlParameter[14] = new SqlParameter("@Locality", hotelBasics.Locality);
                 sqlParameter[15] = new SqlParameter("@ZipCode", hotelBasics.ZipCode);
-                sqlParameter[16] = new SqlParameter("@Result", SqlDbType.Int);
-                sqlParameter[16].Direction = ParameterDirection.Output;
+                sqlParameter[16] = new SqlParameter("@hotelID", hotelBasics.HotelID);
+                sqlParameter[17] = new SqlParameter("@Flag", hotelBasics.flag);
+                sqlParameter[18] = new SqlParameter("@Result", SqlDbType.Int);
+                sqlParameter[18].Direction = ParameterDirection.Output;
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertAgentHotel", sqlParameter);
                 string message = sqlParameter[16].Value.ToString().Trim();
                 if (message == "1")
