@@ -122,7 +122,7 @@ namespace HotelSite.Models.Agent
                 sqlParameter[18] = new SqlParameter("@Result", SqlDbType.Int);
                 sqlParameter[18].Direction = ParameterDirection.Output;
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertAgentHotel", sqlParameter);
-                string message = sqlParameter[16].Value.ToString().Trim();
+                string message = sqlParameter[18].Value.ToString().Trim();
                 if (message == "1")
                 {
                     return 2;
