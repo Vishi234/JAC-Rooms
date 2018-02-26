@@ -80,30 +80,38 @@
                     emailId.focus();
                     return false;
                 }
-                if (checkMail('emailId', true)) {
-                    $('.msgArea').html('<p class="msg">Email not Registered.<a href="/Agent/Register/"> Click Here </a> to Register</p>');
-                    $('.msgArea').css('max-height', '100px');
-                    $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
-                    $('.mailLoadingIcon').addClass('fa-times');
-                    $('.mailLoadingIcon').removeClass('fa-check');
-                    $('#emailId').focus();
-                    return false;
-                }
-                else {
-                    $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
-                    $('.mailLoadingIcon').removeClass('fa-times');
-                    $('.mailLoadingIcon').addClass('fa-check');
-                    $('.nxt').removeAttr('disabled');
-                    $('.msgArea').css('max-height', '0');
-                }
-                $('.emailBase').removeClass("zoomIn");
-                $('.emailBase').addClass("zoomOut");
-                $('.passwordBase').removeClass("bounceOutRight");
-                $('.passwordBase').addClass("bounceInRight");
-                $('.passwordBase').css("display", 'block');
+                $('.mailLoadingIcon').show();
+                $('.mailLoadingIcon').addClass('fa-spinner fa-spin');
+                setTimeout(function () {
+                    if (checkMail('emailId', true)) {
+
+                        $('.msgArea').html('<p class="msg">Email not Registered.<a href="/Agent/Register/"> Click Here </a> to Register</p>');
+                        $('.msgArea').css('max-height', '100px');
+                        $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
+                        $('.mailLoadingIcon').addClass('fa-times');
+                        $('.mailLoadingIcon').removeClass('fa-check');
+                        $('#emailId').focus();
+                        return false;
+                    }
+                    else {
+                        $('.mailLoadingIcon').removeClass('fa-spinner fa-spin');
+                        $('.mailLoadingIcon').removeClass('fa-times');
+                        $('.mailLoadingIcon').addClass('fa-check');
+                        $('.nxt').removeAttr('disabled');
+                        $('.msgArea').css('max-height', '0');
+                    }
+                    $('.emailBase').removeClass("zoomIn");
+                    $('.emailBase').addClass("zoomOut");
+                    $('.passwordBase').removeClass("bounceOutRight");
+                    $('.passwordBase').addClass("bounceInRight");
+                    $('.passwordBase').css("display", 'block');
+                }, 3000)
+                
+                
 
             });
             $(".fa-arrow-left").click(function () {
+                $('.mailLoadingIcon').hide();
                 $('.passwordBase').removeClass("bounceInRight");
                 $('.emailBase').addClass("zoomIn");
                 $('.passwordBase').addClass("bounceOutRight");

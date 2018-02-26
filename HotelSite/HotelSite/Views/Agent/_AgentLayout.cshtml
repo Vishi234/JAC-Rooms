@@ -451,13 +451,28 @@
 
         function viewRatePlan(e)
         {
+            $(".roomTable tbody tr").each(function(){
+                var element=$(this).find("td:last i:last");
+                if($(element).hasClass('fa-eye'))
+                {
+                    $(element).removeClass('fa-eye');
+                    $(element).addClass('fa-eye-slash');
+                }
+            });
             $(e).toggleClass("fa-eye-slash fa-eye");
+
             var rowIndex=0;
             if($(e).hasClass("fa-eye"))
             {
-                var newRow="<tr><td colspan='5'><table class='table table-bordered table-hover'><thead><tr><th>Plan Name</th><th>Meal Plan</th><th>Status</th><th>Payment Mode</th><th>Action</th></tr></thead></table></td></tr>";
+                var RoomID=GetRoomID(e);
+                $(".roomTable tbody tr").each(function(){
+                    if($(this).hasClass("nested")){$(this).remove();}
+                });
                 rowIndex=$(e).closest('td').parent()[0].sectionRowIndex
+                var newRow="";
+                newRow="<tr class='nested'><td colspan='5'><table id='rateTable"+rowIndex+"' class='table table-bordered table-hover'><thead class='thead-dark'><tr><th>Plan Name</th><th>Meal Plan</th><th>Status</th><th>Payment Mode</th><th>Action</th></tr></thead></table></td></tr>";
                 $(".roomTable tbody tr").eq(rowIndex).after(newRow);
+                GetRoomWisePlan(RoomID,rowIndex);
             }
             else
             {
@@ -466,6 +481,39 @@
             }
         }
 
+        function GetRoomWisePlan(RoomID,tableID)
+        {
+            var planData="";
+            $.ajax({
+                type:'POST',
+                url:"@Url.Action("GetRoomWisePLan","Agent")",
+                contentType:"application/json",
+                data:JSON.stringify({RoomID:RoomID}),
+                success:function(Data)
+                {
+                    var tr="";
+                    tr+="<tbody>";
+                    if(Data.length>0)
+                    {
+                        $.each(Data,function(i,item)
+                        {
+                            tr+="<tr><td>"+item.PlanName+"</td><td>"+item.MealPlan+"</td><td>"+item.IsRefundable+"</td><td>"+item.PaymentMode+"</td><td><i class='fa fa-pencil' title='Edit'></i><i class='fa fa-times' title='Delete'></i></td></tr>"
+                        });
+                    }
+                    else
+                    {
+                        tr+="<tr><td colspan='5' align='center'>No record found.</td></tr>";
+                    }
+                    tr+="</tbody>";
+                    $("#rateTable"+tableID).append(tr);
+                },
+                error:function(textStatus)
+                {
+                    console.log(textStatus);
+                }
+            });
+            return planData;
+        }
         function GetRoomList()
         {
             $.ajax({
@@ -517,6 +565,7 @@
             var item = $(e).closest("tr").find(".roomEdit");
             var roomID=item.attr("roomData").split('~')[0];
             $("#rateBtn").attr("roomID",roomID);
+            return roomID;
         }
         $('#rateBtn').click(function()
         {
@@ -586,7 +635,9 @@
                                 {
                                     $("#hotelName").val(HotelJson.BasicInfo[0].HotelName);
                                     $("#HotelFloor").val(HotelJson.BasicInfo[0].HotelFloor);
+
                                     $("#CheckOutTime").val(HotelJson.BasicInfo[0].CheckOutTime);
+                                    $("#CheckOutTime").wickedpicker({now:HotelJson.BasicInfo[0].CheckOutTime});
                                     $("#HotelType").val(HotelJson.BasicInfo[0].HotelType);
                                     $("#HotelType").trigger("chosen:updated");
                                     $("#BuiltYear").val(HotelJson.BasicInfo[0].HotelBuildYear);
@@ -595,6 +646,7 @@
                                     $("#HotelStar").trigger("chosen:updated");
                                     $("#HotelRooms").val(HotelJson.BasicInfo[0].HotelRooms);
                                     $("#HotelCheckInTime").val(HotelJson.BasicInfo[0].CheckInTime);
+                                    $("#HotelCheckInTime").wickedpicker({now:HotelJson.BasicInfo[0].CheckInTime});
                                     $("#StreetAdress").val(HotelJson.BasicInfo[0].StreetAddress);
                                     $("#Locality").val(HotelJson.BasicInfo[0].Locality);
                                     $("#Country").val(HotelJson.BasicInfo[0].Country);

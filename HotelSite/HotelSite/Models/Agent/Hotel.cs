@@ -326,6 +326,36 @@ namespace HotelSite.Models.Agent
             return ds;
         }
 
+        public List<RoomPlan> GetRoomWisePlan(string RoomID)
+        {
+            List<RoomPlan> lst = new List<RoomPlan>();
+            try
+            {
+                string query = "select * from tbl_Add_RoomWisePlan where RoomID=" + RoomID;
+                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        lst.Add(new RoomPlan()
+                        {
+                            PlanName = sqlDataReader["PlanName"].ToString(),
+                            MealPlan = sqlDataReader["MealPlan"].ToString(),
+                            PaymentMode = sqlDataReader["PaymentMode"].ToString(),
+                            IsRefundable = sqlDataReader["IsRefundale"].ToString(),
+                        });
+                    }
+                }
+                sqlDataReader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return lst;
+        }
+
     }
 
 

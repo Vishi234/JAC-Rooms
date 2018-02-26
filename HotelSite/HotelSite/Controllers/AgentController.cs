@@ -200,5 +200,12 @@ namespace HotelSite.Controllers
             Common objCommon = new Common();
             return Json(objCommon.DatasetToJson(hInfo.GetHotelData(HotelID)), JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GetRoomWisePLan(string RoomID)
+        {
+            HotelInformation hotelDetails = new HotelInformation();
+
+            return Json(hotelDetails.GetRoomWisePlan(RoomID), JsonRequestBehavior.AllowGet);
+        }
     }
 }

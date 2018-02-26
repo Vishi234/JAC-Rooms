@@ -38,12 +38,15 @@
                                                 <input type="text" class="form-control" NumberOnly maxlength="3" id="HotelFloor" name="HotelFloor" placeholder="Enter no of floors">
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">CheckoutTime*</label>
+                                            <label class="control-label col-sm-3" for="email">Checkin Time*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control timepicker" id="CheckOutTime" name="CheckOutTime" placeholder="Enter checkout time">
+                                                <input type="text" class="form-control timepicker" id="HotelCheckInTime" name="HotelCheckInTime" placeholder="Enter checkin time">
                                             </div>
                                         </div>
+
+
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Currency</label>
                                             <div class="col-sm-9">
@@ -124,11 +127,13 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-3" for="email">Checkin Time*</label>
+                                            <label class="control-label col-sm-3" for="email">CheckoutTime*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control timepicker" id="HotelCheckInTime" name="HotelCheckInTime" placeholder="Enter checkin time">
+                                                <input type="text" class="form-control timepicker" id="CheckOutTime" name="CheckOutTime" placeholder="Enter checkout time">
                                             </div>
                                         </div>
+
+                                        
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Restaurants(No.)</label>
                                             <div class="col-sm-9">
@@ -692,13 +697,13 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" expanded="true" aria-controls="collapseOne">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
                                             Add Rooms
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body panelBody">
                                         <form class="form-horizontal">
                                             <div class="panelTitle">
@@ -842,16 +847,16 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" expanded="false" aria-controls="collapseTwo">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
                                             Existing Rooms
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
                                     <div class="panel-body">
                                         <table class="table table-bordered roomTable" id="roomTable">
-                                            <thead>
+                                            <thead class="thead-dark">
                                                 <tr>
                                                     <th>Room Name</th>
                                                     <th>Description</th>
