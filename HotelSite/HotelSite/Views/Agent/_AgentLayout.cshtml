@@ -329,7 +329,40 @@
 
             }
         }
-        function SaveHotelRoomData()
+        function DeleteHotelRoom(RoomID)
+        {
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("DeleteRoom", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ RoomID: RoomID }),
+                success: function (data)
+                {
+                    if(data==1)
+                    {
+                        $.toast({
+                            heading: 'Success',
+                            text: 'Room Has Been Deleted.',
+                            icon: 'success',
+                            position: 'bottom-right'
+                        });
+                    }
+                    else
+                    {
+                        $.toast({
+                            heading: 'Error',
+                            text: 'Something went wrong.',
+                            icon: 'error',
+                            position: 'bottom-right'
+                        });
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+        }
+        function SaveHotelRoomData(e)
         {
             var roomData =
              {
@@ -347,6 +380,7 @@
                  MaxInfant: $('.maxInfant').val(),
                  MaxGuest: $('.maxGuest').val(),
                  HotelID : $("#AgentHotelList").val(),
+                 Flag : $(e).attr("flag"),
              }
             $.ajax({
                 type: 'POST',
@@ -369,12 +403,15 @@
                         $('#rooms').addClass("in active");
                         $("#collapseOne").removeClass("in");
                         $("#collapseOne").attr("aria-expanded",false);
+                        $("#collapseOne").css("height","0px");
                         $("#collapseTwo").addClass("in");
                         $("#collapseTwo").attr("aria-expanded",true);
+                        $("#collapseTwo").css("height","100%");
                         $("a[href$='#collapseTwo']").attr("aria-expanded",true);
                         $("a[href$='#collapseTwo'] i").removeClass("glyphicon-plus");
                         $("a[href$='#collapseTwo'] i").addClass("glyphicon-minus");
                         GetRoomList();
+                        $(e).attr("flag","A");
                     }
                     else
                     {
@@ -415,11 +452,11 @@
             table+="</tbody></table>"
             $("#roomVLayout").html(table);
         }
-
+       
         $('#txtUploadFile').on('change', function (e) {
-
+            
             var files = e.target.files;
-            var myID = 3;
+            var myID = $("#ImageRoomList option:selected").val();
             if (files.length > 0) {
                 if (window.FormData !== undefined) {
                     var data = new FormData();
@@ -429,12 +466,29 @@
 
                     $.ajax({
                         type: "POST",
-                        url: '/Agent/UploadHomeReport?id=' + myID,
+                        url: '/Agent/UploadHomeReport?id=' + myID +'&hotelName='+$("#AgentHotelList option:selected").text(),
                         contentType: false,
                         processData: false,
                         data: data,
                         success: function (result) {
-                            console.log(result);
+                            if(result==1)
+                            {
+                                $.toast({
+                                    heading: 'Success',
+                                    text: 'Images has been uploaded successfully',
+                                    icon: 'success',
+                                    position: 'bottom-right'
+                                })
+                            }
+                            else
+                            {
+                                $.toast({
+                                    heading: 'Error',
+                                    text: 'Error while uploading images.',
+                                    icon: 'error',
+                                    position: 'bottom-right'
+                                })
+                            }
                         },
                         error: function (xhr, status, p3, p4) {
                             var err = "Error " + " " + status + " " + p3 + " " + p4;
@@ -451,16 +505,15 @@
 
         function viewRatePlan(e)
         {
-            $(".roomTable tbody tr").each(function(){
-                var element=$(this).find("td:last i:last");
-                if($(element).hasClass('fa-eye'))
-                {
-                    $(element).removeClass('fa-eye');
-                    $(element).addClass('fa-eye-slash');
-                }
-            });
             $(e).toggleClass("fa-eye-slash fa-eye");
-
+            //$(".roomTable tbody tr").each(function(){
+            //    var element=$(this).find("td:last i:last");
+            //    if($(element).hasClass('fa-eye'))
+            //    {
+            //        $(element).removeClass('fa-eye');
+            //        $(element).addClass('fa-eye-slash');
+            //    }
+            //});
             var rowIndex=0;
             if($(e).hasClass("fa-eye"))
             {
@@ -484,6 +537,7 @@
         function GetRoomWisePlan(RoomID,tableID)
         {
             var planData="";
+
             $.ajax({
                 type:'POST',
                 url:"@Url.Action("GetRoomWisePLan","Agent")",
@@ -497,7 +551,8 @@
                     {
                         $.each(Data,function(i,item)
                         {
-                            tr+="<tr><td>"+item.PlanName+"</td><td>"+item.MealPlan+"</td><td>"+item.IsRefundable+"</td><td>"+item.PaymentMode+"</td><td><i class='fa fa-pencil' title='Edit'></i><i class='fa fa-times' title='Delete'></i></td></tr>"
+                            var PlanData=item.PlanID+"~"+item.PlanName+"~"+item.MealPlan+"~"+item.IsRefundable+"~"+item.PaymentMode;
+                            tr+="<tr><td>"+item.PlanName+"</td><td>"+item.MealPlan+"</td><td>"+item.IsRefundable+"</td><td>"+item.PaymentMode+"</td><td><i class='fa fa-pencil' title='Edit' data-toggle='modal' data-target='#addRatePlan' onclick='EditRoomPlan(this);' PlanData="+PlanData+"></i><i class='fa fa-times' title='Delete'></i></td></tr>"
                         });
                     }
                     else
@@ -514,6 +569,23 @@
             });
             return planData;
         }
+        function EditRoomPlan(e)
+        {
+            var PlanData=$(e).attr("PlanData");
+            PlanData=PlanData.split("~");
+            $('.mealPlan').val(PlanData[2]);
+            $(".mealPlan").trigger("chosen:updated");
+            $('.payMode').val(PlanData[4]);
+            $(".payMode").trigger("chosen:updated");
+            $('.planName').val(PlanData[1]);
+            if(PlanData[3]=="True")
+            {
+                $("#refundableCheck").prop('checked', true);
+            }
+            $("#rateBtn").attr("flag","E");
+            $("#rateBtn").val("Update");
+            $("#rateBtn").attr("PlanId",PlanData[0]);
+        }
         function GetRoomList()
         {
             $.ajax({
@@ -526,12 +598,13 @@
                     var table=document.getElementById("roomTable");
                     if(data.length > 0)
                     {
+                        var select = document.getElementById("ImageRoomList");
                         $.each(data,function(i,item)
                         {
-                            var roomData=item.ID+"~"+item.RoomsDesc+"~"+item.RoomType+"~"+item.DisplayName+"~"+item.TotalRoom+"~"+item.BedType+"~"+item.ExtraBedType+"~"+item.RoomView+"~"+item.MaxAdult+"~"+item.MaxChild+"~"+item.MaxGuest+"~"+item.MaxInfant+"~"+item.MinAdult+"~"+item.MinChild;
+                            var roomData=item.ID+"~"+item.RoomsDesc+"~"+item.RoomType+"~"+item.DisplayName+"~"+item.TotalRoom+"~"+item.BedType+"~"+item.ExtraBedType+"~"+item.RoomView+"~"+item.MaxAdult+"~"+item.MaxChild+"~"+item.MaxGuest+"~"+item.MaxInfant+"~"+item.MinAdult+"~"+item.MinChild+"~E";
                             row+='<tr><td>'+item.DisplayName+'</td><td>'+item.RoomsDesc+'</td>';
                             row+='<td><i class="fa fa-pencil roomEdit" id="edit'+i+'" roomData="'+roomData+'" onclick="EditRoom(this);" title="Edit"></i>';
-                            row+='<i class="fa fa-times" title="Delete"></i></td>';
+                            row+='<i class="fa fa-times" onclick="DeleteHotelRoom('+item.ID+');" title="Delete"></i></td>';
                             row+='<td><input type="checkbox" id="check'+i+'" value="">Active</td>';
                             row+='<td><i class="fa fa-plus" title="Add plan" onclick="GetRoomID(this);" data-toggle="modal" data-target="#addRatePlan"></i><i class="fa fa-eye-slash" onclick=" viewRatePlan(this);" title="View plan"></i></td></tr>';
                             if(item.IsActive==1)
@@ -542,9 +615,12 @@
                             {
                                 $("#check"+i).prop('checked', false);
                             }
-
-
-
+                            
+                            var option = document.createElement("option");
+                            option.text = item.DisplayName;
+                            option.value = item.ID;
+                            if (option != null) select.appendChild(option);
+                            $('#ImageRoomList').trigger("chosen:updated");
                         });
                         $('#roomTable tbody').html(row);
                     }
@@ -560,6 +636,40 @@
                 }
             });
         }
+        function EditRoom(e)
+        {
+            var roomData=$(e).attr("roomData");
+            roomData=roomData.split("~");
+            $('.RoomsDesc').val(roomData[1])
+            $('#roomType').val(roomData[2])
+            $("#roomType").trigger("chosen:updated");
+            $('#displayName').val(roomData[3])
+            $('#totalRoom').val(roomData[4])
+            $('#bedType').val(roomData[5])
+            $("#bedType").trigger("chosen:updated");
+            $('#extraBed').val(roomData[6])
+            $("#extraBed").trigger("chosen:updated");
+            $('#roomView').val(roomData[7])
+            $("#roomView").trigger("chosen:updated");
+            $('.minAdult').val(roomData[12])
+            $('.maxAdult').val(roomData[8])
+            $('.minChild').val(roomData[13])
+            $('.maxChild').val(roomData[9])
+            $('.maxInfant').val(roomData[11])
+            $('.maxGuest').val(roomData[10])
+            $("#saveRoomData").val("Update");
+            $("#collapseOne").addClass("in");
+            $("#collapseOne").attr("aria-expanded",true);
+            $("#collapseOne").css("height","100%");
+            $("#collapseOne").css("transition","all 0.4s ease-in-out");
+            $("#collapseTwo").removeClass("in");
+            $("#collapseTwo").attr("aria-expanded",false);
+            $("#collapseTwo").css("height","0px");
+            $("a[href$='#collapseTwo']").attr("aria-expanded",false);
+            $("a[href$='#collapseTwo'] i").addClass("glyphicon-plus");
+            $("a[href$='#collapseTwo'] i").removeClass("glyphicon-minus");
+            $("#saveRoomData").attr("flag","E");
+        }
         function GetRoomID(e)
         {
             var item = $(e).closest("tr").find(".roomEdit");
@@ -570,7 +680,7 @@
         $('#rateBtn').click(function()
         {
             var IsRefund="0";
-            if ($('#refundVal').is(':checked'))
+            if ($('#refundableCheck').is(':checked'))
             {
                 IsRefund="1";
             }
@@ -580,8 +690,9 @@
                 PaymentMode: $('.payMode').val(),
                 PlanName:$('.planName').val(),
                 RoomID: $(this).attr("roomID"),
+                PlanID:$("#rateBtn").attr("PlanID"),
+                flag:$("#rateBtn").attr("flag"),
             }
-
             $.ajax({
                 type:'POST',
                 url:"@Url.Action("SaveRoomPlan", "Agent")",
@@ -597,17 +708,20 @@
                             icon: 'success',
                             position: 'bottom-right'
                         });
-                        $('.mealPlan').val('');
-                        $('.payMode').val('');
+                        $('.mealPlan').val(0);
+                        $(".mealPlan").trigger("chosen:updated");
+                        $('.payMode').val(0);
+                        $(".payMode").trigger("chosen:updated");
                         $('.planName').val('');
+                        GetRoomList
                     }
                     else
                     {
                         $.toast({
                             heading: 'Error',
-                            text: 'Room Plan Has Beend Added.',
+                            text: 'Something went wrong while adding room.',
                             icon: 'error',
-                            position: 'Something Went Wrong While Adding Rate Plan.'
+                            position: 'bottom-right'
                         });
                     }
                 }

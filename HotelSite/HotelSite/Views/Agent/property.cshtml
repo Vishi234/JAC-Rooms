@@ -839,7 +839,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button id="saveContact" onclick="return SaveHotelRoomData()" class="btn btn-danger">Save & Continue</button>
+                                            <button id="saveRoomData" onclick="return SaveHotelRoomData(this)" flag="A" class="btn btn-danger">Save & Continue</button>
                                         </form>
                                     </div>
                                 </div>
@@ -953,8 +953,7 @@
             <p>Upload images to make you hotel more visible</p>
         </div>
         <div class="modal-bdy">
-            <select>
-                <option selected="selected">Select room name</option>
+            <select id="ImageRoomList">
             </select>
             <label class="btn-bs-file btn btn-lg btn-success">
                 Choose file
@@ -998,10 +997,11 @@
             <div class="form-group">
                 <label for="refund">
                     Refundable
+                    <input id="refundableCheck" style="display: block!important;" type="checkbox" />
                 </label>
             </div>
             <div class="form-group">
-                <button id="rateBtn" class="btn btn-danger">Save</button>
+                <button id="rateBtn" flag="A" PlanID="" class="btn btn-danger">Save</button>
             </div>
         </div>
 

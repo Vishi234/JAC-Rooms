@@ -114,7 +114,11 @@ namespace HotelSite.Controllers
             HotelInformation hotelInformation = new HotelInformation();
             return hotelInformation.AddRoomDetails(hotelRoom);
         }
-
+        public int DeleteRoom(string RoomID)
+        {
+            HotelInformation hotelInformation = new HotelInformation();
+            return hotelInformation.DeleteRoom(RoomID);
+        }
         public JsonResult GetHotelList(string agentId)
         {
             HotelInformation hotelObj = new HotelInformation();
@@ -132,13 +136,17 @@ namespace HotelSite.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult UploadHomeReport()
+        public int UploadHomeReport(string id, string hotelName)
         {
             try
             {
                 string drive = ConfigurationManager.AppSettings["PicDrive"];
                 string folderName = ConfigurationManager.AppSettings["FolderName"];
+                folderName = folderName + "/" + hotelName;
                 string driveToSave = Path.Combine(drive, folderName);
+                HotelInformation hInfo = new HotelInformation();
+                RoomImages roomImg = new RoomImages();
+                int result = 0;
                 if (CheckDirectory(driveToSave))
                 {
                     if (Request.Files.Count > 0)
@@ -147,18 +155,23 @@ namespace HotelSite.Controllers
                         {
                             HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
                             hpf.SaveAs(Path.Combine(driveToSave, hpf.FileName));
+                            roomImg.PicName = hpf.FileName;
+                            roomImg.RoomID = Convert.ToInt32(id);
+                            roomImg.flag = 1;
+                            result = hInfo.SaveRoomImages(roomImg);
                         }
                     }
                 }
+                return result;
             }
             catch (Exception ex)
             {
                 ExceptionHandling.WriteException(ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json("Upload failed");
+                return 0;
             }
 
-            return Json("File uploaded successfully");
+
         }
         private bool CheckDirectory(string directory)
         {
@@ -180,11 +193,13 @@ namespace HotelSite.Controllers
                 return false;
             }
         }
+
+
         public JsonResult GetRoomList(String HotelID)
         {
             HotelInformation hInfo = new HotelInformation();
 
-            return Json(hInfo.GetRoomList(""), JsonRequestBehavior.AllowGet);
+            return Json(hInfo.GetRoomList(HotelID), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

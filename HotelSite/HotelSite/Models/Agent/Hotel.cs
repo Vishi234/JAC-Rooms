@@ -70,6 +70,8 @@ namespace HotelSite.Models.Agent
         public string MaxInfant { get; set; }
         public string MaxGuest { get; set; }
         public int IsActive { get; set; }
+        public int HotelID { get; set; }
+        public string flag { get; set; }
 
     }
     public class RoomPlan
@@ -79,6 +81,8 @@ namespace HotelSite.Models.Agent
         public string PaymentMode { get; set; }
         public string PlanName { get; set; }
         public string RoomID { get; set; }
+        public string PlanID { get; set; }
+        public string flag { get; set; }
 
     }
 
@@ -91,7 +95,12 @@ namespace HotelSite.Models.Agent
         public string Room { get; set; }
 
     }
-
+    public class RoomImages
+    {
+        public int RoomID { get; set; }
+        public string PicName { get; set; }
+        public int flag { get; set; }
+    }
     public class HotelInformation
     {
         string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
@@ -204,7 +213,7 @@ namespace HotelSite.Models.Agent
         {
             try
             {
-                SqlParameter[] sqlParameter = new SqlParameter[14];
+                SqlParameter[] sqlParameter = new SqlParameter[15];
                 sqlParameter[0] = new SqlParameter("@RoomsDesc", hotelRoom.RoomsDesc);
                 sqlParameter[1] = new SqlParameter("@RoomType", hotelRoom.RoomType);
                 sqlParameter[2] = new SqlParameter("@DisplayName", hotelRoom.DisplayName);
@@ -218,7 +227,8 @@ namespace HotelSite.Models.Agent
                 sqlParameter[10] = new SqlParameter("@MaxChild", hotelRoom.MaxChild);
                 sqlParameter[11] = new SqlParameter("@MaxInfant", hotelRoom.MaxInfant);
                 sqlParameter[12] = new SqlParameter("@MaxGuest", hotelRoom.MaxGuest);
-                sqlParameter[13] = new SqlParameter("@HotelID", "1060");
+                sqlParameter[13] = new SqlParameter("@HotelID", hotelRoom.HotelID);
+                sqlParameter[14] = new SqlParameter("@Flag", hotelRoom.flag);
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_HotelRoom", sqlParameter);
                 return 1;
             }
@@ -234,7 +244,7 @@ namespace HotelSite.Models.Agent
             List<HotelRoom> lst = new List<HotelRoom>();
             try
             {
-                string query = "select * from tbl_HotelRooms";
+                string query = "select * from tbl_HotelRooms where HotelID" + HotelID;
                 SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
                 if (sqlDataReader.HasRows)
                 {
@@ -270,16 +280,35 @@ namespace HotelSite.Models.Agent
             return lst;
         }
 
+        public int SaveRoomImages(RoomImages RoomImages)
+        {
+            try
+            {
+                SqlParameter[] sqlParameter = new SqlParameter[3];
+                sqlParameter[0] = new SqlParameter("@RoomID", RoomImages.RoomID);
+                sqlParameter[1] = new SqlParameter("@PicName", RoomImages.PicName);
+                sqlParameter[2] = new SqlParameter("@flag", RoomImages.flag);
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_SaveHotelWisePic", sqlParameter);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
         public int SaveRoomPlan(RoomPlan RoomPlan)
         {
             try
             {
-                SqlParameter[] sqlParameter = new SqlParameter[5];
+                SqlParameter[] sqlParameter = new SqlParameter[7];
                 sqlParameter[0] = new SqlParameter("@PlanName", RoomPlan.PlanName);
                 sqlParameter[1] = new SqlParameter("@MealPlan", RoomPlan.MealPlan);
                 sqlParameter[2] = new SqlParameter("@PaymentMode", RoomPlan.PaymentMode);
                 sqlParameter[3] = new SqlParameter("@IsRefundale", RoomPlan.IsRefundable);
                 sqlParameter[4] = new SqlParameter("@RoomID", RoomPlan.RoomID);
+                sqlParameter[5] = new SqlParameter("@PlanID", RoomPlan.PlanID);//Pla
+                sqlParameter[6] = new SqlParameter("@Flag", RoomPlan.flag);//Pla
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_RoomWise_Plan", sqlParameter);
                 return 1;
             }
@@ -343,6 +372,7 @@ namespace HotelSite.Models.Agent
                             MealPlan = sqlDataReader["MealPlan"].ToString(),
                             PaymentMode = sqlDataReader["PaymentMode"].ToString(),
                             IsRefundable = sqlDataReader["IsRefundale"].ToString(),
+                            PlanID = sqlDataReader["PlanID"].ToString(),
                         });
                     }
                 }
@@ -354,6 +384,20 @@ namespace HotelSite.Models.Agent
                 ExceptionHandling.WriteException(ex);
             }
             return lst;
+        }
+
+        public int DeleteRoom(string RoomID)
+        {
+            try
+            {
+                string query = "delete tbl_HotelRooms where ID=" + Convert.ToInt32(RoomID);
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.Text, query);
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
         }
 
     }
