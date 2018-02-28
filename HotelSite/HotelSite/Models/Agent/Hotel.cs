@@ -244,7 +244,7 @@ namespace HotelSite.Models.Agent
             List<HotelRoom> lst = new List<HotelRoom>();
             try
             {
-                string query = "select * from tbl_HotelRooms where HotelID" + HotelID;
+                string query = "select * from tbl_HotelRooms where HotelID=" + HotelID;
                 SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
                 if (sqlDataReader.HasRows)
                 {
@@ -391,7 +391,7 @@ namespace HotelSite.Models.Agent
             try
             {
                 string query = "delete tbl_HotelRooms where ID=" + Convert.ToInt32(RoomID);
-                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.Text, query);
+                SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query);
                 return 1;
             }
             catch (Exception e)

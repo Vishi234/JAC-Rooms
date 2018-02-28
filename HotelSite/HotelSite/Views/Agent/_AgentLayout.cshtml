@@ -130,7 +130,7 @@
                 clearable: false, //Make the picker's input clearable (has clickable "x")
             };
             $('.timepicker').wickedpicker(options);
-            bindRoomView();
+            BindRoomView();
         });
 
         function InsertHotelBasicInfo() {
@@ -287,8 +287,7 @@
                         $(".tab-content").attr('HotelData',$("#AgentHotelList").val()+"~"+$("#AgentHotelList").text())
                         if(localStorage.getItem("flag")=="E" || localStorage.getItem("flag")==null)
                         {
-                            $("#submitHote").attr("flag","E");
-                            $("#submitHotelContact").attr("flag","E");
+
                             GetHotelData();
                         }
                         else
@@ -346,6 +345,7 @@
                             icon: 'success',
                             position: 'bottom-right'
                         });
+                        GetRoomList();
                     }
                     else
                     {
@@ -411,7 +411,25 @@
                         $("a[href$='#collapseTwo'] i").removeClass("glyphicon-plus");
                         $("a[href$='#collapseTwo'] i").addClass("glyphicon-minus");
                         GetRoomList();
-                        $(e).attr("flag","A");
+                        $(e).attr("flag", "A");
+                        $('.RoomsDesc').val("");
+                        $('#roomType').val(0);
+                        $("#roomType").trigger("chosen:updated");
+                        $('#displayName').val("");
+                        $('#totalRoom').val("");
+                        $('#bedType').val(0);
+                        $("#bedType").trigger("chosen:updated");
+                        $('#extraBed').val(0);
+                        $("#extraBed").trigger("chosen:updated");
+                        $('#roomView').val(0);
+                        $("#roomView").trigger("chosen:updated");
+                        $('.minAdult').val("");
+                        $('.maxAdult').val("");
+                        $('.minChild').val("");
+                        $('.maxChild').val("");
+                        $('.maxInfant').val("");
+                        $('.maxGuest').val("");
+                        $("#saveRoomData").val("Save & Continue");
                     }
                     else
                     {
@@ -431,7 +449,7 @@
             return false;
         }
 
-        function bindRoomView()
+        function BindRoomView()
         {
             var monthNames=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
             var count=5;
@@ -452,9 +470,9 @@
             table+="</tbody></table>"
             $("#roomVLayout").html(table);
         }
-       
+
         $('#txtUploadFile').on('change', function (e) {
-            
+
             var files = e.target.files;
             var myID = $("#ImageRoomList option:selected").val();
             if (files.length > 0) {
@@ -615,7 +633,7 @@
                             {
                                 $("#check"+i).prop('checked', false);
                             }
-                            
+
                             var option = document.createElement("option");
                             option.text = item.DisplayName;
                             option.value = item.ID;
@@ -773,6 +791,11 @@
                                     $("#City").trigger("chosen:updated");
                                     $("#ZipCode").val(HotelJson.BasicInfo[0].ZipCode);
                                     $("#submitHote").val("Update & Continue");
+                                    $("#submitHote").attr("flag", "E");
+                                }
+                                else
+                                {
+                                    $("#submitHote").attr("flag", "A");
                                 }
                                 if(HotelJson.ContactInfo.length>0)
                                 {
@@ -782,6 +805,10 @@
                                     $("#HotelMobile").val(HotelJson.ContactInfo[0].HotelMobile);
                                     $("#HotelPhoneList").val(HotelJson.ContactInfo[0].HotelPhoneList);
                                     $("#submitHotelContact").val("Update & Continue");
+                                }
+                                else
+                                {
+                                    $("#submitHotelContact").attr("flag", "A");
                                 }
                                 $('.tab-header li').each(function()
                                 {
@@ -814,7 +841,13 @@
         $('#AgentHotelList').change(function()
         {
             GetHotelData();
-        })
+            GetRoomList()
+        });
+
+        function GetHotelImages()
+        {
+
+        }
     </script>
 </body>
 </html>
