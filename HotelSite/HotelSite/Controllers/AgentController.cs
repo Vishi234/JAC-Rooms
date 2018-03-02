@@ -117,7 +117,7 @@ namespace HotelSite.Controllers
         public int DeleteRoom(string RoomID)
         {
             HotelInformation hotelInformation = new HotelInformation();
-            return hotelInformation.DeleteRoom(RoomID);
+            return  hotelInformation.DeleteRoom(RoomID);
         }
         public JsonResult GetHotelList(string agentId)
         {
