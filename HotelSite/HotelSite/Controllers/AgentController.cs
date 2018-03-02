@@ -117,7 +117,7 @@ namespace HotelSite.Controllers
         public int DeleteRoom(string RoomID)
         {
             HotelInformation hotelInformation = new HotelInformation();
-            return  hotelInformation.DeleteRoom(RoomID);
+            return hotelInformation.DeleteRoom(RoomID);
         }
         public JsonResult GetHotelList(string agentId)
         {
@@ -136,13 +136,13 @@ namespace HotelSite.Controllers
             return View();
         }
         [HttpPost]
-        public int UploadHomeReport(string id, string hotelName)
+        public int UploadHomeReport(string id, string hotelName, int hotelId)
         {
             try
             {
                 string drive = ConfigurationManager.AppSettings["PicDrive"];
                 string folderName = ConfigurationManager.AppSettings["FolderName"];
-                folderName = folderName + "/" + hotelName;
+                folderName = folderName + "/" + hotelName + "~" + hotelId;
                 string driveToSave = Path.Combine(drive, folderName);
                 HotelInformation hInfo = new HotelInformation();
                 RoomImages roomImg = new RoomImages();
@@ -156,8 +156,10 @@ namespace HotelSite.Controllers
                             HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
                             hpf.SaveAs(Path.Combine(driveToSave, hpf.FileName));
                             roomImg.PicName = hpf.FileName;
-                            roomImg.RoomID = Convert.ToInt32(id);
-                            roomImg.flag = 1;
+                            roomImg.RoomID =id;
+                            roomImg.HotelID = hotelId;
+                            roomImg.IsEnable = 0;
+                            roomImg.Flag = "A";
                             result = hInfo.SaveRoomImages(roomImg);
                         }
                     }
@@ -172,6 +174,18 @@ namespace HotelSite.Controllers
             }
 
 
+        }
+        [HttpPost]
+        public int EnableImage(string ImageID,string Status)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            return Hinfo.EnableImage(ImageID, Status);
+        }
+        [HttpPost]
+        public int RemoveImage(string ImageID)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            return Hinfo.RemoveImage(ImageID);
         }
         private bool CheckDirectory(string directory)
         {
@@ -193,8 +207,13 @@ namespace HotelSite.Controllers
                 return false;
             }
         }
-
-
+        [HttpPost]
+        public JsonResult GetHotelImages(string HotelID)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            Common objCommon = new Common();
+            return Json(objCommon.DatasetToJson(Hinfo.GetHotelImages(HotelID)), JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetRoomList(String HotelID)
         {
             HotelInformation hInfo = new HotelInformation();

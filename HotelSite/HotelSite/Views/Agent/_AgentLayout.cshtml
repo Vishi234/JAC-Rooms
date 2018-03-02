@@ -474,7 +474,7 @@
         $('#txtUploadFile').on('change', function (e) {
 
             var files = e.target.files;
-            var myID = $("#ImageRoomList option:selected").val();
+            var myID = ($("#ImageRoomList option:selected").text()=="Hotel") ? "" : $("#ImageRoomList option:selected").val();
             if (files.length > 0) {
                 if (window.FormData !== undefined) {
                     var data = new FormData();
@@ -484,7 +484,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: '/Agent/UploadHomeReport?id=' + myID +'&hotelName='+$("#AgentHotelList option:selected").text(),
+                        url: '/Agent/UploadHomeReport?id=' + myID +'&hotelName='+$("#AgentHotelList option:selected").text()+'&hotelId='+$("#AgentHotelList option:selected").val(),
                         contentType: false,
                         processData: false,
                         data: data,
@@ -496,7 +496,8 @@
                                     text: 'Images has been uploaded successfully',
                                     icon: 'success',
                                     position: 'bottom-right'
-                                })
+                                });
+                                GetHotelImages();
                             }
                             else
                             {
@@ -521,6 +522,83 @@
             }
         });
 
+        function GetHotelImages()
+        {
+            $("script[src='/scripts/filter-tags.js']").remove();
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("GetHotelImages", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ HotelID: $("#AgentHotelList").val() }),
+                success:function(result)
+                {
+                    $("#buttons").empty();
+                    $("#images").empty();
+                    var MyData=JSON.parse(result);
+                    var html="";
+                    var tag="";
+                    var src="";
+                    src="@System.Configuration.ConfigurationManager.AppSettings["PicDrive"]/@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/"+$("#AgentHotelList option:selected").text()+"/";
+                    var status="";
+                    $.each(MyData["Table"],function(i,item)
+                    {
+                        ((item.RoomDisplayName!=null) ? tag=item.RoomDisplayName : tag="Hotel");
+                        src+=item.PicName;
+                        ((item.IsEnable!=false) ? status="Disable" : status="Enable");
+                        html+='<div class="col-md-2 base" data-tags="'+tag+'"><div class="thumbnail">';
+                        html+='<img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">';
+                        html+='<div class="caption"><span class="pull-left" onclick="EnableImage(this,'+item.PicID+')">'+status+'</span>';
+                        html+='<span class="pull-right" onclick="RemoveImage('+item.PicID+')">Remove</span></div></div></div>';
+                    });
+                    $("#images").append(html);
+                    
+                    $.getScript('/scripts/filter-tags.js');
+                }
+            })
+        }
+        function EnableImage(e,ImageID)
+        {
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("EnableImage", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ ImageID: ImageID,Status:(($(e)[0].innerText=="Enable") ? 1 : 0) }),
+                success:function(result)
+                {
+                    if(result==1)
+                    {
+                        (($(e)[0].innerText=="Enable") ? $(e)[0].innerText="Disable" : $(e)[0].innerText="Enable")
+
+                    }
+                    else
+                    {
+                        alert("There is an issue.");
+                    }
+
+                }
+            });
+        }
+        function RemoveImage(ImageID)
+        {
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("RemoveImage", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ ImageID: ImageID}),
+                success:function(result)
+                {
+                    if(result==1)
+                    {
+                        GetHotelImages();
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+            });
+        }
         function viewRatePlan(e)
         {
             $(e).toggleClass("fa-eye-slash fa-eye");
@@ -617,6 +695,9 @@
                     if(data.length > 0)
                     {
                         var select = document.getElementById("ImageRoomList");
+                        $('#ImageRoomList').empty();
+                        $('#ImageRoomList').trigger("chosen:updated");
+                        $('#ImageRoomList').append("<option value="+$("#AgentHotelList").val()+">Hotel</option>");
                         $.each(data,function(i,item)
                         {
                             var roomData=item.ID+"~"+item.RoomsDesc+"~"+item.RoomType+"~"+item.DisplayName+"~"+item.TotalRoom+"~"+item.BedType+"~"+item.ExtraBedType+"~"+item.RoomView+"~"+item.MaxAdult+"~"+item.MaxChild+"~"+item.MaxGuest+"~"+item.MaxInfant+"~"+item.MinAdult+"~"+item.MinChild+"~E";
@@ -814,6 +895,7 @@
                                 {
                                     $(this).removeClass('disabled')
                                 });
+                                GetHotelImages();
                             }
                         },
                         error:function(textStatus)
@@ -842,12 +924,9 @@
         {
             GetHotelData();
             GetRoomList()
+            GetHotelImages();
         });
 
-        function GetHotelImages()
-        {
-
-        }
     </script>
 </body>
 </html>

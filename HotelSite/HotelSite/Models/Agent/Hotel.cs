@@ -97,9 +97,11 @@ namespace HotelSite.Models.Agent
     }
     public class RoomImages
     {
-        public int RoomID { get; set; }
+        public string RoomID { get; set; }
         public string PicName { get; set; }
-        public int flag { get; set; }
+        public int IsEnable { get; set; }
+        public int HotelID { get; set; }
+        public string Flag { get; set; }
     }
     public class HotelInformation
     {
@@ -284,11 +286,56 @@ namespace HotelSite.Models.Agent
         {
             try
             {
-                SqlParameter[] sqlParameter = new SqlParameter[3];
+                SqlParameter[] sqlParameter = new SqlParameter[5];
                 sqlParameter[0] = new SqlParameter("@RoomID", RoomImages.RoomID);
                 sqlParameter[1] = new SqlParameter("@PicName", RoomImages.PicName);
-                sqlParameter[2] = new SqlParameter("@flag", RoomImages.flag);
+                sqlParameter[2] = new SqlParameter("@IsEnable", RoomImages.IsEnable);
+                sqlParameter[3] = new SqlParameter("@HotelID", RoomImages.HotelID);
+                sqlParameter[4] = new SqlParameter("@flag", RoomImages.Flag);
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_SaveHotelWisePic", sqlParameter);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
+        public DataSet GetHotelImages(string HotelID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+
+                string query = "select r.RoomID, r.PicName, r.PicID, r.IsEnable, r.HotelID, u.RoomDisplayName from tbl_HotelPics r LEFT JOIN tbl_HotelRooms u on r.RoomID = u.ID where r.HotelID=" + HotelID;
+                ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return ds;
+        }
+        public int EnableImage(string ImageID,string Status)
+        {
+            try
+            {
+                string query = "update tbl_hotelpics set IsEnable=" + Convert.ToInt32(Status) + "where PicID=" + ImageID;
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.Text, query);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
+        public int RemoveImage(string ImageID)
+        {
+            try
+            {
+                string query = "delete from tbl_hotelpics where PicID=" + ImageID;
+                SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query);
                 return 1;
             }
             catch (Exception ex)
