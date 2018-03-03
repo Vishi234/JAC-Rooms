@@ -72,6 +72,7 @@ namespace HotelSite.Models.Agent
         public string MaxInfant { get; set; }
         public string MaxGuest { get; set; }
         public int IsActive { get; set; }
+        public string PricePerNight { get; set; }
         public int HotelID { get; set; }
         public string flag { get; set; }
 
@@ -219,7 +220,7 @@ namespace HotelSite.Models.Agent
         {
             try
             {
-                SqlParameter[] sqlParameter = new SqlParameter[15];
+                SqlParameter[] sqlParameter = new SqlParameter[17];
                 sqlParameter[0] = new SqlParameter("@RoomsDesc", hotelRoom.RoomsDesc);
                 sqlParameter[1] = new SqlParameter("@RoomType", hotelRoom.RoomType);
                 sqlParameter[2] = new SqlParameter("@DisplayName", hotelRoom.DisplayName);
@@ -233,8 +234,10 @@ namespace HotelSite.Models.Agent
                 sqlParameter[10] = new SqlParameter("@MaxChild", hotelRoom.MaxChild);
                 sqlParameter[11] = new SqlParameter("@MaxInfant", hotelRoom.MaxInfant);
                 sqlParameter[12] = new SqlParameter("@MaxGuest", hotelRoom.MaxGuest);
-                sqlParameter[13] = new SqlParameter("@HotelID", hotelRoom.HotelID);
-                sqlParameter[14] = new SqlParameter("@Flag", hotelRoom.flag);
+                sqlParameter[13] = new SqlParameter("@PricePerNight", hotelRoom.PricePerNight);
+                sqlParameter[14] = new SqlParameter("@HotelID", hotelRoom.HotelID);
+                sqlParameter[15] = new SqlParameter("@Flag", hotelRoom.flag);
+                sqlParameter[16] = new SqlParameter("@RoomID", hotelRoom.ID);
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_Add_HotelRoom", sqlParameter);
                 return 1;
             }
@@ -272,6 +275,7 @@ namespace HotelSite.Models.Agent
                             MaxInfant = sqlDataReader["MaxInfant"].ToString(),
                             MinAdult = sqlDataReader["MinAdult"].ToString(),
                             MinChild = sqlDataReader["MinChild"].ToString(),
+                            PricePerNight = sqlDataReader["PricePerNight"].ToString(),
                             IsActive = Convert.ToInt32(sqlDataReader["IsActive"]),
                         });
                     }
@@ -320,7 +324,7 @@ namespace HotelSite.Models.Agent
             }
             return ds;
         }
-        public int EnableImage(string ImageID,string Status)
+        public int EnableImage(string ImageID, string Status)
         {
             try
             {
@@ -449,6 +453,36 @@ namespace HotelSite.Models.Agent
             {
                 return 0;
             }
+        }
+
+        public List<HotelRoom> GetRoomForInventory(string HotelID)
+        {
+            List<HotelRoom> lst = new List<HotelRoom>();
+            try
+            {
+                string query = "select * from tbl_HotelRooms where HotelID=" + HotelID;
+                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        lst.Add(new HotelRoom()
+                        {
+                            DisplayName = sqlDataReader["RoomDisplayName"].ToString(),
+                            TotalRoom = sqlDataReader["TotalRoom"].ToString(),
+                            PricePerNight = sqlDataReader["PricePerNight"].ToString(),
+                            IsActive = Convert.ToInt32(sqlDataReader["IsActive"]),
+                        });
+                    }
+                }
+                sqlDataReader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return lst;
         }
 
     }

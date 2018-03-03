@@ -241,5 +241,11 @@ namespace HotelSite.Controllers
 
             return Json(hotelDetails.GetRoomWisePlan(RoomID), JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult RoomForInventory(string HotelID)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            return Json(Hinfo.GetRoomForInventory(HotelID), JsonRequestBehavior.AllowGet);
+        }
     }
 }

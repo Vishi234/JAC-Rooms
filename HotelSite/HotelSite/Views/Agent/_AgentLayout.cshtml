@@ -109,6 +109,7 @@
     <script type="text/javascript">
         var HotelFlag="";
         var myPicker;
+        var pageName="@ViewContext.RouteData.Values["action"]";
         $(document).ready(function () {
             BindCountryDropDown('Country');
             $("select").chosen();
@@ -133,7 +134,7 @@
                 timeSeparator: ':'
             };
             myPicker = $('.timepicker').wickedpicker(options);
-            BindRoomView();
+            
         });
 
         function InsertHotelBasicInfo() {
@@ -293,7 +294,12 @@
                         if(localStorage.getItem("flag")=="E" || localStorage.getItem("flag")==null)
                         {
 
-                            GetHotelData();
+                            if(pageName=="property")
+                            {
+                                GetHotelData();
+                                GetRoomList();
+                            }
+
                         }
                         else
                         {
@@ -301,8 +307,9 @@
                             $("#submitHotelContact").attr("flag","A");
                         }
                         localStorage.clear();
-
-                        GetRoomList();
+                        BindRoomView();
+                        //GetRoomForInventory();
+                        
                     }
                 },
                 error:function()
@@ -384,8 +391,10 @@
                  MaxChild: $('.maxChild').val(),
                  MaxInfant: $('.maxInfant').val(),
                  MaxGuest: $('.maxGuest').val(),
+                 PricePerNight:$('#pricePerNight').val(),
                  HotelID : $("#AgentHotelList").val(),
                  Flag : $(e).attr("flag"),
+                 ID : $(e).attr("RoomID"),
              }
             $.ajax({
                 type: 'POST',
@@ -434,8 +443,9 @@
                         $('.maxChild').val("");
                         $('.maxInfant').val("");
                         $('.maxGuest').val("");
+                        $('#pricePerNight').val("");
                         document.getElementById("saveRoomData").innerText="Save & Continue";
-                        
+
                     }
                     else
                     {
@@ -468,13 +478,9 @@
                 table+="<td><span>"+parseInt(firstDay.getDate()+i)+"</span><span>" +monthNames[date.getMonth()]+","+date.getFullYear() +"</span></td>";
             }
             table+="</tr></thead>";
-            table+="<tbody>";
-            for(var i=0;i<count;i++)
-            {
-                table+='<tr><td>Details</td><td><ul class="bedgesList"><li><span class="label label-success">4</span></li><li><span class="label label-danger">4</span></li><li><span class="label label-warning">4</span></li><li><span class="label label-info">4</span></li></ul><label><input type="checkbox" value="">Block</label></td><td>Details</td><td>Details</td><td>Details</td><td>Details</td></tr>';
-            }
-            table+="</tbody></table>"
-            $("#roomVLayout").html(table);
+
+            GetRoomForInventory(table);
+
         }
 
         $('#txtUploadFile').on('change', function (e) {
@@ -541,7 +547,7 @@
 
                     $("#buttons").empty();
                     $("#images").empty();
-                    
+
                     var MyData=JSON.parse(result);
                     if(MyData["Table"].length>0)
                     {
@@ -569,7 +575,7 @@
                         $("#images").append('<div style="width:100%;margin-left:15px;margin-right:15px;" class="alert alert-danger"><strong>Error!</strong> No Images has been uploaded till now.</div>')
 
                     }
-                   
+
                 }
             })
         }
@@ -718,7 +724,7 @@
                         $('#ImageRoomList').append("<option value="+$("#AgentHotelList").val()+">Hotel</option>");
                         $.each(data,function(i,item)
                         {
-                            var roomData=item.ID+"~"+item.RoomsDesc+"~"+item.RoomType+"~"+item.DisplayName+"~"+item.TotalRoom+"~"+item.BedType+"~"+item.ExtraBedType+"~"+item.RoomView+"~"+item.MaxAdult+"~"+item.MaxChild+"~"+item.MaxGuest+"~"+item.MaxInfant+"~"+item.MinAdult+"~"+item.MinChild+"~E";
+                            var roomData=item.ID+"~"+item.RoomsDesc+"~"+item.RoomType+"~"+item.DisplayName+"~"+item.TotalRoom+"~"+item.BedType+"~"+item.ExtraBedType+"~"+item.RoomView+"~"+item.MaxAdult+"~"+item.MaxChild+"~"+item.MaxGuest+"~"+item.MaxInfant+"~"+item.MinAdult+"~"+item.MinChild+"~E~"+item.PricePerNight;
                             row+='<tr><td>'+item.DisplayName+'</td><td>'+item.RoomsDesc+'</td>';
                             row+='<td><i class="fa fa-pencil roomEdit" id="edit'+i+'" roomData="'+roomData+'" onclick="EditRoom(this);" title="Edit"></i>';
                             row+='<i class="fa fa-times" onclick="DeleteHotelRoom('+item.ID+');" title="Delete"></i></td>';
@@ -774,6 +780,7 @@
             $('.maxChild').val(roomData[9])
             $('.maxInfant').val(roomData[11])
             $('.maxGuest').val(roomData[10]);
+            $('#pricePerNight').val(roomData[15]);
             document.getElementById("saveRoomData").innerText="Update";
             $("#saveRoomData").val("Update");
             $("#collapseOne").addClass("in");
@@ -787,6 +794,7 @@
             $("a[href$='#collapseTwo'] i").addClass("glyphicon-plus");
             $("a[href$='#collapseTwo'] i").removeClass("glyphicon-minus");
             $("#saveRoomData").attr("flag","E");
+            $("#saveRoomData").attr("RoomID",roomData[0]);
         }
         function GetRoomID(e)
         {
@@ -847,7 +855,7 @@
         });
         function GetHotelData()
         {
-            resetAllValues();
+            //resetAllValues();
             try
             {
                 var hotelId=$('#AgentHotelList').val();
@@ -970,7 +978,30 @@
             GetHotelData();
             GetRoomList()
             GetHotelImages();
+            GetRoomForInventory();
         });
+
+        function GetRoomForInventory(table)
+        {
+            $.ajax({
+                type:'POST',
+                url:"@Url.Action("RoomForInventory","Agent")",
+                contentType:"application/json",
+                data:JSON.stringify({HotelID : $("#AgentHotelList").val()}),
+                success:function(result){
+
+                    table+="<tbody>";
+                    for(var i=0;i < result.length;i++)
+                    {
+                        table+='<tr><td>'+result[i].DisplayName+'</td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td></tr>';
+                    }
+                    table+="</tbody></table>"
+                    $("#roomVLayout").html(table);
+                    $("#rateVLayout").html(table);
+
+                },
+            })
+        }
 
     </script>
 </body>
