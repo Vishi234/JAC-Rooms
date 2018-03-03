@@ -43,6 +43,8 @@ namespace HotelSite.Models.Agent
         public string HotelPhoneList { get; set; }
         public string HotelEmailList { get; set; }
         public string HotelWebsiteList { get; set; }
+        public string HotelID { get; set; }
+        public string flag { get; set; }
 
     }
 
@@ -154,7 +156,7 @@ namespace HotelSite.Models.Agent
         {
             try
             {
-                SqlParameter[] sqlParameter = new SqlParameter[8];
+                SqlParameter[] sqlParameter = new SqlParameter[10];
                 sqlParameter[0] = new SqlParameter("@HotelPhone", hotelContactInfo.HotelPhone);
                 sqlParameter[1] = new SqlParameter("@HotelMobile", hotelContactInfo.HotelMobile);
                 sqlParameter[2] = new SqlParameter("@HotelEmail", hotelContactInfo.HotelEmail);
@@ -162,10 +164,12 @@ namespace HotelSite.Models.Agent
                 sqlParameter[4] = new SqlParameter("@HotelEmailList", hotelContactInfo.HotelEmailList);
                 sqlParameter[5] = new SqlParameter("@HotelWebsiteList", hotelContactInfo.HotelWebsiteList);
                 sqlParameter[6] = new SqlParameter("@AgentID", HttpContext.Current.Session["AgentId"].ToString());
-                sqlParameter[7] = new SqlParameter("@Result", SqlDbType.Int);
-                sqlParameter[7].Direction = ParameterDirection.Output;
+                sqlParameter[7] = new SqlParameter("@HotelID", Convert.ToInt32(hotelContactInfo.HotelID));
+                sqlParameter[8] = new SqlParameter("@flag", hotelContactInfo.flag);
+                sqlParameter[9] = new SqlParameter("@Result", SqlDbType.Int);
+                sqlParameter[9].Direction = ParameterDirection.Output;
                 SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_InsertHotelContactDetail", sqlParameter);
-                string message = sqlParameter[7].Value.ToString().Trim();
+                string message = sqlParameter[9].Value.ToString().Trim();
                 if (message == "2")
                 {
                     return 2;

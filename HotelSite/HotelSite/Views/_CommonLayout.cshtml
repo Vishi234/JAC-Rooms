@@ -190,12 +190,13 @@
                 if ($(this).val().length > 0 && $(this).val().length >= 3) {
                     $('.mapIcon').removeClass('fa-map-marker');
                     $('.mapIcon').addClass('fa-circle-o-notch fa-spin');
-                    setTimeout(function () {
-                        $('.mapIcon').addClass('fa-map-marker');
-                        $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
-                        $('.search_box').css('display', 'block');
-                        $('.search_field').css('display', 'block');
-                    }, 2000);
+                    $('.mapIcon').addClass('fa-map-marker');
+                    $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
+                    $('.search_box').css('display', 'block');
+                    $('.search_field').css('display', 'block');
+                    //setTimeout(function () {
+                       
+                    //}, 2000);
                     filterLocation($(this).val());
                 }
                 else {

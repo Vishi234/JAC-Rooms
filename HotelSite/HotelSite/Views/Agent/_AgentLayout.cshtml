@@ -108,6 +108,7 @@
     <script src="~/scripts/chosen.jquery.js"></script>
     <script type="text/javascript">
         var HotelFlag="";
+        var myPicker;
         $(document).ready(function () {
             BindCountryDropDown('Country');
             $("select").chosen();
@@ -115,21 +116,23 @@
 
 
             var options = {
-                now: "12:35", //hh:mm 24 hour format only, defaults to current time
-                twentyFour: true, //Display 24 hour format, defaults to false
+                now: "08:30", //hh:mm 24 hour format only, defaults to current time
+                twentyFour: false, //Display 24 hour format, defaults to false
                 upArrow: 'fa fa-angle-up', //The up arrow class selector to use, for custom CSS
                 downArrow: 'fa fa-angle-down', //The down arrow class selector to use, for custom CSS
-                close: 'fa fa-times', //The close class selector to use, for custom CSS
+                close: 'wickedpicker__close', //The close class selector to use, for custom CSS
                 hoverState: 'hover-state', //The hover state class to use, for custom CSS
                 title: 'Timepicker', //The Wickedpicker's title,
                 showSeconds: false, //Whether or not to show seconds,
-                secondsInterval: 1, //Change interval for seconds, defaults to 1  ,
+                secondsInterval: 1, //Change interval for seconds, defaults to 1
                 minutesInterval: 1, //Change interval for minutes, defaults to 1
                 beforeShow: null, //A function to be called before the Wickedpicker is shown
                 show: null, //A function to be called when the Wickedpicker is shown
+                closeOnClickOutside: true,
                 clearable: false, //Make the picker's input clearable (has clickable "x")
+                timeSeparator: ':'
             };
-            $('.timepicker').wickedpicker(options);
+            myPicker = $('.timepicker').wickedpicker(options);
             BindRoomView();
         });
 
@@ -151,7 +154,7 @@
                 City: $('#City').val(),
                 ZipCode: $('#ZipCode').val(),
                 AgentID: @Session["AgentId"],
-                HotelID:$("#AgentHotelList").val(),
+                HotelID:(($("#submitHote").attr("flag")=="A")?"":$("#AgentHotelList").val()),
                 flag:$("#submitHote").attr("flag"),
             }
             if(Hotel.HotelName=="")
@@ -233,6 +236,8 @@
                     HotelEmailList: $('#HotelEmailList').val(),
                     HotelWebsiteList: $('#HotelWebsiteList').val(),
                     HotelID: $('#AgentHotelList').val(),
+                    flag:$("#submitHotelContact").attr("flag")
+
                 }
             $.ajax({
                 type: 'POST',
@@ -429,7 +434,8 @@
                         $('.maxChild').val("");
                         $('.maxInfant').val("");
                         $('.maxGuest').val("");
-                        $("#saveRoomData").val("Save & Continue");
+                        document.getElementById("saveRoomData").innerText="Save & Continue";
+                        
                     }
                     else
                     {
@@ -532,27 +538,38 @@
                 data: JSON.stringify({ HotelID: $("#AgentHotelList").val() }),
                 success:function(result)
                 {
+
                     $("#buttons").empty();
                     $("#images").empty();
-                    var MyData=JSON.parse(result);
-                    var html="";
-                    var tag="";
-                    var src="";
-                    src="@System.Configuration.ConfigurationManager.AppSettings["PicDrive"]/@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/"+$("#AgentHotelList option:selected").text()+"/";
-                    var status="";
-                    $.each(MyData["Table"],function(i,item)
-                    {
-                        ((item.RoomDisplayName!=null) ? tag=item.RoomDisplayName : tag="Hotel");
-                        src+=item.PicName;
-                        ((item.IsEnable!=false) ? status="Disable" : status="Enable");
-                        html+='<div class="col-md-2 base" data-tags="'+tag+'"><div class="thumbnail">';
-                        html+='<img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">';
-                        html+='<div class="caption"><span class="pull-left" onclick="EnableImage(this,'+item.PicID+')">'+status+'</span>';
-                        html+='<span class="pull-right" onclick="RemoveImage('+item.PicID+')">Remove</span></div></div></div>';
-                    });
-                    $("#images").append(html);
                     
-                    $.getScript('/scripts/filter-tags.js');
+                    var MyData=JSON.parse(result);
+                    if(MyData["Table"].length>0)
+                    {
+                        var html="";
+                        var tag="";
+                        var src="";
+                        src="@System.Configuration.ConfigurationManager.AppSettings["PicDrive"]/@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/"+$("#AgentHotelList option:selected").text()+"/";
+                        var status="";
+                        $.each(MyData["Table"],function(i,item)
+                        {
+                            ((item.RoomDisplayName!=null) ? tag=item.RoomDisplayName : tag="Hotel");
+                            src+=item.PicName;
+                            ((item.IsEnable!=false) ? status="Disable" : status="Enable");
+                            html+='<div class="col-md-2 base" data-tags="'+tag+'"><div class="thumbnail">';
+                            html+='<img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">';
+                            html+='<div class="caption"><span class="pull-left" onclick="EnableImage(this,'+item.PicID+')">'+status+'</span>';
+                            html+='<span class="pull-right" onclick="RemoveImage('+item.PicID+')">Remove</span></div></div></div>';
+                        });
+                        $("#images").append(html);
+
+                        $.getScript('/scripts/filter-tags.js');
+                    }
+                    else
+                    {
+                        $("#images").append('<div style="width:100%;margin-left:15px;margin-right:15px;" class="alert alert-danger"><strong>Error!</strong> No Images has been uploaded till now.</div>')
+
+                    }
+                   
                 }
             })
         }
@@ -679,6 +696,7 @@
                 $("#refundableCheck").prop('checked', true);
             }
             $("#rateBtn").attr("flag","E");
+
             $("#rateBtn").val("Update");
             $("#rateBtn").attr("PlanId",PlanData[0]);
         }
@@ -755,7 +773,8 @@
             $('.minChild').val(roomData[13])
             $('.maxChild').val(roomData[9])
             $('.maxInfant').val(roomData[11])
-            $('.maxGuest').val(roomData[10])
+            $('.maxGuest').val(roomData[10]);
+            document.getElementById("saveRoomData").innerText="Update";
             $("#saveRoomData").val("Update");
             $("#collapseOne").addClass("in");
             $("#collapseOne").attr("aria-expanded",true);
@@ -828,6 +847,7 @@
         });
         function GetHotelData()
         {
+            resetAllValues();
             try
             {
                 var hotelId=$('#AgentHotelList').val();
@@ -850,16 +870,16 @@
                                     $("#HotelFloor").val(HotelJson.BasicInfo[0].HotelFloor);
 
                                     $("#CheckOutTime").val(HotelJson.BasicInfo[0].CheckOutTime);
-                                    $("#CheckOutTime").wickedpicker({now:HotelJson.BasicInfo[0].CheckOutTime});
+                                    myPicker.wickedpicker('setTime', 1, ConvertTimeFormat(HotelJson.BasicInfo[0].CheckOutTime));
                                     $("#HotelType").val(HotelJson.BasicInfo[0].HotelType);
                                     $("#HotelType").trigger("chosen:updated");
-                                    $("#BuiltYear").val(HotelJson.BasicInfo[0].HotelBuildYear);
+                                    $("#BuiltYear").val(((HotelJson.BasicInfo[0].HotelBuildYear!="")?HotelJson.BasicInfo[0].HotelBuildYear.split("-")[0]:""));
                                     $("#DisplayName").val(HotelJson.BasicInfo[0].HotelDisplayName);
                                     $("#HotelStar").val(HotelJson.BasicInfo[0].HotelStar);
                                     $("#HotelStar").trigger("chosen:updated");
                                     $("#HotelRooms").val(HotelJson.BasicInfo[0].HotelRooms);
                                     $("#HotelCheckInTime").val(HotelJson.BasicInfo[0].CheckInTime);
-                                    $("#HotelCheckInTime").wickedpicker({now:HotelJson.BasicInfo[0].CheckInTime});
+                                    myPicker.wickedpicker('setTime', 0, ConvertTimeFormat(HotelJson.BasicInfo[0].CheckInTime));
                                     $("#StreetAdress").val(HotelJson.BasicInfo[0].StreetAddress);
                                     $("#Locality").val(HotelJson.BasicInfo[0].Locality);
                                     $("#Country").val(HotelJson.BasicInfo[0].Country);
@@ -880,6 +900,7 @@
                                 }
                                 if(HotelJson.ContactInfo.length>0)
                                 {
+
                                     $("#HotelPhone").val(HotelJson.ContactInfo[0].HotelPhone);
                                     $("#HotelEmail").val(HotelJson.ContactInfo[0].HotelEmail);
                                     $("#HotelEmailList").val(HotelJson.ContactInfo[0].HotelEmailList);
@@ -895,6 +916,8 @@
                                 {
                                     $(this).removeClass('disabled')
                                 });
+                                document.getElementById("saveRoomData").innerText="Save & Continue";
+                                $("#saveRoomData").val("Save & Continue");
                                 GetHotelImages();
                             }
                         },
@@ -910,8 +933,30 @@
             {
                 console.log(e.message);
             }
+        }
+        function resetAllValues() {
+            //basicInfo
+            $('#basicInfoForm')[0].reset();
+            $('#contactInfoForm')[0].reset();
+            //$('#contact').find('input:text').val('');
+            //$('#basicInfo').find('input:text').val('');
 
-        }///
+        }
+        function ConvertTimeFormat(value) {
+            // var time = $("#starttime").val();
+            var time = value;
+            var hrs = Number(time.match(/^(\d+)/)[1]);
+            var mnts = Number(time.replace(/\s/g, '').match(/:(\d+)/)[1]);
+            var format = time.match(/\s(.*)$/)[1];
+            if (format == "PM" && hrs < 12) hrs = hrs + 12;
+            if (format == "AM" && hrs == 12) hrs = hrs - 12;
+            var hours = hrs.toString();
+            var minutes = mnts.toString();
+            if (hrs < 10) hours = "0" + hours;
+            if (mnts < 10) minutes = "0" + minutes;
+            var timeString=hours + " : " + minutes;
+            return timeString
+        }
         function transfer(e)
         {
             $('.tab-content').find("input[type=text], textarea").val("");
