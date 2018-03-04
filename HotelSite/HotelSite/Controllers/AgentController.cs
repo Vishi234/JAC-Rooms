@@ -260,5 +260,11 @@ namespace HotelSite.Controllers
             HotelInformation Hinfo = new HotelInformation();
             return Json(Hinfo.GetRoomInventory(HotelID), JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public int UpdateInventory(string inventDate, int RoomID, int Available)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            return Hinfo.UpdateInventory(inventDate, RoomID, Available);
+        }
     }
 }

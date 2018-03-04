@@ -1016,12 +1016,15 @@ a {
     color: red;
     font-weight: 500;
 }
+
 #uploadHotelImages .chosen-results {
-    max-height:100px;
+    max-height: 100px;
 }
-#uploadHotelImages .modal-inner{
-    height:300px;
+
+#uploadHotelImages .modal-inner {
+    height: 300px;
 }
+
 .modal-bdy .btn-primary {
     display: block;
     width: auto;
@@ -2294,3 +2297,34 @@ input[type=checkbox] {
         color: #7a8471;
         font-weight: 500;
     }
+
+#updateRoomInventory .modal-inner {
+    width: 38%;
+}
+
+#updateRoomInventory .modal-bdy {
+    width: 95%;
+    height: 150px;
+}
+
+    #updateRoomInventory .modal-bdy span {
+        color: red;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .newInvent
+    {
+            display: inline-block;
+    margin-top: 35px;
+    width:100%;
+    }
+      .newInvent span
+      {
+          color: #fff!important;
+    font-size: 16px;
+      }
+      .newInvent .form-control
+      {
+          display: inline-block;
+    width: auto;
+      }

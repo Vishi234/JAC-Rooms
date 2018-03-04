@@ -1094,8 +1094,9 @@
                                 var availableFlag="";
                                 bedgesList="<ul>";
                                 if(item.Available!=0)
+                                    var roomVal=item.Available+"~"+item.StartDate+"~"+item.RoomType+"~"+item.RoomID;
                                 {
-                                    bedgesList+='<li><a href="javascript:void(0)"><span class="label label-success">'+item.Available+'</span></a></li>'
+                                    bedgesList+='<li><a href="javascript:void(0)" data-toggle="modal" roomVal='+roomVal+' data-target="#updateRoomInventory" onclick="setDetails(this);"><span class="label label-success">'+item.Available+'</span></a></li>'
                                 }
                                 bedgesList+="</ul>";
                                 $("#roomVLayout thead").find('td').each (function(c,value) {
@@ -1154,6 +1155,17 @@
 
                     }
                 });
+        }
+        function setDetails(evt)
+        {
+            var roomVal = $(evt).attr("roomVal");
+            var inventDate=roomVal.split('~')[1];
+            var availableInvent=roomVal.split('~')[0];
+            var roomName=roomVal.split('~')[2];
+            document.getElementById("inventDate").innerHTML=inventDate;
+            document.getElementById("roomName").innerHTML=roomName;
+            $("#newInventory").val(availableInvent);
+            $("#saveInvent").attr("RoomID",roomVal.split('~')[3])
         }
         function SaveHotelInventory()
         {
@@ -1214,6 +1226,25 @@
                         }
                     }
                 })
+            return false;
+        }
+        function updateInventory(e)
+        {
+            var inventDate=document.getElementById("inventDate").innerHTML;
+            var roomName=document.getElementById("roomName").innerHTML;
+            var inventory=$("#newInventory").val();
+            var roomID=$(e).attr("RoomID");
+            $.ajax
+                ({
+                    type:'POST',
+                    url:"@Url.Action("UpdateInventory","Agent")",
+                    contentType:"application/json",
+                    data:JSON.stringify({inventDate:inventDate,RoomID:roomID,Available:inventory}),
+                    success:function(result)
+                    {
+                        console.log(result);
+                    }
+                });
             return false;
         }
     </script>

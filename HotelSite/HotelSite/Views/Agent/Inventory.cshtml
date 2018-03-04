@@ -120,12 +120,12 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="email">Available Inventory*</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"  id="availableInventory" numeric placeholder="Only Digit..">
+                                            <input type="text" class="form-control" id="availableInventory" numeric placeholder="Only Digit..">
                                         </div>
                                     </div>
                                     <button id="saveInventory" class="btn btn-danger" onclick="return SaveHotelInventory();">Update Inventory</button>
                                 </div>
-                                
+
                             </form>
                         </div>
 
@@ -199,7 +199,22 @@
         </div>
     </div>
 </div>
-
+<div class="modal-bg modal fade" id="updateRoomInventory">
+    <div class="modal-inner">
+        <div class="modal-hdr">
+            <h2>Upload Inventory <i data-dismiss="modal" class="fa fa-times-rectangle pull-right"></i></h2>
+        </div>
+        <div class="modal-bdy">
+            <span class="pull-left">Room Name : <b id="roomName"></b></span>
+            <span class="pull-right">Date : <b id="inventDate"></b></span>
+            <div class="newInvent">
+                <span>Available :</span> <input type="text" class="form-control" id="newInventory" />
+                <a href="javascript:void(0)" id="saveInvent" onclick="return updateInventory(this)" class="btn btn-danger">Update</a>
+            </div>
+           
+        </div>
+    </div>
+</div>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="~/scripts/CommonValidator/CommonValidator.js"></script>

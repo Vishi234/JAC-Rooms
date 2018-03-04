@@ -556,6 +556,21 @@ namespace HotelSite.Models.Agent
             }
             return lst;
         }
+
+        public int UpdateInventory(string inventDate,int RoomID,int Available)
+        {
+            try
+            {
+                string query = "update tbl_RoomInventory set Available=" + Available + " where StartDate=" + inventDate + "and RoomID=" + RoomID;
+                SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
     }
 
 
