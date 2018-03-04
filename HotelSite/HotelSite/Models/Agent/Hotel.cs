@@ -106,6 +106,21 @@ namespace HotelSite.Models.Agent
         public int HotelID { get; set; }
         public string Flag { get; set; }
     }
+    public class RoomInventory
+    {
+        public int RoomID { get; set; }
+        public string RoomType { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string DaysOfWeek { get; set; }
+        public int Available { get; set; }
+        public int Sold { get; set; }
+        public int Block { get; set; }
+        public int SoldOut { get; set; }
+        public int HotelID { get; set; }
+        public int AgentID { get; set; }
+
+    }
     public class HotelInformation
     {
         string sqlconn = ConfigurationManager.ConnectionStrings["DBCONN"].ConnectionString;
@@ -485,6 +500,62 @@ namespace HotelSite.Models.Agent
             return lst;
         }
 
+        public int SaveRoomInventory(RoomInventory roomInventory)
+        {
+            try
+            {
+                SqlParameter[] sqlParameter = new SqlParameter[8];
+                sqlParameter[0] = new SqlParameter("@RoomID", roomInventory.RoomID);
+                sqlParameter[1] = new SqlParameter("@RoomType", roomInventory.RoomType);
+                sqlParameter[2] = new SqlParameter("@HotelID", roomInventory.HotelID);
+                sqlParameter[3] = new SqlParameter("@AgentID", HttpContext.Current.Session["AgentId"].ToString());
+                sqlParameter[4] = new SqlParameter("@StartDate", roomInventory.StartDate);
+                sqlParameter[5] = new SqlParameter("@EndDate", roomInventory.EndDate);
+                sqlParameter[6] = new SqlParameter("@DaysOfWeek", roomInventory.DaysOfWeek);
+                sqlParameter[7] = new SqlParameter("@Available", roomInventory.Available);
+                SqlHelper.ExecuteNonQuery(sqlconn, CommandType.StoredProcedure, "sp_ManageRoomInventory", sqlParameter);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+                return 0;
+            }
+        }
+
+        public List<RoomInventory> GetRoomInventory(string HotelID)
+        {
+            List<RoomInventory> lst = new List<RoomInventory>();
+            try
+            {
+                string query = "select * from tbl_RoomInventory where HotelID=" + HotelID;
+                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, CommandType.Text, query);
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        lst.Add(new RoomInventory()
+                        {
+                            RoomID = Convert.ToInt32(sqlDataReader["RoomID"]),
+                            RoomType = sqlDataReader["RoomType"].ToString(),
+                            StartDate = sqlDataReader["StartDate"].ToString(),
+                            EndDate = sqlDataReader["EndDate"].ToString(),
+                            Available = Convert.ToInt32(sqlDataReader["Available"]),
+                            Sold = Convert.ToInt32(sqlDataReader["Sold"]),
+                            Block = Convert.ToInt32(sqlDataReader["Block"]),
+                            SoldOut = Convert.ToInt32(sqlDataReader["SoldOut"]),
+                        });
+                    }
+                }
+                sqlDataReader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return lst;
+        }
     }
 
 

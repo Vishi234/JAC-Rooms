@@ -156,7 +156,7 @@ namespace HotelSite.Controllers
                             HttpPostedFileBase hpf = Request.Files[file] as HttpPostedFileBase;
                             hpf.SaveAs(Path.Combine(driveToSave, hpf.FileName));
                             roomImg.PicName = hpf.FileName;
-                            roomImg.RoomID =id;
+                            roomImg.RoomID = id;
                             roomImg.HotelID = hotelId;
                             roomImg.IsEnable = 0;
                             roomImg.Flag = "A";
@@ -176,7 +176,7 @@ namespace HotelSite.Controllers
 
         }
         [HttpPost]
-        public int EnableImage(string ImageID,string Status)
+        public int EnableImage(string ImageID, string Status)
         {
             HotelInformation Hinfo = new HotelInformation();
             return Hinfo.EnableImage(ImageID, Status);
@@ -246,6 +246,19 @@ namespace HotelSite.Controllers
         {
             HotelInformation Hinfo = new HotelInformation();
             return Json(Hinfo.GetRoomForInventory(HotelID), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public int SaveInventory(RoomInventory RoomInventory)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            int result = Hinfo.SaveRoomInventory(RoomInventory);
+            return result;
+        }
+        [HttpPost]
+        public JsonResult GetRoomInventory(string HotelID)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            return Json(Hinfo.GetRoomInventory(HotelID), JsonRequestBehavior.AllowGet);
         }
     }
 }

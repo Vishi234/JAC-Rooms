@@ -23,7 +23,7 @@
                         <div class="panel-first">
                             <table class="tHead">
                                 <tr>
-                                    <td><a href="javascript:void(0)"><i class="fa fa-angle-double-left"></i>Last 5 Transaction</a></td>
+                                    <td><a href="javascript:void(0)" onclick="previouTran();"><i class="fa fa-angle-double-left"></i>Last 5 Transaction</a></td>
                                     <td>
                                         <ul class="bedgesList">
                                             <li><span class="label label-primary">Sold</span></li>
@@ -32,7 +32,7 @@
                                             <li><span class="label label-danger">Hotel Sold Out</span></li>
                                         </ul>
                                     </td>
-                                    <td><a href="javascript:void(0)">Next 5 Transaction<i class="fa fa-angle-double-right"></i></a></td>
+                                    <td><a href="javascript:void(0)" onclick="nextTran();">Next 5 Transaction<i class="fa fa-angle-double-right"></i></a></td>
                                 </tr>
                             </table>
                             <div class="panelBody" id="roomVLayout">
@@ -63,6 +63,7 @@
                     </div>
                     <div id="manageRoom" class="tab-pane fade">
                         <div class="panel-body panelBody">
+                            <div id="msg" style="padding-right: 25px;"></div>
                             <form class="form-horizontal">
                                 <div class="panelTitle">
                                     <span class="pull-left">Manage Room Inventory</span>
@@ -78,51 +79,51 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="email">Start Date*</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="startDate" readonly placeholder="">
+                                            <input type="text" class="form-control inventoryDate" id="startDate" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="email">End Date*</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="startDate" readonly placeholder="">
+                                            <input type="text" class="form-control inventoryDate" id="endDate" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="email">Days Of Week*</label>
                                         <div class="col-sm-9 daysList">
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" id="checkAll" checked value="">Check All
+                                                <input type="checkbox" style="display:block!important;" id="checkAll" checked value="All">Check All
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" checked value="">Mon
+                                                <input type="checkbox" style="display:block!important;" checked value="Mon">Mon
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" checked value="">Tue
+                                                <input type="checkbox" style="display:block!important;" checked value="Tue">Tue
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" checked value="">Wed
+                                                <input type="checkbox" style="display:block!important;" checked value="Wed">Wed
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" checked value="">Thur
+                                                <input type="checkbox" style="display:block!important;" checked value="Thu">Thu
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" checked value="">Fri
+                                                <input type="checkbox" style="display:block!important;" checked value="Fri">Fri
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" checked value="">Sat
+                                                <input type="checkbox" style="display:block!important;" checked value="Sat">Sat
                                             </label>
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" style="display:block!important;" checked value="">Sun
+                                                <input type="checkbox" style="display:block!important;" checked value="Sun">Sun
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="email">Available Inventory*</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="availableInventory" numeric placeholder="Only Digit..">
+                                            <input type="text" class="form-control"  id="availableInventory" numeric placeholder="Only Digit..">
                                         </div>
                                     </div>
-                                    <button id="saveContact" class="btn btn-danger">Save & Continue</button>
+                                    <button id="saveInventory" class="btn btn-danger" onclick="return SaveHotelInventory();">Update Inventory</button>
                                 </div>
                                 
                             </form>

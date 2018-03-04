@@ -106,16 +106,32 @@
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
     <script src="~/scripts/chosen.jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+    <script src="~/scripts/bootstrap-datetimepicker.js"></script>
     <script type="text/javascript">
         var HotelFlag="";
         var myPicker;
+        var monthNames=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
         var pageName="@ViewContext.RouteData.Values["action"]";
+        var date=new Date();
+        var finalDate = ((date.getDate().toString().length==1)?"0"+date.getDate():date.getDate()) +"-"+monthNames[date.getMonth()]+"-"+ date.getFullYear();
+
+        $(function () {
+
+            $('.inventoryDate').datetimepicker(
+                {
+                    format: 'DD-MMM-YYYY',
+                    minDate:finalDate,
+                });
+        });
         $(document).ready(function () {
+            $('.inventoryDate').keydown(function () {
+                return false;
+            });
+            $('#startDate').val(finalDate);
             BindCountryDropDown('Country');
             $("select").chosen();
             GetAgentHotelList();
-
-
             var options = {
                 now: "08:30", //hh:mm 24 hour format only, defaults to current time
                 twentyFour: false, //Display 24 hour format, defaults to false
@@ -134,7 +150,12 @@
                 timeSeparator: ':'
             };
             myPicker = $('.timepicker').wickedpicker(options);
-            
+
+            $("#checkAll").click(function()
+            {
+                $(".daysList").find('input:checkbox').not(this).prop('checked', this.checked);
+            })
+
         });
 
         function InsertHotelBasicInfo() {
@@ -307,9 +328,9 @@
                             $("#submitHotelContact").attr("flag","A");
                         }
                         localStorage.clear();
-                        BindRoomView();
+                        BindRoomView("");
                         //GetRoomForInventory();
-                        
+
                     }
                 },
                 error:function()
@@ -464,22 +485,39 @@
             });
             return false;
         }
-
-        function BindRoomView()
+        function previouTran()
         {
-            var monthNames=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+            BindRoomView("prev");
+        }
+        function nextTran()
+        {
+            BindRoomView("next");
+        }
+        function BindRoomView(val)
+        {
             var count=5;
-            var date=new Date();
-            var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            if(val=="next")
+            {
+                var newdate = new Date(date);
+                newdate.setDate(newdate.getDate() + count);
+                date=new Date(newdate);
+            }
+            if(val=="prev")
+            {
+                var newdate = new Date(date);
+                newdate.setDate(newdate.getDate() - count);
+                date=new Date(newdate);
+            }
             var table="<table cellspacing='10' class='table table-hover roomInventory'>";
             table+="<thead><tr><td>Rooms</td>";
             for(var i=0;i<count;i++)
             {
-                table+="<td><span>"+parseInt(firstDay.getDate()+i)+"</span><span>" +monthNames[date.getMonth()]+","+date.getFullYear() +"</span></td>";
+                table+="<td id='topTd"+i+"'><span>"+parseInt(date.getDate()+i)+" </span><span>" +monthNames[date.getMonth()]+","+date.getFullYear() +"</span></td>";
             }
             table+="</tr></thead>";
 
             GetRoomForInventory(table);
+            GetRoomTypeForInventory();
 
         }
 
@@ -975,10 +1013,14 @@
         }
         $('#AgentHotelList').change(function()
         {
-            GetHotelData();
-            GetRoomList()
-            GetHotelImages();
-            GetRoomForInventory();
+            if(pageName=="property")
+            {
+                GetHotelData();
+                GetRoomList()
+                GetHotelImages();
+            }
+            BindRoomView("");
+            GetRoomTypeForInventory();
         });
 
         function GetRoomForInventory(table)
@@ -993,16 +1035,187 @@
                     table+="<tbody>";
                     for(var i=0;i < result.length;i++)
                     {
-                        table+='<tr><td>'+result[i].DisplayName+'</td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td><td><ul class="bedgesList"><li><span class="label label-default">0</span></li></ul></td></tr>';
+                        table+='<tr id=row'+i+'><td id=cell'+i+'>'+result[i].DisplayName+'</td><td></td><td></td><td></td><td></td><td></td></tr>';
                     }
                     table+="</tbody></table>"
                     $("#roomVLayout").html(table);
                     $("#rateVLayout").html(table);
 
+                    GetRoomInventory();
+
                 },
             })
         }
+        function GetRoomTypeForInventory()
+        {
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("GetRoomList", "Agent")",
+                contentType: "application/json",
+                data: JSON.stringify({ HotelID: $("#AgentHotelList").val() }),
+                success: function (data) {
+                    $('#roomType').empty();
+                    $('#roomType').trigger("chosen:updated");
+                    $('#roomType').append("<option value=0>Select Room Type</option>");
+                    if(data.length > 0)
+                    {
+                        var select = document.getElementById("roomType");
+                        $.each(data,function(i,item)
+                        {
+                            var option = document.createElement("option");
+                            option.text = item.DisplayName;
+                            option.value = item.ID+"~"+item.TotalRoom;
+                            if (option != null) select.appendChild(option);
+                            $('#roomType').trigger("chosen:updated");
+                        });
 
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+        }
+        function GetRoomInventory()
+        {
+            $.ajax
+                ({
+                    type:'POST',
+                    url:"@Url.Action("GetRoomInventory","Agent")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ HotelID: $("#AgentHotelList").val()}),
+                    success:function(result)
+                    {
+                        if(result.length>0)
+                        {
+                            var bedgesList="";
+                            $.each(result,function(i,item)
+                            {   //<ul class="bedgesList"><li><span class="label label-default">0</span></li></ul>
+                                var availableFlag="";
+                                bedgesList="<ul>";
+                                if(item.Available!=0)
+                                {
+                                    bedgesList+='<li><a href="javascript:void(0)"><span class="label label-success">'+item.Available+'</span></a></li>'
+                                }
+                                bedgesList+="</ul>";
+                                $("#roomVLayout thead").find('td').each (function(c,value) {
+                                    if(c!=0)
+                                    {
+                                        var date=$(this).text().trim().replace(",","-").replace(" ","-");
+                                        date=((date.split('-')[0].length==1)? "0"+date : date);
+                                        var tdId=$(this).index();
+                                        if(new Date(item.StartDate) <= new Date(date) && new Date(item.EndDate) >= new Date(date))
+                                        {
+                                            $("#roomVLayout tbody tr").each(function(j,val)
+                                            {
+                                                if($(this)[0].children[0].innerText==item.RoomType)
+                                                {
+                                                    if(item.Available!= 0)
+                                                    {
+                                                        $(this).find("td:eq("+tdId+")")[0].innerHTML="";
+                                                        $(this).find("td:eq("+tdId+")").append(bedgesList);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if($(this).find("td:eq("+tdId+")")[0].innerHTML=="")
+                                                    {
+                                                        $(this).find("td:eq("+tdId+")").append('<ul><li><span class="label label-default">0</span></li></ul>');
+                                                    }
+
+                                                }
+                                            });
+                                        }
+                                        else
+                                        {
+                                            $("#roomVLayout tbody tr").each(function(count,newVal)
+                                            {
+                                                if($(this).find("td:eq("+tdId+")")[0].innerHTML=="")
+                                                {
+                                                    $(this).find("td:eq("+tdId+")").append('<ul><li><span class="label label-default">0</span></li></ul>')
+                                                }
+
+                                            });
+                                        }
+                                    }
+
+                                });
+
+                            })
+                        }
+                        else
+                        {
+                            $("#roomVLayout tbody tr").each(function()
+                            {
+                                $(this).find("td:not(:first)").append('<ul><li><span class="label label-default">0</span></li></ul>')
+                            });
+
+                        }
+
+                    }
+                });
+        }
+        function SaveHotelInventory()
+        {
+            var checkedValue = $(".daysList input:checkbox:checked").map(function () {
+                return $(this).attr("value");
+            }).get();
+            if($("#roomType").val()=="0")
+            {
+                alert("Please select Room Type.");
+                return false;
+            }
+            if($("#endDate").val()=="")
+            {
+                alert("End Date can't be blank.");
+                return false;
+            }
+            if($("#availableInventory").val()=="")
+            {
+                alert("Available Inventory can't be blank.");
+                return false;
+            }
+            var totalRoom=parseInt($("#roomType").val().split('~')[1]);
+            var available=parseInt($("#availableInventory").val());
+            if(available>totalRoom)
+            {
+                alert("Available inventory should not be greater than total inventory.");
+                return false;
+            }
+            var RoomInventory=
+                {
+                    RoomID:$("#roomType").val().split('~')[0],
+                    HotelID:$("#AgentHotelList").val(),
+                    RoomType:$("#roomType option:selected").text(),
+                    StartDate:$("#startDate").val(),
+                    EndDate:$("#endDate").val(),
+                    DaysOfWeek:checkedValue.join(", "),
+                    Available:$("#availableInventory").val(),
+                }
+            $.ajax
+                ({
+                    type:'POST',
+                    url:"@Url.Action("SaveInventory","Agent")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ RoomInventory: RoomInventory}),
+                    success:function(result)
+                    {
+
+                        if(result==1)
+                        {
+                            $("#msg").append('<div style="width:100%;margin-left:15px;margin-right:15px;" class="alert alert-success"><strong>Success! </strong>Inventory have been added for '+$("#roomType option:selected").text()+' room type from '+$("#startDate").val()+' to '+$("#endDate").val()+'</div>')
+                            setTimeout(function()
+                            {$("#msg").empty()},5000)
+                            BindRoomView("");
+                        }
+                        else
+                        {
+                            alert("Error");
+                        }
+                    }
+                })
+            return false;
+        }
     </script>
 </body>
 </html>
