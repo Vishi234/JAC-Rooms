@@ -1092,11 +1092,10 @@
                             $.each(result,function(i,item)
                             {   //<ul class="bedgesList"><li><span class="label label-default">0</span></li></ul>
                                 var availableFlag="";
-                                bedgesList="<ul>";
-                                if(item.Available!=0)
-                                    var roomVal=item.Available+"~"+item.StartDate+"~"+item.RoomType+"~"+item.RoomID;
+                                bedgesList="<ul class='bedgesList'>";
+                                if(parseInt(item.Available)>parseInt(0))
                                 {
-                                    bedgesList+='<li><a href="javascript:void(0)" data-toggle="modal" roomVal='+roomVal+' data-target="#updateRoomInventory" onclick="setDetails(this);"><span class="label label-success">'+item.Available+'</span></a></li>'
+                                    bedgesList+='<li><a href="javascript:void(0)" data-toggle="modal" data-target="#updateRoomInventory" onclick="setDetails(this);"><span class="label label-success">'+item.Available+'</span></a></li>'
                                 }
                                 bedgesList+="</ul>";
                                 $("#roomVLayout thead").find('td').each (function(c,value) {
@@ -1113,9 +1112,10 @@
                                                 {
                                                     if(item.Available!= 0)
                                                     {
+                                                        var roomVal=item.Available+"~"+date+"~"+$(this)[0].children[0].innerText+"~"+item.RoomID;
                                                         $(this).find("td:eq("+tdId+")")[0].innerHTML="";
                                                         $(this).find("td:eq("+tdId+")").append(bedgesList);
-                                                    }
+                                                        $(this).find("td:eq("+tdId+") .bedgesList li a").attr("roomVal",roomVal);                                                    }
                                                 }
                                                 else
                                                 {
@@ -1242,7 +1242,25 @@
                     data:JSON.stringify({inventDate:inventDate,RoomID:roomID,Available:inventory}),
                     success:function(result)
                     {
-                        console.log(result);
+                        if(result==1)
+                        {
+                            $.toast({
+                                heading: 'Success',
+                                text: 'Inventory has been updated for the date '+inventDate+".",
+                                icon: 'success',
+                                position: 'bottom-right'
+                            });
+                            BindRoomView("");
+                        }
+                        else
+                        {
+                            $.toast({
+                                heading: 'Error',
+                                text: 'Something went wrong while updating room inventory for the date '+inventDate+".",
+                                icon: 'error',
+                                position: 'bottom-right'
+                            });
+                        }
                     }
                 });
             return false;

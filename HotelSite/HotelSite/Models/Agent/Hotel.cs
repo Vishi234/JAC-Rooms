@@ -561,8 +561,12 @@ namespace HotelSite.Models.Agent
         {
             try
             {
-                string query = "update tbl_RoomInventory set Available=" + Available + " where StartDate=" + inventDate + "and RoomID=" + RoomID;
-                SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query);
+                SqlParameter[] sqlParameter = new SqlParameter[3];
+                string query = "update tbl_RoomInventory set Available=@avail where StartDate=@sDate and RoomID=@RID";
+                sqlParameter[0] = new SqlParameter("@sDate", inventDate);
+                sqlParameter[1] = new SqlParameter("@RID", RoomID);
+                sqlParameter[2] = new SqlParameter("@avail", Available);
+                SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query,sqlParameter);
                 return 1;
             }
             catch (Exception ex)
