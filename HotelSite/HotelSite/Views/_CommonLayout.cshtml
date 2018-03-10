@@ -96,6 +96,7 @@
     @Scripts.Render("~/bundle/jquery")
     <script type="text/javascript" src="~/Content/DateRangerPicker/js/pignose.calendar.full.js"></script>
     <script type="text/javascript">
+        var pageName = "@ViewContext.RouteData.Values["action"]";
         $('.checkinDate').click(function () {
             $('.calendar').css('display', 'block');
             $('.cal_base').css('margin-left', '-14px');
@@ -160,7 +161,6 @@
 
         SetRatingStar();
         $(document).ready(function () {
-            GetSeachData();
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');
                 $('.loading-bar').css('max-height', '0');
@@ -195,7 +195,7 @@
                     $('.search_box').css('display', 'block');
                     $('.search_field').css('display', 'block');
                     //setTimeout(function () {
-                       
+
                     //}, 2000);
                     filterLocation($(this).val());
                 }
@@ -459,7 +459,7 @@
             var hoteldata;
             $.ajax({
                 type: 'POST',
-                url: "@Url.Action("GetHotelData","Listing")",
+                url: "@Url.Action("GetHotelData","Home")",
                 contentType: "application/json",
                 async: false,
                 data: JSON.stringify({ Searchkey: key }),
@@ -478,34 +478,12 @@
             });
             return str;
         }
-        function SearchHotels() {
+        //function SearchHotels() {
 
-            window.location.href = "/Listing/Index";
+        //    window.location.href = "/Listing/Index";
 
-        }
-        function GetSeachData() {
-            $.ajax({
-                type: 'POST',
-                url: "@Url.Action("GetSearchData", "Listing")",
-                contentType: "application/json",
-                async: false,
-                data: "",
-                success: function (data) {
-                    var jsonData = JSON.parse(data);
-                    var tr = "";
-                    $.each(jsonData["BasicInfo"], function (i, item) {
-                        tr += "<tr>";
-                        tr += "<td>" + item.HotelName + "</td><td>" + item.HotelType + "</td>";
-                        tr += "</tr>"
-                    });
-                    $("#hotelData tbody").html(tr);
-                },
-                error: function (error) {
+        //}
 
-                }
-
-            })
-        }
     </script>
 
 </body>

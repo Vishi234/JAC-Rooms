@@ -1,12 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listing";
     Layout = "~/Views/_CommonLayout.cshtml";
 }
+
 <div class="loading-bar">
     <div class="progress"></div>
     <div class="content">
-        Finding the best stays for you in @Request.QueryString["Location"]
+        Finding the best stays for you in @ViewBag.SearchData.Keyword
     </div>
 </div>
 <div class="container listingBase">
@@ -16,10 +17,10 @@
                 <div class="triangle-with-shadow"></div>
                 <div class="search-area">
                     <div class="search-base hotelBase">
-                        <form class="form-inline" action="@Url.Action("search","Listing")">
+                        <form class="form-inline" action="@Url.Action("Search","Home")">
                             <div class="form-fields">
                                 <div class="form-group">
-                                    <input type="text" id="seachBox" name="Location" value="@Request.QueryString["Location"]" class="searchBox form-control" required>
+                                    <input type="text" id="seachBox" name="Keyword" value="@ViewBag.SearchData.Keyword" class="searchBox form-control" required>
                                     <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
                                     <i class="fa fa-map-marker icon mapIcon"></i>
                                     <div class="search_field">
@@ -31,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="CheckIn" class="checkinDate datePicker form-control" required>
+                                    <input type="text" id="checkin" value="@ViewBag.SearchData.CheckIn" name="CheckIn" class="checkinDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkin">Check-in</label>
                                     <i class="fa fa-calendar icon"></i>
                                     <div class="cal_base">
@@ -40,12 +41,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkout" name="CheckOut" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
+                                    <input type="text" id="checkout" name="CheckOut" value="@ViewBag.SearchData.CheckOut" class="checkoutDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkout">Check-out</label>
                                     <i class="fa fa-calendar icon"></i>
                                 </div>
                                 <div class="form-group rooMHover">
-                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@Request.QueryString["Person"] Pepole @Request.QueryString["Room"] Room" required>
+                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@ViewBag.SearchData.Person Pepole @ViewBag.SearchData.Room Room" required>
                                     <label class="form-control-placeholder" for="room"></label>
                                     <img src="~/Content/images/sort-down.svg" class="img-icon" />
                                 </div>
@@ -132,9 +133,9 @@
                         <ul>
                             <li>
                                 @*<div class="hotelDiscount">
-                                    <span class="percentOff">70%</span>
-                                    <span>OFF</span>
-                                </div>*@
+                                        <span class="percentOff">70%</span>
+                                        <span>OFF</span>
+                                    </div>*@
                                 <div class="hotelImage">
 
                                 </div>
@@ -156,14 +157,14 @@
                                                 <input type="hidden" name="whatever1" class="rating-value" value="2.56">
                                             </div>
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                                 <div class="hotelContentBottom">
                                     <a href="javascript:void(0)">Choose Room</a>
                                 </div>
                             </li>
-                           
+
                         </ul>
                     </div>
                     @*<table class="hotelData table table-bordered" id="hotelData">
@@ -182,4 +183,42 @@
         </div>
     </div>
 </div>
+<script src="~/scripts/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetSeachData();
+    })
+    function GetSeachData() {
 
+        var SearchKeyword =
+            {
+                Keyword: "@ViewBag.SearchData.Keyword",
+                CheckIn: "@ViewBag.SearchData.CheckIn",
+                CheckOut: "@ViewBag.SearchData.CheckOut",
+            };
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("GetSearchData", "Home")",
+            contentType: "application/json",
+            async: false,
+            data: JSON.stringify({ Search: SearchKeyword }),
+            success: function (data) {
+                console.log(data);
+                var jsonData = JSON.parse(data);
+                console.log(jsonData);
+                //var tr = "";
+                //$.each(jsonData["BasicInfo"], function (i, item) {
+                //    tr += "<tr>";
+                //    tr += "<td>" + item.HotelName + "</td><td>" + item.HotelType + "</td>";
+                //    tr += "</tr>"
+                //});
+                //$("#hotelData tbody").html(tr);
+            },
+            error: function (error) {
+
+            }
+
+        });
+
+    }
+</script>

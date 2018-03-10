@@ -91,7 +91,7 @@ namespace HotelSite.Models.Agent
 
     public class SearchHotel
     {
-        public string Location { get; set; }
+        public string Keyword { get; set; }
         public string CheckIn { get; set; }
         public string CheckOut { get; set; }
         public string Person { get; set; }
@@ -407,20 +407,21 @@ namespace HotelSite.Models.Agent
             return ds;
         }
 
-        public DataSet GetSearchData(string HotelID)
+        public DataSet GetSearchData(SearchHotel Search)
         {
             DataSet ds = new DataSet();
             try
             {
-                string query = "select * from tbl_Agent_Hotel;select * from tbl_Agent_Hotel_Contact;select * from tbl_HotelRooms";
-                ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
-                ds.Tables[0].TableName = "BasicInfo";
-                ds.Tables[1].TableName = "ContactInfo";
-                ds.Tables[2].TableName = "RoomInfo";
+                SqlParameter[] sqlParameter = new SqlParameter[3];
+                sqlParameter[0] = new SqlParameter("@hotelname", Search.Keyword);
+                sqlParameter[1] = new SqlParameter("@checkin", Search.CheckIn);
+                sqlParameter[2] = new SqlParameter("@checkout", Search.CheckOut);
+                ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.StoredProcedure, "sp_Get_Hotel_Listing", sqlParameter);
+                
             }
-            catch
+            catch(Exception ex)
             {
-
+                ExceptionHandling.WriteException(ex);
             }
             return ds;
         }
