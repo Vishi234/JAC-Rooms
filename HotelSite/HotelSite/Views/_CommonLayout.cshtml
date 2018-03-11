@@ -429,7 +429,8 @@
             finalResult['city'] = result2.slice(0, 5);
             finalResult['Hotel'] = result3.slice(0, 3);
             var div = document.getElementById("search_box");
-            var html = "<ul>";
+            var html = "";
+            html = "<ul>";
             var title = "";
             if (finalResult != null || finalResult != "") {
                 $.each(finalResult, function (i, item) {
@@ -444,9 +445,6 @@
                                 else {
                                     html += '<li><a href="javascript:void(0)" onclick="getSearchValue(this);">' + ((val.HotelName.indexOf(toTitleCase(key)) > -1) ? val.HotelName.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : val.HotelName.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
                                 }
-
-
-                                //html += '<li><a href="javascript:void(0)" onclick="getSearchValue(this);">' + ((val.name.indexOf(toTitleCase(key)) > -1) ? val.name.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : val.name.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
                             }
                         });
                     }
@@ -454,11 +452,12 @@
                 });
             }
             else {
-                html += '<li><div class="noResult">No Result Found</div></li>';
+                html += '<li><a href="javascript:void(0)">No match found ('+key+').</a></li>';
             }
 
             html += "</ul>";
-
+            
+            $("#search_box").append(html);
             document.getElementById("search_box").innerHTML = html;
 
         }
@@ -494,8 +493,7 @@
                     url: "@Url.Action("GetHotelName","Home")",
                     contentType: "application/json",
                     data: JSON.stringify({ Searchkey: keyVal }),
-                    success:function(data)
-                    {
+                    success: function (data) {
                         $("#" + ID).empty();
                         var html = "";
                         html = "<ul>";
@@ -519,11 +517,6 @@
                         }
                     }
                 })
-          
-
-           
-
-            //sdiv.appendChild(html);
         }
     </script>
 
