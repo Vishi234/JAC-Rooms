@@ -578,6 +578,38 @@ namespace HotelSite.Models.Agent
                 return 0;
             }
         }
+        public long HotelID { get; set; }
+        public string HotelName { get; set; }
+        public string HotelDisplayName { get; set; }
+      
+
+        public List<HotelBasics> GetHotelDetail(string Key)
+        {
+            List<HotelBasics> lst = new List<HotelBasics>();
+            try
+            {
+                List<SqlParameter> lstsqlparam = new List<SqlParameter>();
+                lstsqlparam.Add(new SqlParameter("@HotelName", Key));
+                SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(sqlconn, "sp_User_Search", lstsqlparam.ToArray());
+                if (sqlDataReader.HasRows)
+                {
+                    while (sqlDataReader.Read())
+                    {
+                        lst.Add(new HotelBasics()
+                        {
+                            DisplayName = sqlDataReader["HotelDisplayName"].ToString(),
+                        });
+                    }
+                }
+                sqlDataReader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return lst;
+        }
     }
 
 

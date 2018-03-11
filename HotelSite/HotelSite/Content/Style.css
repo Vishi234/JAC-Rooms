@@ -2332,3 +2332,32 @@ input[type=checkbox] {
         display: inline-block;
         width: auto;
     }
+    .searchBase {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 999999;
+}
+
+    .searchBase .triangle-with-shadow {
+        left: 0;
+        z-index: 99999;
+    }
+
+        .searchBase .triangle-with-shadow:after {
+            background: #fff;
+        }
+
+    .searchBase .search_box {
+        margin-top: 0px;
+        border: none;
+        width: 92%;
+        margin-left: 0px;
+        max-height: 300px;
+        box-shadow: 0px 0px 19px rgba(0,0,0,0.4);
+    }
+    .searchBase .triangle-with-shadow:after
+    {
+       left: 110px;
+       
+    }

@@ -58,5 +58,12 @@ namespace HotelSite.Controllers
             Common objCommon = new Common();
             return Json(objCommon.DatasetToJson(Hinfo.GetSearchData(Search)), JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GetHotelName(string SearchKey)
+        {
+            HotelInformation Hinfo = new HotelInformation();
+            Common objCommon = new Common();
+            return Json(Hinfo.GetHotelDetail(SearchKey), JsonRequestBehavior.AllowGet);
+        }
     }
 }

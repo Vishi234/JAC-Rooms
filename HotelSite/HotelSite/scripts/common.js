@@ -140,3 +140,35 @@ function toTitleCase(str) {
     });
     return str;
 }
+function LocationFilterKeyPress(keyVal, ID) {
+    var citiess = getJsonData('../../Location Data/states.json');
+    let SID = (keyVal == "" || keyVal == null) ? "10" : keyVal;
+
+    let cityBindData = $.grep(citiess.states, function (n, i) {
+        return ((SID != "") ? ((n.name.indexOf(SID) > -1) ? n.name : "") : n.name);
+    });
+    //var div = document.getElementById(ID);
+    $("#" + ID).empty();
+    var html = "";
+    html = "<ul>";
+    if (cityBindData.length > 0) {
+        $.each(cityBindData, function (i, item) {
+            html += '<li><a href="javascript:void(0)">' + ((item.name.indexOf(toTitleCase(keyVal)) > -1) ? item.name.replace(toTitleCase(keyVal), '<b class="seach-match">' + toTitleCase(keyVal) + '</b>') : item.name.replace(keyVal, '<b class="seach-match">' + keyVal + '</b>')) + '</a></li>';
+        });
+    }
+    else {
+        html += "<li><a href='javascript:void(0)'>No match found</a></li>"
+    }
+    html += "</ul>";
+    $("#" + ID).append(html);
+    if (keyVal != "") {
+        $("#locationFilter").css("display", "block");
+        $("#locationData").css("display", "block");
+    }
+    else {
+        $("#locationFilter").css("display", "none");
+        $("#locationData").css("display", "none");
+    }
+
+    //sdiv.appendChild(html);
+}

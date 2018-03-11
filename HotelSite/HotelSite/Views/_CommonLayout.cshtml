@@ -162,8 +162,7 @@
         SetRatingStar();
         $(document).ready(function () {
 
-            $(".searchBtn").click(function()
-            {
+            $(".searchBtn").click(function () {
                 var data = JSON.stringify($("#homeForm").serialize());
                 console.log(data)
             })
@@ -245,7 +244,9 @@
                 $('.room_val').val(Pepole + " Pepole " + Room + " Room");
                 $('.roomDetails').hide();
             });
+
         });
+
         function addRoom(val) {
             divId = divId + val;
             adultQuant = adultQuant + val;
@@ -484,8 +485,46 @@
             });
             return str;
         }
-       
 
+        function HotelNameFilter(keyVal, ID) {
+
+            $.ajax
+                ({
+                    type: 'POST',
+                    url: "@Url.Action("GetHotelName","Home")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ Searchkey: keyVal }),
+                    success:function(data)
+                    {
+                        $("#" + ID).empty();
+                        var html = "";
+                        html = "<ul>";
+                        if (data.length > 0) {
+                            $.each(data, function (i, item) {
+                                html += '<li><a href="javascript:void(0)">' + ((item.DisplayName.indexOf(toTitleCase(keyVal)) > -1) ? item.DisplayName.replace(toTitleCase(keyVal), '<b class="seach-match">' + toTitleCase(keyVal) + '</b>') : item.DisplayName.replace(keyVal, '<b class="seach-match">' + keyVal + '</b>')) + '</a></li>';
+                            });
+                        }
+                        else {
+                            html += "<li><a href='javascript:void(0)'>No match found</a></li>"
+                        }
+                        html += "</ul>";
+                        $("#" + ID).append(html);
+                        if (keyVal != "") {
+                            $("#hotelFilter").css("display", "block");
+                            $("#hotelData").css("display", "block");
+                        }
+                        else {
+                            $("#hotelFilter").css("display", "none");
+                            $("#hotelData").css("display", "none");
+                        }
+                    }
+                })
+          
+
+           
+
+            //sdiv.appendChild(html);
+        }
     </script>
 
 </body>
