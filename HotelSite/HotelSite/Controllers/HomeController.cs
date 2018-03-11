@@ -20,11 +20,11 @@ namespace HotelSite.Controllers
         public ActionResult Search(SearchHotel data)
         {
             string person = data.Person.Split(' ')[0];
-            string room= data.Person.Split(' ')[2];
+            string room = data.Person.Split(' ')[2];
             data.Person = person;
             data.Room = room;
             ViewBag.SearchData = data;
-            return View("Listing");
+            return View("Listing",data);
         }
         public ActionResult Listing()
         {

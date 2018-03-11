@@ -7,7 +7,7 @@
 <div class="loading-bar">
     <div class="progress"></div>
     <div class="content">
-        Finding the best stays for you in @ViewBag.SearchData.Keyword
+        Finding the best stays for you
     </div>
 </div>
 <div class="container listingBase">
@@ -17,10 +17,10 @@
                 <div class="triangle-with-shadow"></div>
                 <div class="search-area">
                     <div class="search-base hotelBase">
-                        <form class="form-inline" action="@Url.Action("Search","Home")">
+                        <form class="form-inline" action="@Url.Action("Listing","Home",FormMethod.Get) method="get">
                             <div class="form-fields">
                                 <div class="form-group">
-                                    <input type="text" id="seachBox" name="Keyword" value="@ViewBag.SearchData.Keyword" class="searchBox form-control" required>
+                                    <input type="text" id="seachBox" name="Keyword" value="@Request.QueryString["Keyword"]" class="searchBox form-control" required>
                                     <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
                                     <i class="fa fa-map-marker icon mapIcon"></i>
                                     <div class="search_field">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkin" value="@ViewBag.SearchData.CheckIn" name="CheckIn" class="checkinDate datePicker form-control" required>
+                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="CheckIn" class="checkinDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkin">Check-in</label>
                                     <i class="fa fa-calendar icon"></i>
                                     <div class="cal_base">
@@ -41,12 +41,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkout" name="CheckOut" value="@ViewBag.SearchData.CheckOut" class="checkoutDate datePicker form-control" required>
+                                    <input type="text" id="checkout" name="CheckOut" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
                                     <label class="form-control-placeholder" for="checkout">Check-out</label>
                                     <i class="fa fa-calendar icon"></i>
                                 </div>
                                 <div class="form-group rooMHover">
-                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@ViewBag.SearchData.Person Pepole @ViewBag.SearchData.Room Room" required>
+                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@Request.QueryString["Person"] Pepole @Request.QueryString["Room"] Room" required>
                                     <label class="form-control-placeholder" for="room"></label>
                                     <img src="~/Content/images/sort-down.svg" class="img-icon" />
                                 </div>
@@ -129,43 +129,8 @@
             </div>
             <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
                 <div class="row">
-                    <div class="hotelList">
-                        <ul>
-                            <li>
-                                @*<div class="hotelDiscount">
-                                        <span class="percentOff">70%</span>
-                                        <span>OFF</span>
-                                    </div>*@
-                                <div class="hotelImage">
+                    <div class="hotelList" id="hotelList">
 
-                                </div>
-                                <div class="hotelPrice">
-                                    <span class="orginalPrice"><i class="fa fa-rupee"></i>7000</span>
-                                    <span class="discountedPrice">2000</span>
-                                </div>
-                                <div class="hotelContent">
-                                    <ul>
-                                        <li>Fab Hotel Star Delhi Airport</li>
-                                        <li><span><i class="fa fa-map-marker"></i>Sector 1, Manesar, Manesar</span></li>
-                                        <li>
-                                            <div class="star-rating">
-                                                <span class="fa fa-star-o" data-rating="1"></span>
-                                                <span class="fa fa-star-o" data-rating="2"></span>
-                                                <span class="fa fa-star-o" data-rating="3"></span>
-                                                <span class="fa fa-star-o" data-rating="4"></span>
-                                                <span class="fa fa-star-o" data-rating="5"></span>
-                                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="hotelContentBottom">
-                                    <a href="javascript:void(0)">Choose Room</a>
-                                </div>
-                            </li>
-
-                        </ul>
                     </div>
                     @*<table class="hotelData table table-bordered" id="hotelData">
                             <thead>
@@ -192,9 +157,9 @@
 
         var SearchKeyword =
             {
-                Keyword: "@ViewBag.SearchData.Keyword",
-                CheckIn: "@ViewBag.SearchData.CheckIn",
-                CheckOut: "@ViewBag.SearchData.CheckOut",
+                Keyword: "@Request.QueryString["Keyword"]",
+                CheckIn: "@Request.QueryString["CheckIn"]",
+                CheckOut: "@Request.QueryString["CheckOut"]",
             };
         $.ajax({
             type: 'POST',
@@ -203,16 +168,39 @@
             async: false,
             data: JSON.stringify({ Search: SearchKeyword }),
             success: function (data) {
-                console.log(data);
                 var jsonData = JSON.parse(data);
-                console.log(jsonData);
-                //var tr = "";
-                //$.each(jsonData["BasicInfo"], function (i, item) {
-                //    tr += "<tr>";
-                //    tr += "<td>" + item.HotelName + "</td><td>" + item.HotelType + "</td>";
-                //    tr += "</tr>"
-                //});
-                //$("#hotelData tbody").html(tr);
+                var html = "<ul>";
+                var hotelPrice = 0;
+                var hotelPic = "";
+                var src = "";
+                $.each(jsonData["HotelName"], function (i, item) {
+
+                    $.each(jsonData["HotelPrice"], function (j, val) {
+                        if (item.hotelid == val.hotelid) {
+                            hotelPrice = val.pricepernight;
+                        }
+                    });
+                    $.each(jsonData["HotelPics"], function (k, picVal) {
+                        if (item.hotelid == picVal.hotelid) {
+                            if (picVal.picname != "") {
+                                hotelPic = picVal.picname;
+                                return;
+                            }
+                        }
+                    });
+                    src = "";
+                    if (hotelPic != "") {
+                        src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                        src += item.hoteldisplayname + "~" + item.hotelid + "/" + hotelPic;
+                       // src = '"' + src + '"';
+                    }
+                    var style = "background:url('" + src + "')repeat center;";
+                    html += '<li><div class="hotelImage" style="'+style+'"></div><div class="hotelPrice"><span class="orginalPrice"><i class="fa fa-rupee"></i>' + hotelPrice + '</span>';
+                    html += '</div><div class="hotelContent"><ul><li>' + item.hoteldisplayname + '</li><li><span><i class="fa fa-map-marker"></i>' + item.streetaddress + '</span></li>';
+                    html += '</ul></div><div class="hotelContentBottom"><a href="javascript:void(0)">Choose Room</a></div></li>';
+                })
+                html += "</ul>";
+                $("#hotelList").append(html);
             },
             error: function (error) {
 

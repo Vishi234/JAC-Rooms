@@ -592,15 +592,17 @@
                         var html="";
                         var tag="";
                         var src="";
-                        src="@System.Configuration.ConfigurationManager.AppSettings["PicDrive"]/@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/"+$("#AgentHotelList option:selected").text()+"/";
                         var status="";
                         $.each(MyData["Table"],function(i,item)
                         {
+                            src="";
+                            src="@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
                             ((item.RoomDisplayName!=null) ? tag=item.RoomDisplayName : tag="Hotel");
-                            src+=item.PicName;
+                            src+=$("#AgentHotelList Option:Selected").text()+"~"+item.HotelID+"/"+item.PicName;
+                            src=src.replace(" ","%20");
                             ((item.IsEnable!=false) ? status="Disable" : status="Enable");
                             html+='<div class="col-md-2 base" data-tags="'+tag+'"><div class="thumbnail">';
-                            html+='<img src="https://picsum.photos/600/450?image=776" alt="Lights" style="width:100%">';
+                            html+='<img src="'+src+'" alt="'+item.PicName+'" style="width:100%">';
                             html+='<div class="caption"><span class="pull-left" onclick="EnableImage(this,'+item.PicID+')">'+status+'</span>';
                             html+='<span class="pull-right" onclick="RemoveImage('+item.PicID+')">Remove</span></div></div></div>';
                         });

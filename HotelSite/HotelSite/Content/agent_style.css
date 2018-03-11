@@ -693,6 +693,9 @@ a {
     #gallery .thumbnail > img, .thumbnail > img {
         opacity: 0.8;
         transition: all 0.4s ease-in-out;
+        height:128px!important;
+        width:128px!important;
+        
     }
 
         #gallery .thumbnail > img:hover {

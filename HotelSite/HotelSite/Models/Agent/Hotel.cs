@@ -417,7 +417,9 @@ namespace HotelSite.Models.Agent
                 sqlParameter[1] = new SqlParameter("@checkin", Search.CheckIn);
                 sqlParameter[2] = new SqlParameter("@checkout", Search.CheckOut);
                 ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.StoredProcedure, "sp_Get_Hotel_Listing", sqlParameter);
-                
+                ds.Tables[0].TableName = "HotelName";
+                ds.Tables[1].TableName = "HotelPics";
+                ds.Tables[2].TableName = "HotelPrice";
             }
             catch(Exception ex)
             {

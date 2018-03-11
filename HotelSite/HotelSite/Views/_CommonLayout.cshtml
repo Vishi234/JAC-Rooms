@@ -161,6 +161,12 @@
 
         SetRatingStar();
         $(document).ready(function () {
+
+            $(".searchBtn").click(function()
+            {
+                var data = JSON.stringify($("#homeForm").serialize());
+                console.log(data)
+            })
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');
                 $('.loading-bar').css('max-height', '0');
@@ -478,11 +484,7 @@
             });
             return str;
         }
-        //function SearchHotels() {
-
-        //    window.location.href = "/Listing/Index";
-
-        //}
+       
 
     </script>
 

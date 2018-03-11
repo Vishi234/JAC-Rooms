@@ -2165,6 +2165,7 @@ input[type=checkbox] {
         box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
         transition: all 0.4s ease-in-out;
         margin-bottom: 20px;
+        width: 47.9%;
     }
 
     .hotelList li:nth-child(even) {
@@ -2267,6 +2268,9 @@ input[type=checkbox] {
             color: #808080;
             /* max-width: 69px; */
             word-wrap: break-word;
+            overflow: hidden;
+            height: 20px;
+            display: block;
         }
 
             .hotelContent li:nth-child(2) span i {
@@ -2312,19 +2316,19 @@ input[type=checkbox] {
         font-size: 14px;
         font-weight: 500;
     }
-    .newInvent
-    {
-            display: inline-block;
+
+.newInvent {
+    display: inline-block;
     margin-top: 35px;
-    width:100%;
+    width: 100%;
+}
+
+    .newInvent span {
+        color: #fff !important;
+        font-size: 16px;
     }
-      .newInvent span
-      {
-          color: #fff!important;
-    font-size: 16px;
-      }
-      .newInvent .form-control
-      {
-          display: inline-block;
-    width: auto;
-      }
+
+    .newInvent .form-control {
+        display: inline-block;
+        width: auto;
+    }
