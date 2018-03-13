@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
+using HotelSite.App_Code.CL;
 namespace HotelSite
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -16,6 +16,7 @@ namespace HotelSite
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BundleTable.EnableOptimizations = true;
+            StaticCache.LoadStaticCache();
         }
        
     }

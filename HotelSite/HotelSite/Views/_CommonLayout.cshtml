@@ -448,15 +448,12 @@
                             }
                         });
                     }
-
                 });
             }
             else {
-                html += '<li><a href="javascript:void(0)">No match found ('+key+').</a></li>';
+                html += '<li><a href="javascript:void(0)">No match found (' + key + ').</a></li>';
             }
-
             html += "</ul>";
-            
             $("#search_box").append(html);
             document.getElementById("search_box").innerHTML = html;
 
@@ -470,13 +467,14 @@
                 async: false,
                 data: JSON.stringify({ Searchkey: key }),
                 success: function (data) {
-                    hoteldata = data;
+                    console.log(data);
+                    hoteldata = JSON.parse(data);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(textStatus + "\n" + errorThrown);
                 }
             });
-            return hoteldata;
+            return hoteldata["Table"];
         }
         function toTitleCase(str) {
             str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {

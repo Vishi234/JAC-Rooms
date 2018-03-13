@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HotelSite.App_Code.CL;
+using System.Data;
 
 namespace HotelSite.Controllers
 {
@@ -35,8 +37,8 @@ namespace HotelSite.Controllers
         {
             try
             {
-                var hotel = getHotel(Searchkey);
-                return Json(hotel, JsonRequestBehavior.AllowGet);
+                
+                return Json(new Common().DatasetToJson(StaticCache.GetHotels()), JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

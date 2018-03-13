@@ -610,6 +610,21 @@ namespace HotelSite.Models.Agent
             }
             return lst;
         }
+
+        public DataSet GetHotelsForCache()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                string query = "select HotelName,HotelDisplayName from tbl_Agent_Hotel";
+                ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandling.WriteException(ex);
+            }
+            return ds;
+        }
     }
 
 
