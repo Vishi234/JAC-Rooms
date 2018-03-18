@@ -95,6 +95,7 @@
 
     @Scripts.Render("~/bundle/jquery")
     <script type="text/javascript" src="~/Content/DateRangerPicker/js/pignose.calendar.full.js"></script>
+<script src="~/scripts/jquery.cookie.js"></script>
     <script type="text/javascript">
         var pageName = "@ViewContext.RouteData.Values["action"]";
         $('.checkinDate').click(function () {
@@ -161,10 +162,9 @@
 
         SetRatingStar();
         $(document).ready(function () {
-
+            GetCacheHotelData("");
             $(".searchBtn").click(function () {
                 var data = JSON.stringify($("#homeForm").serialize());
-                console.log(data)
             })
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');
@@ -459,22 +459,10 @@
 
         }
         function GetHotel(key) {
-            var hoteldata;
-            $.ajax({
-                type: 'POST',
-                url: "@Url.Action("GetHotelData","Home")",
-                contentType: "application/json",
-                async: false,
-                data: JSON.stringify({ Searchkey: key }),
-                success: function (data) {
-                    console.log(data);
-                    hoteldata = JSON.parse(data);
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(textStatus + "\n" + errorThrown);
-                }
+            var hotelData = $.grep(JSON.parse($.cookie('HotelData'))["Table"], function (item, i) {
+                return ((item.HotelName.toLocaleLowerCase().indexOf(key) > 0) ? item.HotelName : "");
             });
-            return hoteldata["Table"];
+            return hotelData;
         }
         function toTitleCase(str) {
             str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
@@ -515,6 +503,24 @@
                         }
                     }
                 })
+        }
+        function GetCacheHotelData(key) {
+            var hoteldata;
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("GetHotelData","Home")",
+                contentType: "application/json",
+                async: false,
+                data: JSON.stringify({ Searchkey: key }),
+                success: function (data) {
+                    hoteldata = data;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(textStatus + "\n" + errorThrown);
+                }
+            });
+            $.cookie('HotelData', hoteldata, { expires: 7, path: '/' });
+         //   return hoteldata["Table"];
         }
     </script>
 

@@ -332,6 +332,11 @@
                         //GetRoomForInventory();
 
                     }
+                    else
+                    {
+                        $("#submitHote").attr("flag","A");
+                        $("#submitHotelContact").attr("flag","A");
+                    }
                 },
                 error:function()
                 {
@@ -1056,21 +1061,20 @@
                 contentType: "application/json",
                 data: JSON.stringify({ HotelID: $("#AgentHotelList").val() }),
                 success: function (data) {
-                    $('#roomType').empty();
-                    $('#roomType').trigger("chosen:updated");
-                    $('#roomType').append("<option value=0>Select Room Type</option>");
+                    $('#roomTypeInvent').empty();
+                    $('#roomTypeInvent').trigger("chosen:updated");
+                    $('#roomTypeInvent').append("<option value=0>Select Room Type</option>");
                     if(data.length > 0)
                     {
-                        var select = document.getElementById("roomType");
+                        var select = document.getElementById("roomTypeInvent");
                         $.each(data,function(i,item)
                         {
                             var option = document.createElement("option");
                             option.text = item.DisplayName;
                             option.value = item.ID+"~"+item.TotalRoom;
                             if (option != null) select.appendChild(option);
-                            $('#roomType').trigger("chosen:updated");
+                            $('#roomTypeInvent').trigger("chosen:updated");
                         });
-
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -1174,7 +1178,7 @@
             var checkedValue = $(".daysList input:checkbox:checked").map(function () {
                 return $(this).attr("value");
             }).get();
-            if($("#roomType").val()=="0")
+            if($("#roomTypeInvent").val()=="0")
             {
                 alert("Please select Room Type.");
                 return false;
@@ -1189,7 +1193,7 @@
                 alert("Available Inventory can't be blank.");
                 return false;
             }
-            var totalRoom=parseInt($("#roomType").val().split('~')[1]);
+            var totalRoom=parseInt($("#roomTypeInvent").val().split('~')[1]);
             var available=parseInt($("#availableInventory").val());
             if(available>totalRoom)
             {
@@ -1198,9 +1202,9 @@
             }
             var RoomInventory=
                 {
-                    RoomID:$("#roomType").val().split('~')[0],
+                    RoomID:$("#roomTypeInvent").val().split('~')[0],
                     HotelID:$("#AgentHotelList").val(),
-                    RoomType:$("#roomType option:selected").text(),
+                    RoomType:$("#roomTypeInvent option:selected").text(),
                     StartDate:$("#startDate").val(),
                     EndDate:$("#endDate").val(),
                     DaysOfWeek:checkedValue.join(", "),
