@@ -1,6 +1,7 @@
 ===============================start==============================================
 Inner Exception's
-MessageError converting data type nvarchar to int.
+MessageThe INSERT statement conflicted with the FOREIGN KEY constraint "FK__tbl_RoomI__RoomI__236943A5". The conflict occurred in database "HR_Solution", table "dbo.tbl_HotelRooms", column 'ID'.
+The statement has been terminated.
 StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
@@ -12,8 +13,8 @@ StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException excepti
    at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
    at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 335
    at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\SQLHelper.cs:line 252
-   at HotelSite.Models.Agent.HotelInformation.SaveRoomImages(RoomImages RoomImages) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 291
+   at HotelSite.Models.Agent.HotelInformation.SaveRoomInventory(RoomInventory roomInventory) in C:\Users\HP\Source\TeamRepos\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 516
 TargetSiteVoid OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
-DateTime : 	2/27/2018 1:26:01 AM
+DateTime : 	3/4/2018 3:58:22 PM
 ================================end============================================= 
 

@@ -17,8 +17,7 @@ namespace HotelSite
                 "~/scripts/jquery-1.4.2.min.js",
                 "~/scripts/jquery-1.8.5.min.js",
                 "~/scripts/jquery-1.9.1.min.js",
-                "~/scripts/filter-tags.js",
-                "~/scripts/common.js",
+               "~/scripts/common.js",
                 "~/scripts/CommonValidator/CommonValidator.js",
                 "~/scripts/jquery.js"));
 

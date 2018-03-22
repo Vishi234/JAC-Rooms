@@ -18,6 +18,11 @@ namespace HotelSite
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Listing",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Listing", id = UrlParameter.Optional }
+            );
         }
     }
 }

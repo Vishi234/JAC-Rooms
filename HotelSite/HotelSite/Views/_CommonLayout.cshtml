@@ -95,7 +95,9 @@
 
     @Scripts.Render("~/bundle/jquery")
     <script type="text/javascript" src="~/Content/DateRangerPicker/js/pignose.calendar.full.js"></script>
+<script src="~/scripts/jquery.cookie.js"></script>
     <script type="text/javascript">
+        var pageName = "@ViewContext.RouteData.Values["action"]";
         $('.checkinDate').click(function () {
             $('.calendar').css('display', 'block');
             $('.cal_base').css('margin-left', '-14px');
@@ -160,7 +162,7 @@
 
         SetRatingStar();
         $(document).ready(function () {
-            GetSeachData();
+            GetCacheHotelData("");
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');
                 $('.loading-bar').css('max-height', '0');
@@ -190,12 +192,13 @@
                 if ($(this).val().length > 0 && $(this).val().length >= 3) {
                     $('.mapIcon').removeClass('fa-map-marker');
                     $('.mapIcon').addClass('fa-circle-o-notch fa-spin');
-                    setTimeout(function () {
-                        $('.mapIcon').addClass('fa-map-marker');
-                        $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
-                        $('.search_box').css('display', 'block');
-                        $('.search_field').css('display', 'block');
-                    }, 2000);
+                    $('.mapIcon').addClass('fa-map-marker');
+                    $('.mapIcon').removeClass('fa-circle-o-notch fa-spin');
+                    $('.search_box').css('display', 'block');
+                    $('.search_field').css('display', 'block');
+                    //setTimeout(function () {
+
+                    //}, 2000);
                     filterLocation($(this).val());
                 }
                 else {
@@ -238,7 +241,9 @@
                 $('.room_val').val(Pepole + " Pepole " + Room + " Room");
                 $('.roomDetails').hide();
             });
+
         });
+
         function addRoom(val) {
             divId = divId + val;
             adultQuant = adultQuant + val;
@@ -421,7 +426,8 @@
             finalResult['city'] = result2.slice(0, 5);
             finalResult['Hotel'] = result3.slice(0, 3);
             var div = document.getElementById("search_box");
-            var html = "<ul>";
+            var html = "";
+            html = "<ul>";
             var title = "";
             if (finalResult != null || finalResult != "") {
                 $.each(finalResult, function (i, item) {
@@ -436,29 +442,70 @@
                                 else {
                                     html += '<li><a href="javascript:void(0)" onclick="getSearchValue(this);">' + ((val.HotelName.indexOf(toTitleCase(key)) > -1) ? val.HotelName.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : val.HotelName.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
                                 }
-
-
-                                //html += '<li><a href="javascript:void(0)" onclick="getSearchValue(this);">' + ((val.name.indexOf(toTitleCase(key)) > -1) ? val.name.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : val.name.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
                             }
                         });
                     }
-
                 });
             }
             else {
-                html += '<li><div class="noResult">No Result Found</div></li>';
+                html += '<li><a href="javascript:void(0)">No match found (' + key + ').</a></li>';
             }
-
             html += "</ul>";
-
+            $("#search_box").append(html);
             document.getElementById("search_box").innerHTML = html;
 
         }
         function GetHotel(key) {
+            var hotelData = $.grep(JSON.parse($.cookie('HotelData'))["Table"], function (item, i) {
+                return ((item.HotelName.toLocaleLowerCase().indexOf(key) > 0) ? item.HotelName : "");
+            });
+            return hotelData;
+        }
+        function toTitleCase(str) {
+            str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+                return letter.toUpperCase();
+            });
+            return str;
+        }
+
+        function HotelNameFilter(keyVal, ID) {
+
+            $.ajax
+                ({
+                    type: 'POST',
+                    url: "@Url.Action("GetHotelName","Home")",
+                    contentType: "application/json",
+                    data: JSON.stringify({ Searchkey: keyVal }),
+                    success: function (data) {
+                        $("#" + ID).empty();
+                        var html = "";
+                        html = "<ul>";
+                        if (data.length > 0) {
+                            $.each(data, function (i, item) {
+                                html += '<li><a href="javascript:void(0)">' + ((item.DisplayName.indexOf(toTitleCase(keyVal)) > -1) ? item.DisplayName.replace(toTitleCase(keyVal), '<b class="seach-match">' + toTitleCase(keyVal) + '</b>') : item.DisplayName.replace(keyVal, '<b class="seach-match">' + keyVal + '</b>')) + '</a></li>';
+                            });
+                        }
+                        else {
+                            html += "<li><a href='javascript:void(0)'>No match found</a></li>"
+                        }
+                        html += "</ul>";
+                        $("#" + ID).append(html);
+                        if (keyVal != "") {
+                            $("#hotelFilter").css("display", "block");
+                            $("#hotelData").css("display", "block");
+                        }
+                        else {
+                            $("#hotelFilter").css("display", "none");
+                            $("#hotelData").css("display", "none");
+                        }
+                    }
+                })
+        }
+        function GetCacheHotelData(key) {
             var hoteldata;
             $.ajax({
                 type: 'POST',
-                url: "@Url.Action("GetHotelData","Listing")",
+                url: "@Url.Action("GetHotelData","Home")",
                 contentType: "application/json",
                 async: false,
                 data: JSON.stringify({ Searchkey: key }),
@@ -469,41 +516,8 @@
                     console.log(textStatus + "\n" + errorThrown);
                 }
             });
-            return hoteldata;
-        }
-        function toTitleCase(str) {
-            str = str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
-                return letter.toUpperCase();
-            });
-            return str;
-        }
-        function SearchHotels() {
-
-            window.location.href = "/Listing/Index";
-
-        }
-        function GetSeachData() {
-            $.ajax({
-                type: 'POST',
-                url: "@Url.Action("GetSearchData", "Listing")",
-                contentType: "application/json",
-                async: false,
-                data: "",
-                success: function (data) {
-                    var jsonData = JSON.parse(data);
-                    var tr = "";
-                    $.each(jsonData["BasicInfo"], function (i, item) {
-                        tr += "<tr>";
-                        tr += "<td>" + item.HotelName + "</td><td>" + item.HotelType + "</td>";
-                        tr += "</tr>"
-                    });
-                    $("#hotelData tbody").html(tr);
-                },
-                error: function (error) {
-
-                }
-
-            })
+            $.cookie('HotelData', hoteldata, { expires: 7, path: '/' });
+         //   return hoteldata["Table"];
         }
     </script>
 

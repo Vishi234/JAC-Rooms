@@ -1,0 +1,226 @@
+﻿
+@{
+    ViewBag.Title = "Listing";
+    Layout = "~/Views/_CommonLayout.cshtml";
+}
+
+<div class="loading-bar">
+    <div class="progress"></div>
+    <div class="content">
+        Finding the best stays for you
+    </div>
+</div>
+<div class="container listingBase">
+    <div class="listing-body">
+        <div class="row">
+            <div class="search-modification">
+                <div class="triangle-with-shadow"></div>
+                <div class="search-area">
+                    <div class="search-base hotelBase">
+                        <form class="form-inline" action="@Url.Action("Listing","Home")" method="get">
+                            <div class="form-fields">
+                                <div class="form-group">
+                                    <input type="text" id="seachBox" name="Keyword" value="@Request.QueryString["Keyword"]" class="searchBox form-control" required>
+                                    <label class="form-control-placeholder" for="seachBox">Select City, Location or Hotel</label>
+                                    <i class="fa fa-map-marker icon mapIcon"></i>
+                                    <div class="search_field">
+                                        <div class="triangle-with-shadow">
+                                        </div>
+                                        <div class="search_box" id="search_box">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="CheckIn" class="checkinDate datePicker form-control" required>
+                                    <label class="form-control-placeholder" for="checkin">Check-in</label>
+                                    <i class="fa fa-calendar icon"></i>
+                                    <div class="cal_base">
+                                        <div class="calendar">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="checkout" name="CheckOut" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
+                                    <label class="form-control-placeholder" for="checkout">Check-out</label>
+                                    <i class="fa fa-calendar icon"></i>
+                                </div>
+                                <div class="form-group rooMHover">
+                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@Request.QueryString["Person"] Pepole @Request.QueryString["Room"] Room" required>
+                                    <label class="form-control-placeholder" for="room"></label>
+                                    <img src="~/Content/images/sort-down.svg" class="img-icon" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="searchBtn btn btn-danger" value="Search" />
+                                    @*<a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>*@
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="nav-drop roomDetails">
+                        <div class="triangle-with-shadow">
+                        </div>
+                        <div class="nav-list">
+                            <div class="room_base"></div>
+                            <div class="ButtonGroup">
+                                <a href="javascript:void(0)" onclick="addRoom(1);" class="pull-left btn btn-light">Add Room</a>
+                                <a href="javascript:void(0)" class="pull-right btn btn-danger saveRoom">Done</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-xs-12 col-sm-3 col-md-3">
+                <div class="row">
+                    <div class="listing-filter">
+                        <h3>Hotels in Goa</h3>
+                        <hr />
+                        <div class="location-filter filter-style">
+                            <h5>Location</h5>
+                            <input type="text" onkeyup="LocationFilterKeyPress(this.value, 'locationData');" class="form-control locationFilter" placeholder="Seach by location" />
+                            <div class="searchBase" id="locationFilter">
+                                <div class="triangle-with-shadow">
+                                </div>
+                                <div class="search_box" id="locationData">
+
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="hotelname-filter filter-style">
+                            <h5>Seach By Hotel Name </h5>
+                            <input type="text" onkeyup="HotelNameFilter(this.value, 'hotelData');" class="form-control" placeholder="Hotel Name" />
+                            <div class="searchBase" id="hotelFilter">
+                                <div class="triangle-with-shadow">
+                                </div>
+                                <div class="search_box" id="hotelData">
+
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="smart-filter filter-style">
+                            <h5>Smart Filter <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="box1" type="checkbox" />
+                            <label for="box1">Pay At Checkout</label>
+                            <input id="box2" type="checkbox" />
+                            <label for="box2">Free Cancellation</label>
+                        </div>
+                        <hr />
+                        <div class="price-filter filter-style">
+                            <h5>Price Range <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="price1" type="checkbox" />
+                            <label for="price1">Upto <i class="fa fa-rupee"></i> 999</label>
+                            <input id="price2" type="checkbox" />
+                            <label for="price2"><i class="fa fa-rupee"></i> 1000 to <i class="fa fa-rupee"></i> 3000</label>
+                            <input id="price3" type="checkbox" />
+                            <label for="price3"><i class="fa fa-rupee"></i> 3000 to <i class="fa fa-rupee"></i> 5000</label>
+                            <input id="price4" type="checkbox" />
+                            <label for="price4"><i class="fa fa-rupee"></i> 5000 to <i class="fa fa-rupee"></i> 10000</label>
+                            <input id="price5" type="checkbox" />
+                            <label for="price5"><i class="fa fa-rupee"></i> 10000 +</label>
+                        </div>
+                        <hr />
+                        <div class="hoteltype-filter filter-style">
+                            <h5>Hotel Type<a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="type1" type="checkbox" />
+                            <label for="type1">Hotel</label>
+                            <input id="type2" type="checkbox" />
+                            <label for="type2">Bunglow</label>
+                            <input id="type1" type="checkbox" />
+                            <label for="type3">Guest House</label>
+                            <input id="type4" type="checkbox" />
+                            <label for="type4">Home Stay</label>
+                            <input id="type5" type="checkbox" />
+                            <label for="type5">Resorts</label>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
+                <div class="row">
+                    <div class="hotelList" id="hotelList">
+
+                    </div>
+                    @*<table class="hotelData table table-bordered" id="hotelData">
+                            <thead>
+                                <tr>
+                                    <th>Hotel Name</th>
+                                    <th>Hotel Type</th>
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/scripts/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetSeachData();
+    })
+    function GetSeachData() {
+
+        var SearchKeyword =
+            {
+                Keyword: "@Request.QueryString["Keyword"]",
+                CheckIn: "@Request.QueryString["CheckIn"]",
+                CheckOut: "@Request.QueryString["CheckOut"]",
+            };
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("GetSearchData", "Home")",
+            contentType: "application/json",
+            async: false,
+            data: JSON.stringify({ Search: SearchKeyword }),
+            success: function (data) {
+                var jsonData = JSON.parse(data);
+                var html = "<ul>";
+                var hotelPrice = 0;
+                var hotelPic = "";
+                var src = "";
+                $.each(jsonData["HotelName"], function (i, item) {
+
+                    $.each(jsonData["HotelPrice"], function (j, val) {
+                        if (item.hotelid == val.hotelid) {
+                            hotelPrice = val.pricepernight;
+                        }
+                    });
+                    $.each(jsonData["HotelPics"], function (k, picVal) {
+                        if (item.hotelid == picVal.hotelid) {
+                            if (picVal.picname != "") {
+                                hotelPic = picVal.picname;
+                                return;
+                            }
+                        }
+                    });
+                    src = "";
+                    if (hotelPic != "") {
+                        src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                        src += item.hoteldisplayname + "~" + item.hotelid + "/" + hotelPic;
+                       // src = '"' + src + '"';
+                    }
+                    var style = "background:url('" + src + "')repeat center;";
+                    html += '<li><div class="hotelImage" style="'+style+'"></div><div class="hotelPrice"><span class="orginalPrice"><i class="fa fa-rupee"></i>' + hotelPrice + '</span>';
+                    html += '</div><div class="hotelContent"><ul><li>' + item.hoteldisplayname + '</li><li><span><i class="fa fa-map-marker"></i>' + item.streetaddress + '</span></li>';
+                    html += '</ul></div><div class="hotelContentBottom"><a href="javascript:void(0)">Choose Room</a></div></li>';
+                })
+                html += "</ul>";
+                $("#hotelList").append(html);
+            },
+            error: function (error) {
+
+            }
+
+        });
+
+    }
+</script>
