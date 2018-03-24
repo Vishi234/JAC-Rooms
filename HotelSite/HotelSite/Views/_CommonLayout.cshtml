@@ -163,6 +163,9 @@
         SetRatingStar();
         $(document).ready(function () {
             GetCacheHotelData("");
+            $(".searchBtn").click(function () {
+                var data = JSON.stringify($("#homeForm").serialize());
+            })
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');
                 $('.loading-bar').css('max-height', '0');

@@ -92,25 +92,7 @@ function BindStateDropDown(ddlID, CountyID) {
     });
     $('#' + ddlID).trigger("chosen:updated");
 }
-function BindCityDropDown(ddlID, StateID) {
-    var citiess = getJsonData('../../Location Data/cities.json');
-    let SID = (StateID == "" || StateID == null) ? "10" : StateID;
 
-    let cityBindData = $.grep(citiess.cities, function (n, i) {
-        return n.state_id == SID;
-    });
-    $('#' + ddlID).empty();
-    var select = document.getElementById(ddlID);
-    $.each(cityBindData, function (i, item) {
-        var option = document.createElement("option");
-        option.text = item.name;
-        option.value = item.id;
-
-        select.appendChild(option);
-    });
-    $('#' + ddlID).trigger("chosen:updated");
-    //$('#' + ddlID).selectpicker('refresh');
-}
 function checkMail(controlClass, module) {
 
     let Email = $('.' + controlClass).val();

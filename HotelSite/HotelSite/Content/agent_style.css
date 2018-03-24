@@ -693,8 +693,9 @@ a {
     #gallery .thumbnail > img, .thumbnail > img {
         opacity: 0.8;
         transition: all 0.4s ease-in-out;
-        height: 128px !important;
-        width: 128px !important;
+        height:128px!important;
+        width:128px!important;
+        
     }
 
         #gallery .thumbnail > img:hover {
@@ -1753,68 +1754,13 @@ input[type=checkbox] {
 .addRatePlan {
     height: 400px;
 }
-
-.agent_auth .logoBase {
-    overflow: visible;
+.agent_auth .logoBase
+{
+    overflow:visible;
 }
-
-    .agent_auth .logoBase img {
-        width: 90px;
-        height: auto;
-        margin-top: -13px;
-    }
-
-.Outside-header-top {
-    background: #EA2330;
+.agent_auth .logoBase img
+{
+    width: 90px;
+    height: auto;
+    margin-top: -13px;
 }
-
-.lgdIn {
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.eml {
-    float: left;
-    font-weight: 500;
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.lgt {
-    float: left;
-    font-size: 14px;
-    margin-top: -10px;
-    font-weight: 500;
-    margin-right: -11px;
-}
-
-.Outside-header-top .top-header {
-    padding: 0px;
-}
-
-.extranet_body {
-    padding: 30px 0;
-    width:100%;
-}
-
-    .extranet_body h1 {
-        font-size: 25px;
-        font-weight: 500;
-    }
-
-    .extranet_body h4 {
-        font-size: 16px;
-        line-height: 30px;
-    }
-
-    .extranet_body h5 {
-        font-size: 16px;
-    }
-    .extranet_body .property_module
-    {
-        margin-top: 15px;
-    }
-    .extranet_body .top
-    {
-        padding-bottom: 10px;
-    }

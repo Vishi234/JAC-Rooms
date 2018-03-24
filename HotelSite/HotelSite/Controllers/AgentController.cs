@@ -266,9 +266,5 @@ namespace HotelSite.Controllers
             HotelInformation Hinfo = new HotelInformation();
             return Hinfo.UpdateInventory(inventDate, RoomID, Available);
         }
-        public ActionResult Extranet()
-        {
-            return View();
-        }
     }
 }

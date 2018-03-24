@@ -67,10 +67,5 @@ namespace HotelSite.Controllers
             Common objCommon = new Common();
             return Json(Hinfo.GetHotelDetail(SearchKey), JsonRequestBehavior.AllowGet);
         }
-        public ActionResult HotelDescription()
-        {
-
-            return View();
-        }
     }
 }
