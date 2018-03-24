@@ -102,12 +102,14 @@
     </div>
     @RenderBody()
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz1a81QQlGBkXzKv9VcRwnG5BECnXFAWs&libraries=places&callback=initMap" async defer></script>
     @Scripts.Render("~/bundle/jquery")
     <script src="~/scripts/jquery.toast.min.js"></script>
     <script src="~/scripts/wickedpicker.js"></script>
     <script src="~/scripts/chosen.jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
     <script src="~/scripts/bootstrap-datetimepicker.js"></script>
+
     <script type="text/javascript">
         var HotelFlag="";
         var myPicker;
@@ -170,7 +172,7 @@
                 HotelCheckInTime: $('#HotelCheckInTime').val(),
                 HotelCheckOutTime: $('#CheckOutTime').val(),
                 StreetAdress: $('#StreetAdress').val(),
-                Locality: $('#Locality').val(),
+                Locality: $('#location').val(),
                 Country: $('#Country').val(),
                 State: $('#State').val(),
                 City: $('#City').val(),
@@ -328,7 +330,10 @@
                             $("#submitHotelContact").attr("flag","A");
                         }
                         localStorage.clear();
-                        BindRoomView("");
+                        if(pageName=="Inventory")
+                        {
+                            BindRoomView("");
+                        }
                         //GetRoomForInventory();
 
                     }
@@ -934,7 +939,7 @@
                                     $("#HotelCheckInTime").val(HotelJson.BasicInfo[0].CheckInTime);
                                     myPicker.wickedpicker('setTime', 0, ConvertTimeFormat(HotelJson.BasicInfo[0].CheckInTime));
                                     $("#StreetAdress").val(HotelJson.BasicInfo[0].StreetAddress);
-                                    $("#Locality").val(HotelJson.BasicInfo[0].Locality);
+                                    $("#location").val(HotelJson.BasicInfo[0].Locality);
                                     $("#Country").val(HotelJson.BasicInfo[0].Country);
                                     $("#Country").trigger("chosen:updated");
                                     $("#Country").trigger("change");
@@ -1026,8 +1031,12 @@
                 GetRoomList()
                 GetHotelImages();
             }
-            BindRoomView("");
-            GetRoomTypeForInventory();
+            else
+            {
+                BindRoomView("");
+                GetRoomTypeForInventory();
+            }
+
         });
 
         function GetRoomForInventory(table)

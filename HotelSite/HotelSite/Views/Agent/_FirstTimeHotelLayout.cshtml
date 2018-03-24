@@ -7,6 +7,9 @@
     @Styles.Render("~/Content/css")
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
     <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
+    <style>
+        
+    </style>
 </head>
 <body>
     <div class="Outside-header-top">
@@ -38,10 +41,11 @@
     <script src="~/scripts/chosen.jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
     <script src="~/scripts/bootstrap-datetimepicker.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqPLYfhY6ldsanuAM_71tWjvrx4hJCJnc&libraries=places&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz1a81QQlGBkXzKv9VcRwnG5BECnXFAWs&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript">
+
         $(document).ready(function () {
-            new google.maps.places.Autocomplete(document.getElementById("hotelName"));
+
             BindCountryDropDown('Country');
             $("select").chosen();
             var options = {
@@ -64,5 +68,6 @@
             myPicker = $('.timepicker').wickedpicker(options);
         });
     </script>
+
 </body>
 </html>
