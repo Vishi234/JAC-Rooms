@@ -38,8 +38,10 @@
     <script src="~/scripts/chosen.jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
     <script src="~/scripts/bootstrap-datetimepicker.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqPLYfhY6ldsanuAM_71tWjvrx4hJCJnc&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            new google.maps.places.Autocomplete(document.getElementById("hotelName"));
             BindCountryDropDown('Country');
             $("select").chosen();
             var options = {
