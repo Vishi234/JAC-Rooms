@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+    <link href="~/Content/jquery.toast.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="Outside-header-top">
+        <div class="container">
+            <div class="row">
+                <div class="top-header">
+                    <div class="col-lg-8 col-xs-12 col-sm-8 col-md-8">
+
+                    </div>
+                    <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+                        <div class="common-nav">
+                            <ul>
+                                <li>
+                                    <p class="lgdIn">Logged in as Vishal</p>
+                                    <p class="eml">avtars232@gmail.com |</p><p class="lgt"><a href="javascript:void(0)">Logout</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+
+    @Scripts.Render("~/bundle/jquery")
+    <script src="~/scripts/jquery.toast.min.js"></script>
+    <script src="~/scripts/wickedpicker.js"></script>
+    <script src="~/scripts/chosen.jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+    <script src="~/scripts/bootstrap-datetimepicker.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqPLYfhY6ldsanuAM_71tWjvrx4hJCJnc&libraries=places&callback=initMap" async defer></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            new google.maps.places.Autocomplete(document.getElementById("hotelName"));
+            BindCountryDropDown('Country');
+            $("select").chosen();
+            var options = {
+                now: "08:30", //hh:mm 24 hour format only, defaults to current time
+                twentyFour: false, //Display 24 hour format, defaults to false
+                upArrow: 'fa fa-angle-up', //The up arrow class selector to use, for custom CSS
+                downArrow: 'fa fa-angle-down', //The down arrow class selector to use, for custom CSS
+                close: 'wickedpicker__close', //The close class selector to use, for custom CSS
+                hoverState: 'hover-state', //The hover state class to use, for custom CSS
+                title: 'Timepicker', //The Wickedpicker's title,
+                showSeconds: false, //Whether or not to show seconds,
+                secondsInterval: 1, //Change interval for seconds, defaults to 1
+                minutesInterval: 1, //Change interval for minutes, defaults to 1
+                beforeShow: null, //A function to be called before the Wickedpicker is shown
+                show: null, //A function to be called when the Wickedpicker is shown
+                closeOnClickOutside: true,
+                clearable: false, //Make the picker's input clearable (has clickable "x")
+                timeSeparator: ':'
+            };
+            myPicker = $('.timepicker').wickedpicker(options);
+        });
+    </script>
+</body>
+</html>
