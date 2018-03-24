@@ -594,7 +594,23 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Locality</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" AlphaNumeric name="Locality" id="Locality" placeholder="Enter locality">
+                                                <input type="text" class="form-control" AlphaNumeric name="Locality" id="location" placeholder="Enter locality">
+                                            </div>
+                                        </div>
+                                        <div class="map_div" style="display:none">
+                                            <div id="map" ></div>
+                                            <div class="pac-card" id="pac-card">
+                                                <div>
+                                                    <div id="type-selector" class="pac-controls" style="display:none">
+                                                        <input type="radio" name="type" id="changetype-address" checked="checked">
+                                                        <label for="changetype-address">Addresses</label>
+                                                    </div>
+                                                </div>
+                                                <div id="infowindow-content">
+                                                    <img src="" width="16" height="16" id="place-icon">
+                                                    <span id="place-name" class="title"></span><br>
+                                                    <span id="place-address"></span>
+                                                </div>
                                             </div>
                                         </div>
 

@@ -8,7 +8,24 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
     <link href="~/Content/bootstrap-3.2.0.min.css" rel="stylesheet">
 </head>
+
 <body class="main-bdy">
+    <div class="map_div" style="display:none">
+        <div id="map"></div>
+        <div class="pac-card" id="pac-card">
+            <div>
+                <div id="type-selector" class="pac-controls" style="display:none">
+                    <input type="radio" name="type" id="changetype-address" checked="checked">
+                    <label for="changetype-address">Addresses</label>
+                </div>
+            </div>
+            <div id="infowindow-content">
+                <img src="" width="16" height="16" id="place-icon">
+                <span id="place-name" class="title"></span><br>
+                <span id="place-address"></span>
+            </div>
+        </div>
+    </div>
     <div class="common-header">
         <div class="container">
             <div class="row">
@@ -93,9 +110,11 @@
     </div>
     @RenderBody()
 
+
     @Scripts.Render("~/bundle/jquery")
     <script type="text/javascript" src="~/Content/DateRangerPicker/js/pignose.calendar.full.js"></script>
-<script src="~/scripts/jquery.cookie.js"></script>
+    <script src="~/scripts/jquery.cookie.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz1a81QQlGBkXzKv9VcRwnG5BECnXFAWs&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript">
         var pageName = "@ViewContext.RouteData.Values["action"]";
         $('.checkinDate').click(function () {
@@ -107,7 +126,22 @@
             $('.search_field').css('display', 'none');
 
         });
+
+        $('.checkinDate').focusin(function () {
+            $('.calendar').css('display', 'block');
+            $('.cal_base').css('margin-left', '-14px');
+            $('.search-modification .cal_base').css('margin-left', '0px');
+            $('.search_box').css('display', 'none');
+            $('.roomDetails').css('display', 'none');
+            $('.search_field').css('display', 'none');
+
+        });
         $('.checkoutDate').click(function () {
+            $('.calendar').css('display', 'block');
+            $('.search_box').css('display', 'none');
+            $('.roomDetails').css('display', 'none');
+        });
+        $('.checkoutDate').focusin(function () {
             $('.calendar').css('display', 'block');
             $('.search_box').css('display', 'none');
             $('.roomDetails').css('display', 'none');
@@ -517,7 +551,7 @@
                 }
             });
             $.cookie('HotelData', hoteldata, { expires: 7, path: '/' });
-         //   return hoteldata["Table"];
+            //   return hoteldata["Table"];
         }
     </script>
 

@@ -26,7 +26,7 @@ namespace HotelSite.Controllers
             data.Person = person;
             data.Room = room;
             ViewBag.SearchData = data;
-            return View("Listing",data);
+            return View("Listing", data);
         }
         public ActionResult Listing()
         {
@@ -37,7 +37,7 @@ namespace HotelSite.Controllers
         {
             try
             {
-                
+
                 return Json(new Common().DatasetToJson(StaticCache.GetHotels()), JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
