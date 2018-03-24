@@ -127,6 +127,7 @@
                 });
         });
         $(document).ready(function () {
+
             $('.inventoryDate').keydown(function () {
                 return false;
             });
@@ -322,7 +323,8 @@
                                 GetHotelData();
                                 GetRoomList();
                             }
-
+                            $("#submitHote").attr("flag","E");
+                            $("#submitHotelContact").attr("flag","E");
                         }
                         else
                         {
@@ -334,8 +336,6 @@
                         {
                             BindRoomView("");
                         }
-                        //GetRoomForInventory();
-
                     }
                     else
                     {
