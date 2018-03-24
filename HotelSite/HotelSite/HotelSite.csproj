@@ -700,6 +700,7 @@
     <Content Include="Views\Agent\_FirstTimeHotelLayout.cshtml" />
     <Content Include="Views\Home\HotelDescription.cshtml" />
     <Content Include="Views\Home\Listing.cshtml" />
+    <Content Include="Views\Home\PaymentPage.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

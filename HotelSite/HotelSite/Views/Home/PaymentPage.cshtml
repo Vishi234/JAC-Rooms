@@ -1,0 +1,156 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "PaymentPage";
+    Layout = "~/Views/_CommonLayout.cshtml";
+}
+
+<h2>PaymentPage</h2>
+
+@using (Html.BeginForm("PaymentGateway", "Home"))
+{
+    <div id="frmError">
+        <span style="color:red">Please fill all mandatory fields.</span>
+        <br />
+        <br />
+    </div>
+
+
+    <input type="hidden" id="key" name="key" value="@System.Configuration.ConfigurationManager.AppSettings["myKey"]" />
+    <input type="hidden" id="hash" name="hash" />
+    <input type="hidden" id="txnid" name="txnid" />
+    <input type="hidden" id="enforce_paymethod" name="enforce_paymethod" />
+    <table>
+        <tr>
+            <td><b>Mandatory Parameters</b></td>
+        </tr>
+        <tr>
+            <td>Amount: </td>
+            <td>
+                <input type="text" ID="amount" name="amount" />
+            </td>
+            <td>First Name: </td>
+            <td>
+                <input type="text" ID="firstname" name="firstname"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td>
+                <input type="text" ID="email" name="email" />
+            </td>
+            <td>Phone: </td>
+            <td>
+                <input type="text" ID="phone" name="phone" />
+            </td>
+        </tr>
+        <tr>
+            <td>Product Info: </td>
+            <td colspan="3">
+                <input type="text" ID="productinfo" name="productinfo" />
+            </td>
+        </tr>
+        <tr>
+            <td>Success URI: </td>
+            <td colspan="3">
+                <input type="text" ID="surl" name="surl" />
+            </td>
+        </tr>
+        <tr>
+            <td>Failure URI: </td>
+            <td colspan="3">
+                <input type="text" ID="furl" name="furl" />
+            </td>
+        </tr>
+        <tr>
+            <td><b>Optional Parameters</b></td>
+        </tr>
+        <tr>
+            <td>Last Name: </td>
+            <td>
+                <input type="text" ID="lastname" name="lastname" />
+            </td>
+            <td>Cancel URI: </td>
+            <td>
+                <input type="text" ID="curl" name="curl" />
+            </td>
+
+        </tr>
+        <tr>
+            <td>Address1: </td>
+            <td>
+                <input type="text" ID="address1"  />
+            </td>
+            <td>Address2: </td>
+            <td>
+                <input type="text" ID="address2" />
+            </td>
+        </tr>
+        <tr>
+            <td>City: </td>
+            <td>
+                <input type="text" ID="city" />
+            </td>
+            <td>State: </td>
+            <td>
+                <input type="text" ID="state" />
+            </td>
+        </tr>
+        <tr>
+            <td>Country: </td>
+            <td>
+                <input type="text" ID="country" />
+            </td>
+            <td>Zipcode: </td>
+            <td>
+                <input type="text" ID="zipcode" />
+            </td>
+        </tr>
+        <tr>
+            <td>UDF1: </td>
+            <td>
+                <input type="text" ID="udf1" />
+            </td>
+            <td>UDF2: </td>
+            <td>
+                <input type="text" ID="udf2" />
+            </td>
+        </tr>
+        <tr>
+            <td>UDF3: </td>
+            <td>
+                <input type="text" ID="udf3" />
+            </td>
+            <td>UDF4: </td>
+            <td>
+                <input type="text" ID="udf4" />
+            </td>
+        </tr>
+        <tr>
+            <td>UDF5: </td>
+            <td>
+                <input type="text" ID="udf5" />
+            </td>
+            <td>PG: </td>
+            <td>
+                <input type="text" ID="pg" />
+            </td>
+        </tr>
+        <tr>
+            <td>Service Provider: </td>
+            <td>
+                <input type="text" ID="service_provider" Text="payu_paisa" />
+            </td>
+        </tr>
+        <tr>
+
+            <td colspan="4"></td>
+
+        </tr>
+    </table>
+    <br />
+    <input ID="submit" type="submit" value="submit" Width="100px" />
+}
+
+
