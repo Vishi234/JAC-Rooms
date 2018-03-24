@@ -82,7 +82,7 @@ namespace HotelSite.Controllers
         {
             return View("PaymentPage");
         }
-        public JsonResult PaymentGateway(FormCollection formCollection)
+        public void PaymentGateway(FormCollection formCollection)
         {
 
             try
@@ -103,6 +103,8 @@ namespace HotelSite.Controllers
                 {
                     txnid1 = Request.Form["txnid"];
                 }
+                string a = ConfigurationManager.AppSettings["MERCHANT_KEY"];
+                string b = Request.Form["furl"];
                 if (string.IsNullOrEmpty(Request.Form["hash"])) // generating hash value
                 {
                     if (
@@ -121,7 +123,7 @@ namespace HotelSite.Controllers
                         //error
 
                         //frmError.Visible = true;
-                        return Json("blacnk");
+                        Response.Write("");
                     }
 
                     else
@@ -191,7 +193,8 @@ namespace HotelSite.Controllers
                     data.Add("phone", formCollection["phone"].Trim());
                     data.Add("productinfo", formCollection["productinfo"].Trim());
                     data.Add("surl", formCollection["surl"].Trim());
-                    //data.Add("furl", furl.Text.Trim());
+                    data.Add("furl", formCollection["furl"].Trim());
+
                     //data.Add("lastname", lastname.Text.Trim());
                     //data.Add("curl", curl.Text.Trim());
                     //data.Add("address1", address1.Text.Trim());
@@ -206,11 +209,12 @@ namespace HotelSite.Controllers
                     //data.Add("udf4", udf4.Text.Trim());
                     //data.Add("udf5", udf5.Text.Trim());
                     //data.Add("pg", pg.Text.Trim());
-                    //data.Add("service_provider", service_provider.Text.Trim());
+                    data.Add("service_provider", formCollection["service_provider"].Trim());
 
 
                     string strForm = PreparePOSTForm(action1, data);
                     //Page.Controls.Add(new LiteralControl(strForm));
+                    Response.Write(strForm);
 
                 }
 
@@ -228,8 +232,8 @@ namespace HotelSite.Controllers
                 Response.Write("<span style='color:red'>" + ex.Message + "</span>");
 
             }
-            var a = "[{asd:'asdja'}]";
-            return Json(a);
+            //var a = "[{asd:'asdja'}]";
+            //return Json(a);
         }
 
         private string PreparePOSTForm(string url, System.Collections.Hashtable data)      // post form
