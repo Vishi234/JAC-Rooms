@@ -12,7 +12,7 @@ namespace HotelSite.App_Code.CL
     [System.ComponentModel.DataObject]
     public class StaticCache
     {
-        private static DataTable HotelData = null;
+        //private static DataTable HotelData = null;
         public static void LoadStaticCache()
         {
             HotelInformation Hinfo = new HotelInformation();
