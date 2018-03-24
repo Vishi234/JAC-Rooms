@@ -13,10 +13,10 @@
                     <h2 class="pull-left">Property</h2>
                 </div>
                 <ul class="tab-header nav nav-tabs">
-                    <li id="1" class="active"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
-                    <li id="2" class="disabled"><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
-                    <li id="3" class="disabled"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
-                    <li id="4" class="disabled"><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
+                    <li id="1" class="active" tabindex="0"><a data-toggle="tab" href="#basicInfo">Step 1:<br />Basic Info*</a></li>
+                    <li id="2" class="disabled" tabindex="21"><a data-toggle="tab" href="#contact">Step 2:<br />Contact*</a></li>
+                    <li id="3" class="disabled" tabindex="29"><a data-toggle="tab" href="#rooms">Step 3:<br />Rooms*</a></li>
+                    <li id="4" class="disabled" tabindex="44"><a data-toggle="tab" href="#photos">Step 4:<br />Photos*</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -29,20 +29,20 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Name*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="HotelName" AlphaNumeric id="hotelName" placeholder="Enter hotel name">
+                                                <input type="text" tabindex="1" class="Alpha form-control" name="HotelName" id="hotelName" placeholder="Enter hotel name">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Floors</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" NumberOnly maxlength="3" id="HotelFloor" name="HotelFloor" placeholder="Enter no of floors">
+                                                <input type="text" tabindex="3" class="form-control" NumberOnly maxlength="3" id="HotelFloor" name="HotelFloor" placeholder="Enter no of floors">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Checkin Time*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control timepicker" id="HotelCheckInTime" name="HotelCheckInTime" placeholder="Enter checkin time">
+                                                <input type="text" tabindex="5" class="form-control timepicker" id="HotelCheckInTime" name="HotelCheckInTime" placeholder="Enter checkin time">
                                             </div>
                                         </div>
 
@@ -50,7 +50,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Currency</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="Currency" name="Currency">
+                                                <select class="selectpicker" tabindex="7" id="Currency" name="Currency">
                                                     <option value="INR" selected="selected">Indian rupee</option>
                                                 </select>
                                             </div>
@@ -58,7 +58,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Type</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="HotelType" name="HotelType">
+                                                <select class="selectpicker" tabindex="9" id="HotelType" name="HotelType">
                                                     <option selected="selected">Select hotel type</option>
                                                     <option value="Resort">Resort</option>
                                                     <option value="Hotel">Hotel</option>
@@ -86,7 +86,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">VCC Currency</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker">
+                                                <select class="selectpicker" tabindex="11">
                                                     <option value="INR" selected="selected">Indian rupee</option>
                                                 </select>
                                             </div>
@@ -94,7 +94,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Built Year</label>
                                             <div class="col-sm-9">
-                                                <input type="text" name="HotelBuiltYear" NumberOnly class="form-control" id="BuiltYear" placeholder="Enter year">
+                                                <input type="text" tabindex="13" name="HotelBuiltYear" NumberOnly class="form-control" id="BuiltYear" placeholder="Enter year">
                                             </div>
                                         </div>
                                     </div>
@@ -102,13 +102,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Display Name*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="DisplayName" AlphaNumeric name="DisplayName" placeholder="Enter display name">
+                                                <input type="text" tabindex="2" class="Alpha form-control" id="DisplayName" name="DisplayName" placeholder="Enter display name">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Star Rating*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="HotelStar" name="HotelStar">
+                                                <select class="selectpicker" tabindex="4" id="HotelStar" name="HotelStar">
                                                     <option value="1" selected="selected">*</option>
                                                     <option value="2">* *</option>
                                                     <option value="3">* * *</option>
@@ -122,14 +122,14 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">No. of Rooms*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" NumberOnly name="HotelRooms" id="HotelRooms" placeholder="Enter no. of rooms">
+                                                <input type="text" class="form-control" tabindex="6" NumberOnly name="HotelRooms" id="HotelRooms" placeholder="Enter no. of rooms">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">CheckoutTime*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control timepicker" id="CheckOutTime" name="CheckOutTime" placeholder="Enter checkout time">
+                                                <input type="text" class="form-control timepicker" tabindex="8" id="CheckOutTime" name="CheckOutTime" placeholder="Enter checkout time">
                                             </div>
                                         </div>
 
@@ -137,13 +137,13 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Restaurants(No.)</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="hotelName" placeholder="Enter no. of restaurants">
+                                                <input type="text" class="form-control" id="hotelName" tabindex="10" placeholder="Enter no. of restaurants">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Timezone</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker">
+                                                <select class="selectpicker" tabindex="12">
                                                     <option value="Etc/GMT+12">Etc/GMT+12, GMT-12:00</option>
                                                     <option value="Etc/GMT+11">Etc/GMT+11, GMT-11:00</option>
                                                     <option value="Pacific/Apia">Pacific/Apia, GMT-11:00</option>
@@ -587,14 +587,14 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Street Address*</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="5" AlphaNumeric name="StreetAdress" id="StreetAdress" class="form-control"></textarea>
+                                                <textarea cols="5" rows="5" tabindex="14" SpecialCharacter name="StreetAdress" id="StreetAdress" class="form-control"></textarea>
 
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Locality</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" AlphaNumeric name="Locality" id="location" placeholder="Enter locality">
+                                                <input type="text" tabindex="18" class="Alpha form-control"  name="Locality" id="location" placeholder="Enter locality">
                                             </div>
                                         </div>
                                         <div class="map_div" style="display:none">
@@ -621,7 +621,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Country*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" onchange="BindStateDropDown('State', this.value);" data-live-search="true" id="Country" name="Country">
+                                                <select class="selectpicker" tabindex="15" onchange="BindStateDropDown('State', this.value);" data-live-search="true" id="Country" name="Country">
                                                     @*<option value="IN" selected="selected">India</option>*@
                                                 </select>
                                             </div>
@@ -629,23 +629,23 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">State*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" onchange="BindCityDropDown('City', this.value);" id="State" data-live-search="true" name="State"></select>
+                                                <select class="selectpicker" tabindex="16" onchange="BindCityDropDown('City', this.value);" id="State" data-live-search="true" name="State"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">City*</label>
                                             <div class="col-sm-9">
-                                                <select class="selectpicker" id="City" data-live-search="true" name="City"></select>
+                                                <select class="selectpicker" tabindex="17" id="City" data-live-search="true" name="City"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Zip Code*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" NumberOnly maxlength="7" id="ZipCode" name="ZipCode" placeholder="Enter zipcode">
+                                                <input type="text" class="form-control" tabindex="19"  NumberOnly maxlength="7" id="ZipCode" name="ZipCode" placeholder="Enter zipcode">
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" onclick="return InsertHotelBasicInfo()" id="submitHote" class="btn btn-danger" value="Save & Continue">
+                                    <input type="button" onclick="return InsertHotelBasicInfo()" tabindex="20" id="submitHote" class="btn btn-danger" value="Save & Continue">
                                 </form>
                             </div>
 
@@ -664,20 +664,20 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Phone*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" NumberOnly id="HotelPhone" name="HotelPhone" placeholder="Enter phone no.">
+                                                <input type="text" class="form-control" tabindex="22" maxlength="11"  NumberOnly id="HotelPhone" name="HotelPhone" placeholder="Enter phone no.">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Email*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="HotelEmail" name="HotelEmail" placeholder="Enter hotel email">
+                                                <input type="text" class="form-control" tabindex="24"  SpecialCharacter id="HotelEmail" name="HotelEmail" placeholder="Enter hotel email">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Email List</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="8" class="form-control" id="HotelEmailList" name="HotelEmailList" placeholder="Separate email with commas(,)"></textarea>
+                                                <textarea cols="5" rows="8" class="form-control" tabindex="26" SpecialCharacter id="HotelEmailList" name="HotelEmailList" placeholder="Separate email with commas(,)"></textarea>
                                             </div>
                                         </div>
 
@@ -686,23 +686,23 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Hotel Mobile*</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="HotelMobile" name="HotelMobile" placeholder="Enter hotel mobile no.">
+                                                <input type="text" class="form-control" tabindex="23" NumberOnly id="HotelMobile" maxlength="10" name="HotelMobile" placeholder="Enter hotel mobile no.">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Phone List</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="5" class="form-control" id="HotelPhoneList" name="HotelPhoneList" placeholder="Separate phone with commas(,)"></textarea>
+                                                <textarea cols="5" rows="5" class="form-control" tabindex="25" SpecialCharacter id="HotelPhoneList" name="HotelPhoneList" placeholder="Separate phone with commas(,)"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-sm-3" for="email">Website List</label>
                                             <div class="col-sm-9">
-                                                <textarea cols="5" rows="5" class="form-control" id="HotelWebsiteList" name="HotelWebsiteList" placeholder="Separate website with commas(,)"></textarea>
+                                                <textarea cols="5" rows="5" class="form-control" tabindex="27" SpecialCharacter id="HotelWebsiteList" name="HotelWebsiteList" placeholder="Separate website with commas(,)"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" onclick="return InsertHotelContactInfo()" id="submitHotelContact" class="btn btn-danger" value="Save & Continue">
+                                    <input type="button" onclick="return InsertHotelContactInfo()" tabindex="28" id="submitHotelContact" class="btn btn-danger" value="Save & Continue">
                                 </form>
                             </div>
 
@@ -731,19 +731,19 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Description</label>
                                                     <div class="col-sm-9">
-                                                        <textarea cols="5" id="RoomsDesc" name="RoomsDesc" rows="4" class="form-control RoomsDesc" AlphaNumeric></textarea>
+                                                        <textarea cols="5" id="RoomsDesc" tabindex="30" SpecialCharacter name="RoomsDesc" rows="4" class="form-control RoomsDesc" AlphaNumeric></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Total Rooms*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="totalRoom" NumberOnly maxlength="10" placeholder="Enter total rooms">
+                                                        <input type="text" class="form-control" tabindex="32" id="totalRoom" NumberOnly maxlength="5" placeholder="Enter total rooms">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Room View</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker" id="roomView">
+                                                        <select class="selectpicker" tabindex="34" id="roomView">
                                                             <option value="">Select view</option>
                                                             <option value="">None</option>
                                                             <option value="sv">Sea View</option>
@@ -762,7 +762,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Price Per Night*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="pricePerNight" AlphaNumeric placeholder="Eg : 1000">
+                                                        <input type="text" class="form-control" tabindex="36" id="pricePerNight" NumberOnly placeholder="Eg : 1000">
                                                     </div>
                                                 </div>
                                             </div>
@@ -770,7 +770,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Room Type*</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker" id="roomType">
+                                                        <select class="selectpicker" tabindex="38" id="roomType">
                                                             <option value="0" selected="selected">Select Room Type</option>
                                                             <option value="deluxe">Deluxe</option>
                                                             <option value="standard">Standard</option>
@@ -785,13 +785,13 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Display Name*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="displayName" AlphaNumeric placeholder="Enter display name">
+                                                        <input type="text" class="Alpha form-control" tabindex="31" id="displayName" AlphaNumeric placeholder="Enter display name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Bed Type</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker" id="bedType">
+                                                        <select class="selectpicker" id="bedType" tabindex="33">
                                                             <option value="" selected="selected">Select bed type</option>
                                                             <option value="twin">Twin</option>
                                                             <option value="king">King</option>
@@ -804,7 +804,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Extra Bed Type</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker" id="extraBed">
+                                                        <select class="selectpicker" id="extraBed" tabindex="35">
                                                             <option value="0">No Extra Bed</option>
                                                             <option value="1">Matress</option>
                                                             <option value="2">Cot</option>
@@ -820,21 +820,21 @@
                                             </div>
                                             <div class="col-lg-6 col-xs-12 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label col-sm-3" for="email">Adult(Base)</label>
+                                                    <label class="control-label col-sm-3"  for="email">Adult(Base)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control minAdult" NumberOnly id="minAdult" value="2" placeholder="Enter adult base">
+                                                        <input type="text" tabindex="37" maxlength="3" class="form-control minAdult" NumberOnly id="minAdult" value="2" placeholder="Enter adult base">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Adult(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control maxAdult" NumberOnly id="maxAdult" value="3" placeholder="Enter max adult">
+                                                        <input type="text"  tabindex="39" maxlength="3" class="form-control maxAdult" NumberOnly id="maxAdult" value="3" placeholder="Enter max adult">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Infant(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control maxInfant" NumberOnly id="maxInfant" value="1" placeholder="Enter max infant">
+                                                        <input type="text" tabindex="41" maxlength="3" class="form-control maxInfant" NumberOnly id="maxInfant" value="1" placeholder="Enter max infant">
                                                     </div>
                                                 </div>
                                             </div>
@@ -842,23 +842,23 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Child(Base)*</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control minChild" NumberOnly id="minChild" value="0" placeholder="Enter child base">
+                                                        <input type="text" class="form-control minChild" tabindex="38" maxlength="3" NumberOnly id="minChild" value="0" placeholder="Enter child base">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Child(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control maxChild" id="maxChild" value="2" placeholder="Enter maz child">
+                                                        <input type="text" class="form-control maxChild" tabindex="40" maxlength="3" id="maxChild" value="2" placeholder="Enter maz child">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-3" for="email">Guest(Max)</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control maxGuest" NumberOnly id="maxGuest" value="4" placeholder="Enter max guest">
+                                                        <input type="text" class="form-control maxGuest" tabindex="42" maxlength="3" NumberOnly id="maxGuest" value="4" placeholder="Enter max guest">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button id="saveRoomData" onclick="return SaveHotelRoomData(this)" flag="A" class="btn btn-danger" value="Save & Continue"></button>
+                                            <button id="saveRoomData" onclick="return SaveHotelRoomData(this)" tabindex="43" flag="A" class="btn btn-danger" value="Save & Continue"></button>
                                         </form>
                                     </div>
                                 </div>
@@ -895,7 +895,7 @@
                     </div>
                     <div id="photos" class="tab-pane fade">
                         <div class="photo-gallery">
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#uploadHotelImages" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
+                            <a href="javascript:void(0)" tabindex="45" data-toggle="modal" data-target="#uploadHotelImages" class="btn btn-danger"><i class="fa fa-plus-square"></i>Add Images</a>
 
                             <div id="buttons"></div>
                             <div id="gallery">
