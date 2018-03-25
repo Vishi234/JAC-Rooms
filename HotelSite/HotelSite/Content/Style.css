@@ -2382,10 +2382,11 @@ input[type=checkbox] {
         background-image: none !important;
         height: 0px;
     }
-#location::-webkit-input-placeholder
-{
-    display:none;
+
+#location::-webkit-input-placeholder {
+    display: none;
 }
+
 .pac-item {
     padding: 1px 10px !important;
     display: block;
@@ -2449,4 +2450,407 @@ input[type=checkbox] {
 
 .pac-placeholder {
     color: gray;
+}
+
+.slider-holder {
+    width: 800px;
+    height: 400px;
+    background-color: yellow;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.image-holder {
+    width: 2400px;
+    background-color: red;
+    height: 400px;
+    clear: both;
+    position: relative;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+}
+
+.slider-image {
+    width: 800px;
+    height: 400px;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+#slider-image-0:target ~ .image-holder {
+    left: 0px;
+}
+
+#slider-image-1:target ~ .image-holder {
+    left: -800px;
+}
+
+#slider-image-2:target ~ .image-holder {
+    left: -1600px;
+}
+#slider-image-3:target ~ .image-holder {
+    left: -2400px;
+}
+
+#slider-image-4:target ~ .image-holder {
+    left: -3200px;
+}
+
+#slider-image-5:target ~ .image-holder {
+    left: -4000px;
+}
+
+#slider-image-6:target ~ .image-holder {
+    left: -4800px;
+}
+
+#slider-image-7:target ~ .image-holder {
+    left: -5600px;
+}
+
+#slider-image-8:target ~ .image-holder {
+    left: -6400px;
+}
+
+#slider-image-9:target ~ .image-holder {
+    left: -7200px;
+}
+
+#slider-image-10:target ~ .image-holder {
+    left: -8000px;
+}
+
+.button-holder {
+    position: absolute;
+    z-index: 9999999999;
+    margin-top: 10px;
+}
+
+    .button-holder a img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50px;
+        margin-right: 10px;
+    }
+
+.slider-change {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background-color: brown;
+}
+
+.details {
+    display: inline-block;
+    width: 100%;
+    margin-top: 30px;
+}
+
+    .details .hName {
+        display: block;
+        font-size: 26px;
+    }
+
+    .details .hAdd {
+        display: block;
+        font-size: 12px;
+    }
+
+.hDtMenu {
+    display: inline-block;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    /* border-bottom: 1px solid #ccc; */
+    background: #fff;
+    padding: 0px 10px;
+    border-radius: 4px;
+    box-shadow: 0px -2px 5px rgba(0,0,0,0.1);
+}
+
+    .hDtMenu ul {
+        margin-bottom: 0px;
+    }
+
+    .hDtMenu li {
+        display: inline-block;
+        width: 100px;
+        font-size: 12px;
+        text-align: center;
+        padding: 12px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+.hDtMenuActive {
+    border-top: 2px solid #124680;
+    background: #f4f4f4;
+}
+
+.hDtMenu li a {
+    display: block;
+    color: #808080;
+}
+
+.hDtMenu li:hover {
+    border-top: 2px solid #124680;
+    background: #f4f4f4;
+}
+
+.dtBase {
+    width: 100%;
+    padding: 10px 0px;
+    background: #fff;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.hPrice {
+    text-align: right;
+    margin-top: 5px;
+}
+
+    .hPrice .searchBtn {
+        overflow: hidden;
+        width: auto;
+        padding: 10px !important;
+        font-size: 14px !important;
+        box-shadow: none !important;
+    }
+
+.hDt hr {
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.hPri {
+    font-size: 25px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.topLevel {
+    font-weight: 600;
+}
+
+.firstLevel li {
+    display: inline-block;
+}
+
+    .firstLevel li span {
+        width: 100%;
+        display: block;
+    }
+
+    .firstLevel li:nth-child(1) span:nth-child(2) {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .firstLevel li:nth-child(1) span:nth-child(3) {
+        font-size: 12px;
+    }
+
+    .firstLevel li:nth-child(2) {
+        float: right;
+    }
+
+        .firstLevel li:nth-child(2) span:nth-child(1) {
+            font-size: 20px;
+        }
+
+        .firstLevel li:nth-child(2) span:nth-child(2) {
+            text-align: right;
+        }
+
+            .firstLevel li:nth-child(2) span:nth-child(2) i {
+                margin-right: 4px;
+                font-size: 20px;
+            }
+
+            .firstLevel li:nth-child(2) span:nth-child(2) b {
+                font-weight: 500;
+            }
+
+.mlevel {
+    display: block;
+    text-align: right;
+    font-size: 20px;
+}
+
+.pPri {
+    text-align: right;
+    font-size: 12px;
+}
+
+.secondLevel li {
+    display: inline-block;
+}
+
+    .secondLevel li span {
+        display: block;
+        color: #F3495A;
+        font-weight: 500;
+    }
+
+    .secondLevel li a {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .secondLevel li:nth-child(2) {
+        text-align: right;
+        float: right;
+    }
+
+        .secondLevel li:nth-child(2) a {
+            padding: 8px !important;
+            font-size: 12px !important;
+            width: auto;
+            box-shadow: none !important;
+        }
+
+.roomTypeDt {
+    display: inline-block;
+    width: 100%;
+    margin-top: 100px;
+    padding: 25px;
+}
+
+.roomLi li {
+    display: inline-block;
+    width: 100%;
+    border: 2px solid #eee;
+    padding: 20px;
+}
+
+    .roomLi li span {
+        float: left;
+        display: block;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+.roomLeft {
+    background: #F7F7F7;
+    width: 67%;
+}
+
+    .roomLeft .imgBase {
+        height: 140px;
+        width: 174px;
+        display: block;
+        background: red;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+        .roomLeft .imgBase img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .roomLeft li {
+        border: none;
+        padding: 0px;
+    }
+
+    .roomLeft b {
+        margin-left: 10px;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+.ament li {
+    font-size: 10px;
+    padding-left: 10px;
+}
+
+    .ament li i {
+        font-size: 8px;
+        margin-right: 5px;
+    }
+
+    .ament li a {
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+        .ament li a i {
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+.roomDt {
+    display: inline-block;
+    width: 100%;
+}
+
+    .roomDt li {
+        display: inline-flex;
+        border: none;
+        padding: 0px;
+        float: left;
+        margin-bottom: 10px;
+    }
+
+        .roomDt li span {
+            float: none;
+            display: inline-block;
+            width: 100%;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 0px;
+        }
+
+            .roomDt li span i {
+                margin-right: 5px;
+            }
+
+            .roomDt li span:nth-child(1) {
+                font-size: 14px;
+            }
+
+        .roomDt li:nth-child(3) span:nth-child(2) {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .roomDt li:nth-child(4) a {
+            padding: 10px !important;
+            font-size: 14px !important;
+            box-shadow: none !important;
+        }
+
+.fixedHeader {
+   position: fixed;
+    width: 100%;
+    z-index: 999999999999999999999999999;
+    background: #fff;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.1);
+    display:none;
+}
+
+    .fixedHeader .hDtMenu {
+        margin: 0px;
+        box-shadow:none;
+    }
+
+.btnFixed a {
+    width: auto;
+    font-size: 14px !important;
+    padding: 11px !important;
+    box-shadow: none !important;
 }

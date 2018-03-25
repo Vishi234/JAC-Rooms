@@ -46,7 +46,7 @@
                                     <i class="fa fa-calendar icon"></i>
                                 </div>
                                 <div class="form-group rooMHover">
-                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@Request.QueryString["Person"] Pepole @Request.QueryString["Room"] Room" required>
+                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@Request.QueryString["Person"]" required>
                                     <label class="form-control-placeholder" for="room"></label>
                                     <img src="~/Content/images/sort-down.svg" class="img-icon" />
                                 </div>
@@ -206,12 +206,12 @@
                     if (hotelPic != "") {
                         src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
                         src += item.hoteldisplayname + "~" + item.hotelid + "/" + hotelPic;
-                       // src = '"' + src + '"';
+                        // src = '"' + src + '"';
                     }
                     var style = "background:url('" + src + "')repeat center;";
-                    html += '<li><div class="hotelImage" style="'+style+'"></div><div class="hotelPrice"><span class="orginalPrice"><i class="fa fa-rupee"></i>' + hotelPrice + '</span>';
+                    html += '<li><div class="hotelImage" style="' + style + '"></div><div class="hotelPrice"><span class="orginalPrice"><i class="fa fa-rupee"></i>' + hotelPrice + '</span>';
                     html += '</div><div class="hotelContent"><ul><li>' + item.hoteldisplayname + '</li><li><span><i class="fa fa-map-marker"></i>' + item.streetaddress + '</span></li>';
-                    html += '</ul></div><div class="hotelContentBottom"><a href="/Home/HotelDescription">Choose Room</a></div></li>';
+                    html += '</ul></div><div class="hotelContentBottom"><a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.hotelid + '">Choose Room</a></div></li>';
                 })
                 html += "</ul>";
                 $("#hotelList").append(html);

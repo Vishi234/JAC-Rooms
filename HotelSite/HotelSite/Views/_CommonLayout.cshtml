@@ -195,7 +195,20 @@
         });
 
         SetRatingStar();
+        function goToByScroll(id) {
+            $('html,body').animate({ scrollTop: $("#" + id).offset().top }, 'slow');
+        }
+        $(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > 200) {
+                $('.fixedHeader').css('display', 'block');
+            } else {
+                $('.fixedHeader').css('display', 'none');
+            }
+
+        });
         $(document).ready(function () {
+
             GetCacheHotelData("");
             $('.progress').animate({ width: '100%' }, 10000, function () {
                 $('.loading-bar').css('padding', '0px');

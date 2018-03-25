@@ -3,8 +3,338 @@
     ViewBag.Title = "HotelDescription";
     Layout = "~/Views/_CommonLayout.cshtml";
 }
+<div class="container">
+    <div class="listing-body">
+        <div class="row">
+            <div class="search-modification">
+                <div class="triangle-with-shadow"></div>
+                <div class="search-area">
+                    <div class="search-base hotelBase">
+                        <form class="form-inline" action="@Url.Action("Listing","Home")" method="get">
+                            <div class="form-fields">
+                                <div class="form-group">
+                                    <input type="text" id="location" name="Keyword" value="@Request.QueryString["Keyword"]" class="form-control" placeholder="" required>
+                                    <label class="form-control-placeholder" for="seachBox">Select City, Location in India</label>
+                                    <i class="fa fa-map-marker icon mapIcon"></i>
+                                    <div class="search_field">
+                                        <div class="triangle-with-shadow">
+                                        </div>
+                                        <div class="search_box" id="search_box">
 
-<h2>HotelDescription</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="CheckIn" class="checkinDate datePicker form-control" required>
+                                    <label class="form-control-placeholder" for="checkin">Check-in</label>
+                                    <i class="fa fa-calendar icon"></i>
+                                    <div class="cal_base">
+                                        <div class="calendar">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="checkout" name="CheckOut" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
+                                    <label class="form-control-placeholder" for="checkout">Check-out</label>
+                                    <i class="fa fa-calendar icon"></i>
+                                </div>
+                                <div class="form-group rooMHover">
+                                    <input type="text" id="room" readonly class="form-control room_val" name="Person" value="@Request.QueryString["Person"]" required>
+                                    <label class="form-control-placeholder" for="room"></label>
+                                    <img src="~/Content/images/sort-down.svg" class="img-icon" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="searchBtn btn btn-danger" value="Search" />
+                                    @*<a href="javascript:void(0)" class="searchBtn btn btn-danger">Search</a>*@
+                                </div>
+                            </div>
+                        </form>
 
-<input type="button"  value="PayNow" onclick="location.href='@Url.Action("getbookingPage","Home")'" />
+                    </div>
+                    <div class="nav-drop roomDetails">
+                        <div class="triangle-with-shadow">
+                        </div>
+                        <div class="nav-list">
+                            <div class="room_base"></div>
+                            <div class="ButtonGroup">
+                                <a href="javascript:void(0)" onclick="addRoom(1);" class="pull-left btn btn-light">Add Room</a>
+                                <a href="javascript:void(0)" class="pull-right btn btn-danger saveRoom">Done</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                <div class="row">
+                    <div class="fixedHeader">
+                        <div class="container">
+                            <div class="hDtMenu col-lg-9">
+                                <ul>
+                                    <li><a href="javascript:void(0)" onclick="goToByScroll('overview');">Overview</a></li>
+                                    <li><a href="javascript:void(0)" onclick="goToByScroll('roomType');">Room Type</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="btnFixed">
+                                <a href="javascript:void(0)" class="searchBtn btn btn-danger">Choose Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details col-lg-9">
+                        <span class="hName" id="hName">Lata Sumant Cottage</span>
+                        <span class="hAdd" id="hAdd">Nagaon Bandar Road,At.Nagaon Beach,Alibaug</span>
+
+                    </div>
+                    <div class="col-lg-3 col-xs-12 col-sm-3">
+                        <div class="rightPrice hPrice">
+                            <span>
+                                <span class="hPri" id="hPri"><i class="fa fa-rupee"></i>  783</span>
+                                Price for <b class="nightCount" id="nightCount">1</b> night
+                            </span>
+                            <a href="javascript:void(0)" class="searchBtn btn btn-danger">Choose Room</a>
+                        </div>
+
+                    </div>
+                    <div class="hDtMenu col-lg-12">
+                        <ul>
+                            <li class="hDtMenuActive"><a href="javascript:void(0)" onclick="goToByScroll('overview');">Overview</a></li>
+                            <li><a href="javascript:void(0)" onclick="goToByScroll('roomType');">Room Type</a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="dtBase">
+                <div class="row" id="overview">
+                    <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
+                        <div class="imageSlider">
+                            <div class="slider-holder" id="sliderHolder">
+
+                            </div>
+                        </div>
+                        <div class="roomTypeDescription" id="roomType">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xs-12 col-sm-3">
+                        <div class="row">
+                            <div class="hDt">
+                                <span class="topLevel">1 ROOMS RECOMMENDED FOR YOU</span>
+                                <hr />
+                                <ul class="firstLevel">
+                                    <li>
+                                        <span>Room 1</span>
+                                        <span>BREAKFAST INCLUDED</span>
+                                        <span>Deluxe Room</span>
+                                    </li>
+                                    <li>
+                                        <span><i class="fa fa-rupee"></i> 783</span>
+                                        <span><i class="fa fa-user"></i><b>x3</b></span>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <span class="mlevel"><i class="fa fa-rupee"></i> 783</span>
+                                <p class="pPri">Total Price Per Night for 1 Room</p>
+                                <hr />
+                                <ul class="secondLevel">
+                                    <li>
+                                        <span>Non Refundable</span>
+                                        <a href="javascript:void(0)">Booking Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="searchBtn btn btn-danger">Book Now</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        @*<div class="hotelList" id="hotelList">
+                                <ul>
+                                    <li>
+                                        <div class="hotelImage"></div>
+                                        <div class="hotelPrice"><span class="orginalPrice"><i class="fa fa-rupee"></i>fsfsaffasfa</span></div>
+                                        <div class="hotelContent">
+                                            <ul>
+                                                <li>dasdas</li>
+                                                <li><span><i class="fa fa-map-marker"></i>fasfasfa</span></li>
+                                            </ul>
+                                        </div><div class="hotelContentBottom"><a href="/Home/HotelDescription">Choose Room</a></div>
+                                    </li>
+                                </ul>
+                            </div>*@
+                        <div class="roomTypeDt" id="roomType">
+                            <ul class="roomLi">
+                                <li>
+                                    <span>
+                                        Semi Deluxe Room
+                                    </span>
+                                    <div class="col-lg-3 col-xs-12 col-sm-3">
+                                        <div class="row">
+                                            <div class="roomLeft">
+                                                <div class="imgBase">
+                                                    <img src="~/Content/images/6667-gradient.jpg" />
+                                                </div>
+
+                                                <b>Amenities</b>
+                                                <ul class="ament">
+                                                    @*<li>
+                                                            <i class="fa fa-check"></i>Air Conditioning
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-check"></i>Air Conditioning
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-check"></i>Air Conditioning
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-check"></i>Air Conditioning
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-check"></i>Air Conditioning
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-check"></i>Air Conditioning
+                                                        </li>*@
+                                                    <li>
+                                                        <a href="javascript:void(0)">More Amentities<i class="fa fa-angle-down"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-xs-12">
+                                        <div class="row">
+                                            <div class="roomDt">
+                                                <ul>
+                                                    <li>
+                                                        <span><i class="fa fa-users"></i>Max Guest</span>
+                                                        <span>2 Adults , 1 Child</span>
+                                                    </li>
+                                                    <li>
+                                                        <span><i class="fa fa-bed"></i>Bed Type</span>
+                                                        <span>Double Bed</span>
+                                                    </li>
+                                                    <li>
+                                                        <span><i class="fa fa-money"></i>Price for 3 nights</span>
+                                                        <span><i class="fa fa-rupee"></i>999</span>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="searchBtn btn btn-danger">Book Now</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/scripts/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetSeachData();
+    })
+    function GetSeachData() {
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("GetHotelDetailData", "Home")",
+            contentType: "application/json",
+            async: false,
+            data: JSON.stringify({ HotelId: @Request.QueryString["ID"] }),
+            success: function (data) {
+                console.log(data);
+                console.log(JSON.stringify(data));
+                var obj=JSON.parse(data);
+                var oneNightPrice="";
+                var totalPrice="";
+                var html="";
+                document.getElementById("hName").innerText=obj.BasicInfo[0].HotelName;
+                document.getElementById("hAdd").innerText=obj.BasicInfo[0].StreetAddress;
+                oneNightPrice=obj.RoomInfo[0].PricePerNight;
+                var a = moment("@Request.QueryString["CheckIn"]", 'DD-MMM-YYYY');
+                var b = moment("@Request.QueryString["CheckOut"]", 'DD-MMM-YYYY');
+                var days = b.diff(a, 'days');
+                ((parseInt(days) > 0)?totalPrice=parseInt(oneNightPrice*days):days=1);
+                document.getElementById("hPri").innerHTML='<i class="fa fa-rupee"></i>' +totalPrice;
+                document.getElementById("nightCount").innerText=days;
+                var sliderPosition=0;
+                $.each(obj.HotelPics,function(i,item)
+                {
+                    html+='<span id="slider-image-'+parseInt(i+1)+'"></span>';
+                });
+
+                $("#sliderHolder").append(html);
+                html="";
+                html+='<div class="image-holder" id="imageHolder">';
+                var src="";
+                $.each(obj.HotelPics,function(i,item)
+                {   src="";
+                    src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                    src += obj.BasicInfo[0].HotelDisplayName + "~" + item.HotelID + "/" + item.PicName;
+                    html+='<img src="' + src + '" class="slider-image" />';
+                });
+                html+="</div>";
+                $("#sliderHolder").append(html);
+                html="";
+                html+='<div class="button-holder">';
+                $.each(obj.HotelPics,function(i,item)
+                {   src="";
+                    src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                    src += obj.BasicInfo[0].HotelDisplayName + "~" + item.HotelID + "/" + item.PicName;
+                    html+='<a href="#slider-image-'+parseInt(i+1)+'"><img src="'+src+'" /></a>';
+                });
+                html+="</div>";
+                $("#sliderHolder").append(html);
+                //
+                //                <span id="slider-image-2"></span>
+                //                <span id="slider-image-3"></span>
+                //                <div class="image-holder" id="imageHolder">
+                //                    <img src="~/Content/images/slider_1.jpg" class="slider-image" />
+                //                    <img src="~/Content/images/slider_2.jpg" class="slider-image" />
+                //                    <img src="~/Content/images/Slider_3.jpg" class="slider-image" />
+                //                </div>
+                //                <div class="button-holder">
+                //                    <a href="#slider-image-1">
+                //                        <img src="~/Content/images/slider_1.jpg" />
+                //                    </a>
+                //                    <a href="#slider-image-2">
+                //                        <img src="~/Content/images/slider_2.jpg" />
+                //                    </a>
+                //                    <a href="#slider-image-3">
+                //                        <img src="~/Content/images/Slider_3.jpg" />
+                //                    </a>
+                //                </div>
+
+            },
+            error: function (error) {
+
+            }
+
+        });
+
+    }
+</script>
+
+@*<input type="button" value="PayNow" onclick="location.href='@Url.Action("getbookingPage","Home")'" />*@
 
