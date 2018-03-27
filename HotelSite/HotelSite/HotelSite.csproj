@@ -716,6 +716,7 @@
     <Content Include="Views\Home\PaymentPage.cshtml" />
     <Content Include="Views\Home\SuccessfullPayment.cshtml" />
     <Content Include="Views\Home\FailurePayment.cshtml" />
+    <Content Include="Views\Home\ViewBookingDetails.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -725,7 +726,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="bin\roslyn\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

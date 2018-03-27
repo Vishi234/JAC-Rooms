@@ -317,5 +317,9 @@ namespace HotelSite.Controllers
             return hex;
 
         }
+        public ActionResult ViewBookingDetails()
+        {
+            return View();
+        }
     }
 }

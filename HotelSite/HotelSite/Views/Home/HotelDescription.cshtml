@@ -259,6 +259,7 @@
                 $("#sliderHolder").append(html);
                 html="";
                 html='<ul class="roomLi">';
+                var url;
                 $.each(obj.RoomInfo,function(i,item)
                 {
                     $.each(obj.HotelPics,function(j,val)
@@ -277,13 +278,14 @@
                         document.getElementById("days").innerHTML='<i class="fa fa-user"></i> x'+days;
                         document.getElementById("pernightPrice").innerHTML='<i class="fa fa-rupee"></i> '+item.PricePerNight;
                     }
-                    
+                    url="";
+                    url="/Home/ViewBookingDetails?hotelname="+obj.BasicInfo[0].HotelName.replace(" ","%20")+"&checkinttime="+obj.BasicInfo[0].CheckInTime.replace(" ","%20")+"&checkouttime="+obj.BasicInfo[0].CheckOutTime.replace(" ","%20")+"&checkindate=@Request.QueryString["CheckIn"]&checkoutdate=@Request.QueryString["CheckOut"]&guest="+@Request.QueryString["Person"].Split(' ')[0]+"&totalroom="+@Request.QueryString["Person"].Split(' ')[2]+"&roomname="+item.RoomDisplayName.replace(" ","%20")+"&roomprice="+((parseInt(days) > 0)?parseInt(item.PricePerNight*days):item.PricePerNight)+"&totalnights="+days;
                     html+=' <li><span>'+item.RoomDisplayName+'</span><div class="col-lg-3 col-xs-12 col-sm-3"><div class="row"><div class="roomLeft">';
                     html+='<div class="imgBase"><img src="'+src+'" /></div><b>Amenities</b><ul class="ament">';
                     html+='<li><a href="javascript:void(0)">More Amentities<i class="fa fa-angle-down"></i></a></li></ul></div></div></div>';
                     html+='<div class="col-lg-9 col-xs-12"><div class="row"><div class="roomDt"><ul><li><span><i class="fa fa-users"></i>Max Guest</span>';
                     html+='<span>'+item.MaxAdult+' Adults , '+item.MaxChild+' Child</span></li><li><span><i class="fa fa-bed"></i>Bed Type</span><span>'+item.BedType+'</span></li>';
-                    html+='<li><span><i class="fa fa-money"></i>Price for '+days+' nights</span><span><i class="fa fa-rupee"></i>'+((parseInt(days) > 0)?parseInt(item.PricePerNight*days):item.PricePerNight)+'</span></li><li><a href="javascript:void(0)" class="searchBtn btn btn-danger">Book Now</a>';
+                    html+='<li><span><i class="fa fa-money"></i>Price for '+days+' nights</span><span><i class="fa fa-rupee"></i>'+((parseInt(days) > 0)?parseInt(item.PricePerNight*days):item.PricePerNight)+'</span></li><li><a href='+url+' class="searchBtn btn btn-danger">Book Now</a>';
                     html+='</li></ul></div></div></div></li>';
                 });
                 html+="</ul>";
