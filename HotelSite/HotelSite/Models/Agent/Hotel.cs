@@ -394,12 +394,11 @@ namespace HotelSite.Models.Agent
             DataSet ds = new DataSet();
             try
             {
-                string query = "select * from tbl_Agent_Hotel where HotelID=" + HotelID + ";select * from tbl_HotelPics where IsEnable=1;select * from tbl_HotelRooms where HotelID=" + HotelID +";select * from tbl_Add_RoomWisePlan";
+                string query = "select * from tbl_Agent_Hotel where HotelID=" + HotelID + ";select * from tbl_Agent_Hotel_Contact where HotelID=" + HotelID + ";select * from tbl_HotelRooms where HotelID=" + HotelID;
                 ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
                 ds.Tables[0].TableName = "BasicInfo";
-                ds.Tables[1].TableName = "HotelPics";
+                ds.Tables[1].TableName = "ContactInfo";
                 ds.Tables[2].TableName = "RoomInfo";
-                ds.Tables[3].TableName = "RoomPlan";
             }
             catch
             {
@@ -623,6 +622,24 @@ namespace HotelSite.Models.Agent
             catch (Exception ex)
             {
                 ExceptionHandling.WriteException(ex);
+            }
+            return ds;
+        }
+        public DataSet GetIndividualHotelData(string HotelID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                string query = "select * from tbl_Agent_Hotel where HotelID=" + HotelID + ";select * from tbl_HotelPics where IsEnable=1;select * from tbl_HotelRooms where HotelID=" + HotelID + ";select * from tbl_Add_RoomWisePlan";
+                ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
+                ds.Tables[0].TableName = "BasicInfo";
+                ds.Tables[1].TableName = "HotelPics";
+                ds.Tables[2].TableName = "RoomInfo";
+                ds.Tables[3].TableName = "RoomPlan";
+            }
+            catch
+            {
+
             }
             return ds;
         }

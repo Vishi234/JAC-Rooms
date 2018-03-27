@@ -78,7 +78,7 @@
                                 </ul>
                             </div>
                             <div class="btnFixed">
-                                <a href="javascript:void(0)" class="searchBtn btn btn-danger">Choose Room</a>
+                                <a href="javascript:void(0)" onclick="goToByScroll('roomType');" class="searchBtn btn btn-danger">Choose Room</a>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                                 <span class="hPri" id="hPri"><i class="fa fa-rupee"></i>  783</span>
                                 Price for <b class="nightCount" id="nightCount">1</b> night
                             </span>
-                            <a href="javascript:void(0)" class="searchBtn btn btn-danger">Choose Room</a>
+                            <a href="javascript:void(0)" onclick="goToByScroll('roomType');" class="searchBtn btn btn-danger">Choose Room</a>
                         </div>
 
                     </div>
@@ -132,15 +132,15 @@
                                     <li>
                                         <span>Room 1</span>
                                         <span>BREAKFAST INCLUDED</span>
-                                        <span>Deluxe Room</span>
+                                        <span id="roomName">Deluxe Room</span>
                                     </li>
                                     <li>
-                                        <span><i class="fa fa-rupee"></i> 783</span>
-                                        <span><i class="fa fa-user"></i><b>x3</b></span>
+                                        <span id="ruppe"><i class="fa fa-rupee"></i> 783</span>
+                                        <span id="days"><i class="fa fa-user"></i><b>x3</b></span>
                                     </li>
                                 </ul>
                                 <hr />
-                                <span class="mlevel"><i class="fa fa-rupee"></i> 783</span>
+                                <span class="mlevel" id="pernightPrice"><i class="fa fa-rupee"></i> 783</span>
                                 <p class="pPri">Total Price Per Night for 1 Room</p>
                                 <hr />
                                 <ul class="secondLevel">
@@ -173,71 +173,8 @@
                                     </li>
                                 </ul>
                             </div>*@
-                        <div class="roomTypeDt" id="roomType">
-                            <ul class="roomLi">
-                                <li>
-                                    <span>
-                                        Semi Deluxe Room
-                                    </span>
-                                    <div class="col-lg-3 col-xs-12 col-sm-3">
-                                        <div class="row">
-                                            <div class="roomLeft">
-                                                <div class="imgBase">
-                                                    <img src="~/Content/images/6667-gradient.jpg" />
-                                                </div>
+                        <div class="roomTypeDt" id="roomTypeDt">
 
-                                                <b>Amenities</b>
-                                                <ul class="ament">
-                                                    @*<li>
-                                                            <i class="fa fa-check"></i>Air Conditioning
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check"></i>Air Conditioning
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check"></i>Air Conditioning
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check"></i>Air Conditioning
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check"></i>Air Conditioning
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check"></i>Air Conditioning
-                                                        </li>*@
-                                                    <li>
-                                                        <a href="javascript:void(0)">More Amentities<i class="fa fa-angle-down"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-9 col-xs-12">
-                                        <div class="row">
-                                            <div class="roomDt">
-                                                <ul>
-                                                    <li>
-                                                        <span><i class="fa fa-users"></i>Max Guest</span>
-                                                        <span>2 Adults , 1 Child</span>
-                                                    </li>
-                                                    <li>
-                                                        <span><i class="fa fa-bed"></i>Bed Type</span>
-                                                        <span>Double Bed</span>
-                                                    </li>
-                                                    <li>
-                                                        <span><i class="fa fa-money"></i>Price for 3 nights</span>
-                                                        <span><i class="fa fa-rupee"></i>999</span>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)" class="searchBtn btn btn-danger">Book Now</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -262,10 +199,8 @@
             contentType: "application/json",
             async: false,
             data: JSON.stringify({ HotelId: @Request.QueryString["ID"] }),
-            success: function (data) {
-                console.log(data);
-                console.log(JSON.stringify(data));
-                var obj=JSON.parse(data);
+            success: function (resultJson) {
+                var obj=JSON.parse(resultJson);
                 var oneNightPrice="";
                 var totalPrice="";
                 var html="";
@@ -281,51 +216,78 @@
                 var sliderPosition=0;
                 $.each(obj.HotelPics,function(i,item)
                 {
-                    html+='<span id="slider-image-'+parseInt(i+1)+'"></span>';
+                    if(item.HotelID=="@Request.QueryString["ID"]")
+                    {
+                        html+='<span id="slider-image-'+parseInt(i+1)+'"></span>';
+                        var style = document.createElement('style');
+                        style.type = 'text/css';
+                        style.innerHTML = '#slider-image-'+parseInt(i+1)+':target ~ .image-holder { left: '+sliderPosition+'px; }';
+                        document.getElementsByTagName('head')[0].appendChild(style);
+                        sliderPosition=parseInt(sliderPosition-800);
+                    }
                 });
-
                 $("#sliderHolder").append(html);
                 html="";
                 html+='<div class="image-holder" id="imageHolder">';
                 var src="";
                 $.each(obj.HotelPics,function(i,item)
-                {   src="";
-                    src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
-                    src += obj.BasicInfo[0].HotelDisplayName + "~" + item.HotelID + "/" + item.PicName;
-                    html+='<img src="' + src + '" class="slider-image" />';
+                {
+                    if(item.HotelID=="@Request.QueryString["ID"]")
+                    {
+                        src="";
+                        src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                        src += obj.BasicInfo[0].HotelDisplayName + "~" + item.HotelID + "/" + item.PicName;
+                        html+='<img src="' + src + '" class="slider-image" />';
+                    }
+
                 });
                 html+="</div>";
                 $("#sliderHolder").append(html);
                 html="";
                 html+='<div class="button-holder">';
                 $.each(obj.HotelPics,function(i,item)
-                {   src="";
-                    src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
-                    src += obj.BasicInfo[0].HotelDisplayName + "~" + item.HotelID + "/" + item.PicName;
-                    html+='<a href="#slider-image-'+parseInt(i+1)+'"><img src="'+src+'" /></a>';
+                {
+                    if(item.HotelID=="@Request.QueryString["ID"]")
+                    {
+                        src="";
+                        src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                        src += obj.BasicInfo[0].HotelDisplayName + "~" + item.HotelID + "/" + item.PicName;
+                        html+='<a href="#slider-image-'+parseInt(i+1)+'"><img src="'+src+'" /></a>';
+                    }
                 });
                 html+="</div>";
                 $("#sliderHolder").append(html);
-                //
-                //                <span id="slider-image-2"></span>
-                //                <span id="slider-image-3"></span>
-                //                <div class="image-holder" id="imageHolder">
-                //                    <img src="~/Content/images/slider_1.jpg" class="slider-image" />
-                //                    <img src="~/Content/images/slider_2.jpg" class="slider-image" />
-                //                    <img src="~/Content/images/Slider_3.jpg" class="slider-image" />
-                //                </div>
-                //                <div class="button-holder">
-                //                    <a href="#slider-image-1">
-                //                        <img src="~/Content/images/slider_1.jpg" />
-                //                    </a>
-                //                    <a href="#slider-image-2">
-                //                        <img src="~/Content/images/slider_2.jpg" />
-                //                    </a>
-                //                    <a href="#slider-image-3">
-                //                        <img src="~/Content/images/Slider_3.jpg" />
-                //                    </a>
-                //                </div>
-
+                html="";
+                html='<ul class="roomLi">';
+                $.each(obj.RoomInfo,function(i,item)
+                {
+                    $.each(obj.HotelPics,function(j,val)
+                    {
+                        if(val.HotelID=="@Request.QueryString["ID"]" && val.RoomID==item.ID)
+                        {
+                            src="";
+                            src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                            src += obj.BasicInfo[0].HotelDisplayName + "~" + val.HotelID + "/" + val.PicName;
+                        }
+                    });
+                    if(i=="0")
+                    {
+                        document.getElementById("roomName").innerHTML=item.RoomDisplayName;
+                        document.getElementById("ruppe").innerHTML='<i class="fa fa-rupee"></i> '+totalPrice;
+                        document.getElementById("days").innerHTML='<i class="fa fa-user"></i> x'+days;
+                        document.getElementById("pernightPrice").innerHTML='<i class="fa fa-rupee"></i> '+item.PricePerNight;
+                    }
+                    
+                    html+=' <li><span>'+item.RoomDisplayName+'</span><div class="col-lg-3 col-xs-12 col-sm-3"><div class="row"><div class="roomLeft">';
+                    html+='<div class="imgBase"><img src="'+src+'" /></div><b>Amenities</b><ul class="ament">';
+                    html+='<li><a href="javascript:void(0)">More Amentities<i class="fa fa-angle-down"></i></a></li></ul></div></div></div>';
+                    html+='<div class="col-lg-9 col-xs-12"><div class="row"><div class="roomDt"><ul><li><span><i class="fa fa-users"></i>Max Guest</span>';
+                    html+='<span>'+item.MaxAdult+' Adults , '+item.MaxChild+' Child</span></li><li><span><i class="fa fa-bed"></i>Bed Type</span><span>'+item.BedType+'</span></li>';
+                    html+='<li><span><i class="fa fa-money"></i>Price for '+days+' nights</span><span><i class="fa fa-rupee"></i>'+((parseInt(days) > 0)?parseInt(item.PricePerNight*days):item.PricePerNight)+'</span></li><li><a href="javascript:void(0)" class="searchBtn btn btn-danger">Book Now</a>';
+                    html+='</li></ul></div></div></div></li>';
+                });
+                html+="</ul>";
+                $("#roomTypeDt").append(html);
             },
             error: function (error) {
 
