@@ -89,6 +89,27 @@ namespace HotelSite.Controllers
         {
             return View("PaymentPage");
         }
+
+        public ViewResult GetPaymentResult(FormCollection formCollection)
+        {
+            string a = formCollection["status"];
+            string b = formCollection["txnid"];
+            string c = formCollection["payuMoneyId"];
+            string d = formCollection["mode"];
+            string e = formCollection["error"];
+            string f = formCollection["error_Message"];
+            if (a == "failure")
+            {
+                ViewBag.ErrorMessage = f;
+                return View("PaymentPage");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = f;
+                return View("SuccessfullPayment");
+            }
+
+        }
         public void PaymentGateway(FormCollection formCollection)
         {
 
@@ -110,8 +131,6 @@ namespace HotelSite.Controllers
                 {
                     txnid1 = Request.Form["txnid"];
                 }
-                string a = ConfigurationManager.AppSettings["MERCHANT_KEY"];
-                string b = Request.Form["furl"];
                 if (string.IsNullOrEmpty(Request.Form["hash"])) // generating hash value
                 {
                     if (
@@ -216,10 +235,18 @@ namespace HotelSite.Controllers
                     //data.Add("udf4", udf4.Text.Trim());
                     //data.Add("udf5", udf5.Text.Trim());
                     //data.Add("pg", pg.Text.Trim());
-                    data.Add("service_provider", formCollection["service_provider"].Trim());
+                    data.Add("service_provider", "payu_paisa");//formCollection["service_provider"].Trim()
 
 
                     string strForm = PreparePOSTForm(action1, data);
+
+                    #region SavePaymentintoDB
+
+                    Payment.SavePaymentOut(AmountForm, formCollection["firstname"].Trim(), formCollection["email"], formCollection["phone"], formCollection["productinfo"]);
+
+                    #endregion
+
+
                     //Page.Controls.Add(new LiteralControl(strForm));
                     Response.Write(strForm);
 

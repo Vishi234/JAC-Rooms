@@ -115,4 +115,5 @@ namespace HotelSite.Models.Common
     }
 
     #endregion
+
 }
