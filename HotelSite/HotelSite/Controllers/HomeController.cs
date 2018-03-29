@@ -71,7 +71,7 @@ namespace HotelSite.Controllers
         {
             HotelInformation Hinfo = new HotelInformation();
             Common objCommon = new Common();
-            return Json(objCommon.DatasetToJson(Hinfo.GetHotelData(HotelId)), JsonRequestBehavior.AllowGet);
+            return Json(objCommon.DatasetToJson(Hinfo.GetIndividualHotelData(HotelId)), JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult GetHotelName(string SearchKey)
@@ -324,6 +324,10 @@ namespace HotelSite.Controllers
             }
             return hex;
 
+        }
+        public ActionResult ViewBookingDetails()
+        {
+            return View();
         }
     }
 }
