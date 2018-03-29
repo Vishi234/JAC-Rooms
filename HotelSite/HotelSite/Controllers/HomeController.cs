@@ -98,6 +98,8 @@ namespace HotelSite.Controllers
             string d = formCollection["mode"];
             string e = formCollection["error"];
             string f = formCollection["error_Message"];
+            string s = TempData["resID"].ToString();
+            Payment.UpdatePaymentStatus(a,f,a,c,d, TempData["resID"].ToString());
             if (a == "failure")
             {
                 ViewBag.ErrorMessage = f;
@@ -118,6 +120,12 @@ namespace HotelSite.Controllers
 
                 string[] hashVarsSeq;
                 string hash_string = string.Empty;
+                string service_provider = "payu_paisa";
+                var scheme = Request.Url.Scheme; // will get http, https, etc.
+                var host = Request.Url.Host; // will get www.mywebsite.com
+                var port = Request.Url.Port; // will get the port
+                var path = Request.Url.AbsolutePath; // should g
+                string URL = host+":"+ port+ "/Home/GetPaymentResult";
 
 
                 if (string.IsNullOrEmpty(Request.Form["txnid"])) // generating txnid
@@ -141,9 +149,9 @@ namespace HotelSite.Controllers
                         string.IsNullOrEmpty(Request.Form["email"]) ||
                         string.IsNullOrEmpty(Request.Form["phone"]) ||
                         string.IsNullOrEmpty(Request.Form["productinfo"]) ||
-                        string.IsNullOrEmpty(Request.Form["surl"]) ||
-                        string.IsNullOrEmpty(Request.Form["furl"]) ||
-                        string.IsNullOrEmpty(Request.Form["service_provider"])
+                        string.IsNullOrEmpty(URL) ||
+                        string.IsNullOrEmpty(URL) ||
+                        string.IsNullOrEmpty(service_provider)
                         )
                     {
                         //error
@@ -218,8 +226,8 @@ namespace HotelSite.Controllers
                     data.Add("email", formCollection["email"].Trim());
                     data.Add("phone", formCollection["phone"].Trim());
                     data.Add("productinfo", formCollection["productinfo"].Trim());
-                    data.Add("surl", formCollection["surl"].Trim());
-                    data.Add("furl", formCollection["furl"].Trim());
+                    data.Add("surl", URL.Trim());
+                    data.Add("furl", URL.Trim());
 
                     //data.Add("lastname", lastname.Text.Trim());
                     //data.Add("curl", curl.Text.Trim());
@@ -242,7 +250,7 @@ namespace HotelSite.Controllers
 
                     #region SavePaymentintoDB
 
-                    Payment.SavePaymentOut(AmountForm, formCollection["firstname"].Trim(), formCollection["email"], formCollection["phone"], formCollection["productinfo"]);
+                    TempData["resID"] =Payment.SavePaymentOut(AmountForm, formCollection["firstname"].Trim(), formCollection["email"], formCollection["phone"], formCollection["productinfo"]);
 
                     #endregion
 
