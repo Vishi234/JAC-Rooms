@@ -10,6 +10,7 @@
 </head>
 
 <body class="main-bdy">
+
     <div class="common-header">
         <div class="container">
             <div class="row">
@@ -28,23 +29,315 @@
             <div class="row">
                 <div class="col-lg-8 col-xs-12 col-sm-4">
                     <div class="dtlBody-left">
-                        <h1>Continue as Guest</h1>
-                        <div class="guestLoginArea">
-                            <div class="col-lg-8 col-xs-12 ">
-
+                        <h1>Enter Traveller Details</h1>
+                        <div class="guestLoginArea" style="padding-top:0px;">
+                            <div class="col-lg-12 col-xs-12">
+                                <div class="row">
+                                    <div class="existUser">
+                                        <h2>Login for Secret Deals, Price Alerts & More!</h2>
+                                        <ul>
+                                            <li>-Get access to Secret Deals.</li>
+                                            <li>-Manage all bookings in one place.</li>
+                                            <li>-Use MMT Wallet money & pay less.</li>
+                                            <li>-Book faster (your details are saved and pre-entered).</li>
+                                        </ul>
+                                        <span><a href="javascript:void(0)" id="loginPanelClick">LOGIN</a> | <a href="javascript:void(0)" id="singUpPanelClick">SINGUP</a></span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-4 col-xs-12">
+                        </div>
+                        <div class="existUserPanel ">
+                            <div class="loginPanelStart">
+                                <h3>Sign in Now <i class="fa fa-times-circle closeBtn"></i></h3>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Email ID</label>
+                                        <input type="email" class="form-control emailId" id="emailId" placeholder="Email">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Password</label>
+                                        <input type="password" class="form-control" id="paasword" placeholder="Password">
+                                        <a href="javascript:void(0)" class="anchorStyle">Forgot Password?</a>
+                                    </div>
+                                    <p id="loginError" class="errorStyle"></p>
+                                    <a href="javascript:void(0)" id="login" class="btn btn-danger newBtnStyle">Login</a>
+                                </div>
+                            </div>
+                            <div class="registerPanel">
+                                <h3>Sign Up Now <i class="fa fa-times-circle closeBtn"></i></h3>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Email ID</label>
+                                        <input type="email" class="form-control signUpEmail" id="signUpEmail" placeholder="Email">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">Mobile Number</label>
+                                        <input type="text" class="form-control" id="signUpNo" placeholder="Mobile No">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">Password</label>
+                                        <input type="text" class="form-control" id="signUpPass" placeholder="Password">
+                                    </div>
+                                    <p id="registerError" class="errorStyle"></p>
+                                    <a href="javascript:void(0)" id="register" class="btn btn-danger newBtnStyle">Sign Up</a>
+                                </div>
+                            </div>
+                            <div class="loadingBase">
+                                <img src="~/Content/images/loadingIcon.gif" />
+                            </div>
+                        </div>
+                        <div class="guestLoginArea">
+                            <div class="col-lg-11 col-xs-12 ">
+                                <div class="row">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">First Name</label>
+                                            <input type="email" class="form-control" id="firstName" placeholder="First Name">
+                                            <p class="error"><i class="fa fa-info-circle"></i></p>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Email ID</label>
+                                            <input type="email" class="form-control" id="email" placeholder="Email">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Mobile Number</label>
+                                            <input type="text" class="form-control" id="mobileNo" placeholder="Mobile Number">
+                                        </div>
+                                    </div>
+                                    <p class="note">Your booking details will be sent to this email address and mobile number.</p>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="inputEmail4">Special Request</label>
+                                            <textarea cols="10" style="height:auto!important" class="form-control" id="request" placeholder="e.g. I want early check-in or specify the time you will check-in." rows="3"></textarea>
 
+                                        </div>
+                                    </div>
+                                    <p class="note" style="font-size:12px;border-bottom:none;padding:0px;">Special request can't be guaranteed. We will pass these requests to the hotels.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                    <div class="dtlBody-right">
+                        <div class="dtlBody-header">
+                            <div class="imageContainer">
+                                <img src="~/Content/images/slider_1.jpg" />
+                            </div>
+                        </div>
+                        <div class="dtlBody-bdy">
+                            <h5>@Request.QueryString["hotelname"].Replace("_"," ")</h5>
+                            <p>Basant Lok , Vasant Vihar, New Delhi-110...</p>
+                            <hr />
+                            <ul class="dtlDes">
+                                <li>
+                                    <span class="sttl">Guests</span>
+                                    <span class="des">@Request.QueryString["guest"] Guest</span>
+                                </li>
+                                <li>
+                                    <span class="sttl">Rooms</span>
+                                    <span class="des">@Request.QueryString["totalroom"] Room</span>
+                                </li>
+                            </ul>
+                            <hr />
+                            <ul class="dtlDes">
+                                <li>
+                                    <span class="sttl">Check In:@Request.QueryString["checkinttime"].Replace("_"," ") </span>
+                                    <span class="des">@Request.QueryString["checkindate"]</span>
+                                </li>
+                                <li>
+                                    <span class="sttl">Check Out:@Request.QueryString["checkouttime"].Replace("_", " ")</span>
+                                    <span class="des">@Request.QueryString["checkoutdate"]</span>
+                                </li>
+                            </ul>
+                            <hr />
+                            <ul class="roomdtl">
+                                <li>
+                                    <span class="des">@Request.QueryString["roomname"].Replace("_"," ")</span>
+                                    <span class="sttl">(@Request.QueryString["totalroom"] Room & @Request.QueryString["guest"] Guests)</span>
+                                </li>
+                                <li>
+                                    <span>Room Only</span>
+                                </li>
+                            </ul>
+                            <hr />
+                            <div class="dtl">
+                                <span>Price</span><p>(@Request.QueryString["totalroom"] Rooms x @Request.QueryString["totalnights"] Nights)</p> <span id="rmPrice"><i class="fa fa-rupee"></i>@Request.QueryString["roomprice"]</span>
+                            </div>
+                            <hr />
+                            <div class="dtl" style="padding-top: 5px;padding-bottom: 5px;">
+                                <span>Service Charges</span><span style="margin-top: 0px;"><i class="fa fa-rupee"></i>0</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="dtlBody-footer">
+                        <div class="dtl">
+                            <span>Total</span> <span><i class="fa fa-rupee"></i>@Request.QueryString["roomprice"]</span>
+                        </div>
+                        <hr />
+                        <a href="javascript:void(0)" id="continuePayment" class="btn btn-danger newBtnStyle">Continue</a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 
-
-
     @Scripts.Render("~/bundle/jquery")
+    <script type="text/javascript">
+        function numberWithCommas(number) {
+            var parts = number.toString().split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return parts.join(".");
+        }
+        $(document).ready(function () {
+            $("#loginPanelClick").click(function () {
+                $(".loadingBase").css('height', '22%');
+                $(".registerPanel").css('display', 'none');
+                $(".loginPanelStart").css('display', 'block');
+                $(".existUserPanel").css('max-height', '100%');
+                $(".existUserPanel").css('transition', 'all 0.4s ease-in-out');
+            });
+            $(".closeBtn").click(function () {
+                $(".existUserPanel").css('max-height', '0');
+                $(".loginPanelStart").css('display', 'none');
+                $(".registerPanel").css('display', 'none');
+            });
+            $("#singUpPanelClick").click(function () {
+                $(".loadingBase").css('height', '20.3%');
+                $(".loginPanelStart").css('display', 'none');
+                $(".registerPanel").css('display', 'block');
+                $(".existUserPanel").css('max-height', '100%');
+                $(".existUserPanel").css('transition', 'all 0.4s ease-in-out');
+            });
+        });
+
+        $("#continuePayment").click(function()
+        {
+            window.location.href = "/Home/getbookingPage?amount=" + document.getElementById("rmPrice").innerText + "&firstname=" + $("#firstName").val() + "&lastname=" + $("#lastName").val() + "&email=" + $("#email").val() + "&mobile=" + $("#mobileNo").val() + "&productinfo=hotelroom";
+        })
+        $("#login").click(function () {
+            if ($('#emailId').val().trim() == "" || $('#emailId').val().trim() == null) {
+                document.getElementById("loginError").innerHTML = "Please Enter a Valid Email.";
+                $('#emailId').focus();
+                return false;
+            }
+            if (!CheckEmailValidation($('#emailId').val())) {
+                document.getElementById("loginError").innerHTML = "It seems you have entered a invalid Email.";
+                $('#emailId').focus();
+                return false;
+            }
+            if ($('#paasword').val().trim() == "" || $('#paasword').val().trim() == null) {
+                document.getElementById("loginError").innerHTML = "Password can't be blank.";
+                $('#paasword').focus();
+                return false;
+            }
+            if (checkMail('emailId', false)) {
+                document.getElementById("loginError").innerHTML = "Email Id not registered with jacrooms.";
+                $('#emailId').focus();
+                return false;
+            }
+            document.getElementById("loginError").hidden = true;
+            $(".loadingBase").css('display', 'block');
+            setTimeout(function () {
+
+                var SignIn =
+                {
+                    EmailID: $('#emailId').val(),
+                    Password: $('#paasword').val(),
+                    IsAgent: false
+                }
+                $.ajax
+                    ({
+                        type: 'POST',
+                        url: "@Url.Action("Login","User")",
+                        contentType: "application/json",
+                        data: JSON.stringify({ Signin: SignIn }),
+                        async: false,
+                        success: function (data) {
+                            data = JSON.parse(data);
+                            $("#firstName").val(data["Table"][0].FirstName);
+                            $("#lastName").val(data["Table"][0].LastName);
+                            $("#email").val(data["Table"][0].Email);
+                            $("#mobileNo").val(data["Table"][0].Mobile);
+                            $(".existUserPanel").css('max-height', '0');
+                            $(".loginPanelStart").css('display', 'none');
+                            $(".registerPanel").css('display', 'none');
+                            $(".loadingBase").css('display', 'none');
+                        }
+                    })
+            }, 2000)
+        })
+        $("#register").click(function () {
+            if ($('#signUpEmail').val().trim() == "" || $('#signUpEmail').val().trim() == null) {
+                document.getElementById("registerError").innerHTML = "Please Enter a Valid Email.";
+                $('#signUpEmail').focus();
+                return false;
+            }
+            if (!CheckEmailValidation($('#signUpEmail').val())) {
+                document.getElementById("registerError").innerHTML = "It seems you have entered a invalid Email.";
+                $('#signUpEmail').focus();
+                return false;
+            }
+            if ($('#signUpPass').val().trim() == "" || $('#signUpPass').val().trim() == null) {
+                document.getElementById("registerError").innerHTML = "Password can't be blank.";
+                $('#signUpPass').focus();
+                return false;
+            }
+            if ($('#signUpNo').val().trim() == "" || $('#signUpNo').val().trim() == null) {
+                document.getElementById("registerError").innerHTML = "Mobile no. can't be blank.";
+                $('#signUpNo').focus();
+                return false;
+            }
+            if (!checkMail('signUpEmail', false)) {
+                document.getElementById("registerError").innerHTML = "Email ID already registered with jacrooms.";
+                $('#signUpEmail').focus();
+                return false;
+            }
+            document.getElementById("registerError").hidden = true;
+            $(".loadingBase").css('display', 'block');
+            setTimeout(function () {
+
+                var Login =
+                {
+                    Email: $('#signUpEmail').val(),
+                    Mobile: $('#signUpNo').val(),
+                    Password: $('#signUpPass').val(),
+                    FirstName: "",
+                    LastName: "",
+                }
+                $.ajax
+                    ({
+                        type: 'POST',
+                        url: "@Url.Action("RegisterNew", "User")",
+                        contentType: "application/json",
+                        data: JSON.stringify({ Login: Login }),
+                        async: false,
+                        success: function (data) {
+                            console.log(data == 2)
+                            {
+                                $("#email").val($('#signUpEmail').val());
+                                $("#mobileNo").val($('#signUpNo').val());
+                                $('#signUpEmail').val(' ');
+                                $('#signUpNo').val(' ');
+                                $('#signUpPass').val(' ');
+                                $(".existUserPanel").css('max-height', '0');
+                                $(".loginPanelStart").css('display', 'none');
+                                $(".registerPanel").css('display', 'none');
+                            }
+                            $(".loadingBase").css('display', 'none');
+                        }
+                    })
+            }, 2000)
+        })
+    </script>
 </body>
 </html>

@@ -73,7 +73,8 @@ namespace HotelSite.Models.Login
                         if (signin.IsAgent == false)
                         {
                             HttpContext.Current.Session["UserID"] = ds.Tables[0].Rows[0]["UserID"].ToString();
-                            HttpContext.Current.Session["Name"] = ds.Tables[0].Rows[0]["FirstName"].ToString() + ds.Tables[0].Rows[0]["LastName"].ToString();
+                            HttpContext.Current.Session["FirstName"] = ds.Tables[0].Rows[0]["FirstName"].ToString();
+                            HttpContext.Current.Session["LastName"] = ds.Tables[0].Rows[0]["LastName"].ToString();
                             HttpContext.Current.Session["Email"] = ds.Tables[0].Rows[0]["Email"].ToString();
                             HttpContext.Current.Session["Mobile"] = ds.Tables[0].Rows[0]["Mobile"].ToString();
                         }
@@ -100,7 +101,7 @@ namespace HotelSite.Models.Login
                 return false;
             }
         }
-        public bool checkEmailUser(string email,bool IsAgent)
+        public bool checkEmailUser(string email, bool IsAgent)
         {
             bool result = false;
             try
@@ -115,6 +116,15 @@ namespace HotelSite.Models.Login
                 ExceptionHandling.WriteException(ex);
             }
             return result;
+        }
+        public DataSet ValidateUser(Signin signin)
+        {
+            List<SqlParameter> lstsqlparam = new List<SqlParameter>();
+            lstsqlparam.Add(new SqlParameter("@EmailID", signin.EmailID));
+            lstsqlparam.Add(new SqlParameter("@Password", signin.Password));
+            lstsqlparam.Add(new SqlParameter("@IsAgent", signin.IsAgent));
+            DataSet ds = SqlHelper.ExecuteDataset(sqlconn, "sp_Login", lstsqlparam.ToArray());
+            return ds;
         }
     }
     public class Agent
@@ -159,5 +169,6 @@ namespace HotelSite.Models.Login
             }
             return result;
         }
+
     }
 }

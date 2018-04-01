@@ -1,6 +1,6 @@
 ===============================start==============================================
 Inner Exception's
-MessageProcedure or function 'sp_Insert_Payment_Info' expects parameter '@Product', which was not supplied.
+MessageProcedure or function 'sp_Insert_Payment_Info' expects parameter '@ID', which was not supplied.
 StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
@@ -10,10 +10,10 @@ StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException excepti
    at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
    at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
    at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
-   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\Latest\HotelSite\HotelSite\Models\SQLHelper.cs:line 335
-   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\Latest\HotelSite\HotelSite\Models\SQLHelper.cs:line 252
-   at HotelSite.Models.Common.Payment.SavePaymentOut(String amount, String firstname, String email, String phone, String productinfo) in C:\Users\Lenovo\Documents\Visual Studio 2017\Projects\Latest\HotelSite\HotelSite\Models\Common\Payment.cs:line 24
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\HP\Source\Repos\Team\HotelSite\HotelSite\Models\SQLHelper.cs:line 335
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) in C:\Users\HP\Source\Repos\Team\HotelSite\HotelSite\Models\SQLHelper.cs:line 252
+   at HotelSite.Models.Common.Payment.SavePaymentOut(String amount, String firstname, String email, String phone, String productinfo) in C:\Users\HP\Source\Repos\Team\HotelSite\HotelSite\Models\Common\Payment.cs:line 24
 TargetSiteVoid OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
-DateTime : 	25-03-18 18:11:07
+DateTime : 	4/1/2018 11:02:49 PM
 ================================end============================================= 
 

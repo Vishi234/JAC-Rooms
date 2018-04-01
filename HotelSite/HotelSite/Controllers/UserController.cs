@@ -67,11 +67,24 @@ namespace HotelSite.Controllers
             return Json("asd", JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetEmail(string email,bool isAgent)
-            {
+        public JsonResult GetEmail(string email, bool isAgent)
+        {
             Register register = new Register();
             bool EmailValid = register.checkEmailUser(email, isAgent);
             return Json(new { res = EmailValid }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult Login(Signin signin)
+        {
+            Register register = new Register();
+            return Json(new Common().DatasetToJson(register.ValidateUser(signin)), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult RegisterNew(Login Login)
+        {
+            Register register = new Register();
+            int rslt = register.CreateUser(Login);
+            return Json(rslt, JsonRequestBehavior.AllowGet);
         }
     }
 }

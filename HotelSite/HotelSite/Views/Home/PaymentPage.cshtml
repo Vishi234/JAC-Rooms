@@ -28,39 +28,39 @@
         <tr>
             <td>Amount: </td>
             <td>
-                <input type="text" ID="amount" name="amount" />
+                <input type="text" ID="amount" value="@Request.QueryString["amount"]" name="amount" />
             </td>
             <td>First Name: </td>
             <td>
-                <input type="text" ID="firstname" name="firstname"/>
+                <input type="text" ID="firstname" value="@Request.QueryString["firstname"]" name="firstname" />
             </td>
         </tr>
         <tr>
             <td>Email: </td>
             <td>
-                <input type="text" ID="email" name="email" />
+                <input type="text" ID="email" value="@Request.QueryString["email"]" name="email" />
             </td>
             <td>Phone: </td>
             <td>
-                <input type="text" ID="phone" name="phone" />
+                <input type="text" ID="phone" value="@Request.QueryString["mobile"]" name="phone" />
             </td>
         </tr>
         <tr>
             <td>Product Info: </td>
             <td colspan="3">
-                <input type="text" ID="productinfo" name="productinfo" />
+                <input type="text" ID="productinfo" value="@Request.QueryString["productinfo"]" name="productinfo" />
             </td>
         </tr>
         <tr>
             <td>Success URI: </td>
             <td colspan="3">
-                <input type="text" ID="surl" name="surl" />
+                <input type="text" ID="surl" value="@System.Configuration.ConfigurationManager.AppSettings["success_uri"]" name="surl" />
             </td>
         </tr>
         <tr>
             <td>Failure URI: </td>
             <td colspan="3">
-                <input type="text" ID="furl" name="furl" />
+                <input type="text" ID="furl" value="@System.Configuration.ConfigurationManager.AppSettings["fail_uri"]" name="furl" />
             </td>
         </tr>
         <tr>
@@ -80,7 +80,7 @@
         <tr>
             <td>Address1: </td>
             <td>
-                <input type="text" ID="address1"  />
+                <input type="text" ID="address1" />
             </td>
             <td>Address2: </td>
             <td>
@@ -140,7 +140,7 @@
         <tr>
             <td>Service Provider: </td>
             <td>
-                <input type="text" ID="service_provider" Text="payu_paisa" name="service_provider" />
+                <input type="text" ID="service_provider" value="payu_paisa" name="service_provider" />
             </td>
         </tr>
         <tr>
@@ -152,5 +152,9 @@
     <br />
     <input ID="submit" type="submit" value="submit" Width="100px" />
 }
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#submit").trigger('click');
+    })
+</script>
 

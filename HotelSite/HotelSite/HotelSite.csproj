@@ -420,6 +420,7 @@
     <Content Include="Content\images\cutlery.svg" />
     <Content Include="Content\images\inbox.svg" />
     <Content Include="Content\images\Lead_generation.png" />
+    <Content Include="Content\images\loadingIcon.gif" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\migration.svg" />
     <Content Include="Content\images\monitor.svg" />

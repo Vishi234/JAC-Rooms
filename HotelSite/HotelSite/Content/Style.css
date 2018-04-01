@@ -2495,6 +2495,7 @@ input[type=checkbox] {
 #slider-image-2:target ~ .image-holder {
     left: -1600px;
 }
+
 #slider-image-3:target ~ .image-holder {
     left: -2400px;
 }
@@ -2833,19 +2834,19 @@ input[type=checkbox] {
         }
 
 .fixedHeader {
-   position: fixed;
+    position: fixed;
     width: 100%;
     z-index: 999999999999999999999999999;
     background: #fff;
     top: 0;
     left: 0;
     box-shadow: 0px 0px 12px rgba(0,0,0,0.1);
-    display:none;
+    display: none;
 }
 
     .fixedHeader .hDtMenu {
         margin: 0px;
-        box-shadow:none;
+        box-shadow: none;
     }
 
 .btnFixed a {
@@ -2854,3 +2855,312 @@ input[type=checkbox] {
     padding: 11px !important;
     box-shadow: none !important;
 }
+
+.guestLoginArea {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #d1e2f5;
+    box-shadow: 0 0 2px 0 #d1e2f5;
+    border-radius: 2px;
+    display: inline-block;
+    width: 100%;
+}
+
+    .guestLoginArea .form-control {
+        background-color: #fff !important;
+        border: 1px solid #d1e2f5 !important;
+        box-shadow: inset 0 0 2px 0 #d1e2f5 !important;
+        border-radius: 2px !important;
+        height: 40px;
+    }
+
+.dtlBody-left h1 {
+    font-size: 18px;
+    background: linear-gradient(to right, #43264e,5%, #ea2331);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+.dtlBody-left label {
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #808080;
+    font-weight: 500;
+}
+
+.form-row {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.existUser h2 {
+    color: #33d18f;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.existUser li {
+    font-size: 12px;
+}
+
+.existUser span a {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.note {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.existUserPanel {
+    /* position: absolute; */
+    /* width: 100%; */
+    display: inline-block;
+    /* left: -140px; */
+    z-index: 99999999;
+    /* margin-top: 12px; */
+    background: #fff;
+    width: 100%;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.2);
+    /* max-height: 0px; */
+    overflow: hidden;
+    padding: 0px 10px;
+    max-height: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+    .existUserPanel h3 {
+        margin: 10px 0px;
+        font-size: 16px;
+        color: #ea2331;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+        .existUserPanel h3 i {
+            float: right;
+            cursor: pointer;
+        }
+
+.loadingBase {
+    position: absolute;
+    background: rgba(255,255,255,0.9);
+    top: 210px;
+    left: 15px;
+    width: 96.7%;
+    height: 22%;
+    text-align: center;
+    display: none;
+    overflow: hidden;
+}
+
+    .loadingBase img {
+        width: 100px;
+        margin-top: 25px;
+    }
+
+.loginPanelStart {
+    display: none;
+}
+
+.registerPanel {
+    display: none;
+}
+
+.newBtnStyle {
+    display: block;
+    margin: 0 auto;
+    box-shadow: none !important;
+    text-transform: uppercase;
+}
+
+.anchorStyle {
+    text-align: right;
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.loginPanel {
+    background: #fff;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border-radius: 4px;
+    padding: 0px 10px;
+    margin-left: -50px;
+}
+
+.errorStyle {
+    font-size: 12px;
+    color: red;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.dtlBody-right {
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+    background: #fff;
+    padding: 2px;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+    border-radius: 0px;
+}
+
+.dtlBody-bdy {
+    margin-top: 85px;
+}
+
+    .dtlBody-bdy h5 {
+        margin: 0px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .dtlBody-bdy p {
+        text-align: center;
+        font-size: 11px;
+    }
+
+.dtlBody-header {
+    height: 88px;
+    background-image: linear-gradient(107deg,#3023ae,#912086);
+    display: flex;
+    align-items: center;
+}
+
+.imageContainer {
+    height: 135px;
+    /* margin-top: 80px; */
+    width: 200px;
+    /* margin-left: 24px; */
+    overflow: hidden;
+    display: block;
+    margin: auto auto -80px;
+}
+
+    .imageContainer img {
+        width: 100%;
+        box-shadow: 0px 0px 9px rgba(0,0,0,0.2);
+        border-radius: 2px;
+        height: 100%;
+    }
+
+.dtlDes {
+    display: flow-root;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+    .dtlDes li {
+        display: inline-block;
+        float: left;
+        width: 50%;
+    }
+
+        .dtlDes li .sttl {
+            display: block;
+            text-transform: uppercase;
+            font-size: 10px;
+            font-weight: 500;
+            color: #808080;
+        }
+
+        .dtlDes li .des {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            /* color: #000; */
+        }
+
+.dtlBody-bdy hr {
+    border: 1px dotted #eee;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.roomdtl {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+    .roomdtl li {
+        display: inline-block;
+    }
+
+        .roomdtl li .des {
+            display: block;
+            font-weight: 600;
+        }
+
+        .roomdtl li .sttl {
+            font-size: 11px;
+            display: block;
+            width: 100%;
+        }
+
+        .roomdtl li:last-child {
+            float: right;
+            margin-right: 20px;
+        }
+
+            .roomdtl li:last-child span {
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+.dtl {
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+    .dtl span {
+        font-weight: 500;
+    }
+
+    .dtl p {
+        text-align: left;
+    }
+
+    .dtl span:last-child {
+        float: right;
+        margin-top: -34px;
+        color: #579341;
+        font-size: 16px;
+    }
+
+        .dtl span:last-child i {
+            margin-right: 2px;
+        }
+
+.dtlBody-footer {
+    background: #fff;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+    padding: 10px 0px;
+}
+
+    .dtlBody-footer .dtl span:nth-child(1) {
+        font-size: 22px;
+    }
+
+    .dtlBody-footer .dtl span:nth-child(2) {
+        margin-top: 2px;
+        color: #f11933;
+        font-size: 22px;
+    }
+
+    .dtlBody-footer .newBtnStyle {
+        margin: 0px 10px;
+        width: 94%;
+        padding: 10px;
+        font-size: 16px;
+    }
