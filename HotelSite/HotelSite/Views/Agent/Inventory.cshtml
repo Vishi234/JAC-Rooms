@@ -13,17 +13,14 @@
                 </div>
                 <ul class="tab-header nav nav-tabs">
                     <li id="1" class="active"><a data-toggle="tab" href="#roomView">Room View</a></li>
-                    <li id="2"><a data-toggle="tab" href="#rateView">Rate View</a></li>
                     <li id="3"><a data-toggle="tab" href="#manageRoom">Manage Rooms</a></li>
-                    <li id="4"><a data-toggle="tab" href="#manageRates">Manage Rates</a></li>
                 </ul>
-
                 <div class="tab-content">
                     <div id="roomView" class="tab-pane fade in active">
                         <div class="panel-first">
                             <table class="tHead">
                                 <tr>
-                                    <td><a href="javascript:void(0)" onclick="previouTran();"><i class="fa fa-angle-double-left"></i>Last 5 Transaction</a></td>
+                                    <td><a href="javascript:void(0)" onclick="previouTran();"><i class="fa fa-angle-double-left"></i>Last 5 Inventory</a></td>
                                     <td>
                                         <ul class="bedgesList">
                                             <li><span class="label label-primary">Sold</span></li>
@@ -32,7 +29,7 @@
                                             <li><span class="label label-danger">Hotel Sold Out</span></li>
                                         </ul>
                                     </td>
-                                    <td><a href="javascript:void(0)" onclick="nextTran();">Next 5 Transaction<i class="fa fa-angle-double-right"></i></a></td>
+                                    <td><a href="javascript:void(0)" onclick="nextTran();">Next 5 Inventory<i class="fa fa-angle-double-right"></i></a></td>
                                 </tr>
                             </table>
                             <div class="panelBody" id="roomVLayout">
@@ -120,7 +117,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="email">Available Inventory*</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="availableInventory" numeric placeholder="Only Digit..">
+                                            <input type="text" class="form-control" maxlength="3" NumberOnly id="availableInventory" numeric placeholder="Only Digit..">
                                         </div>
                                     </div>
                                     <button id="saveInventory" class="btn btn-danger" onclick="return SaveHotelInventory();">Update Inventory</button>
@@ -211,7 +208,7 @@
                 <span>Available :</span> <input type="text" class="form-control" id="newInventory" />
                 <a href="javascript:void(0)" id="saveInvent" onclick="return updateInventory(this)" class="btn btn-danger">Update</a>
             </div>
-           
+
         </div>
     </div>
 </div>

@@ -3164,3 +3164,22 @@ input[type=checkbox] {
         padding: 10px;
         font-size: 16px;
     }
+
+.error {
+    color: #f3495a!important;
+    font-weight: 500!important;
+    margin-top: 5px!important;
+    display:none;
+}
+
+    .error i {
+        margin-right: 2px;
+    }
+    .inputerror
+    {
+            border: 1px solid #f3495a !important;
+    }
+    .inputerror::-webkit-input-placeholder
+    {
+        display:none;
+    }

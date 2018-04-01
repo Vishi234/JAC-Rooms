@@ -61,11 +61,11 @@
                             Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:Void(0)">
-                            Booking
-                        </a>
-                    </li>
+                    @*<li>
+                            <a href="javascript:Void(0)">
+                                Booking
+                            </a>
+                        </li>*@
                     <li>
                         <a href="/Agent/Inventory/">
                             Inventory
@@ -76,26 +76,26 @@
                             Property
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:Void(0)">
-                            Offer & Secret Deal
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:Void(0)">
-                            Reports
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:Void(0)">
-                            Rating & Reviews
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:Void(0)">
-                            Add Ons
-                        </a>
-                    </li>
+                    @*<li>
+                            <a href="javascript:Void(0)">
+                                Offer & Secret Deal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:Void(0)">
+                                Reports
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:Void(0)">
+                                Rating & Reviews
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:Void(0)">
+                                Add Ons
+                            </a>
+                        </li>*@
                 </ul>
             </div>
         </div>
@@ -557,6 +557,7 @@
                                     icon: 'success',
                                     position: 'bottom-right'
                                 });
+                                $("#uploadHotelImages").modal('hide');
                                 GetHotelImages();
                             }
                             else
@@ -1265,6 +1266,7 @@
                                 icon: 'success',
                                 position: 'bottom-right'
                             });
+                            $("#updateRoomInventory").modal('hide');
                             BindRoomView("");
                         }
                         else

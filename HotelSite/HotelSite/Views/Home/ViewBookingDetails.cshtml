@@ -10,7 +10,6 @@
 </head>
 
 <body class="main-bdy">
-
     <div class="common-header">
         <div class="container">
             <div class="row">
@@ -93,21 +92,24 @@
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">First Name</label>
                                             <input type="email" class="form-control" id="firstName" placeholder="First Name">
-                                            <p class="error"><i class="fa fa-info-circle"></i></p>
+                                            <p id="error-name" class="error"><i class="fa fa-info-circle"></i>Please enter a valid first name.</p>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Last Name</label>
                                             <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                            <p id="error-last" class="error"><i class="fa fa-info-circle"></i>Please enter a valid last name.</p>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Email ID</label>
                                             <input type="email" class="form-control" id="email" placeholder="Email">
+                                            <p id="error-email" class="error"><i class="fa fa-info-circle"></i>Please enter a valid email.</p>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Mobile Number</label>
                                             <input type="text" class="form-control" id="mobileNo" placeholder="Mobile Number">
+                                            <p id="error-mobile" class="error"><i class="fa fa-info-circle"></i>Please enter a valid mobile no.</p>
                                         </div>
                                     </div>
                                     <p class="note">Your booking details will be sent to this email address and mobile number.</p>
@@ -132,7 +134,7 @@
                             </div>
                         </div>
                         <div class="dtlBody-bdy">
-                            <h5>@Request.QueryString["hotelname"].Replace("_"," ")</h5>
+                            <h5>@Request.QueryString["hotelname"].Replace("_", " ")</h5>
                             <p>Basant Lok , Vasant Vihar, New Delhi-110...</p>
                             <hr />
                             <ul class="dtlDes">
@@ -148,7 +150,7 @@
                             <hr />
                             <ul class="dtlDes">
                                 <li>
-                                    <span class="sttl">Check In:@Request.QueryString["checkinttime"].Replace("_"," ") </span>
+                                    <span class="sttl">Check In:@Request.QueryString["checkinttime"].Replace("_", " ") </span>
                                     <span class="des">@Request.QueryString["checkindate"]</span>
                                 </li>
                                 <li>
@@ -159,7 +161,7 @@
                             <hr />
                             <ul class="roomdtl">
                                 <li>
-                                    <span class="des">@Request.QueryString["roomname"].Replace("_"," ")</span>
+                                    <span class="des">@Request.QueryString["roomname"].Replace("_", " ")</span>
                                     <span class="sttl">(@Request.QueryString["totalroom"] Room & @Request.QueryString["guest"] Guests)</span>
                                 </li>
                                 <li>
@@ -185,7 +187,7 @@
                         <hr />
                         <a href="javascript:void(0)" id="continuePayment" class="btn btn-danger newBtnStyle">Continue</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -220,8 +222,56 @@
             });
         });
 
-        $("#continuePayment").click(function()
-        {
+        $("#firstName").focusin(function () {
+            $("#error-name").hide();
+        })
+        $("#firstName").focusout(function () {
+            if ($(this).val() == "") {
+                $("#error-name").show();
+            }
+            else {
+                $("#error-name").hide();
+            }
+        })
+        $("#lastName").focusin(function () {
+            $("#error-last").hide();
+        })
+        $("#lastName").focusout(function () {
+            if ($(this).val() == "") {
+                $("#error-last").show();
+            }
+            else {
+                $("#error-last").hide();
+            }
+        })
+        $("#email").focusin(function () {
+            $("#error-email").hide();
+        })
+        $("#email").focusout(function () {
+            if ($(this).val() == "") {
+                $("#error-email").show();
+            }
+            else {
+                $("#error-email").hide();
+            }
+        })
+        $("#mobileNo").focusin(function () {
+            $("#error-mobile").hide();
+        })
+        $("#mobileNo").focusout(function () {
+            if ($(this).val() == "") {
+                $("#error-mobile").show();
+            }
+            else {
+                $("#error-mobile").hide();
+            }
+        })
+        $("#continuePayment").click(function () {
+            if ($("#firstName").val() == "") {
+                $("#error-name").show();
+                $("#firstName").css("border", "1px solid #f3495a!important");
+                return false;
+            }
             window.location.href = "/Home/getbookingPage?amount=" + document.getElementById("rmPrice").innerText + "&firstname=" + $("#firstName").val() + "&lastname=" + $("#lastName").val() + "&email=" + $("#email").val() + "&mobile=" + $("#mobileNo").val() + "&productinfo=hotelroom";
         })
         $("#login").click(function () {
