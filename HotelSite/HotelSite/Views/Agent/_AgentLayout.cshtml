@@ -1210,6 +1210,11 @@
                 alert("Available inventory should not be greater than total inventory.");
                 return false;
             }
+            debugger;
+            if ($("#startDate").val() > $("#endDate").val()) {
+
+            }
+
             var RoomInventory=
                 {
                     RoomID:$("#roomTypeInvent").val().split('~')[0],
