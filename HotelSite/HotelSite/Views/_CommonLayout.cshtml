@@ -115,6 +115,7 @@
     <script type="text/javascript" src="~/Content/DateRangerPicker/js/pignose.calendar.full.js"></script>
     <script src="~/scripts/jquery.cookie.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz1a81QQlGBkXzKv9VcRwnG5BECnXFAWs&libraries=places&callback=initMap" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script type="text/javascript">
         var pageName = "@ViewContext.RouteData.Values["action"]";
         $('.checkinDate').click(function () {
@@ -207,7 +208,51 @@
             }
 
         });
+        $(document).mouseup(function (e) {
+            var container = $("#checkin");
+            var container2 = $(".calendar");
+            var container3 = $("#room");
+            var container4 = $(".roomDetails");
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!container.is(e.target) && !container2.is(e.target) && container.has(e.target).length === 0) {
+                $(".calendar").css('display', 'none');
+            }
+            if (!container3.is(e.target) && !container4.is(e.target)) {
+                $(".roomDetails").css('display', 'none');
+            }
+        });
         $(document).ready(function () {
+
+            $('#homeForm').submit(function () {
+                if ($("#location").val() == "") {
+                    $("#keyword-error").css('display', 'block');
+                    setTimeout(function () { $("#keyword-error").css('display', 'none'); }, 3000)
+                    
+                    return false;
+                }
+                if ($("#checkin").val() == "")
+                {
+                    $("#checkin-error").css('display', 'block');
+                    setTimeout(function () { $("#checkin-error").css('display', 'none'); }, 3000)
+                    return false;
+                }
+                if ($("#checkout").val() == "") {
+                    $("#checkout-error").css('display', 'block');
+                    setTimeout(function () { $("#checkout-error").css('display', 'none'); }, 3000)
+                    return false;
+                }
+                var a = moment($("#checkin").val(), 'DD-MMM-YYYY');
+                var b = moment($("#checkout").val(), 'DD-MMM-YYYY');
+                var days = b.diff(a, 'days');
+                if(parseInt(days) > 14)
+                {
+                    $("#checkout-error").css('display', 'block');
+                    $("#checkout-error").css('margin-left', '90px');
+                    document.getElementById("checkout-error").innerHTML = "Your stay period can not be more than 14 nights for online hotel booking. If your stay period is more than this, please call our call center."
+                    setTimeout(function () { $("#checkout-error").css('display', 'none'); }, 5000)
+                    return false;
+                }
+            });
 
             GetCacheHotelData("");
             $('.progress').animate({ width: '100%' }, 10000, function () {

@@ -26,32 +26,36 @@
                     <form class="form-inline" id="homeForm" action="@Url.Action("Listing","Home")" method="get">
                         <div class="form-fields">
                             <div class="form-group">
-                                <input type="text" id="location" autocomplete="off" name="Keyword" class="form-control" placeholder="" required>
-                                <label class="form-control-placeholder" for="seachBox">Select City, Location in India</label>
+                                <input type="text" id="location" autocomplete="off" name="Keyword" class="form-control" placeholder="Select City, Location in India">
+                                @*<label class="form-control-placeholder" for="seachBox">Select City, Location in India</label>
+                               *@
                                 <i class="fa fa-map-marker icon mapIcon"></i>
                                 <div class="search_box" id="search_box">
                                     <ul></ul>
                                 </div>
+                                <p id="keyword-error" class="error-search">Enter valid destination city.</p>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="checkin" name="CheckIn" class="checkinDate datePicker form-control" required>
-                                <label class="form-control-placeholder" for="checkin">Check-in</label>
+                                <input type="text" id="checkin" placeholder="Check-In" name="CheckIn" class="checkinDate datePicker form-control">
+                                @*<label class="form-control-placeholder" for="checkin">Check-in</label>
+                               *@
                                 <i class="fa fa-calendar icon"></i>
                                 <div class="cal_base">
                                     <div class="calendar">
 
                                     </div>
                                 </div>
+                                <p id="checkin-error" class="error-search">Enter valid Check-In date.</p>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="checkout" name="CheckOut" value="" class="checkoutDate datePicker form-control" required>
-                                <label class="form-control-placeholder" for="checkout">Check-out</label>
+                                <input type="text" id="checkout" name="CheckOut" placeholder="Check-Out" value="" class="checkoutDate datePicker form-control">
+                                @*<label class="form-control-placeholder" for="checkout">Check-out</label>*@
                                 <i class="fa fa-calendar icon"></i>
-
+                                <p id="checkout-error" class="error-search">Enter valid Check-Out date.</p>
                             </div>
                             <div class="form-group rooMHover">
-                                <input type="text" id="room" readonly class="form-control room_val" name="Person" value="2 Pepole 1 Room" required>
+                                <input type="text" id="room" readonly class="form-control room_val" name="Person" value="2 Pepole 1 Room">
                                 <label class="form-control-placeholder" for="room"></label>
                                 <img src="~/Content/images/sort-down.svg" class="img-icon" />
 

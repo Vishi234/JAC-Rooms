@@ -222,7 +222,7 @@ function initMap() {
         }
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
-
+        $("#checkin").focus();
         var address = '';
         if (place.address_components) {
             address = [
