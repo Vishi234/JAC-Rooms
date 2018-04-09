@@ -421,7 +421,7 @@ namespace HotelSite.Models.Agent
                 ds.Tables[1].TableName = "HotelPics";
                 ds.Tables[2].TableName = "HotelPrice";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ExceptionHandling.WriteException(ex);
             }
@@ -560,7 +560,7 @@ namespace HotelSite.Models.Agent
             return lst;
         }
 
-        public int UpdateInventory(string inventDate,int RoomID,int Available)
+        public int UpdateInventory(string inventDate, int RoomID, int Available)
         {
             try
             {
@@ -569,7 +569,7 @@ namespace HotelSite.Models.Agent
                 sqlParameter[0] = new SqlParameter("@sDate", inventDate);
                 sqlParameter[1] = new SqlParameter("@RID", RoomID);
                 sqlParameter[2] = new SqlParameter("@avail", Available);
-                SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query,sqlParameter);
+                SqlHelper.ExecuteScalar(sqlconn, CommandType.Text, query, sqlParameter);
                 return 1;
             }
             catch (Exception ex)
@@ -581,7 +581,7 @@ namespace HotelSite.Models.Agent
         public long HotelID { get; set; }
         public string HotelName { get; set; }
         public string HotelDisplayName { get; set; }
-      
+
 
         public List<HotelBasics> GetHotelDetail(string Key)
         {
@@ -598,6 +598,7 @@ namespace HotelSite.Models.Agent
                         lst.Add(new HotelBasics()
                         {
                             DisplayName = sqlDataReader["HotelDisplayName"].ToString(),
+                            HotelID= sqlDataReader["HotelID"].ToString(),
                         });
                     }
                 }
@@ -616,7 +617,7 @@ namespace HotelSite.Models.Agent
             DataSet ds = new DataSet();
             try
             {
-                string query = "select HotelName,HotelDisplayName from tbl_Agent_Hotel";
+                string query = "select distinct HotelName,HotelDisplayName,StreetAddress,HotelID from tbl_Agent_Hotel;select HotelID,PricePerNight from tbl_HotelRooms;select * from tbl_HotelPics";
                 ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
             }
             catch (Exception ex)

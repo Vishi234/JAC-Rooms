@@ -211,27 +211,36 @@
         $(document).mouseup(function (e) {
             var container = $("#checkin");
             var container2 = $(".calendar");
-            var container3 = $("#room");
+            var container3 = $(".rooMHover");
             var container4 = $(".roomDetails");
+            var container5 = $("#room");
             // if the target of the click isn't the container nor a descendant of the container
             if (!container.is(e.target) && !container2.is(e.target) && container.has(e.target).length === 0) {
                 $(".calendar").css('display', 'none');
             }
-            if (!container3.is(e.target) && !container4.is(e.target)) {
+            if (!container4.is(e.target) && !container3.is(e.target) && !container5.is(e.target) && container4.has(e.target).length === 0) {
                 $(".roomDetails").css('display', 'none');
             }
         });
         $(document).ready(function () {
 
+
+            if (pageName == "Listing") {
+                var roomString = "@Request.QueryString["Person"]";
+                addRoom(parseInt(roomString.split(" ")[2] - 1));
+
+            }
+            else {
+                addRoom(0);
+            }
             $('#homeForm').submit(function () {
                 if ($("#location").val() == "") {
                     $("#keyword-error").css('display', 'block');
                     setTimeout(function () { $("#keyword-error").css('display', 'none'); }, 3000)
-                    
+
                     return false;
                 }
-                if ($("#checkin").val() == "")
-                {
+                if ($("#checkin").val() == "") {
                     $("#checkin-error").css('display', 'block');
                     setTimeout(function () { $("#checkin-error").css('display', 'none'); }, 3000)
                     return false;
@@ -244,8 +253,7 @@
                 var a = moment($("#checkin").val(), 'DD-MMM-YYYY');
                 var b = moment($("#checkout").val(), 'DD-MMM-YYYY');
                 var days = b.diff(a, 'days');
-                if(parseInt(days) > 14)
-                {
+                if (parseInt(days) > 14) {
                     $("#checkout-error").css('display', 'block');
                     $("#checkout-error").css('margin-left', '90px');
                     document.getElementById("checkout-error").innerHTML = "Your stay period can not be more than 14 nights for online hotel booking. If your stay period is more than this, please call our call center."
@@ -265,7 +273,7 @@
             });
             //$('.listingBase').css('max-height', '100%');
             //$('.listingBase .form-control-placeholder').css('position', 'absolute');
-            addRoom(0);
+
             $('.rooMHover').click(function () {
                 $('.calendar').css('display', 'none');
                 $('.search_box').css('display', 'none');
@@ -574,7 +582,7 @@
                         html = "<ul>";
                         if (data.length > 0) {
                             $.each(data, function (i, item) {
-                                html += '<li><a href="javascript:void(0)">' + ((item.DisplayName.indexOf(toTitleCase(keyVal)) > -1) ? item.DisplayName.replace(toTitleCase(keyVal), '<b class="seach-match">' + toTitleCase(keyVal) + '</b>') : item.DisplayName.replace(keyVal, '<b class="seach-match">' + keyVal + '</b>')) + '</a></li>';
+                                html += '<li><a href="javascript:void(0)" onclick="HotelNameSelect(this);" HotelID=' + item.HotelID + '>' + ((item.DisplayName.indexOf(toTitleCase(keyVal)) > -1) ? item.DisplayName.replace(toTitleCase(keyVal), '<b class="seach-match">' + toTitleCase(keyVal) + '</b>') : item.DisplayName.replace(keyVal, '<b class="seach-match">' + keyVal + '</b>')) + '</a></li>';
                             });
                         }
                         else {
@@ -608,8 +616,8 @@
                     console.log(textStatus + "\n" + errorThrown);
                 }
             });
-            $.cookie('HotelData', hoteldata, { expires: 7, path: '/' });
-            //   return hoteldata["Table"];
+            $.cookie('HotelData', hoteldata, { expires: 10 });
+            return hoteldata;
         }
     </script>
 

@@ -20,8 +20,8 @@
                         <form class="form-inline" action="@Url.Action("Listing","Home")" method="get">
                             <div class="form-fields">
                                 <div class="form-group">
-                                    <input type="text" id="location" name="Keyword" value="@Request.QueryString["Keyword"]" class="form-control" placeholder="" required>
-                                    <label class="form-control-placeholder" for="seachBox">Select City, Location in India</label>
+                                    <input type="text" id="location" name="Keyword" value="@Request.QueryString["Keyword"]" class="form-control" placeholder="Search Location and City in India" required>
+                                    @*<label class="form-control-placeholder" for="seachBox">Select City, Location in India</label>*@
                                     <i class="fa fa-map-marker icon mapIcon"></i>
                                     <div class="search_field">
                                         <div class="triangle-with-shadow">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="CheckIn" class="checkinDate datePicker form-control" required>
+                                    <input type="text" id="checkin" value="@Request.QueryString["CheckIn"]" name="CheckIn" class="checkinDate datePicker form-control" placeholder="Check-in" required>
                                     <label class="form-control-placeholder" for="checkin">Check-in</label>
                                     <i class="fa fa-calendar icon"></i>
                                     <div class="cal_base">
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="checkout" name="CheckOut" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" required>
+                                    <input type="text" id="checkout" name="CheckOut" value="@Request.QueryString["CheckOut"]" class="checkoutDate datePicker form-control" placeholder="Check-out" required>
                                     <label class="form-control-placeholder" for="checkout">Check-out</label>
                                     <i class="fa fa-calendar icon"></i>
                                 </div>
@@ -76,8 +76,6 @@
             <div class="col-lg-3 col-xs-12 col-sm-3 col-md-3">
                 <div class="row">
                     <div class="listing-filter">
-                        <h3>Hotels in Goa</h3>
-                        <hr />
                         <div class="location-filter filter-style">
                             <h5>Location</h5>
                             <input type="text" onkeyup="LocationFilterKeyPress(this.value, 'locationData');" class="form-control locationFilter" placeholder="Seach by location" />
@@ -143,8 +141,10 @@
             </div>
             <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
                 <div class="row">
-                    <div class="hotelList" id="hotelList">
+                    @*<div class="hotelList" id="hotelList">
 
+                        </div>*@
+                    <div class="hotelNewList" id="hotelList">
                     </div>
                     @*<table class="hotelData table table-bordered" id="hotelData">
                             <thead>
@@ -163,10 +163,66 @@
     </div>
 </div>
 <script src="~/scripts/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
 <script type="text/javascript">
+    var filterData;
+    var a = moment("@Request.QueryString["CheckIn"]", 'DD-MMM-YYYY');
+    var b = moment("@Request.QueryString["CheckOut"]", 'DD-MMM-YYYY');
+    var days = b.diff(a, 'days');
     $(document).ready(function () {
         GetSeachData();
+        filterData = GetCacheHotelData("");
+        //
     })
+    function HotelNameSelect(e)
+    {
+        window.location.href = '/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + e.getAttribute("HotelID");
+    }
+    function filterListing(e) {
+        var hotelData = $.grep(JSON.parse(filterData)["Table"], function (item, i) {
+            return ((item.StreetAddress.toLocaleLowerCase().indexOf(e.text.toLocaleLowerCase()) > 0) ? item.HotelName : "");
+        });
+        $("#hotelList").empty();
+        var html = "<ul>";
+        var hotelPrice = 0;
+        var hotelPic = "";
+        var src = "";
+        $.each(hotelData, function (i, item) {
+            $.each(JSON.parse(filterData)["Table1"], function (j, val) {
+                if (item.HotelID == val.HotelID) {
+                    hotelPrice = val.PricePerNight;
+                }
+            });
+            $.each(JSON.parse(filterData)["Table2"], function (k, picVal) {
+                if (item.HotelID == picVal.HotelID) {
+                    if (picVal.PicName != "") {
+                        hotelPic = picVal.PicName;
+                        return;
+                    }
+                }
+            });
+            src = "";
+            if (hotelPic != "") {
+                src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                src += item.hoteldisplayname + "~" + item.hotelid + "/" + hotelPic;
+                // src = '"' + src + '"';
+            }
+            var style = "background:url('" + src + "')repeat center;";
+
+            html += '<li><div class="hotelNewImg"><img src="' + src + '" /></div><div class="hotelNewDes">';
+            html += '<div class="hotelNewDesLeft"><a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.HotelID + '" class="hotelname"><h2>' + item.HotelDisplayName + '</h2></a><p class="add"><i class="fa fa-map-marker"></i>' + item.StreetAddress + '</p>';
+            html += '</div><div class="hotelNewDesRight"><p class="night">For <span>' + days + '</span> nights</p> <span class="priceNew"><i class="fa fa-rupee"></i> <span>' + ((parseInt(days) > 0) ? parseInt(hotelPrice * days) : hotelPrice) + '</span></span>';
+            html += '<a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.HotelID + '" class="hbtn">Choose Room</a></div></div></li>'
+
+            html += "</ul>";
+            $("#hotelList").append(html);
+        });
+
+        $("#locationFilter").css("display", "none");
+        $("#locationData").css("display", "none");
+        $(".locationFilter").val(e.text);
+
+    }
     function GetSeachData() {
 
         var SearchKeyword =
@@ -175,6 +231,7 @@
                 CheckIn: "@Request.QueryString["CheckIn"]",
                 CheckOut: "@Request.QueryString["CheckOut"]",
             };
+
         $.ajax({
             type: 'POST',
             url: "@Url.Action("GetSearchData", "Home")",
@@ -209,9 +266,11 @@
                         // src = '"' + src + '"';
                     }
                     var style = "background:url('" + src + "')repeat center;";
-                    html += '<li><div class="hotelImage" style="' + style + '"></div><div class="hotelPrice"><span class="orginalPrice"><i class="fa fa-rupee"></i>' + hotelPrice + '</span>';
-                    html += '</div><div class="hotelContent"><ul><li>' + item.hoteldisplayname + '</li><li><span><i class="fa fa-map-marker"></i>' + item.streetaddress + '</span></li>';
-                    html += '</ul></div><div class="hotelContentBottom"><a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.hotelid + '">Choose Room</a></div></li>';
+
+                    html += '<li><div class="hotelNewImg"><img src="' + src + '" /></div><div class="hotelNewDes">';
+                    html += '<div class="hotelNewDesLeft"><a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.hotelid + '" class="hotelname"><h2>' + item.hoteldisplayname + '</h2></a><p class="add"><i class="fa fa-map-marker"></i>' + item.streetaddress + '</p>';
+                    html += '</div><div class="hotelNewDesRight"><p class="night">For <span>' + days + '</span> nights</p> <span class="priceNew"><i class="fa fa-rupee"></i> <span>' + ((parseInt(days) > 0) ? parseInt(hotelPrice * days) : hotelPrice) + '</span></span>';
+                    html += '<a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.hotelid + '" class="hbtn">Choose Room</a></div></div></li>'
                 })
                 html += "</ul>";
                 $("#hotelList").append(html);
