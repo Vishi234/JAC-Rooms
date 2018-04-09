@@ -124,16 +124,39 @@
                         <hr />
                         <div class="hoteltype-filter filter-style">
                             <h5>Hotel Type<a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
-                            <input id="type1" type="checkbox" />
-                            <label for="type1">Hotel</label>
-                            <input id="type2" type="checkbox" />
-                            <label for="type2">Bunglow</label>
-                            <input id="type1" type="checkbox" />
-                            <label for="type3">Guest House</label>
-                            <input id="type4" type="checkbox" />
-                            <label for="type4">Home Stay</label>
-                            <input id="type5" type="checkbox" />
-                            <label for="type5">Resorts</label>
+                            <input id="type1" class="chkr" value="Resort" type="checkbox" />
+                            <label for="type1">Resort</label>
+                            <input id="type2" class="chkr" value="Hotel" type="checkbox" />
+                            <label for="type2">Hotel</label>
+                            <input id="type3" class="chkr" value="Motel" type="checkbox" />
+                            <label for="type3">Motel</label>
+                            <input id="type4" class="chkr" value="BnB" type="checkbox" />
+                            <label for="type4">BnB</label>
+                            <input id="type5" class="chkr" value="Homestay" type="checkbox" />
+                            <label for="type5">Homestay</label>
+                            <input id="type6" class="chkr" value="Tent" type="checkbox" />
+                            <label for="type6">Tent</label>
+                            <input id="type7" class="chkr" value="Appartment" type="checkbox" />
+                            <label for="type7">Appartment</label>
+                            <input id="type8" class="chkr" value="Bungalow" type="checkbox" />
+                            <label for="type8">Bungalow</label>
+                            <input id="type9" class="chkr" value="Loadge" type="checkbox" />
+                            <label for="type9">Loadge</label>
+                            <input id="type10" class="chkr" value="GuestHouse" type="checkbox" />
+                            <label for="type10">GuestHouse</label>
+                            <input id="type11" class="chkr" value="Hostel" type="checkbox" />
+                            <label for="type11">Hostel</label>
+                            <input id="type12" class="chkr" value="Cattage" type="checkbox" />
+                            <label for="type12">Cattage</label>
+                            <input id="type13" class="chkr" value="Houseboat" type="checkbox" />
+                            <label for="type14">Houseboat</label>
+                            <input id="type15" class="chkr" value="Villa" type="checkbox" />
+                            <label for="type15">Villa</label>
+                            <input id="type16" class="chkr" value="Palace" type="checkbox" />
+                            <label for="type16">Palace</label>
+                            <input id="type17" class="chkr" value="BeachHut" type="checkbox" />
+                            <label for="type17">BeachHut</label>
+
                         </div>
                         <hr />
                     </div>
@@ -172,10 +195,61 @@
     $(document).ready(function () {
         GetSeachData();
         filterData = GetCacheHotelData("");
-        //
     })
-    function HotelNameSelect(e)
-    {
+    $(".chkr").change(function () {
+        if ($(this).is(":checked")) {
+            HotelTypeFilter($(this).val());
+        }
+        //var selected = [];
+        //$('.hoteltype-filter input:checked').each(function () {
+        //    if ($(this).is(":checked")) {
+        //        selected.push($(this).val());
+        //    }
+
+        //});
+
+        //console.log(selected);
+    })
+    function HotelTypeFilter(key) {
+        var hotelData = $.grep(JSON.parse(filterData)["Table"], function (item, i) {
+            return ((item.HotelType.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) > 0) ? item : "");
+        });
+        var html = "<ul>";
+        var hotelPrice = 0;
+        var hotelPic = "";
+        var src = "";
+        $.each(hotelData, function (i, item) {
+            $.each(JSON.parse(filterData)["Table1"], function (j, val) {
+                if (item.HotelID == val.HotelID) {
+                    hotelPrice = val.PricePerNight;
+                }
+            });
+            $.each(JSON.parse(filterData)["Table2"], function (k, picVal) {
+                if (item.HotelID == picVal.HotelID) {
+                    if (picVal.PicName != "") {
+                        hotelPic = picVal.PicName;
+                        return;
+                    }
+                }
+            });
+            src = "";
+            if (hotelPic != "") {
+                src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
+                src += item.hoteldisplayname + "~" + item.hotelid + "/" + hotelPic;
+                // src = '"' + src + '"';
+            }
+            var style = "background:url('" + src + "')repeat center;";
+
+            html += '<li><div class="hotelNewImg"><img src="' + src + '" /></div><div class="hotelNewDes">';
+            html += '<div class="hotelNewDesLeft"><a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.HotelID + '" class="hotelname"><h2>' + item.HotelDisplayName + '</h2></a><p class="add"><i class="fa fa-map-marker"></i>' + item.StreetAddress + '</p>';
+            html += '</div><div class="hotelNewDesRight"><p class="night">For <span>' + days + '</span> nights</p> <span class="priceNew"><i class="fa fa-rupee"></i> <span>' + ((parseInt(days) > 0) ? parseInt(hotelPrice * days) : hotelPrice) + '</span></span>';
+            html += '<a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.HotelID + '" class="hbtn">Choose Room</a></div></div></li>'
+
+            html += "</ul>";
+            $("#hotelList").append(html);
+        });
+    }
+    function HotelNameSelect(e) {
         window.location.href = '/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + e.getAttribute("HotelID");
     }
     function filterListing(e) {

@@ -556,8 +556,8 @@
 
         }
         function GetHotel(key) {
-            var hotelData = $.grep(JSON.parse($.cookie('HotelData'))["Table"], function (item, i) {
-                return ((item.HotelName.toLocaleLowerCase().indexOf(key) > 0) ? item.HotelName : "");
+            var hotelData = $.grep(JSON.parse(GetCacheHotelData(""))["Table"], function (item, i) {
+                return ((item.HotelName.toLowerCase().indexOf(key.toLowerCase()) > -1) ? item : "");
             });
             return hotelData;
         }
@@ -568,9 +568,29 @@
             return str;
         }
 
-        function HotelNameFilter(keyVal, ID) {
+        function HotelNameFilter(key, ID) {
 
-            $.ajax
+            $("#" + ID).empty();
+            var html = "";
+            html = "<ul>";
+            if (GetHotel(key) != "") {
+                $.each(GetHotel(key), function (i, item) {
+                    html += '<li><a href="javascript:void(0)" onclick="HotelNameSelect(this);" HotelID=' + item.HotelID + '>' + ((item.HotelDisplayName.indexOf(toTitleCase(key)) > -1) ? item.HotelDisplayName.replace(toTitleCase(key), '<b class="seach-match">' + toTitleCase(key) + '</b>') : item.HotelDisplayName.replace(key, '<b class="seach-match">' + key + '</b>')) + '</a></li>';
+                });
+            }
+            else {
+                html += "<li><a href='javascript:void(0)'>No match found</a></li>"
+            }
+            $("#" + ID).append(html);
+            if (key != "") {
+                $("#hotelFilter").css("display", "block");
+                $("#hotelData").css("display", "block");
+            }
+            else {
+                $("#hotelFilter").css("display", "none");
+                $("#hotelData").css("display", "none");
+            }
+            @*$.ajax
                 ({
                     type: 'POST',
                     url: "@Url.Action("GetHotelName","Home")",
@@ -589,17 +609,9 @@
                             html += "<li><a href='javascript:void(0)'>No match found</a></li>"
                         }
                         html += "</ul>";
-                        $("#" + ID).append(html);
-                        if (keyVal != "") {
-                            $("#hotelFilter").css("display", "block");
-                            $("#hotelData").css("display", "block");
-                        }
-                        else {
-                            $("#hotelFilter").css("display", "none");
-                            $("#hotelData").css("display", "none");
-                        }
+
                     }
-                })
+                })*@
         }
         function GetCacheHotelData(key) {
             var hoteldata;
