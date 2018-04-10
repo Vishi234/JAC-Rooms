@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="listing-filter">
                         <div class="location-filter filter-style">
-                            <h5>Location</h5>
+                            <h5>Location<a href="javascript:void" class="reset-filter pull-right" onclick="clearLocationFilter(this)">Reset</a></h5>
                             <input type="text" onkeyup="LocationFilterKeyPress(this.value, 'locationData');" class="form-control locationFilter" placeholder="Seach by location" />
                             <div class="searchBase" id="locationFilter">
                                 <div class="triangle-with-shadow">
@@ -100,30 +100,8 @@
                             </div>
                         </div>
                         <hr />
-                        <div class="smart-filter filter-style">
-                            <h5>Smart Filter <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
-                            <input id="box1" type="checkbox" />
-                            <label for="box1">Pay At Checkout</label>
-                            <input id="box2" type="checkbox" />
-                            <label for="box2">Free Cancellation</label>
-                        </div>
-                        <hr />
-                        <div class="price-filter filter-style">
-                            <h5>Price Range <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
-                            <input id="price1" type="checkbox" />
-                            <label for="price1">Upto <i class="fa fa-rupee"></i> 999</label>
-                            <input id="price2" type="checkbox" />
-                            <label for="price2"><i class="fa fa-rupee"></i> 1000 to <i class="fa fa-rupee"></i> 3000</label>
-                            <input id="price3" type="checkbox" />
-                            <label for="price3"><i class="fa fa-rupee"></i> 3000 to <i class="fa fa-rupee"></i> 5000</label>
-                            <input id="price4" type="checkbox" />
-                            <label for="price4"><i class="fa fa-rupee"></i> 5000 to <i class="fa fa-rupee"></i> 10000</label>
-                            <input id="price5" type="checkbox" />
-                            <label for="price5"><i class="fa fa-rupee"></i> 10000 +</label>
-                        </div>
-                        <hr />
                         <div class="hoteltype-filter filter-style">
-                            <h5>Hotel Type<a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <h5>Hotel Type<a href="javascript:void" class="reset-filter pull-right" onclick="clearHotelType(this)">Reset</a></h5>
                             <input id="type1" class="chkr" value="Resort" type="checkbox" />
                             <label for="type1">Resort</label>
                             <input id="type2" class="chkr" value="Hotel" type="checkbox" />
@@ -159,26 +137,39 @@
 
                         </div>
                         <hr />
+                        <div class="smart-filter filter-style">
+                            <h5>Smart Filter <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="box1" type="checkbox" />
+                            <label for="box1">Pay At Checkout</label>
+                            <input id="box2" type="checkbox" />
+                            <label for="box2">Free Cancellation</label>
+                        </div>
+                        <hr />
+                        <div class="price-filter filter-style">
+                            <h5>Price Range <a href="javascript:void" class="reset-filter pull-right">Reset</a></h5>
+                            <input id="price1" type="checkbox" />
+                            <label for="price1">Upto <i class="fa fa-rupee"></i> 999</label>
+                            <input id="price2" type="checkbox" />
+                            <label for="price2"><i class="fa fa-rupee"></i> 1000 to <i class="fa fa-rupee"></i> 3000</label>
+                            <input id="price3" type="checkbox" />
+                            <label for="price3"><i class="fa fa-rupee"></i> 3000 to <i class="fa fa-rupee"></i> 5000</label>
+                            <input id="price4" type="checkbox" />
+                            <label for="price4"><i class="fa fa-rupee"></i> 5000 to <i class="fa fa-rupee"></i> 10000</label>
+                            <input id="price5" type="checkbox" />
+                            <label for="price5"><i class="fa fa-rupee"></i> 10000 +</label>
+                        </div>
+                        <hr />
+
                     </div>
                 </div>
             </div>
             <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9">
                 <div class="row">
-                    @*<div class="hotelList" id="hotelList">
-
-                        </div>*@
+                    <div class="loadingBase2">
+                        <img src="~/Content/images/loadingIcon.gif" />
+                    </div>
                     <div class="hotelNewList" id="hotelList">
                     </div>
-                    @*<table class="hotelData table table-bordered" id="hotelData">
-                            <thead>
-                                <tr>
-                                    <th>Hotel Name</th>
-                                    <th>Hotel Type</th>
-
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>*@
 
                 </div>
             </div>
@@ -188,75 +179,85 @@
 <script src="~/scripts/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
 <script type="text/javascript">
+    var count = 0;
     var filterData;
     var a = moment("@Request.QueryString["CheckIn"]", 'DD-MMM-YYYY');
     var b = moment("@Request.QueryString["CheckOut"]", 'DD-MMM-YYYY');
     var days = b.diff(a, 'days');
+    var keyword;
+    var selected = [];
+    var hotelData;
     $(document).ready(function () {
         GetSeachData();
         filterData = GetCacheHotelData("");
-    })
+
+    });
     $(".chkr").change(function () {
-        if ($(this).is(":checked")) {
-            HotelTypeFilter($(this).val());
-        }
-        //var selected = [];
-        //$('.hoteltype-filter input:checked').each(function () {
-        //    if ($(this).is(":checked")) {
-        //        selected.push($(this).val());
-        //    }
-
-        //});
-
-        //console.log(selected);
-    })
-    function HotelTypeFilter(key) {
-        var hotelData = $.grep(JSON.parse(filterData)["Table"], function (item, i) {
-            return ((item.HotelType.toLocaleLowerCase().indexOf(key.toLocaleLowerCase()) > 0) ? item : "");
-        });
-        var html = "<ul>";
-        var hotelPrice = 0;
-        var hotelPic = "";
-        var src = "";
-        $.each(hotelData, function (i, item) {
-            $.each(JSON.parse(filterData)["Table1"], function (j, val) {
-                if (item.HotelID == val.HotelID) {
-                    hotelPrice = val.PricePerNight;
-                }
-            });
-            $.each(JSON.parse(filterData)["Table2"], function (k, picVal) {
-                if (item.HotelID == picVal.HotelID) {
-                    if (picVal.PicName != "") {
-                        hotelPic = picVal.PicName;
-                        return;
-                    }
-                }
-            });
-            src = "";
-            if (hotelPic != "") {
-                src = "@System.Configuration.ConfigurationManager.AppSettings["GetImageUrl"]@System.Configuration.ConfigurationManager.AppSettings["FolderName"]/";
-                src += item.hoteldisplayname + "~" + item.hotelid + "/" + hotelPic;
-                // src = '"' + src + '"';
+        selected = [];
+        $('.hoteltype-filter input:checked').each(function () {
+            if ($(this).is(":checked")) {
+                selected.push($(this).val());
             }
-            var style = "background:url('" + src + "')repeat center;";
-
-            html += '<li><div class="hotelNewImg"><img src="' + src + '" /></div><div class="hotelNewDes">';
-            html += '<div class="hotelNewDesLeft"><a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.HotelID + '" class="hotelname"><h2>' + item.HotelDisplayName + '</h2></a><p class="add"><i class="fa fa-map-marker"></i>' + item.StreetAddress + '</p>';
-            html += '</div><div class="hotelNewDesRight"><p class="night">For <span>' + days + '</span> nights</p> <span class="priceNew"><i class="fa fa-rupee"></i> <span>' + ((parseInt(days) > 0) ? parseInt(hotelPrice * days) : hotelPrice) + '</span></span>';
-            html += '<a href="/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + item.HotelID + '" class="hbtn">Choose Room</a></div></div></li>'
-
-            html += "</ul>";
-            $("#hotelList").append(html);
         });
+        filter();
+    });
+    function clearLocationFilter(e) {
+        $(".locationFilter").val("");
+        filter();
+    }
+    function clearHotelType(e) {
+        selected = [];
+        $('.hoteltype-filter input:checked').each(function () {
+            $(this).removeAttr('checked');
+        });
+        filter();
     }
     function HotelNameSelect(e) {
         window.location.href = '/Home/HotelDescription?keyword=@Request.QueryString["Keyword"]&CheckIn=@Request.QueryString["CheckIn"]&CheckOut=@Request.QueryString["CheckOut"]&Person=@Request.QueryString["Person"]&ID=' + e.getAttribute("HotelID");
     }
     function filterListing(e) {
-        var hotelData = $.grep(JSON.parse(filterData)["Table"], function (item, i) {
-            return ((item.StreetAddress.toLocaleLowerCase().indexOf(e.text.toLocaleLowerCase()) > 0) ? item.HotelName : "");
-        });
-        $("#hotelList").empty();
+        $("#locationFilter").css("display", "none");
+        $("#locationData").css("display", "none");
+        $(".locationFilter").val(e.text);
+        filter();
+    }
+    function filter() {
+        $(".loadingBase2").css('display', 'block')
+        setTimeout(function () {
+            if ($(".locationFilter").val() != "") {
+                hotelData = $.grep(JSON.parse(filterData)["Table"], function (item, i) {
+                    return ((item.StreetAddress.toLocaleLowerCase().indexOf($(".locationFilter").val().toLocaleLowerCase()) > 0) ? item.HotelName : "");
+                });
+                $("#hotelList").empty();
+                createListing(hotelData);
+            }
+            if (selected.length > 0) {
+                $("#hotelList").empty();
+                for (var i = 0; i < selected.length; i++) {
+                    if (selected[i] != "") {
+                        keyword = selected[i];
+                        hotelData = $.grep(hotelData, function (item, i) {
+                            return (((item.HotelType.toLocaleLowerCase()).indexOf(keyword.toLocaleLowerCase()) > 0) ? item : "");
+                        });
+
+                        if (hotelData != "") {
+                            createListing(hotelData);
+                        }
+
+                    }
+                }
+            }
+            if ($(".locationFilter").val() == "" && selected.length == 0) {
+                $("#hotelList").empty();
+                GetSeachData();
+            }
+            $(".loadingBase2").css('display', 'none');
+        }, 3000)
+
+    }
+
+    function createListing(hotelData) {
+
         var html = "<ul>";
         var hotelPrice = 0;
         var hotelPic = "";
@@ -291,11 +292,6 @@
             html += "</ul>";
             $("#hotelList").append(html);
         });
-
-        $("#locationFilter").css("display", "none");
-        $("#locationData").css("display", "none");
-        $(".locationFilter").val(e.text);
-
     }
     function GetSeachData() {
 

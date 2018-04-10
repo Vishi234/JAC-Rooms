@@ -3325,3 +3325,19 @@ input[type=checkbox] {
         border: 1px solid #EA2330;
         color: #fff;
     }
+
+.loadingBase2 {
+    position: absolute;
+    /* background: rgba(255,255,255,0.9); */
+    top: 20px;
+    left: 15px;
+    width: 99%;
+    height: 100%;
+    text-align: center;
+    display: none;
+    overflow: hidden;
+}
+ .loadingBase2 img {
+        width: 100px;
+        margin-top: 25px;
+    }

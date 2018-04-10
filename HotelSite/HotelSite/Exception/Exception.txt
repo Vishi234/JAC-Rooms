@@ -1,9 +1,14 @@
 ===============================start==============================================
-Inner Exception's
-MessageInvalid column name 'HotelStart'.
+Inner Exception'sSystem.ComponentModel.Win32Exception (0x80004005): The network connection was aborted by the local system
+MessageA transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The network connection was aborted by the local system.)
 StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
    at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
    at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
    at System.Data.SqlClient.SqlDataReader.get_MetaData()
@@ -22,6 +27,6 @@ StackTrace   at System.Data.SqlClient.SqlConnection.OnError(SqlException excepti
    at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText) in C:\Users\HP\Source\Repos\Team\HotelSite\HotelSite\Models\SQLHelper.cs:line 490
    at HotelSite.Models.Agent.HotelInformation.GetHotelsForCache() in C:\Users\HP\Source\Repos\Team\HotelSite\HotelSite\Models\Agent\Hotel.cs:line 621
 TargetSiteVoid OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
-DateTime : 	4/10/2018 1:22:31 AM
+DateTime : 	4/11/2018 1:08:40 AM
 ================================end============================================= 
 
