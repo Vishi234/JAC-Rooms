@@ -1712,13 +1712,13 @@ input:checked + .slider-check:before {
     }
 
 .search_box {
-    position: absolute;
+       position: absolute;
     background: #fff;
     border: 1px solid #eee;
     margin-left: -10px;
     width: 26.1%;
-    margin-top: 10px;
-    box-shadow: 0px 3px 12px rgba(0,0,0,0.2);
+    margin-top: 12px;
+    box-shadow: 0px 8px 12px rgba(0,0,0,0.2);
     height: auto;
     max-height: 200px;
     overflow: auto;
@@ -1743,15 +1743,22 @@ input:checked + .slider-check:before {
 }
 
 .search_header {
-    padding: 8px;
+       margin: 0;
+    display: block;
+    font: menu;
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    padding: 10px 12px 10px 8px!important;
+    cursor: pointer;
+    letter-spacing: 1px;
     text-align: right;
-    /*border-bottom: 1px solid #ccc;*/
-    color: #ccc;
     font-weight: 500;
+    color: #808080;
 }
 
     .search_header i {
-        margin-right: 5px;
+        margin-right: 0px;
     }
 
 .seach-match {
@@ -1767,7 +1774,7 @@ input:checked + .slider-check:before {
 }
 
 .search-base li:not(:last-child) {
-    border-bottom: 1px solid #ccc;
+   border-bottom: 1px solid #cacaca;
 }
 
 .search_box li a:hover {

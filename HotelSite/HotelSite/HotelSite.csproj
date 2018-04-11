@@ -705,6 +705,7 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="Location Data\GlobalData.json" />
     <None Include="Properties\PublishProfiles\Hotel Site.pubxml" />
     <Content Include="web.config">
       <SubType>Designer</SubType>

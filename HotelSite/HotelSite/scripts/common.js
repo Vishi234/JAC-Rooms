@@ -141,11 +141,11 @@ function toTitleCase(str) {
     return str;
 }
 function LocationFilterKeyPress(keyVal, ID) {
-    var citiess = getJsonData('../../Location Data/states.json');
+    var citiess = getJsonData('../../Location Data/GlobalData.json');
     let SID = (keyVal == "" || keyVal == null) ? "10" : keyVal;
 
-    let cityBindData = $.grep(citiess.states, function (n, i) {
-        return ((SID != "") ? ((n.name.toLowerCase().indexOf(SID.toLowerCase()) > -1) ? n.name : "") : n.name);
+    let cityBindData = $.grep(citiess.City, function (n, i) {
+        return ((SID != "") ? ((n.CityName.toLowerCase().indexOf(SID.toLowerCase()) > -1) ? n.CityName : "") : n.CityName);
     });
     //var div = document.getElementById(ID);
     $("#" + ID).empty();
@@ -153,7 +153,7 @@ function LocationFilterKeyPress(keyVal, ID) {
     html = "<ul>";
     if (cityBindData.length > 0) {
         $.each(cityBindData, function (i, item) {
-            html += '<li><a onclick="filterListing(this);" href="javascript:void(0)">' + ((item.name.indexOf(toTitleCase(keyVal)) > -1) ? item.name.replace(toTitleCase(keyVal), '<b class="seach-match">' + toTitleCase(keyVal) + '</b>') : item.name.replace(keyVal, '<b class="seach-match">' + keyVal + '</b>')) + '</a></li>';
+            html += '<li><a onclick="filterListing(this);" href="javascript:void(0)">' + ((item.CityName.indexOf(toTitleCase(keyVal)) > -1) ? item.CityName.replace(toTitleCase(keyVal), '<b class="seach-match">' + toTitleCase(keyVal) + '</b>') : item.CityName.replace(keyVal, '<b class="seach-match">' + keyVal + '</b>')) + '</a></li>';
         });
     }
     else {

@@ -20,7 +20,7 @@
                         <form class="form-inline" action="@Url.Action("Listing","Home")" method="get">
                             <div class="form-fields">
                                 <div class="form-group">
-                                    <input type="text" id="location" name="Keyword" value="@Request.QueryString["Keyword"]" class="form-control" placeholder="Search Location and City in India" required>
+                                    <input type="text" name="Keyword" value="@Request.QueryString["Keyword"]" autocomplete="off" class="searchBox form-control" placeholder="Search Location and City in India" required>
                                     @*<label class="form-control-placeholder" for="seachBox">Select City, Location in India</label>*@
                                     <i class="fa fa-map-marker icon mapIcon"></i>
                                     <div class="search_field">
@@ -223,9 +223,10 @@
     }
     function filter() {
         $(".loadingBase2").css('display', 'block')
+        var data = getJsonData('../../Location Data/GlobalData.json');
         setTimeout(function () {
             if ($(".locationFilter").val() != "") {
-                hotelData = $.grep(JSON.parse(filterData)["Table"], function (item, i) {
+                hotelData = $.grep(data.Hotels, function (item, i) {
                     return ((item.StreetAddress.toLocaleLowerCase().indexOf($(".locationFilter").val().toLocaleLowerCase()) > 0) ? item.HotelName : "");
                 });
                 $("#hotelList").empty();
@@ -236,7 +237,7 @@
                 for (var i = 0; i < selected.length; i++) {
                     if (selected[i] != "") {
                         keyword = selected[i];
-                        hotelData = $.grep(hotelData, function (item, i) {
+                        hotelData = $.grep(((hotelData == undefined || hotelData == "") ? data.Hotels : hotelData), function (item, i) {
                             return (((item.HotelType.toLocaleLowerCase()).indexOf(keyword.toLocaleLowerCase()) > 0) ? item : "");
                         });
 
@@ -257,18 +258,19 @@
     }
 
     function createListing(hotelData) {
-
+        var data = getJsonData('../../Location Data/GlobalData.json');
         var html = "<ul>";
         var hotelPrice = 0;
         var hotelPic = "";
         var src = "";
+
         $.each(hotelData, function (i, item) {
-            $.each(JSON.parse(filterData)["Table1"], function (j, val) {
+            $.each(data.Rooms, function (j, val) {
                 if (item.HotelID == val.HotelID) {
                     hotelPrice = val.PricePerNight;
                 }
             });
-            $.each(JSON.parse(filterData)["Table2"], function (k, picVal) {
+            $.each(data.Pics, function (k, picVal) {
                 if (item.HotelID == picVal.HotelID) {
                     if (picVal.PicName != "") {
                         hotelPic = picVal.PicName;

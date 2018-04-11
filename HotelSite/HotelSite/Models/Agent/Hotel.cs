@@ -617,8 +617,15 @@ namespace HotelSite.Models.Agent
             DataSet ds = new DataSet();
             try
             {
-                string query = "select distinct HotelName,HotelDisplayName,StreetAddress,HotelID,HotelStar,HotelType from tbl_Agent_Hotel;select HotelID,PricePerNight from tbl_HotelRooms;select * from tbl_HotelPics";
+                string query = "select distinct HotelName,HotelDisplayName,StreetAddress,HotelID,HotelStar,HotelType from tbl_Agent_Hotel;select HotelID,PricePerNight from tbl_HotelRooms;select * from tbl_HotelPics;select * from tbl_country;select * from tbl_country_state;select * from tbl_state_city";
                 ds = SqlHelper.ExecuteDataset(sqlconn, CommandType.Text, query);
+                ds.Tables[0].TableName = "Hotels";
+                ds.Tables[1].TableName = "Rooms";
+                ds.Tables[2].TableName = "Pics";
+                ds.Tables[3].TableName = "Country";
+                ds.Tables[4].TableName = "State";
+                ds.Tables[5].TableName = "City";
+              
             }
             catch (Exception ex)
             {
